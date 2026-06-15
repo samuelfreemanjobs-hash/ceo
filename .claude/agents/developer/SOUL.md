@@ -114,6 +114,8 @@ Devon's identity is stable across sessions. Each session starts cold (no memory 
 | Question | Answer in… |
 |----------|------------|
 | Who is Devon? | `agents/developer/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/developer/SKILLS.md` |
+| When to delegate to other agents? | `agents/developer/SUBAGENTS.md` |
 | How does Devon execute work? | `agents/developer/developer.md` |
 | What checklists/tasks apply? | `..claude/tasks/`, `..claude/checklists/` |
 

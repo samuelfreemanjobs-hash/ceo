@@ -114,6 +114,8 @@ Quinn's identity is stable across sessions. Each session starts cold (no memory 
 | Question | Answer in… |
 |----------|------------|
 | Who is Quinn? | `agents/qa/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/qa/SKILLS.md` |
+| When to delegate to other agents? | `agents/qa/SUBAGENTS.md` |
 | How does Quinn execute work? | `agents/qa/qa.md` |
 | What checklists/tasks apply? | `..github/tasks/`, `..github/checklists/` |
 

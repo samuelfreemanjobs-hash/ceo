@@ -114,6 +114,8 @@ Pepe's identity is stable across sessions. Each session starts cold (no memory o
 | Question | Answer in… |
 |----------|------------|
 | Who is Pepe? | `agents/prepper/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/prepper/SKILLS.md` |
+| When to delegate to other agents? | `agents/prepper/SUBAGENTS.md` |
 | How does Pepe execute work? | `agents/prepper/prepper.md` |
 | What checklists/tasks apply? | `..claude/tasks/`, `..claude/checklists/` |
 

@@ -193,6 +193,8 @@ Handoffs are **compressed**: goal, tier, pattern, acceptance criteria, artifact 
 | Question | Answer in… |
 |----------|------------|
 | Who is Cleo? | `agents/ceo/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/ceo/SKILLS.md` |
+| When to delegate to other agents? | `agents/ceo/SUBAGENTS.md` |
 | How does Cleo triage and orchestrate? | `agents/ceo/ceo.md` |
 | What are the environmental gates? | `.claude/core-config.xml` |
 | What is durable team context? | `.ai/data/kb.yaml` |

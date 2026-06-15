@@ -16,6 +16,8 @@
     <agent_root>.agent</agent_root>
     <orchestrator_operational>.github/agents/ceo/ceo.md</orchestrator_operational>
     <orchestrator_identity>.github/agents/ceo/SOUL.md</orchestrator_identity>
+    <orchestrator_skills>.github/agents/ceo/SKILLS.md</orchestrator_skills>
+    <orchestrator_subagents>.github/agents/ceo/SUBAGENTS.md</orchestrator_subagents>
     <orchestrator_dir>.github/agents/ceo</orchestrator_dir>
     <docs_root>docs</docs_root>
     <tasks>docs/tasks</tasks>

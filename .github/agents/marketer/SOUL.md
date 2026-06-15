@@ -114,6 +114,8 @@ Mark's identity is stable across sessions. Each session starts cold (no memory o
 | Question | Answer in… |
 |----------|------------|
 | Who is Mark? | `agents/marketer/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/marketer/SKILLS.md` |
+| When to delegate to other agents? | `agents/marketer/SUBAGENTS.md` |
 | How does Mark execute work? | `agents/marketer/marketer.md` |
 | What checklists/tasks apply? | `..github/tasks/`, `..github/checklists/` |
 

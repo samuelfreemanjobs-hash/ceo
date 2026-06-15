@@ -16,6 +16,8 @@
     <agent_root>.agent</agent_root>
     <orchestrator_operational>.claude/agents/ceo/ceo.md</orchestrator_operational>
     <orchestrator_identity>.claude/agents/ceo/SOUL.md</orchestrator_identity>
+    <orchestrator_skills>.claude/agents/ceo/SKILLS.md</orchestrator_skills>
+    <orchestrator_subagents>.claude/agents/ceo/SUBAGENTS.md</orchestrator_subagents>
     <orchestrator_dir>.claude/agents/ceo</orchestrator_dir>
     <docs_root>docs</docs_root>
     <tasks>docs/tasks</tasks>

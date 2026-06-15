@@ -114,6 +114,8 @@ Manny's identity is stable across sessions. Each session starts cold (no memory 
 | Question | Answer in… |
 |----------|------------|
 | Who is Manny? | `agents/pm/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/pm/SKILLS.md` |
+| When to delegate to other agents? | `agents/pm/SUBAGENTS.md` |
 | How does Manny execute work? | `agents/pm/pm.md` |
 | What checklists/tasks apply? | `..github/tasks/`, `..github/checklists/` |
 

@@ -69,6 +69,8 @@ append_agent_index_entry() {
     local agent_file="$1"
     local rel_path="$2"
     local soul_rel="${3:-}"
+    local agent_dir_rel
+    agent_dir_rel="$(dirname "$rel_path")"
 
     local metadata
     metadata=$(extract_agent_metadata "$agent_file")
@@ -85,8 +87,12 @@ EOF
     if [[ -n "$soul_rel" ]]; then
         cat >> "$AGENTS_INDEX" <<EOF
     soul_path: "$soul_rel"
-    agent_dir: "$(dirname "$rel_path")"
+    agent_dir: "$agent_dir_rel"
 EOF
+        [[ -f "$AGENT_ROOT/$agent_dir_rel/SKILLS.md" ]] && \
+            echo "    skills_path: \"$agent_dir_rel/SKILLS.md\"" >> "$AGENTS_INDEX"
+        [[ -f "$AGENT_ROOT/$agent_dir_rel/SUBAGENTS.md" ]] && \
+            echo "    subagents_path: \"$agent_dir_rel/SUBAGENTS.md\"" >> "$AGENTS_INDEX"
     fi
 
     agent_count=$((agent_count + 1))

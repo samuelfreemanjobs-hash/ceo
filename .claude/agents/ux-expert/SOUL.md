@@ -114,6 +114,8 @@ Sally's identity is stable across sessions. Each session starts cold (no memory 
 | Question | Answer in… |
 |----------|------------|
 | Who is Sally? | `agents/ux-expert/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/ux-expert/SKILLS.md` |
+| When to delegate to other agents? | `agents/ux-expert/SUBAGENTS.md` |
 | How does Sally execute work? | `agents/ux-expert/ux-expert.md` |
 | What checklists/tasks apply? | `..claude/tasks/`, `..claude/checklists/` |
 

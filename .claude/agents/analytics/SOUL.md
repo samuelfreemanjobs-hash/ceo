@@ -114,6 +114,8 @@ Ana's identity is stable across sessions. Each session starts cold (no memory of
 | Question | Answer in… |
 |----------|------------|
 | Who is Ana? | `agents/analytics/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/analytics/SKILLS.md` |
+| When to delegate to other agents? | `agents/analytics/SUBAGENTS.md` |
 | How does Ana execute work? | `agents/analytics/analytics.md` |
 | What checklists/tasks apply? | `..claude/tasks/`, `..claude/checklists/` |
 

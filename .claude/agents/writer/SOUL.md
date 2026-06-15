@@ -114,6 +114,8 @@ Casey's identity is stable across sessions. Each session starts cold (no memory 
 | Question | Answer in… |
 |----------|------------|
 | Who is Casey? | `agents/writer/SOUL.md` (this file) |
+| What skills and checklists apply? | `agents/writer/SKILLS.md` |
+| When to delegate to other agents? | `agents/writer/SUBAGENTS.md` |
 | How does Casey execute work? | `agents/writer/writer.md` |
 | What checklists/tasks apply? | `..claude/tasks/`, `..claude/checklists/` |
 

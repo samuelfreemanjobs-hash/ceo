@@ -10,6 +10,8 @@ agents:
     path: "agents/analytics/analytics.md"
     soul_path: "agents/analytics/SOUL.md"
     agent_dir: "agents/analytics"
+    skills_path: "agents/analytics/SKILLS.md"
+    subagents_path: "agents/analytics/SUBAGENTS.md"
   - id: ceo
     name: "ceo"
     title: "ceo"
@@ -18,6 +20,8 @@ agents:
     path: "agents/ceo/ceo.md"
     soul_path: "agents/ceo/SOUL.md"
     agent_dir: "agents/ceo"
+    skills_path: "agents/ceo/SKILLS.md"
+    subagents_path: "agents/ceo/SUBAGENTS.md"
   - id: developer
     name: "developer"
     title: "developer"
@@ -26,6 +30,8 @@ agents:
     path: "agents/developer/developer.md"
     soul_path: "agents/developer/SOUL.md"
     agent_dir: "agents/developer"
+    skills_path: "agents/developer/SKILLS.md"
+    subagents_path: "agents/developer/SUBAGENTS.md"
   - id: marketer
     name: "marketer"
     title: "marketer"
@@ -34,6 +40,8 @@ agents:
     path: "agents/marketer/marketer.md"
     soul_path: "agents/marketer/SOUL.md"
     agent_dir: "agents/marketer"
+    skills_path: "agents/marketer/SKILLS.md"
+    subagents_path: "agents/marketer/SUBAGENTS.md"
   - id: pm
     name: "pm"
     title: "pm"
@@ -42,6 +50,8 @@ agents:
     path: "agents/pm/pm.md"
     soul_path: "agents/pm/SOUL.md"
     agent_dir: "agents/pm"
+    skills_path: "agents/pm/SKILLS.md"
+    subagents_path: "agents/pm/SUBAGENTS.md"
   - id: prepper
     name: "prepper"
     title: "prepper"
@@ -50,6 +60,8 @@ agents:
     path: "agents/prepper/prepper.md"
     soul_path: "agents/prepper/SOUL.md"
     agent_dir: "agents/prepper"
+    skills_path: "agents/prepper/SKILLS.md"
+    subagents_path: "agents/prepper/SUBAGENTS.md"
   - id: qa
     name: "qa"
     title: "qa"
@@ -58,6 +70,8 @@ agents:
     path: "agents/qa/qa.md"
     soul_path: "agents/qa/SOUL.md"
     agent_dir: "agents/qa"
+    skills_path: "agents/qa/SKILLS.md"
+    subagents_path: "agents/qa/SUBAGENTS.md"
   - id: ux-expert
     name: "ux-expert"
     title: "ux-expert"
@@ -66,6 +80,8 @@ agents:
     path: "agents/ux-expert/ux-expert.md"
     soul_path: "agents/ux-expert/SOUL.md"
     agent_dir: "agents/ux-expert"
+    skills_path: "agents/ux-expert/SKILLS.md"
+    subagents_path: "agents/ux-expert/SUBAGENTS.md"
   - id: writer
     name: "writer"
     title: "writer"
@@ -74,3 +90,5 @@ agents:
     path: "agents/writer/writer.md"
     soul_path: "agents/writer/SOUL.md"
     agent_dir: "agents/writer"
+    skills_path: "agents/writer/SKILLS.md"
+    subagents_path: "agents/writer/SUBAGENTS.md"
