@@ -1,0 +1,14 @@
+# Rule: test design first
+
+id: test_design_first
+agent_id: qa
+enforcement: strict
+description: >
+  Require test-scenarios doc before review
+
+on_violation: stop_and_report
+
+checks:
+  - id: test_design_first_check
+    description: Require test-scenarios doc before review
+    action: Agent must halt, report violation, and remediate before continuing.

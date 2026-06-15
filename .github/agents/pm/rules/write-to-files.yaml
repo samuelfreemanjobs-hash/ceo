@@ -1,0 +1,14 @@
+# Rule: write to files
+
+id: write_to_files
+agent_id: pm
+enforcement: strict
+description: >
+  Never display-only deliverables
+
+on_violation: stop_and_report
+
+checks:
+  - id: write_to_files_check
+    description: Never display-only deliverables
+    action: Agent must halt, report violation, and remediate before continuing.

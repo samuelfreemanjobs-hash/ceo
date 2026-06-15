@@ -12,6 +12,9 @@ agents:
     agent_dir: "agents/analytics"
     skills_path: "agents/analytics/SKILLS.md"
     subagents_path: "agents/analytics/SUBAGENTS.md"
+    duties_path: "agents/analytics/DUTIES.md"
+    rules_dir: "agents/analytics/rules"
+    memory_dir: "agents/analytics/memory"
   - id: ceo
     name: "ceo"
     title: "ceo"
@@ -22,6 +25,9 @@ agents:
     agent_dir: "agents/ceo"
     skills_path: "agents/ceo/SKILLS.md"
     subagents_path: "agents/ceo/SUBAGENTS.md"
+    duties_path: "agents/ceo/DUTIES.md"
+    rules_dir: "agents/ceo/rules"
+    memory_dir: "agents/ceo/memory"
   - id: developer
     name: "developer"
     title: "developer"
@@ -32,6 +38,9 @@ agents:
     agent_dir: "agents/developer"
     skills_path: "agents/developer/SKILLS.md"
     subagents_path: "agents/developer/SUBAGENTS.md"
+    duties_path: "agents/developer/DUTIES.md"
+    rules_dir: "agents/developer/rules"
+    memory_dir: "agents/developer/memory"
   - id: marketer
     name: "marketer"
     title: "marketer"
@@ -42,6 +51,9 @@ agents:
     agent_dir: "agents/marketer"
     skills_path: "agents/marketer/SKILLS.md"
     subagents_path: "agents/marketer/SUBAGENTS.md"
+    duties_path: "agents/marketer/DUTIES.md"
+    rules_dir: "agents/marketer/rules"
+    memory_dir: "agents/marketer/memory"
   - id: pm
     name: "pm"
     title: "pm"
@@ -52,6 +64,9 @@ agents:
     agent_dir: "agents/pm"
     skills_path: "agents/pm/SKILLS.md"
     subagents_path: "agents/pm/SUBAGENTS.md"
+    duties_path: "agents/pm/DUTIES.md"
+    rules_dir: "agents/pm/rules"
+    memory_dir: "agents/pm/memory"
   - id: prepper
     name: "prepper"
     title: "prepper"
@@ -62,6 +77,9 @@ agents:
     agent_dir: "agents/prepper"
     skills_path: "agents/prepper/SKILLS.md"
     subagents_path: "agents/prepper/SUBAGENTS.md"
+    duties_path: "agents/prepper/DUTIES.md"
+    rules_dir: "agents/prepper/rules"
+    memory_dir: "agents/prepper/memory"
   - id: qa
     name: "qa"
     title: "qa"
@@ -72,6 +90,9 @@ agents:
     agent_dir: "agents/qa"
     skills_path: "agents/qa/SKILLS.md"
     subagents_path: "agents/qa/SUBAGENTS.md"
+    duties_path: "agents/qa/DUTIES.md"
+    rules_dir: "agents/qa/rules"
+    memory_dir: "agents/qa/memory"
   - id: ux-expert
     name: "ux-expert"
     title: "ux-expert"
@@ -82,6 +103,9 @@ agents:
     agent_dir: "agents/ux-expert"
     skills_path: "agents/ux-expert/SKILLS.md"
     subagents_path: "agents/ux-expert/SUBAGENTS.md"
+    duties_path: "agents/ux-expert/DUTIES.md"
+    rules_dir: "agents/ux-expert/rules"
+    memory_dir: "agents/ux-expert/memory"
   - id: writer
     name: "writer"
     title: "writer"
@@ -92,3 +116,6 @@ agents:
     agent_dir: "agents/writer"
     skills_path: "agents/writer/SKILLS.md"
     subagents_path: "agents/writer/SUBAGENTS.md"
+    duties_path: "agents/writer/DUTIES.md"
+    rules_dir: "agents/writer/rules"
+    memory_dir: "agents/writer/memory"

@@ -1,0 +1,14 @@
+# Rule: approval gate
+
+id: approval_gate
+agent_id: prepper
+enforcement: strict
+description: >
+  [1] Apply required before edits
+
+on_violation: stop_and_report
+
+checks:
+  - id: approval_gate_check
+    description: [1] Apply required before edits
+    action: Agent must halt, report violation, and remediate before continuing.

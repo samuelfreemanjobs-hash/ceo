@@ -1,0 +1,14 @@
+# Rule: triage first
+
+id: triage_first
+agent_id: ceo
+enforcement: strict
+description: >
+  No Task invocation without Tier ≥2 classification
+
+on_violation: stop_and_report
+
+checks:
+  - id: triage_first_check
+    description: No Task invocation without Tier ≥2 classification
+    action: Agent must halt, report violation, and remediate before continuing.

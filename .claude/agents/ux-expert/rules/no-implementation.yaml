@@ -1,0 +1,14 @@
+# Rule: no implementation
+
+id: no_implementation
+agent_id: ux-expert
+enforcement: strict
+description: >
+  Specs only — not production code
+
+on_violation: stop_and_report
+
+checks:
+  - id: no_implementation_check
+    description: Specs only — not production code
+    action: Agent must halt, report violation, and remediate before continuing.

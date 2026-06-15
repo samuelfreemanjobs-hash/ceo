@@ -1,0 +1,14 @@
+# Rule: kpi required
+
+id: kpi_required
+agent_id: marketer
+enforcement: strict
+description: >
+  Strategies include measurable KPIs
+
+on_violation: stop_and_report
+
+checks:
+  - id: kpi_required_check
+    description: Strategies include measurable KPIs
+    action: Agent must halt, report violation, and remediate before continuing.

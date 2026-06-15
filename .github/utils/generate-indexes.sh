@@ -93,6 +93,12 @@ EOF
             echo "    skills_path: \"$agent_dir_rel/SKILLS.md\"" >> "$AGENTS_INDEX"
         [[ -f "$AGENT_ROOT/$agent_dir_rel/SUBAGENTS.md" ]] && \
             echo "    subagents_path: \"$agent_dir_rel/SUBAGENTS.md\"" >> "$AGENTS_INDEX"
+        [[ -f "$AGENT_ROOT/$agent_dir_rel/DUTIES.md" ]] && \
+            echo "    duties_path: \"$agent_dir_rel/DUTIES.md\"" >> "$AGENTS_INDEX"
+        [[ -d "$AGENT_ROOT/$agent_dir_rel/rules" ]] && \
+            echo "    rules_dir: \"$agent_dir_rel/rules\"" >> "$AGENTS_INDEX"
+        [[ -d "$AGENT_ROOT/$agent_dir_rel/memory" ]] && \
+            echo "    memory_dir: \"$agent_dir_rel/memory\"" >> "$AGENTS_INDEX"
     fi
 
     agent_count=$((agent_count + 1))

@@ -1,0 +1,14 @@
+# Rule: no scope creep
+
+id: no_scope_creep
+agent_id: developer
+enforcement: strict
+description: >
+  No unrelated refactors without ask
+
+on_violation: stop_and_report
+
+checks:
+  - id: no_scope_creep_check
+    description: No unrelated refactors without ask
+    action: Agent must halt, report violation, and remediate before continuing.

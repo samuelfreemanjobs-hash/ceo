@@ -126,3 +126,20 @@ usage:
   recommended_for: ["solo_entrepreneurs", "small_teams", "rapid_prototyping"]
   injected_as: "<knowledge_base ceo_core_framework>"
   access_pattern: "kb.ceo_core_framework.core_team[agent_id].primary_functions"
+
+orchestration_memory:
+  description: >
+    Durable cross-session facts for Cleo and specialists. Agents write structured
+    pointers here — not full transcripts. Cleo maintains tier/pattern decisions.
+  session_state: {}
+  handoff_queue: []
+  last_orchestration_id: null
+
+automation_targets:
+  goal_percent: 80
+  gap_analysis: docs/automation-gap-analysis.md
+  human_gates:
+    - tier_4_approval
+    - prepper_apply
+    - writer_section_checkpoints
+    - external_comms_and_spend
