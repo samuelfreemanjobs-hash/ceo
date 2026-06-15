@@ -68,7 +68,7 @@ AGENTS: dict[str, dict] = {
             "Issue DATA QUALITY ALERT and stop on bad data",
         ],
         "deliverables": [
-            ("Campaign analysis report", "`docs/analytics/<report>.md`", "Per analysis request"),
+            ("Campaign analysis report", "docs/analytics/ (per report name)", "Per analysis request"),
             ("Data quality alert", "Inline alert + stop", "On validation failure"),
         ],
         "sla": "Pre-flight validation before any metric publication.",
@@ -273,7 +273,7 @@ AGENTS: dict[str, dict] = {
         "sla": "Zero silent file modifications.",
         "escalation": ["Technical validation → Devon", "Product context → Manny"],
         "rules": [
-            ("approval-gate.yaml", "[1] Apply required before edits"),
+            ("approval-gate.yaml", "Step 1 Apply required before edits"),
             ("one-artifact.yaml", "Single file change per proposal"),
             ("audit-required.yaml", "Log every proposal and decision"),
         ],
@@ -295,7 +295,7 @@ def render_duties(agent_id: str, cfg: dict, platform: str) -> str:
     display = cfg["display_name"]
     duties = "\n".join(f"- {d}" for d in cfg["primary_duties"])
     deliv_rows = "\n".join(
-        f"| {name} | `{loc}` | {when} |" for name, loc, when in cfg["deliverables"]
+        f"| {name} | {loc} | {when} |" for name, loc, when in cfg["deliverables"]
     )
     esc = "\n".join(f"- {e}" for e in cfg["escalation"])
 

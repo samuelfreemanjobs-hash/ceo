@@ -1,0 +1,14 @@
+# Rule: advisory not silent veto
+
+id: advisory_not_silent_veto
+agent_id: qa
+enforcement: strict
+description: >
+  Document rationale for FAIL/CONCERNS
+
+on_violation: stop_and_report
+
+checks:
+  - id: advisory_not_silent_veto_check
+    description: Document rationale for FAIL/CONCERNS
+    action: Agent must halt, report violation, and remediate before continuing.

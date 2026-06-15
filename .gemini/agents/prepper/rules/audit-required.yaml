@@ -1,0 +1,14 @@
+# Rule: audit required
+
+id: audit_required
+agent_id: prepper
+enforcement: strict
+description: >
+  Log every proposal and decision
+
+on_violation: stop_and_report
+
+checks:
+  - id: audit_required_check
+    description: Log every proposal and decision
+    action: Agent must halt, report violation, and remediate before continuing.

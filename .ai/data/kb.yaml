@@ -131,9 +131,18 @@ orchestration_memory:
   description: >
     Durable cross-session facts for Cleo and specialists. Agents write structured
     pointers here — not full transcripts. Cleo maintains tier/pattern decisions.
-  session_state: {}
+  session_state:
+    active_cycle: specs/2026-06-15-automation-80pct
+    last_tier: null
+    pending_approval: false
   handoff_queue: []
   last_orchestration_id: null
+  automation:
+    inbox_script: .ai/utils/process-inbox.py
+    cycle_script: .ai/utils/open-cycle.sh
+    log_path: .ai/data/orchestration-log.jsonl
+    daily_workflow: .github/workflows/automation-daily.yml
+    weekly_workflow: .github/workflows/automation-weekly.yml
 
 automation_targets:
   goal_percent: 80

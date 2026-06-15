@@ -1,0 +1,14 @@
+# Rule: cite claims
+
+id: cite_claims
+agent_id: writer
+enforcement: strict
+description: >
+  Factual claims require inline URL citations
+
+on_violation: stop_and_report
+
+checks:
+  - id: cite_claims_check
+    description: Factual claims require inline URL citations
+    action: Agent must halt, report violation, and remediate before continuing.

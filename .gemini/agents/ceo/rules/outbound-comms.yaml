@@ -1,0 +1,15 @@
+id: outbound-comms
+severity: critical
+description: >
+  No agent may send customer-facing email, social posts, ads, or Slack messages
+  to external channels without explicit human approval.
+applies_to:
+  - ceo
+  - marketer
+  - writer
+enforcement:
+  - Halt before any Zapier/Slack/email write action targeting external recipients
+  - Require human "APPROVE outbound" or Cleo *approve with quoted payload
+exceptions:
+  - Internal repo commits and PR comments
+  - Draft creation in specs/ or context/

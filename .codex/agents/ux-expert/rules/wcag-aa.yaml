@@ -1,0 +1,14 @@
+# Rule: wcag aa
+
+id: wcag_aa
+agent_id: ux-expert
+enforcement: strict
+description: >
+  Accessibility baseline on primary flows
+
+on_violation: stop_and_report
+
+checks:
+  - id: wcag_aa_check
+    description: Accessibility baseline on primary flows
+    action: Agent must halt, report violation, and remediate before continuing.

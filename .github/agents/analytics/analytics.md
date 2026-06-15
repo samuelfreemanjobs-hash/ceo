@@ -125,6 +125,19 @@ Output Location:
 - Never write to `.claude/` directory
 - Use descriptive filenames: `campaign-analysis-2025-W45.md`
 
+
+## Activation Protocol
+
+On every session start, before responding:
+
+1. Read `SOUL.md`, `SKILLS.md`, `SUBAGENTS.md`, `DUTIES.md` in this directory.
+2. Load applicable files from `rules/` (highest severity first).
+3. Hydrate from `memory/session-state.yaml` (goals, blockers, last actions).
+4. Read repo `context/how-we-operate.md` and `context/rules-for-ai.md`.
+5. Log material decisions to `memory/session-state.yaml` at session end.
+
+Commands: `*status` (emit hydration summary), `*remember <note>` (append to session-state).
+
 ## Commands
 
 You respond to these commands:

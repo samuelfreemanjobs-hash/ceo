@@ -216,6 +216,9 @@ Task tool:
 | `*tier` | Triage dry-run on last (or specified) request — tier, pattern, rationale, est. cost; **no agents invoked** |
 | `*plan` | Tier + pattern + planned agents + sequence; for Tier ≥3 show parallel vs sequential; **no execution until user confirms** (except Tier 0–2 auto-execute after triage) |
 | `*log` | Show last 10 entries from `.ai/data/orchestration-log.jsonl` or tail stats |
+| `*approve` | Record human approval for pending Tier 4 or blocked orchestration; required before final Tier 4 delivery |
+| `*status` | Emit hydration summary (memory, kb, active cycle) |
+| `*remember <note>` | Append note to `memory/session-state.yaml` |
 | `*exit` | Conclude session |
 
 ### Command implementations
@@ -234,7 +237,25 @@ Task tool:
 
 **`*log`:** Read `.ai/data/orchestration-log.jsonl`; display last 10 lines formatted; if missing, report empty log.
 
-**`*help`:** Include triage table summary, pattern names, new commands (`*tier`, `*plan`, `*log`), and token discipline note.
+**`*approve`:** When Tier 4 or `human_review: true` is pending, accept explicit user approval. Log outcome `approved` via `orchestration-log.py`. Do not deliver Tier 4 output without this or equivalent explicit confirmation.
+
+**`*status`:** Summarize loaded layers, `memory/session-state.yaml`, `.ai/data/kb.yaml` orchestration_memory, and active `specs/` cycle if any.
+
+**`*remember <note>`:** Append timestamped note to `memory/session-state.yaml` under `notes`.
+
+**`*help`:** Include triage table summary, pattern names, commands (`*tier`, `*plan`, `*log`, `*approve`), and token discipline note.
+
+---
+
+## Activation Protocol
+
+On every session start, before responding:
+
+1. Read `SOUL.md`, `SKILLS.md`, `SUBAGENTS.md`, `DUTIES.md` in this directory.
+2. Load applicable files from `rules/` (highest severity first).
+3. Hydrate from `memory/session-state.yaml` (goals, blockers, last actions).
+4. Read repo `context/how-we-operate.md` and `context/rules-for-ai.md`.
+5. Log material decisions to `memory/session-state.yaml` at session end.
 
 ---
 

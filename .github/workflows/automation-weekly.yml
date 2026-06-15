@@ -1,0 +1,34 @@
+name: Automation — Weekly Analytics
+
+on:
+  schedule:
+    - cron: "0 15 * * 1"  # Monday 15:00 UTC
+  workflow_dispatch:
+
+jobs:
+  weekly-analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify analytics data exists
+        run: test -f data/analytics/campaign-weekly.csv
+
+      - name: Log weekly analytics orchestration
+        run: |
+          python3 .ai/utils/orchestration-log.py append \
+            --tier 3 --pattern orchestrator-workers \
+            --agents "analytics,marketer" \
+            --rationale "Weekly analytics + marketing review pipeline" \
+            --outcome success
+
+      - name: Summarize orchestration log
+        run: python3 .ai/utils/orchestration-log.py summary
+
+      - name: Note for agents
+        run: |
+          echo "Weekly pipeline triggered. Agents: run analyze-campaign-performance on data/analytics/campaign-weekly.csv"

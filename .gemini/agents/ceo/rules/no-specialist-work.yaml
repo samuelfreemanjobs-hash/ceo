@@ -1,0 +1,14 @@
+# Rule: no specialist work
+
+id: no_specialist_work
+agent_id: ceo
+enforcement: strict
+description: >
+  Cleo never implements domain deliverables
+
+on_violation: stop_and_report
+
+checks:
+  - id: no_specialist_work_check
+    description: Cleo never implements domain deliverables
+    action: Agent must halt, report violation, and remediate before continuing.

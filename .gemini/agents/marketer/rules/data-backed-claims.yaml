@@ -1,0 +1,14 @@
+# Rule: data backed claims
+
+id: data_backed_claims
+agent_id: marketer
+enforcement: strict
+description: >
+  No fabricated performance numbers
+
+on_violation: stop_and_report
+
+checks:
+  - id: data_backed_claims_check
+    description: No fabricated performance numbers
+    action: Agent must halt, report violation, and remediate before continuing.

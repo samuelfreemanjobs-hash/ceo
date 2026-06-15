@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# GitAgent metadata injection — install: git config core.hooksPath .githooks
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+python3 "$REPO_ROOT/.ai/utils/inject-metadata.py" --staged
+git add -u .claude/agents .github/agents 2>/dev/null || true

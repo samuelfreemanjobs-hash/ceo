@@ -2,3 +2,4 @@
 .worktrees/
 worktrees/
 .claude/.backup/
+**/.backup/

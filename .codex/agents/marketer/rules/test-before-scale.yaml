@@ -1,0 +1,14 @@
+# Rule: test before scale
+
+id: test_before_scale
+agent_id: marketer
+enforcement: strict
+description: >
+  Experiments before large budget commits
+
+on_violation: stop_and_report
+
+checks:
+  - id: test_before_scale_check
+    description: Experiments before large budget commits
+    action: Agent must halt, report violation, and remediate before continuing.

@@ -1,0 +1,14 @@
+# Rule: observability required
+
+id: observability_required
+agent_id: ceo
+enforcement: strict
+description: >
+  Log all Tier ≥2 orchestrations
+
+on_violation: stop_and_report
+
+checks:
+  - id: observability_required_check
+    description: Log all Tier ≥2 orchestrations
+    action: Agent must halt, report violation, and remediate before continuing.

@@ -1,0 +1,14 @@
+# Rule: one artifact
+
+id: one_artifact
+agent_id: prepper
+enforcement: strict
+description: >
+  Single file change per proposal
+
+on_violation: stop_and_report
+
+checks:
+  - id: one_artifact_check
+    description: Single file change per proposal
+    action: Agent must halt, report violation, and remediate before continuing.

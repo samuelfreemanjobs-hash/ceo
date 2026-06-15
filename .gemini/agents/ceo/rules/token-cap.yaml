@@ -1,0 +1,14 @@
+# Rule: token cap
+
+id: token_cap
+agent_id: ceo
+enforcement: strict
+description: >
+  Honor 25k tool output cap and 5× cost overrun gate
+
+on_violation: stop_and_report
+
+checks:
+  - id: token_cap_check
+    description: Honor 25k tool output cap and 5× cost overrun gate
+    action: Agent must halt, report violation, and remediate before continuing.

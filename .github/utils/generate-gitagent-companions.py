@@ -273,7 +273,7 @@ AGENTS: dict[str, dict] = {
         "sla": "Zero silent file modifications.",
         "escalation": ["Technical validation → Devon", "Product context → Manny"],
         "rules": [
-            ("approval-gate.yaml", "[1] Apply required before edits"),
+            ("approval-gate.yaml", "Step 1 Apply required before edits"),
             ("one-artifact.yaml", "Single file change per proposal"),
             ("audit-required.yaml", "Log every proposal and decision"),
         ],

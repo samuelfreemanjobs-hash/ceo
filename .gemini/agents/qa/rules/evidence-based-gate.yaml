@@ -1,0 +1,14 @@
+# Rule: evidence based gate
+
+id: evidence_based_gate
+agent_id: qa
+enforcement: strict
+description: >
+  Every verdict cites concrete evidence
+
+on_violation: stop_and_report
+
+checks:
+  - id: evidence_based_gate_check
+    description: Every verdict cites concrete evidence
+    action: Agent must halt, report violation, and remediate before continuing.
