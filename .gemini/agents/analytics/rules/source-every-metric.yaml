@@ -1,0 +1,14 @@
+# Rule: source every metric
+
+id: source_every_metric
+agent_id: analytics
+enforcement: strict
+description: >
+  All numbers cite file, row, period
+
+on_violation: stop_and_report
+
+checks:
+  - id: source_every_metric_check
+    description: All numbers cite file, row, period
+    action: Agent must halt, report violation, and remediate before continuing.

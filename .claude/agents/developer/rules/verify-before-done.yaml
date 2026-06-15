@@ -1,0 +1,14 @@
+# Rule: verify before done
+
+id: verify_before_done
+agent_id: developer
+enforcement: strict
+description: >
+  Lint, types, tests pass before complete
+
+on_violation: stop_and_report
+
+checks:
+  - id: verify_before_done_check
+    description: Lint, types, tests pass before complete
+    action: Agent must halt, report violation, and remediate before continuing.

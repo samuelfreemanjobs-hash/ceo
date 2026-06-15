@@ -7,8 +7,9 @@ A streamlined framework for coordinating specialized AI agents across multiple A
 This repository now includes two first-class pieces:
 
 - agent orchestration assets in the root `.codex/`, `.claude/`, `.github/`, and `.gemini/` folders
-- reusable repository starter kits in [`starter-kits/`](starter-kits/README.md), including the AI-first [`starter-kits/team-brain/`](starter-kits/team-brain/README.md)
+- **live team-brain** at repo root: `context/`, `inbox/`, `specs/` (plus starter kit in [`starter-kits/team-brain/`](starter-kits/team-brain/README.md))
 - a shared AI asset layer in [`.ai/`](.ai/README.md) for reusable skills, templates, checklists, data, and utilities
+- **automation runtime** in [`.ai/utils/`](.ai/utils/) and [`.github/workflows/`](.github/workflows/) for inbox processing, CI validation, and scheduled jobs
 
 **Why This Exists:**
 
@@ -51,43 +52,48 @@ This system has two connected parts.
 
 ### Part 1: Agent orchestration
 
-The orchestration side uses **profile-based agent switching**:
+Cleo (**CEO**) uses **tier-adaptive orchestration** (Tier 0–4):
 
-1. **CEO Agent (Cleo)** - Workflow consultant that analyzes your request and prescribes complete workflows
-2. **Specialist Agents** - Focused experts (Developer, PM, QA, etc.) that execute specific tasks
-3. **Resource Indexes** - Auto-generated catalogs of available tasks, checklists, and data
-4. **Profile Switching** - Native mechanism to switch between agent contexts for each model.
+1. **CEO Agent (Cleo)** — Triage every request, select leanest pattern, invoke specialists via Task tool when Tier ≥2
+2. **Specialist Agents** — Focused experts (Developer, PM, QA, etc.) that execute specific tasks
+3. **Resource Indexes** — Auto-generated catalogs of available tasks, checklists, and data
+4. **GitAgent 6-layer stack** — Each agent: `<id>.md`, SOUL, SKILLS, SUBAGENTS, DUTIES, `rules/`, `memory/`
 
 ### The CEO Workflow
 
 ```text
-User → CEO Agent → Analyzes intent → Consults indexes → Prescribes workflow
+User → Cleo triage (Tier 0–4) → Pattern selection → Execute or orchestrate
 
-CEO Output:
-├── Which agent(s) to use
-├── What tasks to execute
-├── What checklists to apply
-└── What data to reference
+Tier 0–1: Cleo answers directly (no Task tool)
+Tier 2:     One specialist
+Tier 3:     Multi-agent pipeline (parallel or sequential)
+Tier 4:     Evaluator loop (Quinn) + human *approve
 ```
 
-The CEO doesn't execute work in the Codex profile workflow. It provides **complete, actionable guidance** so you know exactly what to do.
+Cleo **orchestrates and logs** Tier ≥2 runs to `.ai/data/orchestration-log.jsonl`. Specialists implement; Cleo does not write production code.
 
-### Part 2: Team brain repository
+### Part 2: Team brain repository (live at repo root)
 
-The team-brain side gives those agents somewhere consistent to read from and write to:
+The team-brain layer gives agents durable read/write surfaces:
 
-- `context/` for durable knowledge
-- `inbox/` for raw notes that need processing
-- `specs/` for cycle-bound planning and execution
-- hidden AI directories for shared and platform-specific agent assets
+- `context/` — OKRs, ICP, how-we-operate, learnings, MCP config
+- `inbox/` — Raw notes; **daily automation** promotes to `specs/`
+- `specs/` — Cycle-bound planning (`open-cycle.sh` or `specs/template/`)
+- `.ai/data/kb.yaml` — Cross-agent orchestration memory
 
-That repository shape lives in [`starter-kits/team-brain/`](starter-kits/team-brain/README.md).
+See also [`starter-kits/team-brain/`](starter-kits/team-brain/README.md) for greenfield copies.
 
 ## Quick Start
 
 ### 0. Start With The Right Repository Shape
 
-If you want a durable repo where humans and AI share operating context, start from [`starter-kits/team-brain/`](starter-kits/team-brain/README.md). That gives you the memory layer first.
+This repo includes a **live team-brain** at the root (`context/`, `inbox/`, `specs/`). For a greenfield project, copy [`starter-kits/team-brain/`](starter-kits/team-brain/README.md).
+
+**Automation setup:** [`docs/automation-setup.md`](docs/automation-setup.md) — hooks, scripts, GitHub Actions.
+
+```bash
+git config core.hooksPath .githooks   # GitAgent metadata on commit
+```
 
 ### 1. Choose Your AI Platform
 

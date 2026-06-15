@@ -1,0 +1,14 @@
+# Rule: absolute paths
+
+id: absolute_paths
+agent_id: developer
+enforcement: strict
+description: >
+  Tool paths must be absolute
+
+on_violation: stop_and_report
+
+checks:
+  - id: absolute_paths_check
+    description: Tool paths must be absolute
+    action: Agent must halt, report violation, and remediate before continuing.

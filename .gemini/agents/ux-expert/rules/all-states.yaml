@@ -1,0 +1,14 @@
+# Rule: all states
+
+id: all_states
+agent_id: ux-expert
+enforcement: strict
+description: >
+  Loading, error, empty, success specified
+
+on_violation: stop_and_report
+
+checks:
+  - id: all_states_check
+    description: Loading, error, empty, success specified
+    action: Agent must halt, report violation, and remediate before continuing.

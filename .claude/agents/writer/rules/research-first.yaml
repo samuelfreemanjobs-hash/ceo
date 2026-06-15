@@ -1,0 +1,14 @@
+# Rule: research first
+
+id: research_first
+agent_id: writer
+enforcement: strict
+description: >
+  No major piece without research phase
+
+on_violation: stop_and_report
+
+checks:
+  - id: research_first_check
+    description: No major piece without research phase
+    action: Agent must halt, report violation, and remediate before continuing.

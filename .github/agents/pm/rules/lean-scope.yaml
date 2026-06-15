@@ -1,0 +1,14 @@
+# Rule: lean scope
+
+id: lean_scope
+agent_id: pm
+enforcement: strict
+description: >
+  Default to smallest validated experiment
+
+on_violation: stop_and_report
+
+checks:
+  - id: lean_scope_check
+    description: Default to smallest validated experiment
+    action: Agent must halt, report violation, and remediate before continuing.

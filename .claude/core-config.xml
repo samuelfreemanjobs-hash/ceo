@@ -14,6 +14,11 @@
 
   <paths>
     <agent_root>.agent</agent_root>
+    <orchestrator_operational>.claude/agents/ceo/ceo.md</orchestrator_operational>
+    <orchestrator_identity>.claude/agents/ceo/SOUL.md</orchestrator_identity>
+    <orchestrator_skills>.claude/agents/ceo/SKILLS.md</orchestrator_skills>
+    <orchestrator_subagents>.claude/agents/ceo/SUBAGENTS.md</orchestrator_subagents>
+    <orchestrator_dir>.claude/agents/ceo</orchestrator_dir>
     <docs_root>docs</docs_root>
     <tasks>docs/tasks</tasks>
     <qa>docs/qa</qa>
@@ -26,10 +31,23 @@
   <models default="gpt-5-codex" reasoning_effort="medium" verbosity="low" />
 
   <orchestration>
-    <mode>stop-confirm-continue</mode>
-    <allow_parallel>false</allow_parallel>
-    <require_approval>true</require_approval>
-    <maintain_audit_log>true</maintain_audit_log>
+    <mode>tier-adaptive</mode>
+    <allow_parallel>true</allow_parallel>
+    <require_approval>false</require_approval>
+    <approval_required_tiers>4</approval_required_tiers>
+    <max_evaluator_cycles>3</max_evaluator_cycles>
+    <tool_output_token_cap>25000</tool_output_token_cap>
+    <stopping_conditions>
+      <conflict_unresolved>escalate</conflict_unresolved>
+      <evaluator_cycles_exceeded>escalate</evaluator_cycles_exceeded>
+      <requires_human_review>escalate</requires_human_review>
+      <cost_overrun_multiplier>5</cost_overrun_multiplier>
+    </stopping_conditions>
+    <observability>
+      <log_path>.ai/data/orchestration-log.jsonl</log_path>
+      <log_format>jsonl</log_format>
+      <required_fields>ts,request_id,tier,pattern,agents,rationale,outcome,cycles,est_tokens,human_review</required_fields>
+    </observability>
   </orchestration>
 
   <workflow_stages>

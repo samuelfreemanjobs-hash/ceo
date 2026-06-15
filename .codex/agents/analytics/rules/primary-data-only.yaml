@@ -1,0 +1,14 @@
+# Rule: primary data only
+
+id: primary_data_only
+agent_id: analytics
+enforcement: strict
+description: >
+  Never aggregate secondary files for totals
+
+on_violation: stop_and_report
+
+checks:
+  - id: primary_data_only_check
+    description: Never aggregate secondary files for totals
+    action: Agent must halt, report violation, and remediate before continuing.

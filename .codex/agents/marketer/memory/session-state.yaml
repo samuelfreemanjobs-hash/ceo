@@ -1,0 +1,10 @@
+# Session state for Mark (marketer)
+# Reset or overwrite each session. Persist only durable pointers.
+
+agent_id: marketer
+session_id: null
+updated_at: null
+status: idle
+active_artifact: null
+open_questions: []
+notes: []

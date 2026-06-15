@@ -1,0 +1,48 @@
+name: CI — Validate Agents & Automation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate Claude agents + team-brain
+        run: python3 .ai/utils/validate-agents.py --platform claude
+
+      - name: Validate GitHub agents
+        run: python3 .ai/utils/validate-agents.py --platform github
+
+      - name: Validate Codex agents
+        run: python3 .ai/utils/validate-agents.py --platform codex
+
+      - name: Validate Gemini agents
+        run: python3 .ai/utils/validate-agents.py --platform gemini
+
+      - name: Agent behavior fixtures
+        run: python3 tests/agent-fixtures/test_triage_fixtures.py
+
+      - name: Lint agent rules YAML
+        run: python3 .ai/utils/lint-rules.py
+
+      - name: Orchestration log smoke test
+        run: |
+          python3 .ai/utils/orchestration-log.py append \
+            --tier 2 --pattern route-single-agent \
+            --agents analytics --rationale "CI smoke test"
+          python3 .ai/utils/orchestration-log.py summary
+
+      - name: Inbox processor dry-run
+        run: python3 .ai/utils/process-inbox.py process-all --dry-run

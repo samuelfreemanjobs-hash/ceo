@@ -1,0 +1,14 @@
+# Rule: evidence required
+
+id: evidence_required
+agent_id: pm
+enforcement: strict
+description: >
+  No assumption-driven specs
+
+on_violation: stop_and_report
+
+checks:
+  - id: evidence_required_check
+    description: No assumption-driven specs
+    action: Agent must halt, report violation, and remediate before continuing.

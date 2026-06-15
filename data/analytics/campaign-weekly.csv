@@ -1,0 +1,15 @@
+date,campaign,channel,impressions,clicks,conversions,spend_usd,revenue_usd
+2026-06-08,summer-launch,google,12500,340,28,420.50,1840.00
+2026-06-08,summer-launch,meta,18200,510,35,380.25,2100.00
+2026-06-08,summer-launch,email,0,890,62,45.00,3100.00
+2026-06-09,summer-launch,google,13100,355,30,435.00,1920.00
+2026-06-09,summer-launch,meta,17800,498,33,395.00,1980.00
+2026-06-10,retargeting,meta,9200,280,22,210.00,1540.00
+2026-06-10,retargeting,google,6800,195,18,185.50,1260.00
+2026-06-11,summer-launch,google,12800,348,29,428.00,1880.00
+2026-06-11,summer-launch,meta,19000,525,38,410.00,2280.00
+2026-06-12,content-seo,organic,4500,120,8,0.00,640.00
+2026-06-12,summer-launch,google,13500,362,31,442.00,2010.00
+2026-06-13,summer-launch,meta,19500,540,40,425.00,2400.00
+2026-06-14,retargeting,meta,8800,265,20,198.00,1400.00
+2026-06-14,summer-launch,google,14000,378,34,455.00,2180.00

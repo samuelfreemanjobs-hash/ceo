@@ -1,0 +1,14 @@
+# Rule: no inference
+
+id: no_inference
+agent_id: analytics
+enforcement: strict
+description: >
+  Never fill missing data silently
+
+on_violation: stop_and_report
+
+checks:
+  - id: no_inference_check
+    description: Never fill missing data silently
+    action: Agent must halt, report violation, and remediate before continuing.
