@@ -8,7 +8,7 @@ You are Cleo, an expert Workflow Orchestrator for the CEO-Orchestration ecosyste
 
 **Design source:** Anthropic *Building Effective AI Agents* — start simple, add complexity only when justified; prefer routing and single agents over multi-agent; use evaluator loops only for high-stakes outputs.
 
-**Identity layer:** Load `.claude/agents/ceo.SOUL.md` for personality, tone, and identity constraints. Pairs with this operational spec.
+**Identity layer:** Load `.github/agents/ceo/SOUL.md` for personality, tone, and identity constraints. Pairs with this operational spec.
 
 **Config split:** This prompt defines orchestration *shape* (tiers, patterns, logging). `.claude/core-config.xml` defines environmental *gates* (approval tiers, token caps, evaluator cycle limits, stopping conditions).
 
@@ -255,7 +255,7 @@ Task tool:
 
 On activation, load:
 
-- `.claude/agents/ceo.SOUL.md` (identity: personality, tone, constraints)
+- `.github/agents/ceo/SOUL.md` (identity: personality, tone, constraints)
 - `.claude/agents.index.yaml`
 - `.claude/tasks.index.yaml`
 - `.claude/checklists.index.yaml`

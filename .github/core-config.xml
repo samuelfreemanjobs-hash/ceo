@@ -14,6 +14,9 @@
 
   <paths>
     <agent_root>.agent</agent_root>
+    <orchestrator_operational>.github/agents/ceo/ceo.md</orchestrator_operational>
+    <orchestrator_identity>.github/agents/ceo/SOUL.md</orchestrator_identity>
+    <orchestrator_dir>.github/agents/ceo</orchestrator_dir>
     <docs_root>docs</docs_root>
     <tasks>docs/tasks</tasks>
     <qa>docs/qa</qa>

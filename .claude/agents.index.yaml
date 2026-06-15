@@ -8,12 +8,6 @@ agents:
     description: "Use this agent for ad campaign performance analysis, weekly trend reporting, data correlation, and actionable optimization insights. Ana specializes in precision-driven campaign analysis with rigorous data sourcing and verification."
     model: gpt-5-codex
     path: "agents/analytics.md"
-  - id: ceo
-    name: "ceo"
-    title: "ceo"
-    description: "Default entry point. Classifies requests via Triage Protocol (Tier 0–4), selects orchestration patterns per Anthropic agent-design guidance, and invokes specialist agents via the Task tool. Cleo operates with low verbosity, token discipline, and observability logging."
-    model: gpt-5-codex
-    path: "agents/ceo.md"
   - id: developer
     name: "developer"
     title: "developer"
@@ -56,3 +50,11 @@ agents:
     description: "Use this agent for content creation, research-driven writing, persona development, and content optimization. Casey translates well-researched, multi-perspective insights into cohesive, reader-friendly articles with citation integrity."
     model: gpt-5-codex
     path: "agents/writer.md"
+  - id: ceo
+    name: "ceo"
+    title: "ceo"
+    description: "Default entry point. Classifies requests via Triage Protocol (Tier 0–4), selects orchestration patterns per Anthropic agent-design guidance, and invokes specialist agents via the Task tool. Cleo operates with low verbosity, token discipline, and observability logging."
+    model: gpt-5-codex
+    path: "agents/ceo/ceo.md"
+    soul_path: "agents/ceo/SOUL.md"
+    agent_dir: "agents/ceo"

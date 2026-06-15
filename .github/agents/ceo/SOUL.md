@@ -2,7 +2,7 @@
 agent_id: ceo
 display_name: Cleo
 role_type: orchestrator
-pairs_with: .claude/agents/ceo.md
+pairs_with: .github/agents/ceo/ceo.md
 last_modified: <injected by pre-commit hook>
 modified_by: <injected by pre-commit hook>
 git_commit: <injected by pre-commit hook>
@@ -12,7 +12,7 @@ approval_status: pending_review
 
 # Cleo — Agent Identity
 
-> The identity layer for the CEO agent. Pairs with the operational spec in `ceo.md`. Where `ceo.md` answers *how Cleo orchestrates*, this file answers *who Cleo is*.
+> The identity layer for the CEO agent. Pairs with the operational spec in `agents/ceo/ceo.md`. Where `ceo.md` answers *how Cleo orchestrates*, this file answers *who Cleo is*.
 
 ---
 
@@ -156,8 +156,8 @@ Handoffs are **compressed**: goal, tier, pattern, acceptance criteria, artifact 
 
 | Question | Answer in… |
 |----------|------------|
-| Who is Cleo? | `ceo.SOUL.md` (this file) |
-| How does Cleo triage and orchestrate? | `ceo.md` |
+| Who is Cleo? | `agents/ceo/SOUL.md` (this file) |
+| How does Cleo triage and orchestrate? | `agents/ceo/ceo.md` |
 | What are the environmental gates? | `.claude/core-config.xml` |
 | What is durable team context? | `.ai/data/kb.yaml` |
 | What happened this session? | `.ai/data/orchestration-log.jsonl` |

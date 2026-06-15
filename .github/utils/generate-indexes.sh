@@ -39,13 +39,21 @@ extract_agent_metadata() {
     local file="$1"
     local id=$(basename "$file" .md)
 
-    # Try to extract from YAML block
+    # Try frontmatter (Claude/GitHub agent format)
+    local frontmatter=""
+    if grep -q '^---$' "$file"; then
+        frontmatter=$(sed -n '/^---$/,/^---$/p' "$file" | sed '1d;$d')
+    fi
+
+    # Try to extract from YAML code block (Codex agent format)
     local yaml_block=$(sed -n '/```yaml/,/```/p' "$file" | grep -v '```')
 
-    local name=$(echo "$yaml_block" | grep -E '^\s*name:' | head -1 | sed 's/.*name:\s*//' | tr -d '"' | xargs)
+    local name=$(echo "$frontmatter" | grep -E '^\s*name:' | head -1 | sed 's/.*name:\s*//' | tr -d '"' | xargs)
     local agent_id=$(echo "$yaml_block" | grep -E '^\s*id:' | head -1 | sed 's/.*id:\s*//' | tr -d '"' | xargs)
+    [[ -z "$agent_id" ]] && agent_id=$(echo "$frontmatter" | grep -E '^\s*name:' | head -1 | sed 's/.*name:\s*//' | tr -d '"' | xargs)
     local title=$(echo "$yaml_block" | grep -E '^\s*title:' | head -1 | sed 's/.*title:\s*//' | tr -d '"' | xargs)
     local when_to_use=$(echo "$yaml_block" | grep -E '^\s*whenToUse:' | head -1 | sed 's/.*whenToUse:\s*//' | tr -d '"')
+    [[ -z "$when_to_use" ]] && when_to_use=$(echo "$frontmatter" | grep -E '^\s*description:' | head -1 | sed 's/.*description:\s*//' | tr -d '"')
 
     # Use extracted id if available, otherwise filename
     [[ -n "$agent_id" ]] && id="$agent_id"
@@ -54,6 +62,34 @@ extract_agent_metadata() {
     [[ -z "$when_to_use" ]] && when_to_use="N/A"
 
     echo "$id|$name|$title|$when_to_use"
+}
+
+# Append one agent entry to agents.index.yaml
+append_agent_index_entry() {
+    local agent_file="$1"
+    local rel_path="$2"
+    local soul_rel="${3:-}"
+
+    local metadata
+    metadata=$(extract_agent_metadata "$agent_file")
+    IFS='|' read -r id name title when_to_use <<< "$metadata"
+
+    cat >> "$AGENTS_INDEX" <<EOF
+  - id: $id
+    name: "$name"
+    title: "$title"
+    description: "$when_to_use"
+    model: gpt-5-codex
+    path: "$rel_path"
+EOF
+    if [[ -n "$soul_rel" ]]; then
+        cat >> "$AGENTS_INDEX" <<EOF
+    soul_path: "$soul_rel"
+    agent_dir: "$(dirname "$rel_path")"
+EOF
+    fi
+
+    agent_count=$((agent_count + 1))
 }
 
 # Function to extract task metadata
@@ -96,23 +132,25 @@ agents:
 EOF
 
 agent_count=0
+# Flat layout: agents/*.md
 for agent_file in "$AGENT_ROOT/agents"/*.md; do
     [[ -f "$agent_file" ]] || continue
-
-    metadata=$(extract_agent_metadata "$agent_file")
-    IFS='|' read -r id name title when_to_use <<< "$metadata"
     rel_path="agents/$(basename "$agent_file")"
+    append_agent_index_entry "$agent_file" "$rel_path"
+done
 
-    cat >> "$AGENTS_INDEX" <<EOF
-  - id: $id
-    name: "$name"
-    title: "$title"
-    description: "$when_to_use"
-    model: gpt-5-codex
-    path: "$rel_path"
-EOF
+# GitAgent subfolder layout: agents/<id>/<id>.md (+ optional SOUL.md)
+for agent_dir in "$AGENT_ROOT/agents"/*/; do
+    [[ -d "$agent_dir" ]] || continue
+    folder_id=$(basename "$agent_dir")
+    agent_file="$agent_dir/${folder_id}.md"
+    [[ -f "$agent_file" ]] || continue
 
-    ((agent_count++))
+    rel_path="agents/${folder_id}/${folder_id}.md"
+    soul_rel=""
+    [[ -f "$agent_dir/SOUL.md" ]] && soul_rel="agents/${folder_id}/SOUL.md"
+
+    append_agent_index_entry "$agent_file" "$rel_path" "$soul_rel"
 done
 
 echo -e "${GREEN}  ✓ Generated with $agent_count agents${NC}"
@@ -150,7 +188,7 @@ for task_file in "$AGENT_ROOT/tasks"/*.{md,yaml,yml}; do
     path: "$rel_path"
 EOF
 
-    ((task_count++))
+    task_count=$((task_count + 1))
 done
 
 echo -e "${GREEN}  ✓ Generated with $task_count tasks${NC}"
@@ -188,7 +226,7 @@ for checklist_file in "$AGENT_ROOT/checklists"/*.{md,yaml,yml}; do
     path: "$rel_path"
 EOF
 
-    ((checklist_count++))
+    checklist_count=$((checklist_count + 1))
 done
 
 echo -e "${GREEN}  ✓ Generated with $checklist_count checklists${NC}"
@@ -222,7 +260,7 @@ for template_file in "$AGENT_ROOT/templates"/*.yaml; do
     path: "$rel_path"
 EOF
 
-    ((template_count++))
+    template_count=$((template_count + 1))
 done
 
 echo -e "${GREEN}  ✓ Generated with $template_count templates${NC}"
@@ -256,7 +294,7 @@ while IFS= read -r -d '' data_file; do
     path: "$rel_path"
 EOF
 
-    ((data_count++))
+    data_count=$((data_count + 1))
 done < <(find "$AGENT_ROOT/data" -type f -print0 2>/dev/null)
 
 echo -e "${GREEN}  ✓ Generated with $data_count data files${NC}"
