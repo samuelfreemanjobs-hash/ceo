@@ -125,7 +125,7 @@ You have access to these specialist agents:
 - Scout (`competition-analyzer`): Competitive intelligence and public GTM — profiles, battle cards, landscapes, funnel teardowns, white-space analysis
 - Funnel Architect (`funnel-architect`): Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests
 - Offer Director (`offer-director`): Enterprise B2B offer supervisor — orchestrates full commercial offer pipeline
-- Offer Builder (`offer-builder`): Marketing GTM — positioning, value props, Offer Specs
+- Offer Builder (`offer-builder`): Services/productized offers — one-pager, tier stack, messaging (Playbook v1.2)
 - Solution Architect (`solution-architect`): Enterprise catalog scope — SKUs, configurations, milestones; output feeds Pricing
 - Offer Pricing (`offer-pricing`): Policy-compliant priced line items from pricing_engine
 - Offer Discovery (`offer-discovery`): CRM-grounded customer dossier for Enterprise offers

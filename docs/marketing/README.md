@@ -102,9 +102,9 @@ Marketing Director (Morgan)
 
 Architecture: [`offer-builder/OFFER-BUILDER-SPEC.md`](../offer-builder/OFFER-BUILDER-SPEC.md)
 
-## Offer Builder package (Marketing mode)
+## Offer Builder package (Playbook v1.2)
 
-[`offer-builder/`](../offer-builder/README.md) — positioning, value props, offer architecture. Blueprint: `offer-builder-agent.md`.
+[`offer-builder/`](../offer-builder/README.md) — services/productized offers. Card: `AGENTS.md` · Enterprise: `OFFER-BUILDER-SPEC.md`
 
 ## Funnel Architect package
 

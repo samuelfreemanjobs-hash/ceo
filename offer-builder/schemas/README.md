@@ -10,3 +10,4 @@
 | [`copy-schema.json`](copy-schema.json) | Offer Copywriter | `copy` |
 | [`evaluation-schema.json`](evaluation-schema.json) | Offer Evaluator | `evaluation` |
 | [`brief.v1.json`](brief.v1.json) | Structured brief (Playbook v1.2) | offer-builder ingest |
+| [`audit-log-schema.json`](audit-log-schema.json) | Offer Director | `audit_log` |
