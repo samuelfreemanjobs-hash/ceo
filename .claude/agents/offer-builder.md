@@ -60,6 +60,14 @@ Load from `offer-builder/skills/` — do not inline methodology:
 
 - **web_search** — category norms, competitor positioning, public pricing
 
+## Enterprise / Catalog sub-agents
+
+| Agent | Invoke | Output |
+|-------|--------|--------|
+| Solution Architect | `subagent_type: solution-architect` | `scope` block per `schemas/offer-schema.json` |
+
+Pipeline index: `prompts/offer-builder-system-prompts.md` · SA prompt: `prompts/agents/solution-architect.md`
+
 ## Handoffs
 
 - **From competition-analyzer:** white-space, positioning gaps → `docs/marketing/HANDOFFS.md`

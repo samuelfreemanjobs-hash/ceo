@@ -10,15 +10,20 @@ Full agent blueprint. **API system prompt:** [`prompts/system.md`](prompts/syste
 |-----------|-------|
 | Name | Offer Builder |
 | Codename | `offer-builder-v1` |
-| Architecture | Single agent + Skills; evaluator loop on positioning statements |
-| Model routing | Opus — strategy/synthesis; Sonnet — routine variant generation |
-| Latency target | Discovery: instant · Full build: 60–120s · Reposition only: 30–60s |
+| Architecture | Dual mode: (A) Marketing single agent + Skills; (B) Enterprise multi-agent pipeline with catalog tools |
+| Model routing | Opus — strategy/synthesis and Solution Architect; Sonnet — routine generation |
+| Latency target | Marketing: 60–120s · Enterprise scope: 30–90s (catalog-dependent) |
 
-Lifecycle: **Discover → Position → Propose → Architect → Package → Validate**
+**Mode A — Marketing/GTM:** Discover → Position → Propose → Architect → Package → Validate  
+**Mode B — Enterprise/Catalog:** Director → Discovery → [Solution Architect ∥ Risk] → Pricing → Copy → Evaluator
+
+See [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder-system-prompts.md) for Enterprise sub-agents.
 
 ---
 
 ## 2. Architecture
+
+### Mode A — Marketing / GTM
 
 ```mermaid
 flowchart TB
@@ -33,6 +38,23 @@ flowchart TB
     Orchestrator --> Output[Offer Spec + assets]
 ```
 
+### Mode B — Enterprise / Catalog
+
+```mermaid
+flowchart LR
+    Rep[Rep brief] --> Director[Director]
+    Director --> Disc[Discovery]
+    Disc --> Dossier[dossier]
+    Dossier --> SA[Solution Architect]
+    Dossier --> Risk[Risk & Compliance]
+    SA --> Scope[scope]
+    Risk --> RiskOut[risk_assessment]
+    Scope --> Pricing[Pricing]
+    Pricing --> Offer[offer]
+```
+
+**Solution Architect** ([`prompts/agents/solution-architect.md`](prompts/agents/solution-architect.md)): catalog-grounded `scope` → Pricing. Schema: [`schemas/offer-schema.json`](schemas/offer-schema.json).
+
 ---
 
 ## 3. Skills catalog
@@ -44,6 +66,13 @@ See `skills/*/SKILL.md` for full methodology:
 3. **offer-architecture** — offer stack, tiers, bonuses, guarantees
 4. **pricing-packaging** — pricing model, anchoring, packaging decisions
 5. **offer-validation** — ICE tests, message experiments, assumption log
+
+### Enterprise / Catalog skills
+
+6. **solution-catalog** — need→family mapping, implementation_minimum, tier limits
+7. **offer-templates** — milestone templates by deal_type
+
+Sub-agents: see [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder-system-prompts.md)
 
 ---
 
@@ -81,8 +110,9 @@ Evaluate weekly: specificity ≥4/5, differentiation clarity, proof completeness
 
 | Phase | Capability |
 |-------|------------|
-| 1 | Single agent + Skills *(current)* |
-| 2 | MCP — CRM win/loss, pricing pages, competitive feeds |
+| 1 | Single agent + Skills *(Marketing mode)* |
+| 1b | Enterprise sub-agents — Solution Architect installed; Director, Discovery, Risk, Pricing, Copywriter, Evaluator pending |
+| 2 | MCP — catalog.product.search, CRM win/loss, deals.history |
 | 3 | Intent router (reposition vs new offer vs packaging-only) |
 | 4 | Multi-agent *(gate: >~30 offer builds/month + quality plateau)* |
 

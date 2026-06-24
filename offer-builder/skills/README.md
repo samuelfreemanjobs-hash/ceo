@@ -13,6 +13,16 @@ Package     → pricing-packaging (model, anchor, packaging)
 Validate    → offer-validation (ICE tests, assumptions)
 ```
 
+### Enterprise / Catalog (Solution Architect)
+
+```
+Discovery dossier → solution-catalog (need→family) → catalog.product.search
+                 → catalog.dependencies.check → offer-templates (milestones)
+                 → scope JSON → Pricing
+```
+
+Skills: `solution-catalog`, `offer-templates` — see `prompts/agents/solution-architect.md`
+
 ## Deployment
 
 Mirror to `.github/skills/`, `.claude/skills/`, `.gemini/skills/`, `.ai/skills/` for platform discovery.

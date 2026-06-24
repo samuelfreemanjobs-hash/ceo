@@ -1,8 +1,8 @@
 # Offer Builder
 
-**An AI agent that designs positioning, value propositions, and offer architecture — the strategic layer before funnels and copy.**
+**An AI agent that designs positioning, value propositions, and offer architecture — plus an Enterprise / Catalog pipeline for deal-desk quoting.**
 
-Codename: `offer-builder-v1` · Architecture: **Single agent + Skills** (see _Building Effective AI Agents_, Anthropic 2025)
+Codename: `offer-builder-v1` · **Dual mode:** Marketing (single agent + Skills) · Enterprise (multi-agent + catalog tools)
 
 ## What it does
 
@@ -15,13 +15,32 @@ Codename: `offer-builder-v1` · Architecture: **Single agent + Skills** (see _Bu
 
 **Output:** Offer Spec + modular artifacts → `docs/marketing/offers/`
 
+## Enterprise / Catalog mode
+
+Director-orchestrated pipeline for rep-driven deals:
+
+1. **Discovery** → `dossier`
+2. **Solution Architect** + Risk & Compliance (parallel) → `scope` + `risk_assessment`
+3. **Pricing** → `pricing` (consumes `scope`)
+4. **Copywriter** + **Evaluator** → approved offer
+
+- Sub-agent prompts: [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder-system-prompts.md)
+- Solution Architect: [`prompts/agents/solution-architect.md`](prompts/agents/solution-architect.md)
+- Schema: [`schemas/offer-schema.json`](schemas/offer-schema.json)
+- Invoke SA: `Task → subagent_type: solution-architect`
+
 ## Package layout
 
 ```
 offer-builder/
 ├── README.md
 ├── offer-builder-agent.md    Full blueprint
-├── prompts/system.md         API system parameter (canonical)
+├── prompts/
+│   ├── system.md                 Marketing mode (canonical)
+│   ├── offer-builder-system-prompts.md   Enterprise sub-agent index
+│   └── agents/
+│       └── solution-architect.md
+├── schemas/offer-schema.json
 ├── CURSOR.md                   Cursor operational workflow
 ├── CLAUDE.md                   Claude Code auto-load
 ├── AGENTS.md                   @ mention card
@@ -38,7 +57,9 @@ offer-builder/
     ├── value-proposition-design/
     ├── offer-architecture/
     ├── pricing-packaging/
-    └── offer-validation/
+    ├── offer-validation/
+    ├── solution-catalog/         Enterprise — SA agent
+    └── offer-templates/        Enterprise — SA agent
 ```
 
 ## Deploy

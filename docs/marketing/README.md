@@ -84,6 +84,15 @@ Marketing Director (Morgan)
 | `offer-architecture` | Installed | `offer-builder/skills/offer-architecture/SKILL.md` |
 | `pricing-packaging` | Installed | `offer-builder/skills/pricing-packaging/SKILL.md` |
 | `offer-validation` | Installed | `offer-builder/skills/offer-validation/SKILL.md` |
+| `solution-catalog` | Installed | `offer-builder/skills/solution-catalog/SKILL.md` |
+| `offer-templates` | Installed | `offer-builder/skills/offer-templates/SKILL.md` |
+
+## Enterprise sub-agents
+
+| Agent | Status | Prompt |
+|-------|--------|--------|
+| Solution Architect | Installed | `offer-builder/prompts/agents/solution-architect.md` |
+| Director, Discovery, Risk, Pricing, Copywriter, Evaluator | Pending | `offer-builder/prompts/offer-builder-system-prompts.md` |
 
 ## Offer Builder package
 

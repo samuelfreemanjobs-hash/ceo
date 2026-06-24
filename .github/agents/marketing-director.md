@@ -29,6 +29,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 | Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intel + public GTM — profiles, battle cards, landscapes, funnel teardowns, monitoring |
 | Funnel Architect | `funnel-architect` | **Installed** | Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests |
 | Offer Builder | `offer-builder` | **Installed** | Positioning, value props, offer architecture — Offer Specs, proof ladders, pricing |
+| Solution Architect | `solution-architect` | **Installed** | Enterprise catalog scope — SKUs, quantities, milestones (sub-agent) |
 | Research | `research-agent` | Pending install | General market research, audience insights |
 | Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
 | Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
@@ -42,6 +43,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
 - Positioning, value proposition, offer stack, packaging, repositioning → `offer-builder`
+- Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after Discovery dossier)
 - Scout white-space / positioning handoff → `offer-builder` (include landscape artifact path)
 - Scout GTM teardown handoff → `funnel-architect` (include competitor funnel context in brief)
 - General audience/market research (non-competitive) → `research-agent` when installed

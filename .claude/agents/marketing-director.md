@@ -42,6 +42,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
 - Positioning, value proposition, offer stack, packaging, repositioning → `offer-builder`
+- Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after Discovery dossier)
 - Scout white-space / positioning handoff → `offer-builder` (include landscape artifact path)
 - Scout GTM teardown handoff → `funnel-architect` (include competitor funnel context in brief)
 - General audience/market research (non-competitive) → `research-agent` when installed
@@ -215,6 +216,8 @@ After campaign delivery, write a final summary (decisions made, what worked, wha
 | Strategy docs | `docs/marketing/` |
 | Analysis reports | `docs/marketing/reports/` |
 | Decision logs | `docs/marketing/decisions/` |
+| Offer Specs | `docs/marketing/offers/` |
+| Funnel Specs | `docs/marketing/funnels/` |
 
 File naming: descriptive kebab-case with date when relevant — `mothers-day-skincare-campaign-2025.md`
 

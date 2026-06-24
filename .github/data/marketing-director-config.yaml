@@ -87,6 +87,25 @@ marketing_director:
         - offer-architecture
         - pricing-packaging
         - offer-validation
+        - solution-catalog
+        - offer-templates
+      sub_agents:
+        solution-architect:
+          task_subagent_type: solution-architect
+          model: opus
+          status: installed
+          domain: Catalog-grounded scope — SKUs, quantities, milestones, success criteria
+          agent_path: agents/solution-architect.md
+          prompt_path: offer-builder/prompts/agents/solution-architect.md
+          output_schema: offer-builder/schemas/offer-schema.json#scope
+          skills:
+            - solution-catalog
+            - offer-templates
+          tools:
+            - catalog.product.search
+            - catalog.dependencies.check
+            - catalog.integrations
+            - deals.history.search
 
     research-agent:
       tool_name: research_agent
@@ -352,6 +371,24 @@ marketing_director:
       used_by:
         - offer-builder
         - analytics
+    solution-catalog:
+      status: installed
+      version: "1.0"
+      owner: solutions / product ops
+      path: skills/solution-catalog/SKILL.md
+      package_path: offer-builder/skills/solution-catalog/SKILL.md
+      used_by:
+        - solution-architect
+        - offer-builder
+    offer-templates:
+      status: installed
+      version: "1.0"
+      owner: solutions / sales ops
+      path: skills/offer-templates/SKILL.md
+      package_path: offer-builder/skills/offer-templates/SKILL.md
+      used_by:
+        - solution-architect
+        - offer-builder
 
   rollout_phases:
     phase_1:

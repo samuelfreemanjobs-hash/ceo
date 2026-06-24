@@ -38,6 +38,14 @@ Product, ICP, desired outcome, competitive alternatives, constraints. Optional: 
 
 - `web_search` — category norms, competitor positioning, pricing signals
 
+## Enterprise / Catalog sub-agents
+
+| Agent | Invoke | Output |
+|-------|--------|--------|
+| Solution Architect | `subagent_type: solution-architect` | `scope` (offer-schema.json) |
+
+Full pipeline: `prompts/offer-builder-system-prompts.md`
+
 ## Handoffs
 
 - **From** competition-analyzer (white-space, positioning gaps)

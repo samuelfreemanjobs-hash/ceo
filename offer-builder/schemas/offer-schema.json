@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "offer-schema.json",
+  "title": "OfferBuilderOffer",
+  "description": "Canonical offer document for Enterprise / Catalog workflow. Sub-agents emit named blocks; Director assembles the full offer.",
+  "type": "object",
+  "properties": {
+    "offer_id": { "type": "string" },
+    "opportunity_id": { "type": "string" },
+    "deal_type": {
+      "type": "string",
+      "enum": ["new_business", "expansion", "renewal", "pilot"]
+    },
+    "rep_brief": { "type": "object" },
+    "dossier": {
+      "type": "object",
+      "description": "From Discovery agent",
+      "properties": {
+        "pains": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "text": { "type": "string" },
+              "source": { "type": "string" }
+            }
+          }
+        },
+        "urgency_signals": { "type": "array", "items": { "type": "string" } },
+        "decision_makers": { "type": "array" },
+        "account": {
+          "type": "object",
+          "properties": {
+            "size_employees": { "type": "integer" },
+            "segment": {
+              "type": "string",
+              "enum": ["smb", "mid_market", "enterprise"]
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "description": "From Solution Architect agent — direct input to Pricing",
+      "required": ["line_items", "term_months", "term_basis", "milestones", "success_criteria", "non_standard"],
+      "properties": {
+        "line_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["sku", "name", "quantity", "quantity_basis", "dependencies_checked", "addresses"],
+            "properties": {
+              "sku": { "type": "string" },
+              "name": { "type": "string", "description": "Verbatim from catalog.product.search" },
+              "quantity": { "type": "integer", "minimum": 1 },
+              "quantity_basis": {
+                "type": "string",
+                "pattern": "^(dossier\\.|transcript:|rep_brief:|estimate_from_)"
+              },
+              "configuration": { "type": "object" },
+              "dependencies_checked": { "type": "boolean", "const": true },
+              "addresses": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1
+              },
+              "added_by_dependency_rule": { "type": "boolean", "default": false }
+            }
+          }
+        },
+        "term_months": { "type": "integer", "minimum": 1 },
+        "term_basis": {
+          "type": "string",
+          "enum": ["rep_brief", "customer_preference", "default_applied"]
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "target_date", "owner"],
+            "properties": {
+              "name": { "type": "string" },
+              "target_date": { "type": "string", "format": "date" },
+              "owner": { "type": "string" }
+            }
+          }
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text", "addresses"],
+            "properties": {
+              "text": { "type": "string", "description": "Measurable outcome" },
+              "addresses": { "type": "string", "description": "dossier.pains[i] reference" }
+            }
+          }
+        },
+        "non_standard": { "type": "boolean" },
+        "non_standard_questions_for_se": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["need", "why_no_catalog_match", "estimated_complexity"],
+            "properties": {
+              "need": { "type": "string" },
+              "why_no_catalog_match": { "type": "string" },
+              "estimated_complexity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "unknown"]
+              }
+            }
+          }
+        },
+        "deviations_from_precedent": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prior_deal_id": { "type": "string" },
+              "observation": { "type": "string" }
+            }
+          }
+        },
+        "flags_to_director": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "risk_assessment": {
+      "type": "object",
+      "description": "From Risk & Compliance agent (parallel with scope)"
+    },
+    "pricing": {
+      "type": "object",
+      "description": "From Pricing agent — consumes scope"
+    },
+    "copy": {
+      "type": "object",
+      "description": "From Copywriter agent"
+    },
+    "evaluation": {
+      "type": "object",
+      "description": "From Evaluator agent — audit gate"
+    }
+  }
+}

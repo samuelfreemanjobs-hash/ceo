@@ -46,7 +46,19 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 
 ---
 
-## Offer Builder → downstream
+## Offer Builder → Enterprise pipeline
+
+| Step | Agent | Output |
+|------|-------|--------|
+| Discovery | Discovery *(pending)* | `dossier` |
+| Scope | **Solution Architect** (`solution-architect`) | `scope` → Pricing |
+| Risk | Risk & Compliance *(pending)* | `risk_assessment` |
+
+Schema: `offer-builder/schemas/offer-schema.json` · Prompts: `offer-builder/prompts/offer-builder-system-prompts.md`
+
+---
+
+## Offer Builder → downstream (Marketing)
 
 | Trigger | Hand off to | Payload |
 |---------|-------------|---------|
