@@ -8,9 +8,15 @@ agents:
     description: "Default entry point. Analyzes user requests and automatically orchestrates specialist agents using the Task tool. Cleo operates with low verbosity and provides fast, decisive orchestration with support for parallel and sequential agent invocation."
     model: gpt-5-codex
     path: "agents/ceo.md"
+  - id: competition-analyzer
+    name: "competition-analyzer"
+    title: "Competition Analyzer"
+    description: "Use for decision-grade competitive intelligence — competitor profiles, battle cards, SWOT, landscape analysis, move alerts, and strategic briefs. Scout produces evidence-tagged findings for product, marketing, sales, and executive decisions. Invoke for competitor research, positioning analysis, pricing intelligence, and M&A reviews."
+    model: gpt-5-codex
+    path: "agents/competition-analyzer.md"
   - id: marketing-director
     name: "marketing-director"
-    title: "marketing-director"
+    title: "Marketing Director"
     description: "Hierarchical marketing orchestrator for the Marketing Dept. Plans, delegates to specialist agents, synthesizes deliverables, and owns brand-safe campaign output. Use for full campaigns, multi-channel content, coordinated marketing work, and any request requiring multiple marketing specialists."
     model: gpt-5-codex
     path: "agents/marketing-director.md"

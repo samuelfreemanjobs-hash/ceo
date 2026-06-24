@@ -12,51 +12,69 @@
 # Copy-paste this entire block into your ~/.claude/config.toml file
 # ============================================================================
 
-[profiles.analyst]
+[profiles.analytics]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Ana - Analytics Specialist
+# Agent: analytics - analytics
 
 [profiles.ceo]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Cleo - Executive Orchestrator
+# Agent: ceo - ceo
+
+[profiles.competition-analyzer]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: competition-analyzer - Competition Analyzer
 
 [profiles.developer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-# Agent: Devon - Senior Developer & Architect
+# Agent: developer - developer
 
 [profiles.marketer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Mark - Unified Marketing Strategist 📢
+# Agent: marketer - marketer
+
+[profiles.marketing-director]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: marketing-director - Marketing Director
 
 [profiles.pm]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Manny - Lean Product Manager
+# Agent: pm - pm
 
 [profiles.prepper]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Pepe - Project Preparation & Optimization Specialist
+# Agent: prepper - prepper
 
 [profiles.qa]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-# Agent: Quinn - Test Architect & Quality Advisor
+# Agent: qa - qa
 
 [profiles.ux-expert]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Sally - UX Expert
+# Agent: ux-expert - ux-expert
+
+[profiles.writer]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: writer - writer
 

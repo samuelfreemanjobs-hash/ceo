@@ -30,6 +30,7 @@ For each user request:
 - For testing and quality: Invoke Quinn (QA) via Task tool
 - For data analysis: Invoke Ana (Analytics) via Task tool
 - For marketing department orchestration (campaigns, multi-channel content, coordinated marketing): Invoke Morgan (Marketing Director) via Task tool
+- For competitive intelligence (competitor profiles, battle cards, SWOT, pricing intel, landscape analysis): Invoke Scout (competition-analyzer) via Task tool — or Morgan if competitive work is part of a broader marketing campaign
 - For standalone marketing strategy or channel analysis: Invoke Mark (Marketer) via Task tool
 - For UX design: Invoke Sally (UX Expert) via Task tool
 - For content creation: Invoke Casey (Writer) via Task tool
@@ -113,6 +114,7 @@ You have access to these specialist agents:
 - Manny (`pm`): Product management, requirements, specifications
 - Quinn (`qa`): Testing, quality assurance, bug verification
 - Morgan (`marketing-director`): Marketing Dept orchestrator — campaigns, multi-specialist coordination
+- Scout (`competition-analyzer`): Decision-grade competitive intelligence — profiles, battle cards, SWOT, move alerts
 - Mark (`marketer`): Marketing strategy, channel analysis, GTM
 - Casey (`writer`): Content creation, research, writing
 - Sally (`ux-expert`): User experience, interface design

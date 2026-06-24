@@ -7,3 +7,8 @@ checklists:
     description: "N/A"
     type: checklist-yaml
     path: "checklists/code-quality-checklist.yaml"
+  - id: openai-sdk-compliance-checklist
+    name: "openai_agents_sdk_compliance"
+    description: "N/A"
+    type: checklist-yaml
+    path: "checklists/openai-sdk-compliance-checklist.yaml"

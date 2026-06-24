@@ -10,12 +10,13 @@ The Marketing Dept is a hierarchical multi-agent team orchestrated by the Market
 
 ```
 Marketing Director (Morgan)
-├── Research Agent          [pending]
-├── Brand & Creative Agent  [pending]
-├── Copywriter Agent        [pending]
-├── Media Planner Agent     [pending]
-├── Analytics (Ana)         [installed]
-└── Compliance Agent        [pending]
+├── Competition Analyzer (Scout)  [installed]
+├── Research Agent              [pending]
+├── Brand & Creative Agent      [pending]
+├── Copywriter Agent            [pending]
+├── Media Planner Agent         [pending]
+├── Analytics (Ana)             [installed]
+└── Compliance Agent            [pending]
 ```
 
 ## Routing
@@ -24,6 +25,7 @@ Marketing Director (Morgan)
 |--------------|-------------|----------|
 | Full campaign | Marketing Director | Full orchestration |
 | Content / copy | Marketing Director → Copy | Specialist + compliance |
+| Competitive intelligence | Competition Analyzer (Scout) or Marketing Director | Profiles, battle cards, SWOT, landscape |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |
@@ -34,18 +36,23 @@ Marketing Director (Morgan)
 - `docs/marketing/content/` — Copy packs and content assets
 - `docs/marketing/reports/` — Analysis and performance reports
 - `docs/marketing/decisions/` — Decision logs and trade-off records
+- `docs/marketing/research/profiles/` — Competitor profiles
+- `docs/marketing/research/battle-cards/` — Sales battle cards
+- `docs/marketing/research/alerts/` — Competitive move alerts
+- `docs/marketing/research/` — Landscape analyses, SWOT, strategic briefs
 
 ## Configuration
 
-- Agent definition: `.github/agents/marketing-director.md`
+- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`
 - Orchestration config: `.github/data/marketing-director-config.yaml`
 - Campaign brief template: `.github/templates/campaign-brief-tmpl.yaml`
+- Battle card template: `.github/templates/battle-card-tmpl.yaml`
 - **Python runtime:** [`marketing-dept/`](../marketing-dept/README.md) — Anthropic API orchestrator with built-in specialists
 
 ## Rollout phases
 
 1. **Phase 1** — Director + Copy + Compliance (content requests)
-2. **Phase 2** — Add Research + Analytics (analysis, ideation, ops)
+2. **Phase 2** — Add Competition Analyzer + Research + Analytics (analysis, ideation, ops)
 3. **Phase 3** — Add Creative + Media (full campaigns)
 4. **Phase 4** — Optimization and evaluator agents
 
@@ -56,3 +63,6 @@ Marketing Director (Morgan)
 | `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
 | `prohibited-claims-and-disclaimers` | Template (legal sign-off required) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
 | `marketing-plan-current-quarter` | Template (refresh each quarter) | `.github/skills/marketing-plan-current-quarter/SKILL.md` |
+| `competitor-profiling` | Installed | `.github/skills/competitor-profiling/SKILL.md` |
+| `source-evaluation` | Installed | `.github/skills/source-evaluation/SKILL.md` |
+| `strategic-synthesis` | Installed | `.github/skills/strategic-synthesis/SKILL.md` |

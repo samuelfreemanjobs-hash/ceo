@@ -30,6 +30,7 @@ For each user request:
 - For testing and quality: Invoke Quinn (QA) via Task tool
 - For data analysis: Invoke Ana (Analytics) via Task tool
 - For marketing department orchestration (campaigns, multi-channel content, coordinated marketing): Invoke Morgan (Marketing Director) via Task tool
+- For competitive intelligence (competitor profiles, battle cards, SWOT, pricing intel, landscape analysis): Invoke Scout (competition-analyzer) via Task tool — or Morgan if competitive work is part of a broader marketing campaign
 - For standalone marketing strategy or channel analysis: Invoke Mark (Marketer) via Task tool
 - For UX design: Invoke Sally (UX Expert) via Task tool
 - For content creation: Invoke Casey (Writer) via Task tool

@@ -2,10 +2,18 @@
 # DO NOT EDIT MANUALLY - Run .claude/utils/generate-indexes.sh to regenerate
 version: 1
 data:
+  - id: conversation-protocol
+    name: "Conversation Protocol"
+    type: md
+    path: "data/conversation-protocol.md"
   - id: marketing-director-config
     name: "Marketing Director Config"
     type: yaml
     path: "data/marketing-director-config.yaml"
+  - id: synthesis-principles
+    name: "Synthesis Principles"
+    type: md
+    path: "data/synthesis-principles.md"
   - id: channel-best-practices
     name: "Channel Best Practices"
     type: yaml
@@ -14,6 +22,10 @@ data:
     name: "Kb"
     type: yaml
     path: "data/kb.yaml"
+  - id: question-generation-guide
+    name: "Question Generation Guide"
+    type: md
+    path: "data/question-generation-guide.md"
   - id: technical-preferences
     name: "Technical Preferences"
     type: yaml
@@ -22,6 +34,10 @@ data:
     name: "Calculation Best Practices"
     type: yaml
     path: "data/calculation-best-practices.yaml"
+  - id: kb-update-protocol
+    name: "Kb Update Protocol"
+    type: md
+    path: "data/kb-update-protocol.md"
   - id: optimization-best-practices
     name: "Optimization Best Practices"
     type: md

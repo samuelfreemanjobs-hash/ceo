@@ -26,12 +26,21 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 
 | Specialist | Task `subagent_type` | Status | Domain |
 |------------|---------------------|--------|--------|
-| Research | `research-agent` | Pending install | Market research, competitive analysis, audience insights |
+| Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intelligence — profiles, battle cards, SWOT, landscape, move alerts |
+| Research | `research-agent` | Pending install | General market research, audience insights |
 | Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
 | Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
 | Media Planner | `media-agent` | Pending install | Channel selection, budget allocation, media planning |
 | Analytics | `analytics` | Available | Performance analysis, A/B test design, attribution |
 | Compliance | `compliance-agent` | Pending install | Brand-safety review, legal/regulatory review, claim verification |
+
+**Routing rules:**
+
+- Competitive intelligence (profiles, battle cards, SWOT, pricing intel, landscape) → `competition-analyzer` (Scout)
+- General audience/market research (non-competitive) → `research-agent` when installed
+- Copy / content → `copy-agent` (interim: `writer`)
+- Media / channels / GTM → `media-agent` (interim: `marketer`)
+- Performance data → `analytics`
 
 **Interim routing** (until specialists are installed):
 
@@ -117,7 +126,7 @@ Pause the workflow and request human review. Do not proceed.
 ### A. Full Campaign (`campaign`)
 
 ```
-Research → (Creative || Copy) in parallel → Media → Compliance → Synthesize → Human review
+Competition Analyzer (if competitive claims needed) → Research → (Creative || Copy) in parallel → Media → Compliance → Synthesize → Human review
 ```
 
 Expect significant specialist coordination. Always request human review for Type A campaigns above budget threshold.
@@ -141,7 +150,7 @@ No compliance gate unless findings will be published externally.
 ### D. Ideation (`ideation`)
 
 ```
-Short collaborative session: Creative + Copy + Research (parallel) → Director synthesizes
+Short collaborative session: Creative + Copy + Competition Analyzer (if competitive) + Research (parallel) → Director synthesizes
 ```
 
 Use peer-style parallel invocation, then resume hierarchical control to produce final recommendations.

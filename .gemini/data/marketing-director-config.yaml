@@ -42,16 +42,29 @@ marketing_director:
       human_review: false
 
   specialists:
+    competition-analyzer:
+      tool_name: research_agent
+      task_subagent_type: competition-analyzer
+      model: sonnet
+      status: installed
+      domain: Decision-grade competitive intelligence — profiles, battle cards, SWOT, landscape, move alerts
+      loop_budget: 10
+      agent_path: agents/competition-analyzer.md
+      skills:
+        - competitor-profiling
+        - source-evaluation
+        - strategic-synthesis
+
     research-agent:
       tool_name: research_agent
       model: sonnet
       status: pending_install
-      domain: Market research, competitive analysis, audience insights
+      domain: General market research, audience insights (non-competitive)
       loop_budget: 8
       skills:
         - market-research-methodology
-        - competitive-analysis
         - customer-insight-synthesis
+      note: Competitive intelligence routes to competition-analyzer
 
     creative-agent:
       tool_name: creative_agent
@@ -161,11 +174,35 @@ marketing_director:
       used_by:
         - marketing-director
         - research-agent
+        - competition-analyzer
         - copy-agent
         - media-agent
         - creative-agent
       note: Refresh in the first week of each quarter
       refresh_cadence: quarterly
+    competitor-profiling:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/competitor-profiling/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
+    source-evaluation:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/source-evaluation/SKILL.md
+      used_by:
+        - competition-analyzer
+    strategic-synthesis:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/strategic-synthesis/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
 
   rollout_phases:
     phase_1:
@@ -174,7 +211,7 @@ marketing_director:
       request_types: [content_request]
     phase_2:
       name: Insights layer
-      specialists: [research-agent, analytics]
+      specialists: [competition-analyzer, research-agent, analytics]
       request_types: [content_request, analysis_request, ideation, ops]
     phase_3:
       name: Full campaigns
@@ -199,3 +236,8 @@ marketing_director:
     strategy: docs/marketing/
     reports: docs/marketing/reports/
     decisions: docs/marketing/decisions/
+    research:
+      profiles: docs/marketing/research/profiles/
+      battle_cards: docs/marketing/research/battle-cards/
+      alerts: docs/marketing/research/alerts/
+      general: docs/marketing/research/
