@@ -28,6 +28,12 @@ Director-orchestrated pipeline for rep-driven deals:
 - Solution Architect: [`prompts/agents/solution-architect.md`](prompts/agents/solution-architect.md)
 - Schema: [`schemas/offer-schema.json`](schemas/offer-schema.json)
 - Invoke SA: `Task → subagent_type: solution-architect`
+- Invoke Discovery: `Task → subagent_type: offer-discovery`
+- Invoke Risk: `Task → subagent_type: offer-risk-compliance`
+- Invoke Copy: `Task → subagent_type: offer-copywriter`
+- Invoke Evaluator: `Task → subagent_type: offer-evaluator`
+
+**Pending:** Director, Pricing
 
 ## Package layout
 

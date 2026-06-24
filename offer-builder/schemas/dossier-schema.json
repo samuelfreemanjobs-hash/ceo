@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dossier-schema.json",
+  "title": "OfferBuilderDossier",
+  "description": "Discovery agent output — single source of truth for Enterprise offer workflow",
+  "type": "object",
+  "required": [
+    "account",
+    "opportunity",
+    "decision_makers",
+    "pains",
+    "competitors_mentioned",
+    "urgency_signals",
+    "rep_brief_consistency",
+    "dossier_confidence"
+  ],
+  "properties": {
+    "account": {
+      "type": "object",
+      "required": ["name", "source"],
+      "properties": {
+        "name": { "type": "string" },
+        "industry": { "type": "string" },
+        "segment": { "type": "string" },
+        "size_employees": {
+          "oneOf": [{ "type": "integer", "minimum": 1 }, { "const": "unknown" }]
+        },
+        "region": { "type": "string" },
+        "billing_country": { "type": "string" },
+        "source": { "type": "string", "pattern": "^crm\\.account\\.get:" }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "required": ["stage", "expected_close", "deal_type", "source"],
+      "properties": {
+        "stage": { "type": "string" },
+        "amount_estimate": {
+          "oneOf": [{ "type": "number" }, { "const": "unknown" }]
+        },
+        "expected_close": { "type": "string", "format": "date" },
+        "deal_type": {
+          "type": "string",
+          "enum": ["new-logo", "renewal", "expansion", "pilot", "rfp-response"]
+        },
+        "source": { "type": "string", "pattern": "^crm\\.opportunity\\.get:" }
+      }
+    },
+    "decision_makers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "title", "role", "source"],
+        "properties": {
+          "name": { "type": "string" },
+          "title": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["economic", "technical", "user", "champion"]
+          },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "pains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "evidence", "source"],
+        "properties": {
+          "description": { "type": "string" },
+          "evidence": { "type": "string", "description": "Verbatim quote or activity reference" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "competitors_mentioned": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "context", "source"],
+        "properties": {
+          "name": { "type": "string" },
+          "context": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "urgency_signals": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "prior_touchpoints_summary": { "type": "string" },
+    "rep_brief_consistency": {
+      "type": "string",
+      "enum": ["consistent", "disputed", "no_brief"]
+    },
+    "disputes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "rep_says", "system_says", "source"],
+        "properties": {
+          "field": { "type": "string" },
+          "rep_says": { "type": "string" },
+          "system_says": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "open_gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dossier_confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    }
+  }
+}

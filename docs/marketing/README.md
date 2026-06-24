@@ -91,8 +91,12 @@ Marketing Director (Morgan)
 
 | Agent | Status | Prompt |
 |-------|--------|--------|
+| Offer Discovery | Installed | `offer-builder/prompts/agents/discovery.md` |
 | Solution Architect | Installed | `offer-builder/prompts/agents/solution-architect.md` |
-| Director, Discovery, Risk, Pricing, Copywriter, Evaluator | Pending | `offer-builder/prompts/offer-builder-system-prompts.md` |
+| Offer Risk & Compliance | Installed | `offer-builder/prompts/agents/risk-compliance.md` |
+| Offer Copywriter | Installed | `offer-builder/prompts/agents/copywriter.md` |
+| Offer Evaluator | Installed | `offer-builder/prompts/agents/evaluator.md` |
+| Director, Pricing | Pending | `offer-builder/prompts/offer-builder-system-prompts.md` |
 
 ## Offer Builder package
 

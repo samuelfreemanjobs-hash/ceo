@@ -64,9 +64,13 @@ Load from `offer-builder/skills/` — do not inline methodology:
 
 | Agent | Invoke | Output |
 |-------|--------|--------|
-| Solution Architect | `subagent_type: solution-architect` | `scope` block per `schemas/offer-schema.json` |
+| Offer Discovery | `offer-discovery` | `dossier` |
+| Solution Architect | `solution-architect` | `scope` |
+| Offer Risk & Compliance | `offer-risk-compliance` | `risk_assessment` |
+| Offer Copywriter | `offer-copywriter` | `copy` |
+| Offer Evaluator | `offer-evaluator` | `evaluation` |
 
-Pipeline index: `prompts/offer-builder-system-prompts.md` · SA prompt: `prompts/agents/solution-architect.md`
+Pipeline: `prompts/offer-builder-system-prompts.md` · **Pending:** Director, Pricing
 
 ## Handoffs
 

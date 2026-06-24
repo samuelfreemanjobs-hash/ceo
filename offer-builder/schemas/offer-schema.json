@@ -13,33 +13,8 @@
     },
     "rep_brief": { "type": "object" },
     "dossier": {
-      "type": "object",
-      "description": "From Discovery agent",
-      "properties": {
-        "pains": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": { "type": "string" },
-              "text": { "type": "string" },
-              "source": { "type": "string" }
-            }
-          }
-        },
-        "urgency_signals": { "type": "array", "items": { "type": "string" } },
-        "decision_makers": { "type": "array" },
-        "account": {
-          "type": "object",
-          "properties": {
-            "size_employees": { "type": "integer" },
-            "segment": {
-              "type": "string",
-              "enum": ["smb", "mid_market", "enterprise"]
-            }
-          }
-        }
-      }
+      "$ref": "dossier-schema.json",
+      "description": "From Discovery agent (offer-discovery)"
     },
     "scope": {
       "type": "object",
@@ -131,20 +106,20 @@
       }
     },
     "risk_assessment": {
-      "type": "object",
-      "description": "From Risk & Compliance agent (parallel with scope)"
+      "$ref": "risk-schema.json",
+      "description": "From offer-risk-compliance agent"
     },
     "pricing": {
       "type": "object",
       "description": "From Pricing agent — consumes scope"
     },
     "copy": {
-      "type": "object",
-      "description": "From Copywriter agent"
+      "$ref": "copy-schema.json",
+      "description": "From offer-copywriter agent"
     },
     "evaluation": {
-      "type": "object",
-      "description": "From Evaluator agent — audit gate"
+      "$ref": "evaluation-schema.json",
+      "description": "From offer-evaluator agent"
     }
   }
 }

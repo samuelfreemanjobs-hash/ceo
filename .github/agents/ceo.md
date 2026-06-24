@@ -34,6 +34,10 @@ For each user request:
 - For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
 - For positioning, value propositions, offer architecture, or packaging (Offer Spec, repositioning, proof ladders): Invoke Offer Builder (`offer-builder`) via Task tool — or Morgan for coordinated work
 - For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
+- For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline
+- For enterprise offer risk review (jurisdiction, clauses, blocking issues): Invoke Offer Risk & Compliance (`offer-risk-compliance`) via Task tool
+- For enterprise offer narrative (exec summary, value prop, next steps): Invoke Offer Copywriter (`offer-copywriter`) via Task tool
+- For enterprise offer quality gate (six-dimension rubric): Invoke Offer Evaluator (`offer-evaluator`) via Task tool
 - For standalone marketing strategy or channel analysis: Invoke Mark (Marketer) via Task tool
 - For UX design: Invoke Sally (UX Expert) via Task tool
 - For content creation: Invoke Casey (Writer) via Task tool
@@ -121,6 +125,10 @@ You have access to these specialist agents:
 - Funnel Architect (`funnel-architect`): Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests
 - Offer Builder (`offer-builder`): Positioning, value propositions, offer architecture — Offer Specs, proof ladders, pricing
 - Solution Architect (`solution-architect`): Enterprise catalog scope — SKUs, configurations, milestones; output feeds Pricing
+- Offer Discovery (`offer-discovery`): CRM-grounded customer dossier for Enterprise offers
+- Offer Risk & Compliance (`offer-risk-compliance`): Jurisdiction, clauses, SLA exposure, blocking issues
+- Offer Copywriter (`offer-copywriter`): Enterprise offer narrative from dossier evidence
+- Offer Evaluator (`offer-evaluator`): Final quality gate — scores and routes revisions
 - Mark (`marketer`): Marketing strategy, channel analysis, GTM
 - Casey (`writer`): Content creation, research, writing
 - Sally (`ux-expert`): User experience, interface design

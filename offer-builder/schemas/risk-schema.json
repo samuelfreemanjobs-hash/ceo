@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risk-schema.json",
+  "title": "OfferBuilderRiskAssessment",
+  "description": "Risk & Compliance agent output",
+  "type": "object",
+  "required": ["jurisdiction_status", "blocking_issues", "recommended_clauses"],
+  "properties": {
+    "jurisdiction_status": {
+      "type": "string",
+      "enum": ["clear", "restricted", "blocked", "requires_review"]
+    },
+    "jurisdiction_notes": { "type": "string" },
+    "blocking_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description", "owner", "source"],
+        "properties": {
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "owner": {
+            "type": "string",
+            "enum": ["legal", "solution_architect", "director", "human_rep"]
+          },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "recommended_clauses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["clause_id", "title", "version", "rationale", "source"],
+        "properties": {
+          "clause_id": { "type": "string" },
+          "title": { "type": "string" },
+          "version": { "type": "string" },
+          "rationale": { "type": "string" },
+          "source": { "type": "string", "pattern": "^clm\\.clauses\\.search:" }
+        }
+      }
+    },
+    "sla_assessment": {
+      "type": "object",
+      "properties": {
+        "tier_recommended": { "type": "string" },
+        "max_financial_exposure": { "type": "number" },
+        "deviations_from_standard": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "indemnity_recommendation": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "rationale": { "type": "string" },
+        "clause_id": { "type": "string" }
+      }
+    },
+    "precedent_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "prior_deal_id": { "type": "string" },
+          "deviation": { "type": "string" },
+          "likely_to_recur": { "type": "boolean" }
+        }
+      }
+    },
+    "open_questions_for_legal": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

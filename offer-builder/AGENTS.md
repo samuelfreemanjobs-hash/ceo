@@ -42,9 +42,13 @@ Product, ICP, desired outcome, competitive alternatives, constraints. Optional: 
 
 | Agent | Invoke | Output |
 |-------|--------|--------|
-| Solution Architect | `subagent_type: solution-architect` | `scope` (offer-schema.json) |
+| Offer Discovery | `offer-discovery` | `dossier` |
+| Solution Architect | `solution-architect` | `scope` |
+| Offer Risk & Compliance | `offer-risk-compliance` | `risk_assessment` |
+| Offer Copywriter | `offer-copywriter` | `copy` |
+| Offer Evaluator | `offer-evaluator` | `evaluation` |
 
-Full pipeline: `prompts/offer-builder-system-prompts.md`
+Full pipeline: `prompts/offer-builder-system-prompts.md` · **Pending:** Director, Pricing
 
 ## Handoffs
 

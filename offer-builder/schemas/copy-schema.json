@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "copy-schema.json",
+  "title": "OfferBuilderCopy",
+  "description": "Enterprise Copywriter agent output",
+  "type": "object",
+  "required": [
+    "executive_summary",
+    "value_proposition",
+    "why_us",
+    "next_steps",
+    "style_applied"
+  ],
+  "properties": {
+    "executive_summary": { "$ref": "#/$defs/narrative_section" },
+    "value_proposition": { "$ref": "#/$defs/narrative_section" },
+    "why_us": { "$ref": "#/$defs/narrative_section" },
+    "objection_handling": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["objection", "response", "trigger"],
+        "properties": {
+          "objection": { "type": "string" },
+          "response": { "type": "string" },
+          "trigger": { "type": "string" }
+        }
+      }
+    },
+    "next_steps": {
+      "type": "object",
+      "required": ["actions"],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["action", "owner", "by_date"],
+            "properties": {
+              "action": { "type": "string" },
+              "owner": { "type": "string" },
+              "by_date": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      }
+    },
+    "style_applied": {
+      "type": "object",
+      "properties": {
+        "segment": { "type": "string" },
+        "style": { "type": "string" }
+      }
+    },
+    "flags_back_to_solution_architect": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "claim_source": {
+      "type": "object",
+      "required": ["sentence_index", "source"],
+      "properties": {
+        "sentence_index": { "type": "integer", "minimum": 0 },
+        "source": { "type": "string", "pattern": "^dossier\\." }
+      }
+    },
+    "narrative_section": {
+      "type": "object",
+      "required": ["text", "claim_sources"],
+      "properties": {
+        "text": { "type": "string" },
+        "claim_sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/claim_source" }
+        }
+      }
+    }
+  }
+}

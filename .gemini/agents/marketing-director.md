@@ -29,6 +29,11 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 | Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intel + public GTM — profiles, battle cards, landscapes, funnel teardowns, monitoring |
 | Funnel Architect | `funnel-architect` | **Installed** | Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests |
 | Offer Builder | `offer-builder` | **Installed** | Positioning, value props, offer architecture — Offer Specs, proof ladders, pricing |
+| Solution Architect | `solution-architect` | **Installed** | Enterprise catalog scope — SKUs, quantities, milestones (sub-agent) |
+| Offer Discovery | `offer-discovery` | **Installed** | CRM dossier — pains, decision-makers (sub-agent) |
+| Offer Risk & Compliance | `offer-risk-compliance` | **Installed** | Jurisdiction, clauses, blocking issues (sub-agent) |
+| Offer Copywriter | `offer-copywriter` | **Installed** | Enterprise offer narrative (sub-agent) |
+| Offer Evaluator | `offer-evaluator` | **Installed** | Quality gate — score and route (sub-agent) |
 | Research | `research-agent` | Pending install | General market research, audience insights |
 | Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
 | Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
@@ -42,7 +47,11 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
 - Positioning, value proposition, offer stack, packaging, repositioning → `offer-builder`
-- Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after Discovery dossier)
+- Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after `offer-discovery` dossier)
+- Enterprise dossier / CRM discovery → `offer-discovery`
+- Enterprise risk / clauses → `offer-risk-compliance` (parallel with solution-architect)
+- Enterprise offer copy → `offer-copywriter` (after pricing)
+- Enterprise offer QA gate → `offer-evaluator`
 - Scout white-space / positioning handoff → `offer-builder` (include landscape artifact path)
 - Scout GTM teardown handoff → `funnel-architect` (include competitor funnel context in brief)
 - General audience/market research (non-competitive) → `research-agent` when installed

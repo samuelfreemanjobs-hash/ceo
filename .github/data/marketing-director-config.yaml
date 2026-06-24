@@ -90,6 +90,21 @@ marketing_director:
         - solution-catalog
         - offer-templates
       sub_agents:
+        offer-discovery:
+          task_subagent_type: offer-discovery
+          model: sonnet
+          status: installed
+          domain: CRM-grounded customer dossier — pains, decision-makers, confidence
+          agent_path: agents/offer-discovery.md
+          prompt_path: offer-builder/prompts/agents/discovery.md
+          output_schema: offer-builder/schemas/dossier-schema.json
+          tools:
+            - crm.opportunity.get
+            - crm.account.get
+            - crm.activity.search
+            - gong.transcript.search
+            - email.thread.read
+            - web.fetch
         solution-architect:
           task_subagent_type: solution-architect
           model: opus
@@ -106,6 +121,37 @@ marketing_director:
             - catalog.dependencies.check
             - catalog.integrations
             - deals.history.search
+        offer-risk-compliance:
+          task_subagent_type: offer-risk-compliance
+          model: opus
+          status: installed
+          domain: Jurisdiction, clauses, SLA exposure, blocking issues
+          agent_path: agents/offer-risk-compliance.md
+          prompt_path: offer-builder/prompts/agents/risk-compliance.md
+          output_schema: offer-builder/schemas/risk-schema.json
+          tools:
+            - compliance.jurisdiction.check
+            - clm.clauses.search
+            - clm.precedent.search
+        offer-copywriter:
+          task_subagent_type: offer-copywriter
+          model: sonnet
+          status: installed
+          domain: Enterprise offer narrative — exec summary, value prop, next steps
+          agent_path: agents/offer-copywriter.md
+          prompt_path: offer-builder/prompts/agents/copywriter.md
+          output_schema: offer-builder/schemas/copy-schema.json
+          skills:
+            - offer-templates
+            - competitive-positioning
+        offer-evaluator:
+          task_subagent_type: offer-evaluator
+          model: sonnet
+          status: installed
+          domain: Six-dimension quality gate — score and route, max 3 iterations
+          agent_path: agents/offer-evaluator.md
+          prompt_path: offer-builder/prompts/agents/evaluator.md
+          output_schema: offer-builder/schemas/evaluation-schema.json
 
     research-agent:
       tool_name: research_agent
@@ -388,6 +434,16 @@ marketing_director:
       package_path: offer-builder/skills/offer-templates/SKILL.md
       used_by:
         - solution-architect
+        - offer-builder
+        - offer-copywriter
+    competitive-positioning:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/competitive-positioning/SKILL.md
+      package_path: offer-builder/skills/competitive-positioning/SKILL.md
+      used_by:
+        - offer-copywriter
         - offer-builder
 
   rollout_phases:

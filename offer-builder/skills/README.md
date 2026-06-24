@@ -23,6 +23,17 @@ Discovery dossier → solution-catalog (need→family) → catalog.product.searc
 
 Skills: `solution-catalog`, `offer-templates` — see `prompts/agents/solution-architect.md`
 
+### Enterprise / Catalog (full pipeline)
+
+```
+offer-discovery → dossier
+              → [solution-architect ∥ offer-risk-compliance]
+              → scope + risk_assessment → pricing (pending)
+              → offer-copywriter → offer-evaluator
+```
+
+Skills: `solution-catalog`, `offer-templates`, `competitive-positioning`
+
 ## Deployment
 
 Mirror to `.github/skills/`, `.claude/skills/`, `.gemini/skills/`, `.ai/skills/` for platform discovery.

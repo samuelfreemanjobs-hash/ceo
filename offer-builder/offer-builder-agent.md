@@ -111,7 +111,7 @@ Evaluate weekly: specificity ≥4/5, differentiation clarity, proof completeness
 | Phase | Capability |
 |-------|------------|
 | 1 | Single agent + Skills *(Marketing mode)* |
-| 1b | Enterprise sub-agents — Solution Architect installed; Director, Discovery, Risk, Pricing, Copywriter, Evaluator pending |
+| 1b | Enterprise sub-agents — Discovery, SA, Risk, Copywriter, Evaluator installed; Director + Pricing pending |
 | 2 | MCP — catalog.product.search, CRM win/loss, deals.history |
 | 3 | Intent router (reposition vs new offer vs packaging-only) |
 | 4 | Multi-agent *(gate: >~30 offer builds/month + quality plateau)* |

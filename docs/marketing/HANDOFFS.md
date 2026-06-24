@@ -50,11 +50,15 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 
 | Step | Agent | Output |
 |------|-------|--------|
-| Discovery | Discovery *(pending)* | `dossier` |
+| Discovery | **Offer Discovery** (`offer-discovery`) | `dossier` |
 | Scope | **Solution Architect** (`solution-architect`) | `scope` → Pricing |
-| Risk | Risk & Compliance *(pending)* | `risk_assessment` |
+| Risk | **Offer Risk & Compliance** (`offer-risk-compliance`) | `risk_assessment` |
+| Copy | **Offer Copywriter** (`offer-copywriter`) | `copy` |
+| Gate | **Offer Evaluator** (`offer-evaluator`) | `evaluation` |
 
-Schema: `offer-builder/schemas/offer-schema.json` · Prompts: `offer-builder/prompts/offer-builder-system-prompts.md`
+Schema: `offer-builder/schemas/` · Prompts: `offer-builder/prompts/offer-builder-system-prompts.md`
+
+**Pending:** Director, Pricing
 
 ---
 
