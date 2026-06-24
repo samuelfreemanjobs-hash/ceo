@@ -59,10 +59,20 @@ Use **pricing-teardown** skill when pricing is strategic or opaque. Otherwise ca
 - Funding rounds or public filings
 - Customer logos / case studies cited
 
-### 7. Strategic synthesis
+### 7. Recent strategic moves (12 months)
 
-- **Strengths** (evidence-tagged)
-- **Weaknesses** (evidence-tagged)
+| Date | Move | Confidence | Source |
+|------|------|------------|--------|
+| | | | |
+
+Changelog, press, product launches, leadership statements. Tag observation vs. inference on pattern recognition.
+
+### 8. Strengths and weaknesses
+
+Evidence-tagged. Separate **real strengths** from **attack surfaces** (weaknesses). Do not conflate with "where they win" in battle cards until strategic-synthesis.
+
+### 9. Strategic synthesis
+
 - **Likely next moves** (hypothesis — label explicitly)
 - **Implications for us** (recommendation with confidence)
 
