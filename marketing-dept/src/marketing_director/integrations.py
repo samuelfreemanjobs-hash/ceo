@@ -78,7 +78,12 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
     elif topic in {"brand_voice", "brand-voice"}:
         payload["content"] = load_skill("brand-voice", root)
         payload["skill_status"] = director_cfg.get("skills", {}).get("brand-voice", {})
-    elif topic in {"prohibited_claims", "active_campaigns"}:
+    elif topic in {"prohibited_claims", "prohibited-claims", "prohibited-claims-and-disclaimers"}:
+        payload["content"] = load_skill("prohibited-claims-and-disclaimers", root)
+        payload["skill_status"] = director_cfg.get("skills", {}).get(
+            "prohibited-claims-and-disclaimers", {}
+        )
+    elif topic in {"active_campaigns"}:
         data_paths = []
         if root:
             for rel in (

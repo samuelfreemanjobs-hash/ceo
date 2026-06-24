@@ -222,8 +222,8 @@ Load on activation:
 - **Python runtime** (programmatic API): `marketing-dept/` — `MarketingDirector` class with built-in specialist agents
 - Skills (install progressively):
   - `brand-voice` — P0, installed (template — fill in [YOUR_BRAND] placeholders)
+  - `prohibited-claims-and-disclaimers` — P0, installed (template — legal sign-off required)
   - `marketing-plan-current-quarter` — P0, strategic alignment
-  - `prohibited-claims-and-disclaimers` — P0, compliance prerequisite
 
 ## Observability
 

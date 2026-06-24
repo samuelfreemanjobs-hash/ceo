@@ -54,5 +54,5 @@ Marketing Director (Morgan)
 | Skill | Status | Path |
 |-------|--------|------|
 | `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
+| `prohibited-claims-and-disclaimers` | Template (legal sign-off required) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
 | `marketing-plan-current-quarter` | Pending | — |
-| `prohibited-claims-and-disclaimers` | Pending | — |

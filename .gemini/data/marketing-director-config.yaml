@@ -144,6 +144,15 @@ marketing_director:
         - creative-agent
         - marketing-director
       note: Fill in [YOUR_BRAND] placeholders before production use
+    prohibited-claims-and-disclaimers:
+      status: template
+      version: "1.0"
+      owner: legal + brand
+      path: skills/prohibited-claims-and-disclaimers/SKILL.md
+      used_by:
+        - compliance-agent
+        - marketing-director
+      note: Legal team must fill in and sign off before production use
 
   rollout_phases:
     phase_1:
