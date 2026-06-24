@@ -1,6 +1,6 @@
-# Competitor analysis output
+# Competitor analysis — default output
 
-**Agent fills this structure.** Delete unused sections per mode (`landscape` / `teardown` / `monitoring`).
+**Agent fills this structure.** Default for `landscape` and most GTM passes. Adapt sections for `teardown` (single competitor deep-dive) or `monitoring` (see §6 + checklist below).
 
 ---
 
@@ -9,131 +9,142 @@
 | Field | Value |
 |-------|-------|
 | Mode | teardown / landscape / monitoring |
-| Lens | |
-| Competitors covered | |
 | Date | YYYY-MM-DD |
 | Last verified | YYYY-MM-DD |
-
-## Executive summary
-
-≤150 words. Findings + confidence headline + top P0.
+| Competitors covered | |
 
 ---
 
-## Findings
+## 1. Context
 
-### Observations
+Category, ICP, and **our** comparison frame (from brief or `USER_PROFILE.md`). State assumptions explicitly if the brief was thin.
 
-| Claim | Competitor | Source | Confidence | Last verified |
-|-------|------------|--------|------------|---------------|
-| | | | Confirmed / Likely / Unverified | |
-
-### Inferences (labeled)
-
-| Inference | Evidence chain | Confidence |
-|-----------|----------------|------------|
-| | | |
-
-### Hypotheses (explicit)
-
-| Hypothesis | What would confirm/refute |
-|------------|---------------------------|
-| | |
+- **Category:** 
+- **ICP (ours):** 
+- **Our offer (one line):** 
+- **Lens / decision this informs:** 
+- **Assumptions (if any):** 
 
 ---
 
-## Mode-specific body
+## 2. Competitor table
 
-### Landscape (`landscape` mode)
+| Entity | Position summary | Funnel pattern | Proof | CTA | Price signal | Confidence |
+|--------|------------------|----------------|-------|-----|--------------|------------|
+| | | | | | | Confirmed / Likely / Unverified |
+| | | | | | | |
 
-#### Comparison table
+**Column notes:**
 
-| Dimension | Comp 1 | Comp 2 | Comp 3 | … |
-|-----------|--------|--------|--------|---|
-| Positioning | | | | |
-| Funnel type | | | | |
-| Pricing signal | | | | |
-| Ad themes (if artifacts) | | | | |
+- **Position summary** — one line; quote hero claim where possible
+- **Funnel pattern** — public path only (e.g., PLG trial → paid, demo-led)
+- **Proof** — logos, case studies, reviews cited on site (not invented)
+- **CTA** — primary conversion action visible on LP/pricing
+- **Price signal** — published tier anchor or "contact sales" (not deal price)
+- **Confidence** — claim-level tag for the row's key assertions
 
-#### White space
-
-- 
-
-#### Crowded plays
-
-- 
-
-### Teardown (`teardown` mode)
-
-#### Positioning snapshot
-
-- Headline (quote): 
-- ICP language: 
-
-#### Funnel map (public pages only)
-
-```
-Awareness → … → Conversion
-```
-
-#### Pricing signals
-
-(See pricing-teardown or inline table)
-
-#### Ad evidence summary
-
-*Only if user supplied artifacts — else "No user artifacts"*
-
-### Monitoring (`monitoring` mode)
-
-| Priority | Signal | Competitor | Last checked | Next verification | Notes |
-|----------|--------|------------|--------------|-------------------|-------|
-| P0 | | | | | |
-| P1 | | | | | |
-| P2 | | | | | |
+*Teardown mode:* one row expanded into full subsection (positioning quote, funnel map, pricing snapshot, ad evidence if artifacts supplied).
 
 ---
 
-## P0 actions
+## 3. Pattern themes
+
+What **2–3 plays** this market repeats (observation-backed; label inferences).
 
 1. 
 2. 
-
-## P1 actions
-
-1. 
+3. 
 
 ---
 
-## Implications for us
+## 4. Gaps / white space
 
-*Inference — invite human judgment*
+Where **we** can win — qualified, evidence-tagged. Not wishful thinking.
 
-- 
+| Gap | Evidence | Confidence | Why it matters for us |
+|-----|----------|------------|----------------------|
+| | | | |
 
 ---
 
-## Sources
+## 5. Risks
+
+Copying traps, race-to-the-bottom dynamics, compliance / claim risks.
+
+- **Copying traps** — patterns that look attractive but don't fit our offer
+- **Race to the bottom** — crowded plays to avoid matching
+- **Compliance / claims** — substantiation needed before external use
+
+---
+
+## 6. Next steps
+
+What to verify on the next pass — concrete search strings, URLs, or artifacts to collect.
+
+| Priority | Verify | How (search string / URL / artifact) |
+|----------|--------|--------------------------------------|
+| P0 | | |
+| P1 | | |
+| P2 | | |
+
+*Monitoring mode:* expand this section into the primary deliverable; add recurring check cadence.
+
+---
+
+## 7. Optional battlecard — "vs [Competitor X]"
+
+Include when requested or when one competitor dominates the brief. **Talk tracks, not trash talk.**
 
 ```
-[Title](URL) — retrieved YYYY-MM-DD — Tier: Primary|Secondary|Tertiary — Note: …
+═════════════════════════════════════════════════════════════
+  vs [Competitor] — quick battlecard
+  Last verified: YYYY-MM-DD
+═════════════════════════════════════════════════════════════
+
+  HEADLINE (one sentence)
+
+  TOP OBJECTIONS (≤3)
+  1. "[Objection]" → Response: ...
+
+  WHERE WE WIN
+  • 
+
+  WHERE THEY WIN (be honest)
+  • 
+
+  DO NOT SAY
+  • 
 ```
 
-## Confidence summary
+Full sales battle cards: use `strategic-synthesis` + `docs/marketing/research/battle-cards/`. See `competition-analyzer/worked-example.md` (Linear).
+
+---
+
+## Required closing sections
+
+### Sources
+
+```
+[short label] — [URL] — retrieved YYYY-MM-DD — Tier: S|A|B|C — Note: …
+```
+
+### Confidence summary
 
 - **Confirmed:** 
 - **Likely:** 
 - **Unverified:** 
 
-## Open questions
+### Open questions
 
 | Question | What would resolve it |
 |----------|----------------------|
 | | |
 
-## Suggested handoffs
+### Suggested handoffs
 
 - [ ] Offer Builder — 
 - [ ] Funnel Map — 
 - [ ] LP / Ad agents — 
 - [ ] Compliance (if external battlecard) — 
+
+**Save to:** `docs/marketing/research/` · Log learnings: `competition-analyzer/learnings/OUTCOMES-LOG.md`

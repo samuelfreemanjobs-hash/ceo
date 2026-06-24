@@ -104,6 +104,8 @@ See `docs/marketing/HANDOFFS.md`:
 3. Open questions + next verification steps
 4. P0 action list (if monitoring checklist or landscape)
 
+When user requests brief-driven output, follow `competition-analyzer/templates/OUTPUT.md` (default seven-section structure).
+
 ## Output paths
 
 | Deliverable | Path |
