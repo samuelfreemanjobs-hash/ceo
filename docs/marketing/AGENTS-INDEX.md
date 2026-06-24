@@ -49,9 +49,9 @@
 
 ## Package quick links
 
-| Package | Agent card | Output path |
-|---------|------------|-------------|
-| competition-analyzer | `competition-analyzer/AGENTS.md` | `docs/marketing/research/` |
-| funnel-architect | `funnel-architect/AGENTS.md` | `docs/marketing/funnels/` |
-| offer-builder | `offer-builder/AGENTS.md` | `docs/marketing/offers/` |
-| marketing-director | `.github/agents/marketing-director.md` | `docs/marketing/campaigns/` |
+| Package | Agent card | Guide | Output path |
+|---------|------------|-------|-------------|
+| competition-analyzer | `competition-analyzer/AGENTS.md` | — | `docs/marketing/research/` |
+| funnel-architect | `funnel-architect/AGENTS.md` | — | `docs/marketing/funnels/` |
+| offer-builder | `offer-builder/AGENTS.md` | `offer-builder/GUIDE.md` | `docs/marketing/offers/` |
+| marketing-director | `.github/agents/marketing-director.md` | — | `docs/marketing/campaigns/` |

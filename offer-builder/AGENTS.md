@@ -19,6 +19,8 @@
 **ID:** `offer-builder` · **Model:** opus · **Enterprise B2B quotes:** use `offer-director` ([OFFER-BUILDER-SPEC.md](OFFER-BUILDER-SPEC.md))
 
 ## Repo context (read on every run)
+
+- **[STANDARDS.md](../STANDARDS.md)** — proof, PII, YMYL, consent, forecasts (universal).
 - **[USER_PROFILE.md](USER_PROFILE.md)** — default ICP, offer, voice, and allowed proof (optional).
 - **[AGENTS-INDEX.md](../docs/marketing/AGENTS-INDEX.md)** — full map and *which agent when*.
 - **[learnings/OUTCOMES-LOG.md](learnings/OUTCOMES-LOG.md)** — append one line after a real ship or A/B.
@@ -76,7 +78,7 @@ Single pass. Second pass on request: "sales one-pager," "landing copy outline," 
 ## Handoffs
 
 - **From** Scout — white-space, positioning gaps
-- **To** funnel-architect, copy-agent / writer, compliance-agent
+- **To** Proposal *(pending)* → LP *(pending)* · funnel-architect · copy-agent / writer · compliance-agent
 
 ## Cursor
 
