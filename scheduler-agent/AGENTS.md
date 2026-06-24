@@ -5,7 +5,7 @@
 **Purpose:** Preference-aware calendar scheduling via Claude tool-use — find slots, book meetings, reschedule/cancel with fail-closed HITL on destructive ops.
 
 **Runtime:** Python — [`scheduler_agent.py`](scheduler_agent.py)  
-**Skill:** [`meeting_scheduling_skill.md`](meeting_scheduling_skill.md)
+**Skill:** [`meeting_scheduling_skill.md`](meeting_scheduling_skill.md) (`meeting-scheduling`)
 
 ---
 
