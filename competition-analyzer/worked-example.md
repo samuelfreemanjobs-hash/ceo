@@ -108,7 +108,7 @@ The "68% price cut" claim from one secondary source: **Unverified** — only one
 
 **Conspicuous absences:** No HR / legal / cross-functional pitches anywhere. They are _not_ trying to be a Jira-Service-Management or Asana-style horizontal play. This is a strength (focus) and a vulnerability (limits expansion within an account).
 
-### Recent moves (competitor-profiling §7)
+### Recent moves (competitor-profiling §9)
 
 Last 12 months, by date:
 
