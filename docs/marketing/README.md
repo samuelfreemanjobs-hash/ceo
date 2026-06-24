@@ -48,3 +48,11 @@ Marketing Director (Morgan)
 2. **Phase 2** — Add Research + Analytics (analysis, ideation, ops)
 3. **Phase 3** — Add Creative + Media (full campaigns)
 4. **Phase 4** — Optimization and evaluator agents
+
+## Skills installed
+
+| Skill | Status | Path |
+|-------|--------|------|
+| `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
+| `marketing-plan-current-quarter` | Pending | — |
+| `prohibited-claims-and-disclaimers` | Pending | — |

@@ -221,7 +221,7 @@ Load on activation:
 - Campaign brief template: `.claude/templates/campaign-brief-tmpl.yaml` (when created)
 - **Python runtime** (programmatic API): `marketing-dept/` — `MarketingDirector` class with built-in specialist agents
 - Skills (install progressively):
-  - `brand-voice` — P0, required for on-brand output
+  - `brand-voice` — P0, installed (template — fill in [YOUR_BRAND] placeholders)
   - `marketing-plan-current-quarter` — P0, strategic alignment
   - `prohibited-claims-and-disclaimers` — P0, compliance prerequisite
 

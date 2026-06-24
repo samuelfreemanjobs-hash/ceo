@@ -35,6 +35,25 @@ def load_marketing_config(repo_root: Path | None = None) -> dict[str, Any]:
     return {}
 
 
+def load_skill(skill_id: str, repo_root: Path | None = None) -> dict[str, Any]:
+    """Load a skill markdown file from the orchestration repo."""
+    root = repo_root or find_repo_root()
+    if root is None:
+        return {"skill": skill_id, "status": "not_found", "content": None}
+
+    for platform in (".github", ".claude", ".gemini"):
+        skill_path = root / platform / "skills" / skill_id / "SKILL.md"
+        if skill_path.exists():
+            return {
+                "skill": skill_id,
+                "status": "loaded",
+                "path": str(skill_path.relative_to(root)),
+                "content": skill_path.read_text(encoding="utf-8"),
+            }
+
+    return {"skill": skill_id, "status": "not_found", "content": None}
+
+
 def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[str, Any]:
     """
     Load brand memory topics from the orchestration repo.
@@ -56,7 +75,10 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
             "note": "Load marketing-plan skill when installed",
             "skills_priority": director_cfg.get("skills_priority", {}),
         }
-    elif topic in {"prohibited_claims", "brand_voice", "active_campaigns"}:
+    elif topic in {"brand_voice", "brand-voice"}:
+        payload["content"] = load_skill("brand-voice", root)
+        payload["skill_status"] = director_cfg.get("skills", {}).get("brand-voice", {})
+    elif topic in {"prohibited_claims", "active_campaigns"}:
         data_paths = []
         if root:
             for rel in (
@@ -75,6 +97,7 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
             "thresholds": director_cfg.get("thresholds", {}),
             "specialists": director_cfg.get("specialists", {}),
             "request_types": director_cfg.get("request_types", {}),
+            "skills": director_cfg.get("skills", {}),
         }
 
     return payload

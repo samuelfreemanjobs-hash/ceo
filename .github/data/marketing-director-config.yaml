@@ -133,6 +133,18 @@ marketing_director:
       - crisis-comms-playbook
       - experimentation-standards
 
+  skills:
+    brand-voice:
+      status: template
+      version: "1.0"
+      owner: brand team
+      path: skills/brand-voice/SKILL.md
+      used_by:
+        - copy-agent
+        - creative-agent
+        - marketing-director
+      note: Fill in [YOUR_BRAND] placeholders before production use
+
   rollout_phases:
     phase_1:
       name: Content foundation
