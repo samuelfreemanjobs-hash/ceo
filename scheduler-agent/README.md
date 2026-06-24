@@ -80,7 +80,12 @@ from slack_hitl_queue import RedisConfirmationStore, SlackHumanReviewQueue
 from scheduler_agent import SchedulerAgent, InMemoryCalendarBackend, InMemoryPreferencesStore
 
 store = RedisConfirmationStore(redis.Redis.from_url(os.environ["REDIS_URL"]))
-hitl = SlackHumanReviewQueue(store, bot_token=os.environ["SLACK_BOT_TOKEN"], channel_id=os.environ["SLACK_CHANNEL_ID"])
+hitl = SlackHumanReviewQueue(
+    bot_token=os.environ["SLACK_BOT_TOKEN"],
+    approval_channel=os.environ["SLACK_CHANNEL_ID"],
+    store=store,
+    timeout_seconds=300,
+)
 ```
 
 **Env vars**
@@ -89,7 +94,7 @@ hitl = SlackHumanReviewQueue(store, bot_token=os.environ["SLACK_BOT_TOKEN"], cha
 |----------|---------|
 | `SLACK_SIGNING_SECRET` | Webhook signature verification |
 | `SLACK_BOT_TOKEN` | Post HITL messages |
-| `SLACK_CHANNEL_ID` | Channel for confirmation prompts |
+| `SLACK_CHANNEL_ID` | Channel ID for approval prompts (`approval_channel`) |
 | `REDIS_URL` | Shared store (agent + webhook) |
 | `HITL_POLL_TIMEOUT_SECONDS` | Agent wait for human (default 300) |
 | `PORT` | Webhook port (default 3000) |
