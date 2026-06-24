@@ -26,7 +26,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 
 | Specialist | Task `subagent_type` | Status | Domain |
 |------------|---------------------|--------|--------|
-| Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intelligence — profiles, battle cards, SWOT, landscape, move alerts |
+| Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intel + public GTM — profiles, battle cards, landscapes, funnel teardowns, monitoring |
 | Research | `research-agent` | Pending install | General market research, audience insights |
 | Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
 | Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
@@ -36,7 +36,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 
 **Routing rules:**
 
-- Competitive intelligence (profiles, battle cards, SWOT, pricing intel, landscape) → `competition-analyzer` (Scout)
+- Competitive intelligence (profiles, battle cards, SWOT, pricing intel) → `competition-analyzer` (Scout)
+- GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - General audience/market research (non-competitive) → `research-agent` when installed
 - Copy / content → `copy-agent` (interim: `writer`)
 - Media / channels / GTM → `media-agent` (interim: `marketer`)

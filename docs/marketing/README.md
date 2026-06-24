@@ -63,6 +63,7 @@ Marketing Director (Morgan)
 | `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
 | `prohibited-claims-and-disclaimers` | Template (legal sign-off required) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
 | `marketing-plan-current-quarter` | Template (refresh each quarter) | `.github/skills/marketing-plan-current-quarter/SKILL.md` |
+| `gtm-competitor-analysis` | Installed | `competition-analyzer/skills/gtm-competitor-analysis/SKILL.md` |
 | `competitor-profiling` | Installed | `competition-analyzer/skills/competitor-profiling/SKILL.md` |
 | `pricing-teardown` | Installed | `competition-analyzer/skills/pricing-teardown/SKILL.md` |
 | `source-evaluation` | Installed | `competition-analyzer/skills/source-evaluation/SKILL.md` |
@@ -75,3 +76,4 @@ Standalone deployable package: [`competition-analyzer/`](../competition-analyzer
 - `system-prompt.md` — API / Project instructions
 - `CLAUDE.md` — Claude Code auto-load
 - `worked-example.md` — methodology trace (Linear)
+- `HANDOFFS.md` — cross-agent handoffs (Offer Builder, Funnel Map)

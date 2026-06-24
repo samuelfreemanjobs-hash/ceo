@@ -52,6 +52,7 @@ When given a competitive intelligence task:
 Load from `competition-analyzer/skills/` (or mirrored `.claude/skills/` paths). Don't inline a skill's methodology if the skill exists — load it.
 
 - **competitor-profiling** — systematic profile-building methodology
+- **gtm-competitor-analysis** — public GTM, funnels, ad evidence, monitoring checklists
 - **pricing-teardown** — specialized pricing and packaging analysis
 - **source-evaluation** — reliability, recency, and bias framework
 - **strategic-synthesis** — findings → insight → recommendation

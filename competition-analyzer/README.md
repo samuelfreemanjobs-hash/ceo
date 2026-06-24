@@ -35,6 +35,7 @@ competition-analyzer/
 ├── CLAUDE.md                                       Persistent operating principles
 ├── worked-example.md                               End-to-end trace on a real competitor (Linear)
 └── skills/
+    ├── gtm-competitor-analysis/SKILL.md         Public GTM, funnels, ad evidence, monitoring
     ├── competitor-profiling/SKILL.md               Systematic profile-building methodology
     ├── pricing-teardown/SKILL.md                   Specialized pricing analysis methodology
     ├── source-evaluation/SKILL.md                  Reliability, recency, bias framework

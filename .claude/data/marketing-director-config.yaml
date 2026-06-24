@@ -47,11 +47,12 @@ marketing_director:
       task_subagent_type: competition-analyzer
       model: sonnet
       status: installed
-      domain: Decision-grade competitive intelligence — profiles, battle cards, SWOT, landscape, move alerts
+      domain: Decision-grade competitive intelligence and public GTM analysis — profiles, battle cards, GTM landscapes, funnel teardowns, monitoring checklists, white-space
       loop_budget: 10
       agent_path: agents/competition-analyzer.md
       skills:
         - competitor-profiling
+        - gtm-competitor-analysis
         - pricing-teardown
         - source-evaluation
         - strategic-synthesis
@@ -181,6 +182,15 @@ marketing_director:
         - creative-agent
       note: Refresh in the first week of each quarter
       refresh_cadence: quarterly
+    gtm-competitor-analysis:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/gtm-competitor-analysis/SKILL.md
+      package_path: competition-analyzer/skills/gtm-competitor-analysis/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
     competitor-profiling:
       status: installed
       version: "1.0"

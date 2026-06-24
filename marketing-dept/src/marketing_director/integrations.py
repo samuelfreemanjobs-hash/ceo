@@ -100,6 +100,7 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
     }:
         payload["content"] = {
             "competitor_profiling": load_skill("competitor-profiling", root),
+            "gtm_competitor_analysis": load_skill("gtm-competitor-analysis", root),
             "pricing_teardown": load_skill("pricing-teardown", root),
             "source_evaluation": load_skill("source-evaluation", root),
             "strategic_synthesis": load_skill("strategic-synthesis", root),
@@ -108,6 +109,7 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
             k: director_cfg.get("skills", {}).get(k, {})
             for k in (
                 "competitor-profiling",
+                "gtm-competitor-analysis",
                 "pricing-teardown",
                 "source-evaluation",
                 "strategic-synthesis",
