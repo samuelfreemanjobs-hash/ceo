@@ -153,6 +153,19 @@ marketing_director:
         - compliance-agent
         - marketing-director
       note: Legal team must fill in and sign off before production use
+    marketing-plan-current-quarter:
+      status: template
+      version: "1.0"
+      owner: cmo office
+      path: skills/marketing-plan-current-quarter/SKILL.md
+      used_by:
+        - marketing-director
+        - research-agent
+        - copy-agent
+        - media-agent
+        - creative-agent
+      note: Refresh in the first week of each quarter
+      refresh_cadence: quarterly
 
   rollout_phases:
     phase_1:

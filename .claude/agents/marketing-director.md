@@ -159,8 +159,9 @@ Near-zero orchestration overhead.
 Before starting any work:
 
 1. Load brand guidelines and voice rules from dependencies (when skills are installed)
-2. Query `marketing-director-config.yaml` for thresholds, active campaigns, and specialist status
-3. Check `docs/marketing/` for prior campaigns and active work to avoid conflicts
+2. **Consult `marketing-plan-current-quarter`** on every Type A (campaign) and most Type B/D (content/ideation) requests — check active campaigns, audience priorities, and in-scope rules
+3. Query `marketing-director-config.yaml` for thresholds, active campaigns, and specialist status
+4. Check `docs/marketing/` for prior campaigns and active work to avoid conflicts
 
 Brand memory lives outside your context window. Pull via skills and data files when needed — do not stuff into every prompt.
 
@@ -223,7 +224,7 @@ Load on activation:
 - Skills (install progressively):
   - `brand-voice` — P0, installed (template — fill in [YOUR_BRAND] placeholders)
   - `prohibited-claims-and-disclaimers` — P0, installed (template — legal sign-off required)
-  - `marketing-plan-current-quarter` — P0, strategic alignment
+  - `marketing-plan-current-quarter` — P0, installed (template — refresh each quarter)
 
 ## Observability
 

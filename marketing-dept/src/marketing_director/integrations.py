@@ -70,11 +70,11 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
         "repo_root": str(root) if root else None,
     }
 
-    if topic in {"marketing_plan", "marketing-plan-current-quarter"}:
-        payload["content"] = {
-            "note": "Load marketing-plan skill when installed",
-            "skills_priority": director_cfg.get("skills_priority", {}),
-        }
+    if topic in {"marketing_plan", "marketing-plan-current-quarter", "active_campaigns"}:
+        payload["content"] = load_skill("marketing-plan-current-quarter", root)
+        payload["skill_status"] = director_cfg.get("skills", {}).get(
+            "marketing-plan-current-quarter", {}
+        )
     elif topic in {"brand_voice", "brand-voice"}:
         payload["content"] = load_skill("brand-voice", root)
         payload["skill_status"] = director_cfg.get("skills", {}).get("brand-voice", {})
