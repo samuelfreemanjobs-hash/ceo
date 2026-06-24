@@ -86,7 +86,8 @@ Load from `funnel-architect/skills/` — do not inline methodology:
 
 ## Dependencies
 
-- Package: `funnel-architect/` (blueprint: `funnel-architect-agent.md`, system: `prompts/system.md`)
+- Package: `funnel-architect/` (blueprint: `funnel-architect-agent.md`, system: `prompts/system.md`, workflow: `CURSOR.md`)
+- Templates: `funnel-architect/templates/BRIEF.md`, `templates/OUTPUT.md`
 - Config: `.github/data/marketing-director-config.yaml`
 
 ## Session management

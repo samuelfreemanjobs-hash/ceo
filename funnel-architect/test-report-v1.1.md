@@ -1,30 +1,24 @@
-# Funnel Architect — Test Report v1.1
+# Funnel Architect — test report v1.1
 
-**Round 2:** 5 prompts · regression check + new edge cases
+**Follow-up to:** [test-report-v1.md](test-report-v1.md)  
+**Date:** _pending_
 
-## Regression prompts
+## Changes since v1
 
-| # | Retest | v1 issue | Expected |
-|---|--------|----------|----------|
-| 1 | Ambiguous brief | #1 discovery skip | Agent asks minimum 5 inputs |
-| 2 | PLG activation | #4 generic output | Specific email + ICE tests |
-| 3 | Funnel projection | #2 head-math | code_execution or script output |
+- _List skill/prompt refinements applied_
 
-## New edge cases
+## Re-run results
 
-| # | Case | Expected behavior |
-|---|------|-------------------|
-| 4 | $9/mo consumer app + outbound request | Decline outbound; recommend PLG channels |
-| 5 | Multi-goal brief (signup + expansion + referral) | Propose 2–3 funnels, not one Frankenstein |
+| Dimension | v1 | v1.1 | Target |
+|-----------|----|------|--------|
+| Specificity | — | — | ≥4.0 |
+| Math correctness | — | — | 100% |
+| Discovery completeness | — | — | 100% |
 
-## Results
+## Ship readiness
 
-_To be filled on live eval run._
+- [ ] 10/10 prompts pass core criteria
+- [ ] Worked example reproduces all 6 phases
+- [ ] Observability traces logging
 
-## Scripts verified
-
-```bash
-python funnel-architect/skills/funnel-metrics/scripts/funnel_projection.py --json
-python funnel-architect/skills/funnel-metrics/scripts/cac_ltv_calculator.py --cac 500 --ltv 2000 --json
-python funnel-architect/skills/funnel-metrics/scripts/cohort_retention.py --actual 1.0,0.85,0.72 --json
-```
+**Verdict:** _Not ready / Ready for v1 production_

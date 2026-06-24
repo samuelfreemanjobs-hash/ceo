@@ -1,29 +1,39 @@
-# Funnel Architect — Test Report v1
+# Funnel Architect — test report v1
 
-**Round 1:** 10 prompts · **4 issues found**
+**Date:** _pending first eval run_  
+**Prompts:** [test-prompts.md](test-prompts.md) (10 prompts)  
+**Worked example:** [worked-example.md](worked-example.md)
 
-## Prompt matrix (planned)
+## Results summary
 
-| # | Scenario | Business type |
-|---|----------|---------------|
-| 1 | Net-new funnel design | B2B SaaS PLG |
-| 2 | Net-new funnel design | DTC ecommerce |
-| 3 | Funnel audit | Services |
-| 4 | Copy refresh | Info product |
-| 5 | Metrics-only | Marketplace |
-| 6 | Single-channel question | Paid search |
-| 7 | Ambiguous brief | — |
-| 8 | Enterprise multi-stakeholder | B2B sales-led |
-| 9 | Activation leak fix | PLG (worked example) |
-| 10 | Channel mix | Hybrid SaaS |
+| Dimension | Target | Score | Pass |
+|-----------|--------|-------|------|
+| Specificity (1–5 avg) | ≥4.0 | — | — |
+| Math correctness | 100% | — | — |
+| Channel-fit | 100% | — | — |
+| Actionability | ≥85% | — | — |
+| Discovery completeness | 100% | — | — |
 
-## Issues found (v1)
+## Per-prompt notes
 
-1. **Skipped discovery** on ambiguous brief — fixed in system prompt + CLAUDE.md emphasis
-2. **Head-math** in projections — enforced code_execution policy
-3. **Channels conflated with stages** — added explicit principle + skill callouts
-4. **Generic AIDA output** — audience-mapping gate before build
+| # | Prompt type | Pass | Notes |
+|---|-------------|------|-------|
+| 1 | B2B SaaS PLG | | |
+| 2 | DTC | | |
+| 3 | Services | | |
+| 4 | Info product | | |
+| 5 | Marketplace | | |
+| 6 | Audit | | |
+| 7 | Copy refresh | | |
+| 8 | Metrics only | | |
+| 9 | Single channel | | |
+| 10 | Ambiguous brief | | |
 
-## Status
+## Top failure mode
 
-Re-run with `test-report-v1.1.md` after skill body expansion.
+_TBD after first run — likely under-specificity or skipped discovery._
+
+## Next iteration
+
+- Refine skill: _TBD_
+- Re-run: v1.1

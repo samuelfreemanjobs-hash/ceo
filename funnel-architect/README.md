@@ -19,12 +19,19 @@ Codename: `funnel-architect-v1` · Architecture: **Single agent + Skills** (see 
 ```
 funnel-architect/
 ├── README.md
-├── funnel-architect-agent.md    Full blueprint + worked example
+├── funnel-architect-agent.md    Full blueprint
 ├── prompts/system.md            API system parameter (canonical)
-├── CLAUDE.md                    Claude Code auto-load
-├── AGENTS.md                    @ mention card
-├── test-report-v1.md
-├── test-report-v1.1.md
+├── CURSOR.md                      Cursor operational workflow
+├── CLAUDE.md                      Claude Code auto-load
+├── AGENTS.md                      @ mention card
+├── USER_PROFILE.md
+├── worked-example.md              §6 session trace
+├── test-prompts.md                10-prompt eval suite
+├── test-report-v1.md / v1.1.md
+├── templates/BRIEF.md · OUTPUT.md
+├── briefs/ACTIVE.md
+├── learnings/OUTCOMES-LOG.md
+├── observability/                 trace schema + README
 └── skills/
     ├── funnel-frameworks/
     ├── audience-mapping/
@@ -39,7 +46,7 @@ funnel-architect/
 | Surface | How |
 |---------|-----|
 | **CEO / Morgan** | Task tool → `subagent_type: funnel-architect` |
-| **Cursor** | `@funnel-architect/AGENTS.md` + brief |
+| **Cursor** | [CURSOR.md](CURSOR.md) — `@funnel-architect/AGENTS.md` + [templates/BRIEF.md](templates/BRIEF.md) |
 | **API** | `prompts/system.md` + enable web_search, code_execution |
 
 ## Skills (6)

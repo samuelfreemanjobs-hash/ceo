@@ -51,3 +51,4 @@ Describe channel → stage flows in table if Mermaid Sankey unsupported; note vo
 
 - `references/mermaid-templates.md`
 - `references/journey-map-templates.md`
+- `references/rendering-rules.md`
