@@ -12,7 +12,7 @@
 
 ## Quick start
 
-1. Fill [`templates/BRIEF.md`](templates/BRIEF.md) — pick mode: `flagship` | `stack` | `audit`
+1. Fill [`templates/BRIEF.md`](templates/BRIEF.md) — Context, Outcomes, Proof, Business rules, Mode, Exclusions
 2. `@offer-builder/AGENTS.md` + brief
 3. Output → [`templates/OUTPUT.md`](templates/OUTPUT.md) → save under `docs/marketing/offers/`
 4. Log ship: [`learnings/OUTCOMES-LOG.md`](learnings/OUTCOMES-LOG.md)

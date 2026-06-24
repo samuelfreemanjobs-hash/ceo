@@ -43,8 +43,8 @@ Max 3 questions if needed.
 
 | Problem | Fix |
 |---------|-----|
-| Vague "we help everyone" | Add undesired clients + narrow ICP |
-| Unrealistic timeline | Add client inputs + team capacity to brief |
+| Vague "we help everyone" | Narrow ICP in Context; use Exclusions for who/what is out |
+| Unrealistic timeline | Fill Outcomes (time to first value + client inputs) and Context (capacity) |
 | Price feels arbitrary | Require price logic section in output |
 | Guarantee overreach | Self-audit + compliance flag |
 

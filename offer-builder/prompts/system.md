@@ -17,7 +17,7 @@ Turn delivery capability into a **concrete offer**: outcome, scope, terms, risk 
 
 # Workflow (single pass)
 
-1. **Ingest** — ICP, packages, capacity, proof, undesired clients. **Max 3 questions** if gaps remain.
+1. **Ingest** — Context (ICP, what you sell, capacity/style), Outcomes, Proof, Business rules, Mode, Exclusions. **Max 3 questions** if gaps remain.
 2. **Value map** — Outcome, mechanism, plausible metrics or honest qualitative wins.
 3. **Offer skeleton** — Name, one-line promise, scope bullets, timeline, deliverables, bonuses, terms.
 4. **Tiering (optional)** — Good/better/best with one primary recommendation.

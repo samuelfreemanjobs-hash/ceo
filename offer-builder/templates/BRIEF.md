@@ -1,60 +1,38 @@
-# Offer build — brief
+# Offer builder — brief
 
-Copy to `briefs/ACTIVE.md` when ready to run.  
-Cursor: `@offer-builder/AGENTS.md` + filled brief · Output: `templates/OUTPUT.md`
+Copy to [`briefs/ACTIVE.md`](../briefs/ACTIVE.md) when ready to run.  
+Cursor: `@offer-builder/AGENTS.md` + filled brief · Output: [`templates/OUTPUT.md`](OUTPUT.md)
 
 Optional: [`USER_PROFILE.md`](../USER_PROFILE.md) · JSON: [`schemas/brief.v1.json`](../schemas/brief.v1.json)
 
 ---
 
-## Mode (pick one)
+## Context
 
-- [ ] `flagship` — one offer, deep
-- [ ] `stack` — ladder of offers + add-ons
-- [ ] `audit` — improve existing offer (attach current offer below)
+- **ICP (who it's for):**
+- **What you sell today (broadly):**
+- **Capacity (hours/team) & delivery style:** (DFY, DWY, coaching)
 
-## ICP & fit
+## Outcomes
 
-- **Ideal client (specific):** 
-- **Undesired clients (who should NOT buy):** 
-- **What they want (outcome):** 
-- **What they have today (status quo):** 
+- **Primary result for the client:**
+- **Time to first value:**
+- **What you need from the client (inputs, access):**
 
-## Delivery reality
+## Proof
 
-- **Service / productized offer:** 
-- **Current package(s):** 
-- **Team capacity (honest):** 
-- **Time to first value:** 
-- **Client must provide (inputs, access):** 
+- **Testimonials, metrics, or logos available:** (or none)
 
-## Proof available
+## Business rules
 
-| Asset | Yes? | Notes |
-|-------|------|-------|
-| Case studies / results | | |
-| Logos / names | | |
-| Quantified outcomes | | |
-| Testimonials (consented) | | |
-| Willing to offer guarantee | | |
+- **Target price or band:**
+- **Payment preference:**
+- **Geography / compliance (YMYL, B2B reg):**
 
-## Pricing (if known)
+## Mode
 
-- **Target price or range:** 
-- **Price logic preference:** value anchor / cost-plus / hybrid / strategic (explain)
-- **Existing pricing to audit:** (URL or paste)
+- [ ] `flagship`  [ ] `stack`  [ ] `audit`  — *if audit, paste current offer*:
 
-## Constraints
+## Exclusions
 
-- **Claims we cannot make:** 
-- **YMYL / regulated?** (health, finance, legal, etc.)
-- **Voice / tone:** 
-
-## Scout / research (optional)
-
-- `docs/marketing/research/...`
-
-## Confirm
-
-- [ ] Max 3 clarifying questions OK if gaps remain
-- [ ] Output must match real delivery capacity
+- **What you will not promise or deliver:**

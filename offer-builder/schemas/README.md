@@ -26,7 +26,7 @@
 | [`narrative-schema.json`](narrative-schema.json) | offer-copywriter |
 | [`evaluator-result-schema.json`](evaluator-result-schema.json) | offer-evaluator |
 | [`audit-log-schema.json`](audit-log-schema.json) | `offer.audit_log` shape |
-| [`brief.v1.json`](brief.v1.json) | offer-builder Playbook v1.2 ingest |
+| [`brief.v1.json`](brief.v1.json) | offer-builder Playbook v1.2 ingest — maps to `templates/BRIEF.md` |
 
 ## Legacy aliases
 
