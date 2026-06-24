@@ -101,6 +101,18 @@ marketing_director:
         - proposal-structure
         - proposal-validation
 
+    lp-agent:
+      task_subagent_type: lp-agent
+      model: sonnet
+      status: installed
+      domain: Landing page copy from offer + proposal — hero, proof, pricing, CTA; full/minimal/tiered formats
+      loop_budget: 8
+      agent_path: agents/lp-agent.md
+      package_path: lp-agent/
+      skills:
+        - lp-structure
+        - lp-validation
+
     offer-director:
       task_subagent_type: offer-director
       model: opus
@@ -230,10 +242,12 @@ marketing_director:
     copy-agent:
       tool_name: copy_agent
       model: sonnet
-      status: pending_install
+      status: installed
+      agent_path: agents/copy-agent.md
       domain: Messaging strategy, ad copy, long-form content
       loop_budget: 5
       interim_agent: writer
+      runtime_note: Python CopyAgent in marketing-dept --phase1
       skills:
         - brand-voice
         - channel-specific-copy
@@ -266,9 +280,11 @@ marketing_director:
     compliance-agent:
       tool_name: compliance_agent
       model: haiku
-      status: pending_install
+      status: installed
+      agent_path: agents/compliance-agent.md
       domain: Brand-safety review, legal/regulatory review, claim verification
       loop_budget: 4
+      runtime_note: Python ComplianceAgent in marketing-dept --phase1
       skills:
         - claim-verification
         - regulatory-frameworks
@@ -298,20 +314,22 @@ marketing_director:
 
   skills:
     brand-voice:
-      status: template
+      status: installed
       version: "1.0"
       owner: brand team
       path: skills/brand-voice/SKILL.md
+      profile_path: docs/marketing/BRAND-PROFILE.md
       used_by:
         - copy-agent
         - creative-agent
         - marketing-director
       note: Fill in [YOUR_BRAND] placeholders before production use
     prohibited-claims-and-disclaimers:
-      status: template
+      status: installed
       version: "1.0"
       owner: legal + brand
       path: skills/prohibited-claims-and-disclaimers/SKILL.md
+      profile_path: docs/marketing/BRAND-PROFILE.md
       used_by:
         - compliance-agent
         - marketing-director
@@ -543,6 +561,22 @@ marketing_director:
       package_path: proposal-agent/skills/proposal-validation/SKILL.md
       used_by:
         - proposal-agent
+    lp-structure:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/lp-structure/SKILL.md
+      package_path: lp-agent/skills/lp-structure/SKILL.md
+      used_by:
+        - lp-agent
+    lp-validation:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/lp-validation/SKILL.md
+      package_path: lp-agent/skills/lp-validation/SKILL.md
+      used_by:
+        - lp-agent
 
   rollout_phases:
     phase_1:

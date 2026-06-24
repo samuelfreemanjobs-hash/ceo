@@ -3,34 +3,25 @@ name: brand-voice
 description: Apply the brand voice and writing style for [YOUR_BRAND] to any external-facing or customer-touching content. Use this skill whenever generating copy, creative concepts, social posts, ad copy, email content, landing page text, blog posts, or any written material that will represent the brand — including drafts, revisions, and approval reviews. Also use when evaluating whether existing content sounds on-brand or when asked to make content sound "more like us."
 ---
 
-# Brand Voice — [YOUR_BRAND]
+# Brand Voice
 
-> **Status:** Template. Brand team to fill in placeholders before deployment.  
-> **Owner:** Brand team  
-> **Review cadence:** Quarterly  
-> **Used by:** Copywriter Agent (primary), Creative Agent, Director (for synthesis)
+> **Canonical profile:** [`docs/marketing/BRAND-PROFILE.md`](../../docs/marketing/BRAND-PROFILE.md) — edit there first.  
+> **Status:** Operational with B2B services defaults. Customize company name, ICP, and voice traits.  
+> **Owner:** Brand team · **Review:** Quarterly
 
 ## The 30-second test
 
-Before publishing anything, ask: "Does this sound like us, or could a competitor have published it?" If you can't tell, run the rewrite test at the bottom of this doc.
+Before publishing anything, ask: "Does this sound like us, or could a competitor have published it?" Cross-check against `docs/marketing/BRAND-PROFILE.md`.
 
 ## Voice attributes
 
-[YOUR_BRAND] sounds like:
+Load traits from **BRAND-PROFILE.md**. Default starter voice:
 
-1. **[Trait 1]** — [one-line explanation]
-2. **[Trait 2]** — [one-line explanation]
-3. **[Trait 3]** — [one-line explanation]
-4. **[Trait 4]** — [one-line explanation]
-5. **[Trait 5]** — [one-line explanation]
-
-**Example (filled in for a hypothetical fintech) — replace this with your own:**
-
-> 1. **Trustworthy without being stiff** — confident, but never paternalistic
-> 2. **Concrete** — we use numbers and specifics, not vibes
-> 3. **Calm** — money is stressful; we aren't
-> 4. **Direct** — we tell you what to do, not just list options
-> 5. **Plain-spoken** — no jargon unless the audience uses it first
+1. **Direct** — say what we mean; no filler
+2. **Concrete** — specifics over adjectives
+3. **Calm** — confident without hype
+4. **Practical** — what the client does next
+5. **Honest** — name tradeoffs and proof gaps
 
 ## Vocabulary
 

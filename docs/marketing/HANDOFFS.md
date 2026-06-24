@@ -13,8 +13,8 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 | White space identified in GTM landscape | **Offer Builder** (`offer-builder`) | Landscape excerpt, white-space hypothesis, confidence tags, open questions |
 | Funnel pattern worth mapping or countering | **Funnel Architect** (`funnel-architect`) | GTM teardown funnel section, competitor URLs, stage rates, P0 verification gaps |
 | Positioning / offer angle from landscape | **Offer Builder** (`offer-builder`) | White-space section, implications for us |
-| LP or ad creative direction | **LP** / **Ad** agents *(pending)* | Teardown positioning, competitor LP URLs, user contrast pages |
-| Battle card ready for external use | **Compliance** *(pending)* / Morgan | Artifact path, claims requiring substantiation, landmines list |
+| LP or ad creative direction | **LP** (`lp-agent`) / **Ad** agents *(pending)* | Teardown positioning, competitor LP URLs, user contrast pages |
+| Battle card ready for external use | **Compliance** (`compliance-agent`) / Morgan | Artifact path, claims requiring substantiation, landmines list |
 | Deep profile needed after GTM pass | Scout (same agent, different skill) | Load `competitor-profiling` + `pricing-teardown` |
 
 ### Handoff JSON (to Morgan or future agents)
@@ -40,10 +40,10 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 | GTM landscape, funnel teardown, white space, monitoring | `competition-analyzer` (GTM mode) |
 | Funnel design, audit, build, optimize | `funnel-architect` |
 | Positioning, value prop, offer stack, packaging | `offer-builder` |
-| Services offer → proposal → landing page | `offer-builder` → `proposal-agent` → LP *(pending)* |
+| Services offer → proposal → landing page | `offer-builder` → `proposal-agent` → `lp-agent` |
 | Full profile, M&A, pricing deep dive, move alert | `competition-analyzer` (Scout — full skills) |
-| Copy / content | `copy-agent` (interim: `writer`) |
-| External publish | `compliance-agent` |
+| Copy / content | `copy-agent` (interim: `writer`; Python: `marketing-dept --phase1`) |
+| External publish | `compliance-agent` (Python: `marketing-dept --phase1`) |
 
 ---
 
@@ -67,12 +67,12 @@ Spec: `offer-builder/OFFER-BUILDER-SPEC.md` · **7/7 agents installed** · MCP t
 
 ## Offer Builder → downstream (Marketing)
 
-Typical chain: **Offer Builder → Proposal → LP** (LP pending install).
+Typical chain: **Offer Builder → Proposal → LP**.
 
 | Trigger | Hand off to | Payload |
 |---------|-------------|---------|
 | Offer one-pager complete, need client proposal | **Proposal** (`proposal-agent`) | `docs/marketing/offers/...`, scope, tiers, price logic, objection pre-empts |
-| Offer + proposal ready for web | **LP** *(pending)* | Offer artifact, proposal §1/§5/§6/§9, headline/proof bullets, primary tier, CTA |
+| Offer + proposal ready for web | **LP** (`lp-agent`) | Offer artifact, proposal §1/§5/§6/§9, headline/proof bullets, primary tier, CTA |
 | Need funnel / channel fit | **Funnel Architect** | Offer path, ICP, primary conversion goal |
 | Messaging ready for assets | **Copywriter** (`copy-agent` / `writer`) | Headline direction, proof bullets, voice constraints |
 | Claims need legal review | **Compliance** | Unverified claims, guarantee terms, YMYL flags |
@@ -116,15 +116,34 @@ Already defined above (`from: competition-analyzer`, `to: offer-builder`).
 
 ---
 
-## Pending agents (not yet installed)
+### Handoff JSON (from Proposal → LP)
 
-| Agent | Receives from Scout / Offer Builder |
-|-------|-------------------------------------|
-| **Funnel Architect** | GTM teardown, funnel patterns *(installed)* |
-| **Offer Builder** | White-space analysis, positioning gaps *(installed)* |
-| **Proposal** | Offer one-pager, tiers, price logic *(installed)* |
-| **LP** | Offer + proposal artifact, positioning contrast, primary tier CTA *(pending)* |
-| **Ad** | User-supplied ad artifacts + pattern analysis |
+```json
+{
+  "from": "proposal-agent",
+  "to": "lp-agent",
+  "summary": "2-3 sentences",
+  "offer_path": "docs/marketing/offers/...",
+  "proposal_path": "docs/marketing/proposals/...",
+  "primary_cta": { "label": "Book a call", "url": "https://..." },
+  "format": "full",
+  "compliance_flags": ["..."]
+}
+```
+
+---
+
+## Agent status
+
+| Agent | Status |
+|-------|--------|
+| Funnel Architect | **Installed** |
+| Offer Builder | **Installed** |
+| Proposal | **Installed** |
+| LP | **Installed** |
+| Copywriter | **Installed** (card + Python Phase 1) |
+| Compliance | **Installed** (card + Python Phase 1) |
+| Ad | *(pending)* |
 
 ---
 

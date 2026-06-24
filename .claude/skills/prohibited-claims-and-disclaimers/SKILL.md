@@ -3,12 +3,11 @@ name: prohibited-claims-and-disclaimers
 description: Verify that any external-facing marketing content complies with legal restrictions, substantiation requirements, regulatory disclosures, and the company's prohibited claims list. Use this skill before publishing or approving ANY content that will be seen by customers, prospects, regulators, or the public — including ads, emails, landing pages, social posts, press materials, sales decks, and product copy. Also use when reviewing competitor comparisons, performance claims, health/finance/safety statements, or any content making quantitative assertions. The Compliance Agent should treat this as its primary rulebook.
 ---
 
-# Prohibited Claims and Required Disclaimers — [YOUR_BRAND]
+# Prohibited Claims and Required Disclaimers
 
-> **Status:** Template. Legal team must fill in and sign off before deployment.  
-> **Owner:** Legal + Brand  
-> **Review cadence:** Quarterly, and immediately upon any regulatory change in scope  
-> **Used by:** Compliance Agent (primary), Director (for escalation decisions)
+> **Canonical rules:** [`docs/marketing/BRAND-PROFILE.md`](../../docs/marketing/BRAND-PROFILE.md) — Compliance section.  
+> **Status:** Operational with B2B services defaults. Legal review recommended for regulated industries.  
+> **Owner:** Legal + Brand · **Used by:** Compliance Agent (primary)
 
 ## How the Compliance Agent uses this skill
 

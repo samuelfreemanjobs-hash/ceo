@@ -20,6 +20,18 @@ agents:
     description: "Use for decision-grade competitive intelligence and public GTM analysis — competitor profiles, battle cards, GTM landscapes, funnel teardowns, pricing signals, SWOT, monitoring checklists, and white-space analysis. Scout produces evidence-tagged findings for positioning, battlecards, and executive decisions. Invoke with user-supplied ad artifacts when analyzing creative; never invent ad claims."
     model: gpt-5-codex
     path: "agents/competition-analyzer.md"
+  - id: compliance-agent
+    name: "compliance-agent"
+    title: "Compliance Agent"
+    description: "Brand-safety and claim verification before external publish. Use for ads, landing pages, emails, and sales materials with quantitative or regulated claims. Interim — Python ComplianceAgent in marketing-dept Phase 1."
+    model: gpt-5-codex
+    path: "agents/compliance-agent.md"
+  - id: copy-agent
+    name: "copy-agent"
+    title: "Copywriter Agent"
+    description: "Messaging strategy, ad copy, email, and long-form content. Use for channel-specific copy when brand voice is defined. Interim prompt agent — Python CopyAgent also available in marketing-dept Phase 1."
+    model: gpt-5-codex
+    path: "agents/copy-agent.md"
   - id: developer
     name: "developer"
     title: "developer"
@@ -32,6 +44,12 @@ agents:
     description: "Use to audit, design, build, and optimize marketing and sales funnels end-to-end. Maps customer journeys, generates Funnel Specs with stage copy and metrics, runs funnel math via code execution, and proposes ICE-scored optimization tests. Invoke for funnel design, conversion leaks, email sequences, landing structure, channel-stage fit, and CAC/LTV modeling."
     model: gpt-5-codex
     path: "agents/funnel-architect.md"
+  - id: lp-agent
+    name: "lp-agent"
+    title: "LP Agent"
+    description: "Turn offer + proposal artifacts into conversion-focused landing page copy. Use after offer and proposal are ready — full, minimal, or tiered format. Preserves scope, pricing, and proof fidelity. Route to compliance before publish."
+    model: gpt-5-codex
+    path: "agents/lp-agent.md"
   - id: marketer
     name: "marketer"
     title: "marketer"
@@ -44,6 +62,48 @@ agents:
     description: "Hierarchical marketing orchestrator for the Marketing Dept. Plans, delegates to specialist agents, synthesizes deliverables, and owns brand-safe campaign output. Use for full campaigns, multi-channel content, coordinated marketing work, and any request requiring multiple marketing specialists."
     model: gpt-5-codex
     path: "agents/marketing-director.md"
+  - id: offer-builder
+    name: "offer-builder"
+    title: "Offer Builder"
+    description: "Package services or products into specific, executable offers — outcome, scope, terms, risk reversal, proof. Use for programs, sprints, retainers, and productized services. Modes flagship, stack, audit. Playbook v1.2. For CRM catalog quotes use offer-director instead."
+    model: gpt-5-codex
+    path: "agents/offer-builder.md"
+  - id: offer-copywriter
+    name: "offer-copywriter"
+    title: "Offer Copywriter"
+    description: "Enterprise offer sub-agent. Writes exec summary, value prop, why-us, objection handling, and next steps from dossier evidence. Distinct from marketing copy-agent. Banned phrases enforced; every claim sourced to dossier. Output conforms to copy-schema.json."
+    model: gpt-5-codex
+    path: "agents/offer-copywriter.md"
+  - id: offer-director
+    name: "offer-director"
+    title: "Offer Director"
+    description: "Enterprise B2B commercial offer supervisor. Orchestrates Discovery, Solution Architect, Risk, Pricing, Copywriter, and Evaluator. Produces assembled offer per offer-schema.json plus audit log. Human-in-loop before customer send. Invoke with opportunity_id and rep_brief for deal-desk quoting."
+    model: gpt-5-codex
+    path: "agents/offer-director.md"
+  - id: offer-discovery
+    name: "offer-discovery"
+    title: "Offer Discovery"
+    description: "Enterprise offer sub-agent. Builds factual customer dossier from CRM, Gong, email, and rep brief — single source of truth for offer workflow. NO generative authority over customer facts; unknown fields marked unknown. Output conforms to dossier-schema.json. Invoke first after Director accepts opportunity."
+    model: gpt-5-codex
+    path: "agents/offer-discovery.md"
+  - id: offer-evaluator
+    name: "offer-evaluator"
+    title: "Offer Evaluator"
+    description: "Enterprise offer quality gate. Scores six rubric dimensions 0-3 and routes revisions to owner agents — does NOT rewrite. Max 3 iterations then escalate_human. Output conforms to evaluation-schema.json."
+    model: gpt-5-codex
+    path: "agents/offer-evaluator.md"
+  - id: offer-pricing
+    name: "offer-pricing"
+    title: "Offer Pricing"
+    description: "Enterprise offer sub-agent. Produces policy-compliant priced line items from pricing_engine — NO generative authority over numbers or SKUs. Consumes dossier and scope; outputs pricing-schema.json. Strategic discounts require rule citation; floor_price violations block output."
+    model: gpt-5-codex
+    path: "agents/offer-pricing.md"
+  - id: offer-risk-compliance
+    name: "offer-risk-compliance"
+    title: "Offer Risk & Compliance"
+    description: "Enterprise offer sub-agent. Catches legal, regulatory, and operational risk before offer leaves the building. Clauses ONLY from clm.clauses.search — no composed legal language. Output conforms to risk-schema.json. Runs parallel with Solution Architect after dossier."
+    model: gpt-5-codex
+    path: "agents/offer-risk-compliance.md"
   - id: pm
     name: "pm"
     title: "pm"
@@ -56,12 +116,30 @@ agents:
     description: "Use this agent to analyze a project and align agents, tasks, and checklists to project standards. Pepe specializes in project context analysis and optimization with thorough, methodical precision."
     model: gpt-5-codex
     path: "agents/prepper.md"
+  - id: proposal-agent
+    name: "proposal-agent"
+    title: "Proposal Agent"
+    description: "Turn Offer Builder one-pagers into client-facing proposals. Use after offer artifact is ready — standard, short, or executive format. Preserves scope, pricing, and proof fidelity. Not for enterprise CRM quotes (offer-director) or legal contracts."
+    model: gpt-5-codex
+    path: "agents/proposal-agent.md"
   - id: qa
     name: "qa"
     title: "qa"
     description: "Use this agent for comprehensive test architecture reviews, quality gate assessments, and NFR validations. Quinn is a test architect who provides analytical, risk-based quality guidance with traceability focus."
     model: gpt-5-codex
     path: "agents/qa.md"
+  - id: scheduler-agent
+    name: "scheduler-agent"
+    title: "Scheduler Agent"
+    description: "Preference-aware calendar scheduling agent. Finds availability, books meetings, reschedules and cancels with human-in-the-loop confirmation on destructive actions. Python runtime with pluggable calendar backends. Use for find time, book a meeting, reschedule, or cancel requests."
+    model: gpt-5-codex
+    path: "agents/scheduler-agent.md"
+  - id: solution-architect
+    name: "solution-architect"
+    title: "Solution Architect"
+    description: "Enterprise offer sub-agent. Defines catalog-grounded scope — SKUs, quantities, configurations, milestones, success criteria — from Discovery dossier and rep brief. NO generative authority over SKUs; all line items from catalog.product.search. Output is the scope block of offer-schema.json; feeds Pricing. Invoke after Discovery, parallel with Risk & Compliance."
+    model: gpt-5-codex
+    path: "agents/solution-architect.md"
   - id: ux-expert
     name: "ux-expert"
     title: "ux-expert"

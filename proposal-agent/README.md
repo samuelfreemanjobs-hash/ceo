@@ -2,7 +2,7 @@
 
 Client-facing proposals from Offer Builder artifacts.
 
-**Entry:** `proposal-agent` · **Upstream:** `offer-builder` · **Downstream:** `lp-agent` *(pending)*
+**Entry:** `proposal-agent` · **Upstream:** `offer-builder` · **Downstream:** `lp-agent`
 
 | Doc | Path |
 |-----|------|

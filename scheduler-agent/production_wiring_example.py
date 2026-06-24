@@ -40,56 +40,50 @@ from google_calendar_backend import (
 from scheduler_agent import (
     PreferencesStore,
     SchedulerAgent,
-    UserPreferences,
 )
 from slack_hitl_queue import (
     RedisConfirmationStore,
     SlackHumanReviewQueue,
 )
+from preferences_store import PostgresPreferencesStore, SQLitePreferencesStore
 
 _PKG_DIR = Path(__file__).resolve().parent
 
 
 # ============================================================================
-# YOUR PreferencesStore implementation (sketch)
+# PreferencesStore — SQLite (dev) or Postgres (production)
 # ============================================================================
 
-class PostgresPreferencesStore(PreferencesStore):
-    """
-    Sketch -- implement against your actual Postgres schema.
-    Schema suggestion:
-        CREATE TABLE user_preferences (
-            user_id TEXT PRIMARY KEY,
-            timezone TEXT NOT NULL DEFAULT 'UTC',
-            working_hours_start INT NOT NULL DEFAULT 9,
-            working_hours_end INT NOT NULL DEFAULT 17,
-            working_days INT[] NOT NULL DEFAULT '{0,1,2,3,4}',
-            default_meeting_duration_minutes INT NOT NULL DEFAULT 30,
-            buffer_minutes_between_meetings INT NOT NULL DEFAULT 15,
-            max_meetings_per_day INT NOT NULL DEFAULT 6,
-            focus_block_minimum_minutes INT NOT NULL DEFAULT 90,
-            no_meeting_days INT[] NOT NULL DEFAULT '{}',
-            preferred_meeting_times TEXT[] NOT NULL DEFAULT '{}'
-        );
-    """
-
-    def __init__(self, db_conn_string: str):
-        self.dsn = db_conn_string
-
-    def get(self, user_id: str) -> UserPreferences:
-        raise NotImplementedError("Wire to your Postgres client")
-
-    def update(self, user_id: str, changes: dict) -> UserPreferences:
-        raise NotImplementedError("Wire to your Postgres client")
+def build_preferences_store() -> PreferencesStore:
+    """Pick store from env: DATABASE_URL → Postgres, else SQLite."""
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if dsn.startswith("postgres"):
+        return PostgresPreferencesStore(dsn)
+    db_path = os.environ.get(
+        "SCHEDULER_PREFS_DB",
+        str(_PKG_DIR / "data" / "preferences.db"),
+    )
+    return SQLitePreferencesStore(db_path)
 
 
 # ============================================================================
-# YOUR Google OAuth token lookup (sketch)
+# Google OAuth token lookup
 # ============================================================================
 
 def get_user_google_refresh_token(user_id: str) -> str:
-    """Look up the user's stored Google OAuth refresh token from your secrets store."""
-    raise NotImplementedError("Wire to your secrets store")
+    """
+    Look up the user's stored Google OAuth refresh token.
+
+    Dev: set GOOGLE_REFRESH_TOKEN in env (single user).
+    Prod: wire to your secrets store / user_tokens table.
+    """
+    token = os.environ.get("GOOGLE_REFRESH_TOKEN")
+    if token:
+        return token
+    raise RuntimeError(
+        f"No Google refresh token for user {user_id}. "
+        "Set GOOGLE_REFRESH_TOKEN (dev) or implement secrets lookup."
+    )
 
 
 # ============================================================================
@@ -113,7 +107,7 @@ def build_agent_for_user(user_id: str) -> SchedulerAgent:
         send_updates="all",
     )
 
-    prefs = PostgresPreferencesStore(os.environ["DATABASE_URL"])
+    prefs = build_preferences_store()
 
     import redis
 
@@ -137,14 +131,8 @@ def build_agent_for_user(user_id: str) -> SchedulerAgent:
 
 
 def _approval_channel_for_user(user_id: str) -> str:
-    """
-    Where should HIGH/CRITICAL confirmations go for this user?
-    Common patterns:
-      - DM to the user themselves (their Slack user ID prefixed with @)
-      - Team channel for shared calendars
-      - Per-org #scheduler-approvals channel
-    """
-    return "@U0123456"
+    """Slack channel or @user for HITL confirmations."""
+    return os.environ.get("SLACK_APPROVAL_CHANNEL", "@U0123456")
 
 
 # ============================================================================
@@ -186,5 +174,8 @@ def handle_scheduling_request(user_id: str, user_message: str) -> dict:
 #   SLACK_BOT_TOKEN              -- xoxb-... (bot token for posting messages)
 #   SLACK_SIGNING_SECRET         -- for webhook signature verification (Process B)
 #   REDIS_URL                    -- redis://... (shared between A and B)
-#   DATABASE_URL                 -- postgres://... (for PreferencesStore)
+#   DATABASE_URL                 -- postgres://... (optional; SQLite if unset)
+#   SCHEDULER_PREFS_DB           -- SQLite path when DATABASE_URL unset
+#   GOOGLE_REFRESH_TOKEN         -- dev single-user refresh token
+#   SLACK_APPROVAL_CHANNEL       -- @user or #channel for HITL
 # ============================================================================

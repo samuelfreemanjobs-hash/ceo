@@ -30,6 +30,18 @@ approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: competition-analyzer - Competition Analyzer
 
+[profiles.compliance-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: compliance-agent - Compliance Agent
+
+[profiles.copy-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: copy-agent - Copywriter Agent
+
 [profiles.developer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
@@ -41,6 +53,12 @@ model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: funnel-architect - Funnel Architect
+
+[profiles.lp-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: lp-agent - LP Agent
 
 [profiles.marketer]
 model = "gpt-5-codex"
@@ -54,6 +72,48 @@ approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: marketing-director - Marketing Director
 
+[profiles.offer-builder]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-builder - Offer Builder
+
+[profiles.offer-copywriter]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-copywriter - Offer Copywriter
+
+[profiles.offer-director]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-director - Offer Director
+
+[profiles.offer-discovery]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-discovery - Offer Discovery
+
+[profiles.offer-evaluator]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-evaluator - Offer Evaluator
+
+[profiles.offer-pricing]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-pricing - Offer Pricing
+
+[profiles.offer-risk-compliance]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-risk-compliance - Offer Risk & Compliance
+
 [profiles.pm]
 model = "gpt-5-codex"
 approval_policy = "on-request"
@@ -66,11 +126,29 @@ approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: prepper - prepper
 
+[profiles.proposal-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: proposal-agent - Proposal Agent
+
 [profiles.qa]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 # Agent: qa - qa
+
+[profiles.scheduler-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: scheduler-agent - Scheduler Agent
+
+[profiles.solution-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: solution-architect - Solution Architect
 
 [profiles.ux-expert]
 model = "gpt-5-codex"

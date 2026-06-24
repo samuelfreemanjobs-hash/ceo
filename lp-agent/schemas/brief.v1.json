@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LP Brief v1",
+  "type": "object",
+  "required": ["offer_path", "proposal_path", "primary_cta_label", "format"],
+  "properties": {
+    "offer_path": { "type": "string", "description": "Path to offer artifact" },
+    "proposal_path": { "type": "string", "description": "Path to proposal artifact" },
+    "slug": { "type": "string" },
+    "primary_cta_label": { "type": "string" },
+    "primary_cta_url": { "type": "string" },
+    "secondary_cta": { "type": "string" },
+    "format": { "enum": ["full", "minimal", "tiered"] },
+    "audience": { "type": "string" },
+    "tone_notes": { "type": "string" },
+    "page_type": { "enum": ["service_landing", "productized_offer", "waitlist"] },
+    "ymyl": { "type": "boolean" },
+    "compliance_flags": { "type": "array", "items": { "type": "string" } },
+    "output_path": { "type": "string" }
+  }
+}

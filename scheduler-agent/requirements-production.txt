@@ -5,3 +5,6 @@ google-auth-oauthlib>=1.1.0
 
 # Optional Redis (split agent + webhook deploy)
 redis>=5.0.0
+
+# Optional Postgres preferences store
+psycopg2-binary>=2.9.9

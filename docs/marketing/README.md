@@ -1,6 +1,8 @@
 # Marketing Department
 
-**Status:** Initializing  
+**Status:** Operational — see [GETTING-STARTED.md](GETTING-STARTED.md) to run your first workflow.
+
+Orchestration map, handoffs, and agent index for the marketing/GTM stack.  
 **Director:** Morgan (`marketing-director`)  
 **Last updated:** 2025-06-24
 
@@ -15,12 +17,13 @@ Marketing Director (Morgan)
 ├── Offer Director                [installed]  Enterprise B2B
 ├── Offer Builder                 [installed]  Playbook v1.2 — services offers
 ├── Proposal Agent                [installed]  Client proposals from offers
+├── LP Agent                      [installed]  Landing pages from offer + proposal
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
-├── Copywriter Agent            [pending]
+├── Copywriter Agent            [installed]  Card + marketing-dept Phase 1
 ├── Media Planner Agent         [pending]
 ├── Analytics (Ana)             [installed]
-└── Compliance Agent            [pending]
+└── Compliance Agent            [installed]  Card + marketing-dept Phase 1
 ```
 
 ## Routing
@@ -33,6 +36,7 @@ Marketing Director (Morgan)
 | Funnel design / audit / optimize | Funnel Architect or Marketing Director | Funnel Spec, stage copy, metrics |
 | Positioning / services offer / productized package | Offer Builder or Marketing Director | Offer one-pager, tier stack, messaging |
 | Client proposal from offer | Proposal Agent or Marketing Director | Sendable proposal doc |
+| Landing page from offer + proposal | LP Agent or Marketing Director | Web page copy |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |
@@ -49,6 +53,7 @@ Marketing Director (Morgan)
 - `docs/marketing/funnels/` — Funnel Specs and funnel artifacts
 - `docs/marketing/offers/` — Offer Specs and positioning artifacts
 - `docs/marketing/proposals/` — Client-facing proposals from Proposal Agent
+- `docs/marketing/landing-pages/` — Landing page copy from LP Agent
 
 ## Configuration
 
@@ -69,8 +74,8 @@ Marketing Director (Morgan)
 
 | Skill | Status | Path |
 |-------|--------|------|
-| `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
-| `prohibited-claims-and-disclaimers` | Template (legal sign-off required) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
+| `brand-voice` | Installed (customize `docs/marketing/BRAND-PROFILE.md`) | `.github/skills/brand-voice/SKILL.md` |
+| `prohibited-claims-and-disclaimers` | Installed (defaults in BRAND-PROFILE) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
 | `marketing-plan-current-quarter` | Template (refresh each quarter) | `.github/skills/marketing-plan-current-quarter/SKILL.md` |
 | `gtm-competitor-analysis` | Installed | `competition-analyzer/skills/gtm-competitor-analysis/SKILL.md` |
 | `competitor-profiling` | Installed | `competition-analyzer/skills/competitor-profiling/SKILL.md` |

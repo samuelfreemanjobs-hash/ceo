@@ -55,7 +55,7 @@
 ## Handoffs
 
 - **From** `offer-builder` — sections 1–8 of offer OUTPUT
-- **To** `lp-agent` *(pending)* — headline, proof, primary tier, CTA
+- **To** `lp-agent` — headline, proof, primary tier, CTA
 - **To** `compliance-agent` *(pending)* — guarantee terms, YMYL flags
 - **To** `writer` — email cover note (optional second pass)
 

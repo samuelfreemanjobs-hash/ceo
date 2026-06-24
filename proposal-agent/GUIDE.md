@@ -40,7 +40,7 @@
 
 | Agent | When |
 |-------|------|
-| **LP** *(pending)* | Offer + proposal ready for landing page |
+| **LP** | Offer + proposal ready for landing page |
 | **compliance-agent** | YMYL, guarantees, regulated claims |
 | **writer** | Cover email to accompany PDF |
 
