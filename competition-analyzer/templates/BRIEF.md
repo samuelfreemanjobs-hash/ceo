@@ -1,79 +1,79 @@
-# Competitor analysis brief
+# Competitor analysis — brief
 
-Copy to `briefs/ACTIVE.md` when ready to run. Delete filled sections you don't need.
+Copy to `briefs/ACTIVE.md` when ready to run.  
+Cursor: `@competition-analyzer/AGENTS.md` + filled brief · Output: `templates/OUTPUT.md`
+
+Optional: fill [`USER_PROFILE.md`](../USER_PROFILE.md) for standing offer/ICP context.
+
+**Competitor count:** 3–7 for `landscape` · 1 for `teardown` · 3–5 for `monitoring`. Disambiguate same-name companies: `Name (category, domain.com)`.
 
 ---
+
+## Our side (the user / client)
+
+- **Offer in one line:** 
+- **ICP:** 
+- **Geography:** 
+- **Price/pricing model (if public):** 
+
+## Competitor set
+
+| Name | URL | Notes (direct / indirect) |
+|------|-----|---------------------------|
+|      |     |                           |
+|      |     |                           |
+|      |     |                           |
+|      |     |                           |
+
+### Watch list (optional — `landscape` only)
+
+| Name | URL | Why watch later |
+|------|-----|-----------------|
+|      |     |                 |
+
+## Focus
+
+- [ ] Funnel & pages
+- [ ] Ads (you will provide or link libraries)
+- [ ] Pricing
+- [ ] Messaging / positioning
+- [ ] Proof / social
+- [ ] Product scope
 
 ## Mode
 
-Choose one: `teardown` | `landscape` | `monitoring`
+- [ ] `teardown`
+- [ ] `landscape`
+- [ ] `monitoring`
 
-**Selected mode:** 
+## Constraints
 
-## Lens
+- **Do not** claim access to: 
+- **Must compare against our:** 
 
-What decision does this inform? (positioning / battlecard / white-space / monitoring)
+## Artifacts (optional)
 
-**Lens:** 
-
-## Your context
-
-- [ ] USER_PROFILE.md is filled (optional)
-- **Our offer (one line):** 
-
----
-
-## Competitors
-
-**Rule:** 3–7 for `landscape`; 1 for `teardown`; 3–5 for `monitoring`.  
-Disambiguate same-name companies: `Name (category, domain.com)`.
-
-| # | Competitor | URL | Notes |
-|---|------------|-----|-------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-
-### Watch list (optional — analyze later)
-
-| Competitor | URL | Why watch |
-|------------|-----|-----------|
-| | | |
-
----
-
-## Evidence you are supplying
-
-### Ad / creative (user-supplied only)
-
-- [ ] No ad analysis requested
-- [ ] Screenshots attached / pasted below
-- [ ] Export file path: 
-- [ ] I will check Ad Library manually — do not invent copy
-
-**Pasted ad notes or links:**
+Paste or link screenshots, ad exports, or page URLs here:
 
 ```
-(paste here)
+(paste screenshots, exports, LP URLs, Ad Library links)
 ```
 
-### Landing / funnel pages to compare
+**Ads:** attach artifacts or state you'll check Ad Library manually — do *not* ask the model to invent ad copy.
 
-| Competitor | LP or key funnel URL |
-|------------|---------------------|
-| | |
-| **Ours (contrast)** | |
+| Page | URL |
+|------|-----|
+| Our LP (contrast) | |
+| Competitor LP | |
 
 ---
 
 ## Output instructions
 
 - [ ] Use `templates/OUTPUT.md` structure
-- [ ] Tag P0 / P1 / P2 items
+- [ ] Tag P0 / P1 / P2 (for `landscape` / `monitoring`)
 - [ ] Unknowns must be explicit
-- [ ] Save to: `docs/marketing/research/` (specify filename if known)
+- [ ] Save to: `docs/marketing/research/` (filename if known)
 
 **Additional asks:**
 
@@ -85,8 +85,8 @@ Disambiguate same-name companies: `Name (category, domain.com)`.
 
 ## Run checklist
 
-- [ ] Brief filled
-- [ ] Mode selected
-- [ ] URLs present for each competitor
-- [ ] Ad section completed OR explicitly skipped
-- [ ] Ready to `@AGENTS.md` + brief
+- [ ] Our side + competitor URLs filled
+- [ ] Mode selected (one)
+- [ ] Focus areas checked
+- [ ] Artifacts pasted OR ads explicitly skipped
+- [ ] Ready to run
