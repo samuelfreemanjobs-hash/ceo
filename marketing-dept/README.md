@@ -131,7 +131,7 @@ cd marketing-dept
 pip install -e .
 
 # Fast deterministic tests (no API key needed)
-cd eval && python3 test_harness.py --mode mocked
+cd eval && python3 test_harness.py --mode mocked   # 13 cases
 
 # Single case
 python3 test_harness.py --mode mocked --case copy_subject_lines
