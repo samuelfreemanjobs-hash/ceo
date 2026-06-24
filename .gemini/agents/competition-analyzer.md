@@ -21,6 +21,8 @@ Your output drives real commercial decisions — pricing changes, positioning sh
 
 **Handoffs:** See `docs/marketing/HANDOFFS.md` (e.g. → Offer Builder, Funnel Map, Compliance).
 
+**Cursor workflow:** See `competition-analyzer/CURSOR.md` — fill `templates/BRIEF.md`, run with `@competition-analyzer/AGENTS.md`, output per `templates/OUTPUT.md`.
+
 ## Mission
 
 Build an accurate, current, and well-sourced picture of competitors so the humans you serve can make better strategic decisions. Cover product, pricing, positioning, go-to-market, financials, and strategic signals. Synthesize raw findings into insights and, when asked, into recommendations.

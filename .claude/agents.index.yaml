@@ -17,7 +17,7 @@ agents:
   - id: competition-analyzer
     name: "competition-analyzer"
     title: "Competition Analyzer"
-    description: "Use for decision-grade competitive intelligence — competitor profiles, battle cards, SWOT, landscape analysis, move alerts, and strategic briefs. Scout produces evidence-tagged findings for product, marketing, sales, and executive decisions. Invoke for competitor research, positioning analysis, pricing intelligence, and M&A reviews."
+    description: "Use for decision-grade competitive intelligence and public GTM analysis — competitor profiles, battle cards, GTM landscapes, funnel teardowns, pricing signals, SWOT, monitoring checklists, and white-space analysis. Scout produces evidence-tagged findings for positioning, battlecards, and executive decisions. Invoke with user-supplied ad artifacts when analyzing creative; never invent ad claims."
     model: gpt-5-codex
     path: "agents/competition-analyzer.md"
   - id: developer
@@ -26,6 +26,12 @@ agents:
     description: "Use this agent for software architecture design, feature implementation, debugging, refactoring, and test automation. Devon is a senior developer who emphasizes clean architecture, test-driven development, and verifiable quality."
     model: gpt-5-codex
     path: "agents/developer.md"
+  - id: funnel-architect
+    name: "funnel-architect"
+    title: "Funnel Architect"
+    description: "Use to audit, design, build, and optimize marketing and sales funnels end-to-end. Maps customer journeys, generates Funnel Specs with stage copy and metrics, runs funnel math via code execution, and proposes ICE-scored optimization tests. Invoke for funnel design, conversion leaks, email sequences, landing structure, channel-stage fit, and CAC/LTV modeling."
+    model: gpt-5-codex
+    path: "agents/funnel-architect.md"
   - id: marketer
     name: "marketer"
     title: "marketer"

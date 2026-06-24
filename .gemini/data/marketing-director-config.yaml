@@ -57,6 +57,22 @@ marketing_director:
         - source-evaluation
         - strategic-synthesis
 
+    funnel-architect:
+      task_subagent_type: funnel-architect
+      model: opus
+      status: installed
+      domain: Funnel audit, design, build, optimize — Funnel Specs, stage copy, metrics, ICE tests
+      loop_budget: 12
+      agent_path: agents/funnel-architect.md
+      package_path: funnel-architect/
+      skills:
+        - funnel-frameworks
+        - audience-mapping
+        - channel-playbooks
+        - conversion-copywriting
+        - funnel-metrics
+        - funnel-visualization
+
     research-agent:
       tool_name: research_agent
       model: sonnet
@@ -225,6 +241,58 @@ marketing_director:
       used_by:
         - competition-analyzer
         - marketing-director
+    funnel-frameworks:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-frameworks/SKILL.md
+      package_path: funnel-architect/skills/funnel-frameworks/SKILL.md
+      used_by:
+        - funnel-architect
+    audience-mapping:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/audience-mapping/SKILL.md
+      package_path: funnel-architect/skills/audience-mapping/SKILL.md
+      used_by:
+        - funnel-architect
+        - marketing-director
+    channel-playbooks:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/channel-playbooks/SKILL.md
+      package_path: funnel-architect/skills/channel-playbooks/SKILL.md
+      used_by:
+        - funnel-architect
+        - media-agent
+    conversion-copywriting:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/conversion-copywriting/SKILL.md
+      package_path: funnel-architect/skills/conversion-copywriting/SKILL.md
+      used_by:
+        - funnel-architect
+        - copy-agent
+    funnel-metrics:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-metrics/SKILL.md
+      package_path: funnel-architect/skills/funnel-metrics/SKILL.md
+      used_by:
+        - funnel-architect
+        - analytics
+    funnel-visualization:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-visualization/SKILL.md
+      package_path: funnel-architect/skills/funnel-visualization/SKILL.md
+      used_by:
+        - funnel-architect
 
   rollout_phases:
     phase_1:
@@ -233,7 +301,7 @@ marketing_director:
       request_types: [content_request]
     phase_2:
       name: Insights layer
-      specialists: [competition-analyzer, research-agent, analytics]
+      specialists: [competition-analyzer, funnel-architect, research-agent, analytics]
       request_types: [content_request, analysis_request, ideation, ops]
     phase_3:
       name: Full campaigns
@@ -263,3 +331,4 @@ marketing_director:
       battle_cards: docs/marketing/research/battle-cards/
       alerts: docs/marketing/research/alerts/
       general: docs/marketing/research/
+    funnels: docs/marketing/funnels/

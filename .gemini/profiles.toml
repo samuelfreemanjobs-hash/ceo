@@ -24,6 +24,12 @@ approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: competition-analyzer - Competition Analyzer
 
+[profiles.funnel-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: funnel-architect - Funnel Architect
+
 [profiles.marketing-director]
 model = "gpt-5-codex"
 approval_policy = "on-request"

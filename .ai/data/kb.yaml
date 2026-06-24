@@ -94,6 +94,7 @@ core_team:
     reports_to: orchestrator
     manages:
       - competition-analyzer
+      - funnel-architect
       - research-agent
       - creative-agent
       - copy-agent

@@ -36,6 +36,12 @@ approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 # Agent: developer - developer
 
+[profiles.funnel-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: funnel-architect - Funnel Architect
+
 [profiles.marketer]
 model = "gpt-5-codex"
 approval_policy = "on-request"

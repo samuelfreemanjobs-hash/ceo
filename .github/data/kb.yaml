@@ -94,6 +94,7 @@ core_team:
     reports_to: orchestrator
     manages:
       - competition-analyzer
+      - funnel-architect
       - research-agent
       - creative-agent
       - copy-agent
@@ -116,6 +117,22 @@ core_team:
       - move_alerts
       - landscape_reports
       - strategic_briefs
+    reports_to: marketing_director
+
+  - id: funnel_architect
+    title: Funnel Architect
+    purpose: Audit, design, build, and optimize marketing and sales funnels end-to-end.
+    primary_functions:
+      - discover_audience_and_offer_context
+      - map_funnel_stages_and_channels
+      - generate_funnel_spec_and_deliverables
+      - model_funnel_metrics_and_unit_economics
+      - propose_ice_scored_optimization_tests
+    outputs:
+      - funnel_specs
+      - stage_copy_and_sequences
+      - funnel_diagrams
+      - metrics_and_instrumentation_plans
     reports_to: marketing_director
 
   - id: ux_expert

@@ -11,6 +11,7 @@ The Marketing Dept is a hierarchical multi-agent team orchestrated by the Market
 ```
 Marketing Director (Morgan)
 ├── Competition Analyzer (Scout)  [installed]
+├── Funnel Architect              [installed]
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
 ├── Copywriter Agent            [pending]
@@ -26,6 +27,7 @@ Marketing Director (Morgan)
 | Full campaign | Marketing Director | Full orchestration |
 | Content / copy | Marketing Director → Copy | Specialist + compliance |
 | Competitive intelligence | Competition Analyzer (Scout) or Marketing Director | Profiles, battle cards, SWOT, landscape |
+| Funnel design / audit / optimize | Funnel Architect or Marketing Director | Funnel Spec, stage copy, metrics |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |
@@ -39,11 +41,11 @@ Marketing Director (Morgan)
 - `docs/marketing/research/profiles/` — Competitor profiles
 - `docs/marketing/research/battle-cards/` — Sales battle cards
 - `docs/marketing/research/alerts/` — Competitive move alerts
-- `docs/marketing/research/` — Landscape analyses, SWOT, strategic briefs
+- `docs/marketing/funnels/` — Funnel Specs and funnel artifacts
 
 ## Configuration
 
-- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`
+- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`, `.github/agents/funnel-architect.md`
 - Orchestration config: `.github/data/marketing-director-config.yaml`
 - Campaign brief template: `.github/templates/campaign-brief-tmpl.yaml`
 - Battle card template: `.github/templates/battle-card-tmpl.yaml`
@@ -52,7 +54,7 @@ Marketing Director (Morgan)
 ## Rollout phases
 
 1. **Phase 1** — Director + Copy + Compliance (content requests)
-2. **Phase 2** — Add Competition Analyzer + Research + Analytics (analysis, ideation, ops)
+2. **Phase 2** — Add Competition Analyzer + Funnel Architect + Research + Analytics (analysis, ideation, ops)
 3. **Phase 3** — Add Creative + Media (full campaigns)
 4. **Phase 4** — Optimization and evaluator agents
 
@@ -68,6 +70,16 @@ Marketing Director (Morgan)
 | `pricing-teardown` | Installed | `competition-analyzer/skills/pricing-teardown/SKILL.md` |
 | `source-evaluation` | Installed | `competition-analyzer/skills/source-evaluation/SKILL.md` |
 | `strategic-synthesis` | Installed | `competition-analyzer/skills/strategic-synthesis/SKILL.md` |
+| `funnel-frameworks` | Installed | `funnel-architect/skills/funnel-frameworks/SKILL.md` |
+| `audience-mapping` | Installed | `funnel-architect/skills/audience-mapping/SKILL.md` |
+| `channel-playbooks` | Installed | `funnel-architect/skills/channel-playbooks/SKILL.md` |
+| `conversion-copywriting` | Installed | `funnel-architect/skills/conversion-copywriting/SKILL.md` |
+| `funnel-metrics` | Installed | `funnel-architect/skills/funnel-metrics/SKILL.md` |
+| `funnel-visualization` | Installed | `funnel-architect/skills/funnel-visualization/SKILL.md` |
+
+## Funnel Architect package
+
+[`funnel-architect/`](../funnel-architect/README.md) — audit, design, build, optimize funnels. Blueprint: `funnel-architect-agent.md` · Metrics scripts in `skills/funnel-metrics/scripts/`.
 
 ## Competition Analyzer package
 
@@ -76,5 +88,5 @@ Standalone deployable package: [`competition-analyzer/`](../competition-analyzer
 - `system-prompt.md` — API / Project instructions
 - `CLAUDE.md` — Claude Code auto-load
 - `worked-example.md` — methodology trace (Linear)
-- `HANDOFFS.md` — cross-agent handoffs (Offer Builder, Funnel Map, LP, Ad)
+- `HANDOFFS.md` — cross-agent handoffs (Funnel Architect, Offer Builder, LP, Ad)
 - **Cursor workflow:** `competition-analyzer/CURSOR.md` (brief → run → log)

@@ -3,3 +3,4 @@
 worktrees/
 .claude/.backup/
 .gemini/.backup/
+.github/.backup/
