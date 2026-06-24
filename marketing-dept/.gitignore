@@ -6,3 +6,6 @@ venv/
 dist/
 build/
 *.egg
+traces/
+eval/traces/
+eval/reports/

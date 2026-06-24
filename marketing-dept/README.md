@@ -115,3 +115,34 @@ Propagate `trace_id` through your logging pipeline for end-to-end replay.
 | Output directories | `docs/marketing/` |
 
 Keep `DIRECTOR_SYSTEM_PROMPT` in `director.py` in sync with the agent markdown when you update either.
+
+## Testing
+
+Three-layer eval harness in `eval/`:
+
+| Mode | API calls | Cost | Use for |
+|------|-----------|------|---------|
+| `mocked` | None | Free | Routing, escalation, compliance gates |
+| `smoke` | 3 canonical cases | ~$1 | End-to-end integration check |
+| `full` | All cases + LLM judges | ~$5-15 | Pre-release evaluation |
+
+```bash
+cd marketing-dept
+pip install -e .
+
+# Fast deterministic tests (no API key needed)
+cd eval && python3 test_harness.py --mode mocked
+
+# Single case
+python3 test_harness.py --mode mocked --case copy_subject_lines
+
+# Smoke test (requires ANTHROPIC_API_KEY)
+python3 test_harness.py --mode smoke
+
+# Full eval with HTML report
+python3 test_harness.py --mode full --report reports/eval.html
+```
+
+Traces are written to `eval/traces/<run_id>_<case>.jsonl` for replay and debugging.
+
+Eval cases live in `eval/eval_cases.py` — add cases there without modifying the harness.
