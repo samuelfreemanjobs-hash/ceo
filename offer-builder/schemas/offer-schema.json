@@ -1,0 +1,517 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "offer-schema.json",
+  "title": "Offer",
+  "description": "The structured object produced by the Offer Director, assembled from all specialist agents. Contract between the agent system and downstream consumers (CRM, docgen, approval workflow, observability).",
+  "type": "object",
+  "required": [
+    "offer_id",
+    "opportunity_id",
+    "created_at",
+    "schema_version",
+    "deal_type",
+    "dossier_ref",
+    "scope",
+    "pricing",
+    "risk",
+    "narrative",
+    "approval",
+    "evaluator_result",
+    "audit_log"
+  ],
+  "properties": {
+    "offer_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID generated at creation time."
+    },
+    "opportunity_id": {
+      "type": "string",
+      "description": "CRM opportunity identifier."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "deal_type": {
+      "type": "string",
+      "enum": ["new-logo", "renewal", "expansion", "pilot", "rfp-response"]
+    },
+
+    "dossier_ref": {
+      "type": "object",
+      "required": ["dossier_id", "confidence"],
+      "properties": {
+        "dossier_id": { "type": "string" },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "open_gaps": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "scope": {
+      "type": "object",
+      "required": ["line_items", "term_months", "milestones", "success_criteria"],
+      "properties": {
+        "line_items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["sku", "name", "quantity", "configuration"],
+            "properties": {
+              "sku": { "type": "string" },
+              "name": { "type": "string" },
+              "quantity": { "type": "integer", "minimum": 1 },
+              "configuration": { "type": "object" },
+              "dependencies_checked": { "type": "boolean" }
+            }
+          }
+        },
+        "term_months": { "type": "integer", "minimum": 1 },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "target_date"],
+            "properties": {
+              "name": { "type": "string" },
+              "target_date": { "type": "string", "format": "date" },
+              "owner": { "type": "string" }
+            }
+          }
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "non_standard": {
+          "type": "boolean",
+          "description": "True if scope includes custom engineering or non-catalog work. Triggers solutions-engineer review."
+        }
+      }
+    },
+
+    "pricing": {
+      "type": "object",
+      "required": [
+        "currency",
+        "list_subtotal",
+        "discounts",
+        "strategic_adder_eligibility_log",
+        "total_contract_value",
+        "annual_contract_value",
+        "payment_schedule",
+        "aggregate_discount_pct",
+        "floor_check_passed"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code."
+        },
+        "list_subtotal": {
+          "type": "number",
+          "minimum": 0,
+          "description": "After renewal uplift if applicable; before any discounts."
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "amount", "rule_id", "justification"],
+            "properties": {
+              "type": {
+                "enum": [
+                  "segment",
+                  "volume",
+                  "competitive",
+                  "multi-year",
+                  "strategic-logo",
+                  "renewal-offset"
+                ]
+              },
+              "amount": { "type": "number", "minimum": 0 },
+              "rule_id": { "type": "string" },
+              "justification": { "type": "string" }
+            }
+          }
+        },
+        "strategic_adder_eligibility_log": {
+          "type": "array",
+          "description": "Records ALL strategic adders evaluated, whether selected or not. Used by Evaluator to verify no stacking occurred.",
+          "items": {
+            "type": "object",
+            "required": ["type", "eligible", "selected"],
+            "properties": {
+              "type": {
+                "enum": ["competitive", "multi-year", "strategic-logo"]
+              },
+              "eligible": { "type": "boolean" },
+              "would_yield": {
+                "type": "number",
+                "description": "Dollar value if applied. Required when eligible=true."
+              },
+              "selected": { "type": "boolean" }
+            }
+          }
+        },
+        "total_contract_value": { "type": "number", "minimum": 0 },
+        "annual_contract_value": { "type": "number", "minimum": 0 },
+        "payment_schedule": { "type": "string" },
+        "aggregate_discount_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "floor_check_passed": {
+          "type": "boolean",
+          "const": true,
+          "description": "MUST be true. Pricing Agent refuses to emit if false."
+        },
+        "renewal_uplift_pct": {
+          "type": ["number", "null"],
+          "description": "Null unless deal_type=renewal."
+        }
+      }
+    },
+
+    "risk": {
+      "type": "object",
+      "required": [
+        "jurisdiction_status",
+        "blocking_issues",
+        "recommended_clauses",
+        "sla_assessment",
+        "indemnity_recommendation"
+      ],
+      "properties": {
+        "jurisdiction_status": {
+          "enum": ["clear", "restricted", "blocked", "requires_review"]
+        },
+        "jurisdiction_notes": { "type": "string" },
+        "blocking_issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "description", "owner"],
+            "properties": {
+              "type": { "type": "string" },
+              "description": { "type": "string" },
+              "owner": {
+                "enum": ["legal", "solution_architect", "director", "human_rep"]
+              },
+              "source": { "type": "string" }
+            }
+          }
+        },
+        "recommended_clauses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["clause_id", "title", "version", "source"],
+            "properties": {
+              "clause_id": { "type": "string" },
+              "title": { "type": "string" },
+              "version": { "type": "string" },
+              "rationale": { "type": "string" },
+              "source": {
+                "type": "string",
+                "description": "Must reference clm.clauses.search result."
+              }
+            }
+          }
+        },
+        "sla_assessment": {
+          "type": "object",
+          "required": ["tier_recommended", "max_financial_exposure"],
+          "properties": {
+            "tier_recommended": { "type": "string" },
+            "max_financial_exposure": { "type": "number", "minimum": 0 },
+            "deviations_from_standard": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "indemnity_recommendation": {
+          "type": "object",
+          "required": ["type", "clause_id"],
+          "properties": {
+            "type": { "type": "string" },
+            "rationale": { "type": "string" },
+            "clause_id": { "type": "string" }
+          }
+        },
+        "precedent_findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["prior_deal_id", "deviation", "likely_to_recur"],
+            "properties": {
+              "prior_deal_id": { "type": "string" },
+              "deviation": { "type": "string" },
+              "likely_to_recur": { "type": "boolean" }
+            }
+          }
+        },
+        "open_questions_for_legal": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "narrative": {
+      "type": "object",
+      "required": ["executive_summary", "value_proposition", "why_us", "next_steps", "style_applied"],
+      "properties": {
+        "executive_summary": { "$ref": "#/$defs/narrativeBlock" },
+        "value_proposition": { "$ref": "#/$defs/narrativeBlock" },
+        "why_us": { "$ref": "#/$defs/narrativeBlock" },
+        "objection_handling": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["objection", "response", "trigger"],
+            "properties": {
+              "objection": { "type": "string" },
+              "response": { "type": "string" },
+              "trigger": {
+                "type": "string",
+                "description": "e.g. 'competitor:CompetitorX' or 'dossier:pains[1]'"
+              }
+            }
+          }
+        },
+        "next_steps": {
+          "type": "object",
+          "required": ["actions"],
+          "properties": {
+            "actions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["action", "owner", "by_date"],
+                "properties": {
+                  "action": { "type": "string" },
+                  "owner": { "type": "string" },
+                  "by_date": { "type": "string", "format": "date" }
+                }
+              }
+            }
+          }
+        },
+        "style_applied": {
+          "type": "object",
+          "required": ["segment", "style"],
+          "properties": {
+            "segment": { "enum": ["enterprise", "mid-market", "SMB"] },
+            "style": { "enum": ["formal", "consultative", "technical", "founder-direct"] }
+          }
+        },
+        "flags_back_to_solution_architect": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "approval": {
+      "type": "object",
+      "required": ["requires_approval", "status"],
+      "properties": {
+        "requires_approval": { "type": "boolean" },
+        "approver_role": {
+          "type": ["string", "null"],
+          "enum": ["sales_manager", "vp_sales", "cro", "legal", null]
+        },
+        "approver_role_reason": {
+          "type": ["string", "null"],
+          "description": "Why this approver was selected (band, override, etc)."
+        },
+        "status": {
+          "enum": ["not_required", "pending", "approved", "rejected"]
+        },
+        "approver_decision_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "approver_notes": { "type": ["string", "null"] }
+      }
+    },
+
+    "evaluator_result": {
+      "type": "object",
+      "required": ["scores", "final_status", "iteration_count"],
+      "properties": {
+        "scores": {
+          "type": "object",
+          "required": [
+            "completeness",
+            "consistency",
+            "policy",
+            "grounding",
+            "tone",
+            "differentiation"
+          ],
+          "properties": {
+            "completeness": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "consistency": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "policy": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "grounding": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "tone": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "differentiation": { "type": "integer", "minimum": 0, "maximum": 3 }
+          }
+        },
+        "final_status": {
+          "enum": ["pass", "revise", "escalate_human"]
+        },
+        "iteration_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "revisions_requested": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "dimension",
+              "current_score",
+              "target_score",
+              "specific_issues",
+              "recommended_owner_agent"
+            ],
+            "properties": {
+              "dimension": {
+                "enum": ["completeness", "consistency", "policy", "grounding", "tone", "differentiation"]
+              },
+              "current_score": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "target_score": { "type": "integer", "const": 2 },
+              "specific_issues": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "recommended_owner_agent": {
+                "enum": ["discovery", "solution_architect", "pricing", "risk", "copywriter"]
+              }
+            }
+          }
+        },
+        "diff_summary": {
+          "type": ["string", "null"],
+          "description": "Populated only when final_status = escalate_human."
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "final_status": { "const": "escalate_human" } } },
+          "then": { "required": ["diff_summary"] }
+        },
+        {
+          "if": { "properties": { "final_status": { "const": "revise" } } },
+          "then": { "required": ["revisions_requested"] }
+        }
+      ]
+    },
+
+    "audit_log": {
+      "type": "object",
+      "required": ["agent_calls", "tool_calls", "skill_versions"],
+      "properties": {
+        "agent_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["agent", "started_at", "completed_at", "prompt_version", "model"],
+            "properties": {
+              "agent": {
+                "enum": ["director", "discovery", "solution_architect", "pricing", "risk", "copywriter", "evaluator"]
+              },
+              "started_at": { "type": "string", "format": "date-time" },
+              "completed_at": { "type": "string", "format": "date-time" },
+              "prompt_version": { "type": "string" },
+              "model": { "type": "string" },
+              "input_tokens": { "type": "integer", "minimum": 0 },
+              "output_tokens": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["tool", "called_by", "called_at", "success"],
+            "properties": {
+              "tool": { "type": "string" },
+              "called_by": { "type": "string" },
+              "called_at": { "type": "string", "format": "date-time" },
+              "args_hash": { "type": "string" },
+              "success": { "type": "boolean" },
+              "error": { "type": ["string", "null"] },
+              "latency_ms": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "skill_versions": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Map of skill_name → version used. e.g. {\"pricing-policy\": \"2025.Q4.3\"}"
+        },
+        "escalations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "to", "reason", "at"],
+            "properties": {
+              "type": {
+                "enum": ["legal", "manager_approval", "human_rep", "solutions_engineer", "cro"]
+              },
+              "to": { "type": "string" },
+              "reason": { "type": "string" },
+              "at": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "narrativeBlock": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string" },
+        "claim_sources": {
+          "type": "array",
+          "description": "Maps customer-specific claims in `text` to dossier fields. Generic claims need no source.",
+          "items": {
+            "type": "object",
+            "required": ["sentence_index", "source"],
+            "properties": {
+              "sentence_index": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "0-indexed sentence in `text`."
+              },
+              "source": {
+                "type": "string",
+                "description": "Dotted path into dossier, e.g. 'dossier.pains[0]'."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

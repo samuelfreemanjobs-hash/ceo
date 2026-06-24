@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FunnelArchitectTrace",
+  "type": "object",
+  "required": ["trace_id", "phase", "skills_invoked", "tools_called", "model", "latency_ms"],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "pattern": "^fa_[0-9]{4}-[0-9]{2}-[0-9]{2}_[a-z0-9]+$"
+    },
+    "user_id": { "type": "string" },
+    "phase": {
+      "type": "string",
+      "enum": ["discovery", "frame", "map", "build", "measure", "optimize"]
+    },
+    "skills_invoked": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tools_called": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "query": { "type": "string" },
+          "purpose": { "type": "string" }
+        }
+      }
+    },
+    "tokens_in": { "type": "integer", "minimum": 0 },
+    "tokens_out": { "type": "integer", "minimum": 0 },
+    "model": { "type": "string" },
+    "latency_ms": { "type": "integer", "minimum": 0 },
+    "user_rating": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+    "user_edits": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "failure_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "skipped_discovery",
+          "channel_misfit",
+          "invented_benchmark",
+          "voice_mismatch",
+          "channels_as_stages"
+        ]
+      }
+    }
+  }
+}

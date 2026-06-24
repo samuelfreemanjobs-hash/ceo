@@ -12,51 +12,177 @@
 # Copy-paste this entire block into your ~/.claude/config.toml file
 # ============================================================================
 
-[profiles.analyst]
+[profiles.ad-agent]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Ana - Analytics Specialist
+# Agent: ad-agent - Ad Agent
+
+[profiles.analytics]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: analytics - analytics
 
 [profiles.ceo]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Cleo - Executive Orchestrator
+# Agent: ceo - ceo
+
+[profiles.competition-analyzer]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: competition-analyzer - Competition Analyzer
+
+[profiles.compliance-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: compliance-agent - Compliance Agent
+
+[profiles.copy-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: copy-agent - Copywriter Agent
+
+[profiles.creative-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: creative-agent - Creative Agent
 
 [profiles.developer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-# Agent: Devon - Senior Developer & Architect
+# Agent: developer - developer
+
+[profiles.funnel-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: funnel-architect - Funnel Architect
+
+[profiles.lp-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: lp-agent - LP Agent
 
 [profiles.marketer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Mark - Unified Marketing Strategist 📢
+# Agent: marketer - marketer
+
+[profiles.marketing-director]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: marketing-director - Marketing Director
+
+[profiles.media-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: media-agent - Media Planner Agent
+
+[profiles.offer-builder]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-builder - Offer Builder
+
+[profiles.offer-copywriter]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-copywriter - Offer Copywriter
+
+[profiles.offer-director]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-director - Offer Director
+
+[profiles.offer-discovery]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-discovery - Offer Discovery
+
+[profiles.offer-evaluator]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-evaluator - Offer Evaluator
+
+[profiles.offer-pricing]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-pricing - Offer Pricing
+
+[profiles.offer-risk-compliance]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: offer-risk-compliance - Offer Risk & Compliance
 
 [profiles.pm]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Manny - Lean Product Manager
+# Agent: pm - pm
 
 [profiles.prepper]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Pepe - Project Preparation & Optimization Specialist
+# Agent: prepper - prepper
+
+[profiles.proposal-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: proposal-agent - Proposal Agent
 
 [profiles.qa]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-# Agent: Quinn - Test Architect & Quality Advisor
+# Agent: qa - qa
+
+[profiles.research-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: research-agent - Research Agent
+
+[profiles.scheduler-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: scheduler-agent - Scheduler Agent
+
+[profiles.solution-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: solution-architect - Solution Architect
 
 [profiles.ux-expert]
 model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
-# Agent: Sally - UX Expert
+# Agent: ux-expert - ux-expert
+
+[profiles.writer]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: writer - writer
 

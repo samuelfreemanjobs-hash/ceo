@@ -1,0 +1,38 @@
+# ============================================================================
+# CEO Orchestration System - Agent Profiles
+# ============================================================================
+# Add these profiles to your ~/.claude/config.toml to enable agent switching
+#
+# Usage:
+#   codex --profile ceo        # Start with CEO orchestrator
+#   codex --profile developer  # Start with Developer agent
+#   codex --profile pm         # Start with Product Manager
+#   etc.
+#
+# Copy-paste this entire block into your ~/.claude/config.toml file
+# ============================================================================
+
+[profiles.ceo]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: ceo - ceo
+
+[profiles.competition-analyzer]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: competition-analyzer - Competition Analyzer
+
+[profiles.funnel-architect]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: funnel-architect - Funnel Architect
+
+[profiles.marketing-director]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: marketing-director - Marketing Director
+

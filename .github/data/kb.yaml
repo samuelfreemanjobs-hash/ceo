@@ -77,6 +77,64 @@ core_team:
       - campaign_metrics
       - optimization_recommendations
 
+  - id: marketing_director
+    title: Marketing Director
+    purpose: Orchestrate the Marketing Dept — plan, delegate to specialists, synthesize brand-safe deliverables.
+    primary_functions:
+      - classify_and_route_marketing_requests
+      - orchestrate_specialist_agents
+      - enforce_compliance_gates
+      - synthesize_campaign_deliverables
+      - escalate_high_risk_decisions
+    outputs:
+      - campaign_decks
+      - coordinated_content_packs
+      - decision_logs
+      - escalation_notices
+    reports_to: orchestrator
+    manages:
+      - competition-analyzer
+      - funnel-architect
+      - research-agent
+      - creative-agent
+      - copy-agent
+      - media-agent
+      - analytics
+      - compliance-agent
+
+  - id: competition_analyzer
+    title: Competition Analyzer
+    purpose: Produce decision-grade competitive intelligence for product, marketing, sales, and executive decisions.
+    primary_functions:
+      - build_competitor_profiles
+      - generate_battle_cards
+      - conduct_landscape_analysis
+      - flag_competitive_moves
+      - synthesize_swot_and_strategic_briefs
+    outputs:
+      - competitor_profiles
+      - battle_cards
+      - move_alerts
+      - landscape_reports
+      - strategic_briefs
+    reports_to: marketing_director
+
+  - id: funnel_architect
+    title: Funnel Architect
+    purpose: Audit, design, build, and optimize marketing and sales funnels end-to-end.
+    primary_functions:
+      - discover_audience_and_offer_context
+      - map_funnel_stages_and_channels
+      - generate_funnel_spec_and_deliverables
+      - model_funnel_metrics_and_unit_economics
+      - propose_ice_scored_optimization_tests
+    outputs:
+      - funnel_specs
+      - stage_copy_and_sequences
+      - funnel_diagrams
+      - metrics_and_instrumentation_plans
+    reports_to: marketing_director
+
   - id: ux_expert
     title: User Advocate
     purpose: Ensure product usability and design consistency.

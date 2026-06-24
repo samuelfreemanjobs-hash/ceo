@@ -1,0 +1,28 @@
+name: Scheduler Agent Tests
+
+on:
+  push:
+    paths:
+      - 'scheduler-agent/**'
+      - '.github/workflows/scheduler-agent-tests.yml'
+  pull_request:
+    paths:
+      - 'scheduler-agent/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scheduler-agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-production.txt
+      - name: Run tests
+        run: python -m pytest tests/ -q

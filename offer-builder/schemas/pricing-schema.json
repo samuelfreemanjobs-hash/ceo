@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal.example.com/schemas/pricing-schema.json",
+  "title": "Pricing",
+  "description": "Pricing Agent output block. Director maps into offer.pricing.",
+  "type": "object",
+  "required": [
+    "currency",
+    "list_subtotal",
+    "discounts",
+    "strategic_adder_eligibility_log",
+    "total_contract_value",
+    "annual_contract_value",
+    "payment_schedule",
+    "aggregate_discount_pct",
+    "floor_check_passed"
+  ],
+  "properties": {
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "list_subtotal": {
+      "type": "number",
+      "minimum": 0
+    },
+    "discounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "amount", "rule_id", "justification"],
+        "properties": {
+          "type": {
+            "enum": [
+              "segment",
+              "volume",
+              "competitive",
+              "multi-year",
+              "strategic-logo",
+              "renewal-offset"
+            ]
+          },
+          "amount": { "type": "number", "minimum": 0 },
+          "rule_id": { "type": "string" },
+          "justification": { "type": "string" }
+        }
+      }
+    },
+    "strategic_adder_eligibility_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "eligible", "selected"],
+        "properties": {
+          "type": {
+            "enum": ["competitive", "multi-year", "strategic-logo"]
+          },
+          "eligible": { "type": "boolean" },
+          "would_yield": { "type": "number" },
+          "selected": { "type": "boolean" }
+        }
+      }
+    },
+    "total_contract_value": { "type": "number", "minimum": 0 },
+    "annual_contract_value": { "type": "number", "minimum": 0 },
+    "payment_schedule": { "type": "string" },
+    "aggregate_discount_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "floor_check_passed": {
+      "type": "boolean",
+      "const": true
+    },
+    "renewal_uplift_pct": {
+      "type": ["number", "null"]
+    }
+  }
+}

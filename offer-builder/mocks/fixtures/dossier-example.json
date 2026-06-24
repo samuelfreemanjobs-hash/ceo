@@ -1,0 +1,43 @@
+{
+  "account": {
+    "name": "Acme Corp",
+    "industry": "B2B SaaS",
+    "segment": "mid-market",
+    "size_employees": 120,
+    "region": "US",
+    "billing_country": "US",
+    "source": "crm.account.get:001xx000003DGbQ"
+  },
+  "opportunity": {
+    "stage": "Discovery",
+    "amount_estimate": 75000,
+    "expected_close": "2026-08-15",
+    "deal_type": "new-logo",
+    "source": "crm.opportunity.get:006xx000004T2Q9"
+  },
+  "decision_makers": [
+    {
+      "name": "Jordan Lee",
+      "title": "VP Engineering",
+      "role": "economic",
+      "source": "crm.contact.get:003xx000001AbCd"
+    }
+  ],
+  "pains": [
+    {
+      "description": "Integration backlog blocking enterprise deals",
+      "evidence": "Call 2026-06-10: 'We lose deals when SSO takes 90 days'",
+      "source": "gong.transcript.search:meeting-abc123"
+    }
+  ],
+  "competitors_mentioned": [
+    {
+      "name": "RivalCo",
+      "context": "incumbent in 2 lost deals",
+      "source": "crm.activity.search:006xx000004T2Q9"
+    }
+  ],
+  "urgency_signals": ["Q3 board review of enterprise pipeline"],
+  "rep_brief_consistency": "consistent",
+  "dossier_confidence": "medium"
+}

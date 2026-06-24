@@ -34,6 +34,20 @@ If you only have orchestration, your agents stay smart for one session.
 If you only have memory, your repository becomes organized but under-automated.
 The strongest setup uses both.
 
+## Business stack (marketing + scheduler)
+
+This repo includes runnable **marketing** and **scheduler** packages:
+
+| Package | Quick start |
+|---------|-------------|
+| **Marketing GTM chain** | `docs/marketing/GETTING-STARTED.md` — Offer → Proposal → LP |
+| **Marketing Python runtime** | `marketing-dept/` — `marketing-director --phase1` |
+| **Scheduler agent** | `scheduler-agent/` — `python scheduler_agent.py` (dev smoke) |
+
+Bootstrap: `./scripts/setup.sh` · Env templates: `.env.example`, `marketing-dept/.env.example`, `scheduler-agent/.env.example` · Infra: `docker compose up -d`
+
+Customize brand once: `docs/marketing/BRAND-PROFILE.md`
+
 ## What Problem Does This Solve?
 
 Working with AI for complex projects often leads to:

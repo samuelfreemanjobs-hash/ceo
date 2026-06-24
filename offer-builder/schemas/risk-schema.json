@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal.example.com/schemas/risk-schema.json",
+  "title": "Risk",
+  "description": "Risk & Compliance Agent output block. Director maps into offer.risk.",
+  "type": "object",
+  "required": [
+    "jurisdiction_status",
+    "blocking_issues",
+    "recommended_clauses",
+    "sla_assessment",
+    "indemnity_recommendation"
+  ],
+  "properties": {
+    "jurisdiction_status": {
+      "enum": ["clear", "restricted", "blocked", "requires_review"]
+    },
+    "jurisdiction_notes": { "type": "string" },
+    "blocking_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description", "owner"],
+        "properties": {
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "owner": {
+            "enum": ["legal", "solution_architect", "director", "human_rep"]
+          },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "recommended_clauses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["clause_id", "title", "version", "source"],
+        "properties": {
+          "clause_id": { "type": "string" },
+          "title": { "type": "string" },
+          "version": { "type": "string" },
+          "rationale": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "sla_assessment": {
+      "type": "object",
+      "required": ["tier_recommended", "max_financial_exposure"],
+      "properties": {
+        "tier_recommended": { "type": "string" },
+        "max_financial_exposure": { "type": "number", "minimum": 0 },
+        "deviations_from_standard": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "indemnity_recommendation": {
+      "type": "object",
+      "required": ["type", "clause_id"],
+      "properties": {
+        "type": { "type": "string" },
+        "rationale": { "type": "string" },
+        "clause_id": { "type": "string" }
+      }
+    },
+    "precedent_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["prior_deal_id", "deviation", "likely_to_recur"],
+        "properties": {
+          "prior_deal_id": { "type": "string" },
+          "deviation": { "type": "string" },
+          "likely_to_recur": { "type": "boolean" }
+        }
+      }
+    },
+    "open_questions_for_legal": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

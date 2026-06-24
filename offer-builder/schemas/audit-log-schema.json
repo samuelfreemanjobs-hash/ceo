@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal.example.com/schemas/audit-log-schema.json",
+  "title": "AuditLog",
+  "description": "Embedded in offer.audit_log. Director assembles from pipeline execution.",
+  "type": "object",
+  "required": ["agent_calls", "tool_calls", "skill_versions"],
+  "properties": {
+    "agent_calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent", "started_at", "completed_at", "prompt_version", "model"],
+        "properties": {
+          "agent": {
+            "enum": [
+              "director",
+              "discovery",
+              "solution_architect",
+              "pricing",
+              "risk",
+              "copywriter",
+              "evaluator"
+            ]
+          },
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" },
+          "prompt_version": { "type": "string" },
+          "model": { "type": "string" },
+          "input_tokens": { "type": "integer", "minimum": 0 },
+          "output_tokens": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "tool_calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tool", "called_by", "called_at", "success"],
+        "properties": {
+          "tool": { "type": "string" },
+          "called_by": { "type": "string" },
+          "called_at": { "type": "string", "format": "date-time" },
+          "args_hash": { "type": "string" },
+          "success": { "type": "boolean" },
+          "error": { "type": ["string", "null"] },
+          "latency_ms": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "skill_versions": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "escalations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "to", "reason", "at"],
+        "properties": {
+          "type": {
+            "enum": [
+              "legal",
+              "manager_approval",
+              "human_rep",
+              "solutions_engineer",
+              "cro"
+            ]
+          },
+          "to": { "type": "string" },
+          "reason": { "type": "string" },
+          "at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
