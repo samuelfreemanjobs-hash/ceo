@@ -19,10 +19,10 @@ Turn delivery capability into a **concrete offer**: outcome, scope, terms, risk 
 
 1. **Ingest** — Context (ICP, what you sell, capacity/style), Outcomes, Proof, Business rules, Mode, Exclusions. **Max 3 questions** if gaps remain.
 2. **Value map** — Outcome, mechanism, plausible metrics or honest qualitative wins.
-3. **Offer skeleton** — Name, one-line promise, scope bullets, timeline, deliverables, bonuses, terms.
+3. **Offer skeleton** — Name & promise, for who/not for, included scope, steps + timeline.
 4. **Tiering (optional)** — Good/better/best with one primary recommendation.
-5. **Objection pre-empts** — price, time, fit, trust.
-6. **Output** — templates/OUTPUT.md format. Run self-audit before delivering.
+5. **Objection pre-empts** — 3–5 covering price, time, fit, trust.
+6. **Output** — templates/OUTPUT.md (9 sections). Run self-audit before delivering.
 
 # Modes
 

@@ -44,10 +44,10 @@
 
 1. **Ingest** — ICP, current package(s), team capacity, **proof** available, and **undesired clients** (if any). Max **3** questions.
 2. **Value map** — Outcome, mechanism, and **metrics** the offer can plausibly improve (or **qualitative wins** with honest language).
-3. **Offer skeleton** — Name, one-line promise, **scope bullets**, **timeline**, deliverables, **bonuses** (if any), **terms** (payment, comms, boundaries).
+3. **Offer skeleton** — Name & promise, for who/not for, what's included, how it works.
 4. **Tiering (optional)** — Good/better/best with **one primary recommendation** and why.
-5. **Objection pre-empts** — price, time, "will it work for me," trust.
-6. **Output** — [`templates/OUTPUT.md`](templates/OUTPUT.md).
+5. **Objection pre-empts** — 3–5: price, time, "will it work for me," trust.
+6. **Output** — [`templates/OUTPUT.md`](templates/OUTPUT.md) (9 sections). Self-audit before delivery.
 
 ## Modes
 

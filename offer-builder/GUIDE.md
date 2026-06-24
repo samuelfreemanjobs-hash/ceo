@@ -49,12 +49,17 @@ Full contracts: [HANDOFFS.md](../docs/marketing/HANDOFFS.md)
 
 ## What good output looks like
 
-- **One-line promise** — qualified, delivery-honest
-- **In / out of scope** — explicit; out-of-scope builds trust
-- **Client inputs required** — boring ops detail included
-- **One primary tier** — recommended with rationale
-- **Objection pre-empts** — price, time, fit, trust
-- **Self-audit** passed (see [AGENTS.md](AGENTS.md))
+Matches [`templates/OUTPUT.md`](templates/OUTPUT.md):
+
+1. **Name & one-line promise** — honest scope
+2. **For who / not for** — ICP fit explicit
+3. **What's included** — bullets + boundaries
+4. **How it works** — steps + timeline + client inputs
+5. **Proof** — or honest gap + what to collect next
+6. **Pricing** — logic stated; tiers with one primary if stack mode
+7. **Guarantee / terms** — only if defensible
+8. **Objection handling** — 3–5
+9. **Implementation checklist** — sales + delivery handoff
 
 ---
 
