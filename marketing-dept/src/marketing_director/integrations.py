@@ -2,10 +2,18 @@
 
 from __future__ import annotations
 
+import json
+import logging
+import os
+import time
+import uuid
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
+from urllib import error, request
 
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 def find_repo_root(start: Path | None = None) -> Path | None:
@@ -106,6 +114,112 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
         }
 
     return payload
+
+
+def load_phase1_skills(repo_root: Path | None = None) -> dict[str, str]:
+    """Load P0 skill content for Phase 1 copy + compliance wiring."""
+    root = repo_root or find_repo_root()
+    skills: dict[str, str] = {}
+    for skill_id, key in (
+        ("brand-voice", "brand_voice"),
+        ("prohibited-claims-and-disclaimers", "prohibited_claims"),
+    ):
+        loaded = load_skill(skill_id, root)
+        if loaded.get("status") == "loaded" and loaded.get("content"):
+            skills[key] = loaded["content"]
+    return skills
+
+
+def make_repo_specialist_tool_executor(
+    brand_memory_loader: Callable[[str], dict],
+) -> Callable[[str, dict], dict]:
+    """Wire copy/compliance specialist tools to repo-backed brand memory."""
+
+    def executor(tool_name: str, tool_input: dict) -> dict:
+        if tool_name == "style_guide_lookup":
+            topic = tool_input.get("topic", "brand_voice")
+            return brand_memory_loader(topic if topic != "brand_voice" else "brand-voice")
+        if tool_name == "rules_engine":
+            return brand_memory_loader("prohibited-claims-and-disclaimers")
+        if tool_name == "previous_copy_search":
+            root = find_repo_root()
+            content_dir = (root / "docs/marketing/content") if root else None
+            if content_dir and content_dir.is_dir():
+                files = [p.name for p in content_dir.glob("*.md")][:10]
+                return {"results": files, "source": str(content_dir), "query": tool_input.get("query")}
+            return {"results": [], "note": "No prior copy archive — save outputs to docs/marketing/content/"}
+        if tool_name == "web_search":
+            return {"results": [], "_stub": True, "query": tool_input.get("query")}
+        if tool_name == "internal_db_query":
+            return {"rows": [], "_stub": True, "source": tool_input.get("source")}
+        if tool_name == "analytics_query":
+            return {"data": [], "_stub": True, "metric": tool_input.get("metric")}
+        return {"error": f"no executor for {tool_name}"}
+
+    return executor
+
+
+def create_human_review_handler(
+    repo_root: Path | None = None,
+    slack_webhook_url: str | None = None,
+) -> Callable[[dict], dict]:
+    """
+    Queue human reviews to docs/marketing/decisions/ and optionally notify Slack.
+
+    Set SLACK_WEBHOOK_URL env var or pass slack_webhook_url explicitly.
+    """
+    root = repo_root or find_repo_root()
+    webhook = slack_webhook_url or os.environ.get("SLACK_WEBHOOK_URL")
+    decisions_dir = (root / "docs/marketing/decisions") if root else Path("reviews")
+    decisions_dir.mkdir(parents=True, exist_ok=True)
+
+    def handler(review_request: dict) -> dict:
+        review_id = str(uuid.uuid4())
+        record = {
+            "review_id": review_id,
+            "status": "queued",
+            "created_at": time.time(),
+            **review_request,
+        }
+        path = decisions_dir / f"review-{review_id}.json"
+        path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+        logger.warning("Human review queued: %s → %s", review_id, path)
+
+        if webhook:
+            urgency = review_request.get("urgency", "routine")
+            reason = review_request.get("reason", "Review required")
+            context = review_request.get("context", "")[:500]
+            payload = {
+                "text": (
+                    f":warning: *Marketing review [{urgency}]*\n"
+                    f"*Reason:* {reason}\n"
+                    f"*Context:* {context}\n"
+                    f"*Review ID:* `{review_id}`"
+                ),
+            }
+            try:
+                req = request.Request(
+                    webhook,
+                    data=json.dumps(payload).encode("utf-8"),
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+                with request.urlopen(req, timeout=10) as resp:
+                    record["slack_status"] = resp.status
+            except (error.URLError, error.HTTPError) as exc:
+                logger.exception("Slack notification failed")
+                record["slack_error"] = str(exc)
+
+        record["path"] = str(path)
+        path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+        return {
+            "review_id": review_id,
+            "status": "queued",
+            "path": str(path),
+            "message": "Review queued for human approval before external publication.",
+        }
+
+    return handler
 
 
 def thresholds_from_config(repo_root: Path | None = None):

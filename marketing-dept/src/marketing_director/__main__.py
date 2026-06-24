@@ -10,8 +10,12 @@ import sys
 
 from anthropic import Anthropic
 
-from marketing_director import MarketingDirector
-from marketing_director.integrations import repo_brand_memory_loader, thresholds_from_config
+from marketing_director import MarketingDirector, create_phase1_director
+from marketing_director.integrations import (
+    create_human_review_handler,
+    repo_brand_memory_loader,
+    thresholds_from_config,
+)
 
 
 def main() -> None:
@@ -27,6 +31,11 @@ def main() -> None:
         "--json",
         action="store_true",
         help="Print full result JSON instead of deliverable only",
+    )
+    parser.add_argument(
+        "--phase1",
+        action="store_true",
+        help="Phase 1 mode: copy + compliance + repo brand memory only (recommended to start)",
     )
     parser.add_argument(
         "--use-repo-config",
@@ -49,12 +58,16 @@ def main() -> None:
 
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
-    kwargs: dict = {"client": client}
-    if args.use_repo_config:
-        kwargs["thresholds"] = thresholds_from_config()
-        kwargs["brand_memory_loader"] = repo_brand_memory_loader
+    if args.phase1:
+        director = create_phase1_director(client)
+    else:
+        kwargs: dict = {"client": client}
+        if args.use_repo_config:
+            kwargs["thresholds"] = thresholds_from_config()
+            kwargs["brand_memory_loader"] = repo_brand_memory_loader
+            kwargs["human_review_handler"] = create_human_review_handler()
+        director = MarketingDirector(**kwargs)
 
-    director = MarketingDirector(**kwargs)
     result = director.handle_request(user_request)
 
     if args.json:

@@ -16,30 +16,34 @@ Requires `ANTHROPIC_API_KEY` in the environment.
 
 ## Quick start
 
+**Phase 1 (recommended):** copy + compliance + repo brand memory only.
+
 ```python
 from anthropic import Anthropic
-from marketing_director import MarketingDirector
+from marketing_director import create_phase1_director
 
-client = Anthropic()
-director = MarketingDirector(client)
-
+director = create_phase1_director(Anthropic())
 result = director.handle_request(
     "Write three subject lines for our Mother's Day skincare email."
 )
 print(result["deliverable"])
 ```
 
+**Full director** (all specialists):
+
+```python
+from marketing_director import MarketingDirector
+director = MarketingDirector(Anthropic())
+```
+
 ## CLI
 
 ```bash
-# From repo root (with package installed)
-marketing-director "Write three subject lines for our Mother's Day skincare email."
+# Phase 1 — ship this first
+marketing-director --phase1 "Write three subject lines for our newsletter."
 
-# Use CEO repo config for thresholds + brand memory
+# Full orchestrator + repo config
 marketing-director --use-repo-config "Plan a Q1 launch campaign for product X"
-
-# Full JSON output (trace ID, token usage, escalation flags)
-marketing-director --json "Why did last month's CPL spike?"
 ```
 
 ## Repo integration

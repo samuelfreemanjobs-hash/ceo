@@ -552,6 +552,25 @@ Output contract — JSON:
 - recommended_variant: index of your top pick
 - notes: anything the Director should know
 """
+    TOOLS = [
+        {
+            "name": "style_guide_lookup",
+            "description": "Load brand voice rules and vocabulary from brand memory.",
+            "input_schema": {
+                "type": "object",
+                "properties": {"topic": {"type": "string", "default": "brand_voice"}},
+            },
+        },
+        {
+            "name": "previous_copy_search",
+            "description": "Search prior copy that performed well (wire to DAM or archive).",
+            "input_schema": {
+                "type": "object",
+                "properties": {"query": {"type": "string"}, "channel": {"type": "string"}},
+                "required": ["query"],
+            },
+        },
+    ]
 
     def _build_user_message(self, input_data: dict) -> str:
         return (
@@ -657,6 +676,16 @@ Rules:
 - If you are uncertain, escalate severity, do not lower it.
 - ready_to_publish must be `false` if ANY issue is MEDIUM or higher.
 """
+    TOOLS = [
+        {
+            "name": "rules_engine",
+            "description": "Load prohibited claims and required disclaimers rulebook.",
+            "input_schema": {
+                "type": "object",
+                "properties": {"topic": {"type": "string", "default": "prohibited_claims"}},
+            },
+        },
+    ]
 
     def _build_user_message(self, input_data: dict) -> str:
         return (
@@ -705,6 +734,9 @@ class MarketingDirector:
         thresholds: Optional[CostThresholds] = None,
         brand_memory_loader: Optional[Callable[[str], dict]] = None,
         human_review_handler: Optional[Callable[[dict], dict]] = None,
+        enabled_specialists: Optional[list[str]] = None,
+        enabled_tools: Optional[list[str]] = None,
+        system_prompt: Optional[str] = None,
     ):
         self.client = client
         self.models = models or ModelConfig()
@@ -714,9 +746,16 @@ class MarketingDirector:
         self.brand_memory_loader = brand_memory_loader or self._default_brand_memory
         self.human_review_handler = human_review_handler or self._default_human_review
 
+        self._director_system = system_prompt or DIRECTOR_SYSTEM_PROMPT
+        if enabled_tools:
+            names = set(enabled_tools)
+            self._director_tools = [t for t in SPECIALIST_TOOL_SCHEMAS if t["name"] in names]
+        else:
+            self._director_tools = SPECIALIST_TOOL_SCHEMAS
+
         self.trace_id = str(uuid.uuid4())
 
-        self.specialists: dict[str, BaseSpecialist] = {
+        all_specialists: dict[str, BaseSpecialist] = {
             "research_agent": ResearchAgent(
                 client, self.models.research, self.budgets.research,
                 tool_executor=self._specialist_tool_executor, trace_id=self.trace_id,
@@ -743,6 +782,12 @@ class MarketingDirector:
             ),
         }
 
+        if enabled_specialists:
+            allowed = set(enabled_specialists)
+            self.specialists = {k: v for k, v in all_specialists.items() if k in allowed}
+        else:
+            self.specialists = all_specialists
+
         self._call_counts: dict[str, int] = {}
 
     def handle_request(self, user_request: str) -> dict[str, Any]:
@@ -758,8 +803,8 @@ class MarketingDirector:
             response = self.client.messages.create(
                 model=self.models.director,
                 max_tokens=4096,
-                system=DIRECTOR_SYSTEM_PROMPT,
-                tools=SPECIALIST_TOOL_SCHEMAS,
+                system=self._director_system,
+                tools=self._director_tools,
                 messages=messages,
             )
             total_tokens += response.usage.input_tokens + response.usage.output_tokens

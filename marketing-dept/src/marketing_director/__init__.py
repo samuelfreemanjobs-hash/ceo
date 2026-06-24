@@ -15,6 +15,7 @@ from marketing_director.director import (
     SpecialistResult,
     example_usage,
 )
+from marketing_director.phase1 import create_phase1_director
 
 __all__ = [
     "AnalyticsAgent",
@@ -29,5 +30,6 @@ __all__ = [
     "ModelConfig",
     "ResearchAgent",
     "SpecialistResult",
+    "create_phase1_director",
     "example_usage",
 ]
