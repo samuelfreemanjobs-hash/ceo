@@ -146,3 +146,14 @@ python3 test_harness.py --mode full --report reports/eval.html
 Traces are written to `eval/traces/<run_id>_<case>.jsonl` for replay and debugging.
 
 Eval cases live in `eval/eval_cases.py` — add cases there without modifying the harness.
+
+## Phase 1 deployment gate
+
+Before shipping Phase 1, run the failure-mode case against real Claude:
+
+```bash
+cd eval
+python3 test_harness.py --mode full --case failure_unsubstantiated_stat --report reports/phase1-gate.html
+```
+
+See [`eval/PHASE1-GATE.md`](eval/PHASE1-GATE.md) for pass criteria and CI instructions.

@@ -1,0 +1,95 @@
+name: Marketing Director Eval
+
+on:
+  pull_request:
+    paths:
+      - "marketing-dept/**"
+      - ".github/workflows/marketing-director-eval.yml"
+  push:
+    branches: [main]
+    paths:
+      - "marketing-dept/**"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Eval mode"
+        required: true
+        default: mocked
+        type: choice
+        options:
+          - mocked
+          - smoke
+          - full
+      case_id:
+        description: "Optional single case ID (e.g. failure_unsubstantiated_stat)"
+        required: false
+        type: string
+
+jobs:
+  eval-mocked:
+    name: Eval (mocked)
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode == 'mocked'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: marketing-dept
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: marketing-dept/pyproject.toml
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Run mocked eval (all cases)
+        run: |
+          cd eval
+          python test_harness.py --mode mocked --report reports/mocked.txt
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: marketing-director-eval-mocked
+          path: marketing-dept/eval/reports/mocked.txt
+
+  eval-live:
+    name: Eval (${{ github.event.inputs.mode }})
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'mocked'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: marketing-dept
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: marketing-dept/pyproject.toml
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Run live eval
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          cd eval
+          ARGS="--mode ${{ github.event.inputs.mode }} --report reports/live-${{ github.event.inputs.mode }}.html"
+          if [ -n "${{ github.event.inputs.case_id }}" ]; then
+            ARGS="$ARGS --case ${{ github.event.inputs.case_id }}"
+          fi
+          python test_harness.py $ARGS
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: marketing-director-eval-${{ github.event.inputs.mode }}
+          path: marketing-dept/eval/reports/
