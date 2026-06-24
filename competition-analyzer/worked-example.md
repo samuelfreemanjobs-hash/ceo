@@ -34,8 +34,8 @@ The agent applies the default workflow from CLAUDE.md:
 Sub-investigations identified:
   1. Pricing teardown                      → pricing-teardown skill
   2. Positioning and ICP                   → competitor-profiling §4, §5
-  3. Product strengths/limitations          → competitor-profiling §2, §8
-  4. Recent strategic moves (12 mo)         → competitor-profiling §7
+  3. Product strengths/limitations          → competitor-profiling §2, §10
+  4. Recent strategic moves (12 mo)         → competitor-profiling §9
   5. Source quality across all of above    → source-evaluation (continuous)
   6. Synthesis into battle card             → strategic-synthesis (last)
 
@@ -93,7 +93,7 @@ The "68% price cut" claim from one secondary source: **Unverified** — only one
 
 **Strategy interpretation:** Value-based with PLG-style funnel, transitioning toward enterprise. Free tier exists to win bottoms-up adoption inside engineering teams; the 250-issue cap forces quick upgrade once a team is real. The recent introduction of Enterprise-only governance features and the "issue tracking is dead" repositioning suggest movement upmarket. **Likely.**
 
-### Positioning (competitor-profiling §4)
+### Positioning (competitor-profiling §5)
 
 **Hero claim, June 2026:** _"The system for product development. Purpose-built for planning and building products. Designed for the AI era."_ (Source: linear.app homepage, 2026-06-14. **Confirmed.**)
 
@@ -125,7 +125,7 @@ Last 12 months, by date:
 
 **Pattern recognition (per strategic-synthesis):** This is a **platform play**. Three signals consistent with it: (a) MCP-first architecture, (b) explicit category repositioning, (c) moving up the stack from issue tracking into code review (Diffs). Not just AI features bolted on — the product surface is being rebuilt around the assumption that agents are first-class users. **Likely → Confirmed** given the consistent multi-quarter cadence.
 
-### Strengths/weaknesses synthesis (competitor-profiling §8)
+### Strengths/weaknesses synthesis (competitor-profiling §10)
 
 **Real strengths:**
 
