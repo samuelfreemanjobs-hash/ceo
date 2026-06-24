@@ -1,125 +1,181 @@
 ---
 name: pricing-teardown
-description: Use when analyzing a competitor's pricing model, packaging, and monetization signals — tier structure, enterprise opacity, PLG mechanics, and pricing-led positioning. Invoke for pricing intelligence, battle card pricing sections, and move alerts on price changes.
+description: Use when conducting detailed pricing analysis of a competitor — extracting tiers, inferring hidden pricing, classifying the pricing model, mapping packaging-as-pricing, identifying recent pricing changes, and reading pricing strategy. Triggers include "what does [competitor] charge", "how do they price", "build a pricing teardown", "compare pricing", any question about enterprise / custom / contact-sales tiers, or any request involving discounting, packaging, or pricing changes. Apply after or alongside competitor-profiling when pricing is the focus or a significant component. Do NOT use for pure feature comparison without a pricing dimension — use competitor-profiling section 2 for that.
 ---
 
 # Pricing Teardown
 
+Pricing is the most concentrated expression of a competitor's strategy. A teardown done well reveals not just what they charge but who they're for, what they think they're worth, and where they think the market is going.
+
 **Used by:** Competition Analyzer (primary), Marketing Director (when competitive pricing claims are needed)
 
-## When to invoke
+## Why pricing analysis is uniquely hard
 
-- User asks about competitor pricing, tiers, or packaging
-- Building or updating a battle card pricing section
-- Investigating a suspected pricing change (move alert)
-- Comparing monetization models across a landscape
+- Pricing pages show **list prices**, not deal prices. The gap is often 20–50% and only your sales team can close it.
+- **Hidden tiers** are intentional. "Contact sales" is itself a signal — about ACV, sales motion, and what they don't want self-serve customers to see.
+- **Packaging is pricing.** What's gated where matters as much as the dollar figure.
+- **Pricing pages change quietly.** Re-verify; don't rely on memory or stale snapshots.
+- **Regional variations exist** and are usually undocumented publicly.
 
-Do **not** invoke for general profiling when pricing is a single row in the profile — run a full teardown when pricing is the focus or when enterprise/custom pricing opacity blocks a profile conclusion.
+Treat pricing data with extra rigor on source-evaluation. The recency half-life is 30–60 days, not "indefinite."
 
-## Investigation sequence
+## The seven-step teardown
 
-### 1. Locate primary sources
+### 1. Visible tier extraction
 
-| Source | What to capture |
-|--------|-----------------|
-| Pricing page (live) | Tier names, list prices, billing period, seat/user limits |
-| Product docs | Feature gates per tier, add-ons, usage limits |
-| Checkout flow (if accessible) | Trial length, credit card requirement, downgrade path |
-| Enterprise / contact-sales page | Signals of opaque pricing, minimum deal size language |
-| Changelog / blog | Announced pricing or packaging changes |
+Pull every visible tier with:
 
-Always `web_fetch` the live pricing page. Screenshots in third-party articles are not sufficient — verify live.
+- Tier name
+- Headline price (monthly and annual where both shown)
+- Billing unit (per-seat, per-thousand-events, flat, per-GB, etc.)
+- Included quantities (seats, projects, requests, storage)
+- "Starting at" prefixes — note them; they always mean something costs more
 
-### 2. Build the tier map
+Get this from the live pricing page via `web_fetch`. Search snippets are not enough — pricing pages have specific structure that snippets flatten.
 
-For each tier, record as **observations** (quote exact numbers from source):
+### 2. Hidden tier inference
 
-```
-| Tier | Price | Billing | Unit | Key limits | Notable inclusions |
-|------|-------|---------|------|------------|-------------------|
-```
+If the pricing page ends with "Enterprise — Contact us," that's a tier. Infer what you can:
 
-Tag confidence per cell. If a number is inferred (e.g., "≈$X based on review"), label **Unverified**.
+- **Estimated ACV** — from job postings (enterprise AE seniority and OTE imply deal sizes), from press-released customer logos, from public earnings if available
+- **Likely included capabilities** — what's listed as "Enterprise-only" or "talk to us" elsewhere in their docs
+- **Likely sales process length** — from their RFP responses, security questionnaires, and procurement marketplace listings
+- **Floor and ceiling** — the lowest believable enterprise deal and the highest
 
-### 3. Packaging mechanics
+Tag every enterprise-tier inference as **Likely** or **Unverified** unless you have first-party sales data confirming.
 
-Document:
+### 3. Pricing model classification
 
-- **Seat model:** per-user, per-workspace, flat, usage-based, hybrid
-- **Free tier:** exists? limits? conversion hooks?
-- **Trial:** duration, feature scope, credit card required?
-- **Add-ons:** support, SSO, audit logs, API, storage — priced separately?
-- **Annual discount:** published % if visible
-- **Minimum commitment:** monthly only vs. annual push
+Classify on these axes:
 
-### 4. Enterprise / opaque pricing
+| Axis | Options |
+|------|---------|
+| **Unit** | Per-seat / per-usage / flat / hybrid |
+| **Commitment** | Month-to-month / annual / multi-year required |
+| **Expansion vector** | Seats / volume / features / all of the above |
+| **Free tier** | None / time-limited / feature-limited / seat-limited / forever-free |
+| **Self-serve ceiling** | Where does the credit card stop working? |
 
-When public pricing stops at "Contact sales":
+The combination tells you the sales motion. Per-seat + month-to-month + forever-free is PLG. Per-usage + annual + no free tier is enterprise sales. Hybrid models are increasingly common and reveal where the company is in transition.
 
-- Record as observation: "Self-serve tiers end at [tier]; enterprise pricing not published"
-- Note signals: "Teams of 50+", "SSO required", "custom SLA" on higher tiers
-- Check G2/review sites for **anecdotal** deal sizes — tag **Unverified**, never Confirmed from reviews alone
-- Check job postings for "deal size", "ACV", "enterprise AE" — **Likely** strategy signal, not pricing fact
+### 4. Packaging-as-pricing map
 
-### 5. Positioning inference (label explicitly)
+For each tier, list what's _gated_. Pay attention to:
 
-Only after tier map is complete, draw **inferences**:
+- **Features that exist but are tier-gated** — reveals what they think is high-willingness-to-pay
+- **Quotas / quantities** — reveals their cost structure and target customer size
+- **Support level** — reveals where they invest CS attention
+- **Compliance / governance** (SSO, SCIM, audit logs) — usually the enterprise gate, and the _price_ of SSO is a famous tell ("SSO tax" — note as signal, not moralize)
+- **API and integration access** — gating these signals platform aspirations or lack thereof
 
-- "Price anchoring suggests upmarket focus" — cite which tier is hero / default
-- "PLG motion" — cite free tier + self-serve checkout evidence
-- "Land-and-expand" — cite seat model + tier jump mechanics
+Build a matrix: rows = features/quotas, columns = tiers, cells = included / gated / quantity.
 
-Each inference links to specific observations.
+### 5. Discount and commitment discipline
 
-### 6. Historical comparison (if prior intel exists)
+From the pricing page, billing FAQs, and review sites, look for:
 
-- Check internal prior profiles in `docs/marketing/research/`
-- If price changed: produce move-alert fields (what changed, when verified, implications)
-- If no prior intel: note "no baseline for comparison"
+- Annual discount magnitude (typical: 15–25%)
+- Multi-year discount existence and magnitude
+- Volume discount tiers (if disclosed)
+- Nonprofit, education, startup-program discounts
+- Whether month-to-month is offered at all on higher tiers
+- Whether per-seat pricing has minimums
 
-## Output formats
+Discount discipline reveals sales pressure. A flexible discount stack signals deals being negotiated; rigid public pricing signals confidence in willingness-to-pay.
 
-### Pricing snapshot (inline)
+### 6. Pricing change history
+
+Use the Wayback Machine, public announcements, and customer complaints in forums to reconstruct:
+
+- Last list-price change (direction, magnitude, date)
+- Packaging changes (what moved between tiers)
+- New tiers added or sunset
+- Free-tier changes (these usually signal strategy shifts)
+
+Pricing changes are strategic signals. Re-organizing the free tier almost always means the funnel is being tuned. Adding an enterprise tier means moving upmarket. Raising list while quietly expanding discount means margin pressure.
+
+Tag historical claims **Unverified** unless primary or archived source confirms.
+
+### 7. Pricing strategy interpretation
+
+Synthesize. The pricing strategy is usually one of:
+
+| Strategy | Signals |
+|----------|---------|
+| **Penetration** | Aggressive entry pricing, generous free tier, expansion-via-usage |
+| **Skim** | High list prices, premium positioning, weak free tier, enterprise focus |
+| **Value-based** | Pricing varies sharply by use case or customer size; willingness-to-pay segmentation visible |
+| **Cost-plus** | Pricing tracks infrastructure cost (common for usage-based dev tools) |
+| **Anchor-and-discount** | High list prices with routine large discounts; the headline is for negotiation |
+
+Tag your interpretation with confidence. Strategy interpretations are inferences and should be labeled as such.
+
+## Output format
 
 ```markdown
-## Pricing snapshot — {competitor}
+# [Competitor] — Pricing Teardown
+*Last verified: [date]*
 
-**Last verified:** YYYY-MM-DD
+## Visible tiers
+| Tier | Price | Unit | Included | Notes |
+| ... |
 
-### Published tiers
-[table]
+## Hidden tier (Enterprise)
+- Estimated ACV: [range, confidence]
+- Likely capabilities: [...]
+- Sales process: [...]
+- Evidence: [...]
 
-### Packaging mechanics
-- ...
+## Model classification
+- Unit: [...]
+- Commitment: [...]
+- Free tier: [...]
+- Self-serve ceiling: [...]
 
-### Enterprise visibility
-- ...
+## Packaging matrix
+[features × tiers table]
 
-### Inferences (labeled)
-- **Likely:** ...
+## Discount discipline
+[...]
 
-### Open questions
-- ...
+## Pricing change history (last 12 months)
+[...]
 
-### Sources
-- ...
+## Strategy interpretation
+**Most likely:** [strategy] — confidence: [level]
+**Evidence:** [...]
+**Alternative interpretation:** [...]
+**What would change my read:** [...]
+
+## Sources
+[...]
+
+## Confidence summary
+[...]
+
+## Open questions
+[...]
 ```
 
-### Battle card pricing block
-
-≤5 bullets: their price position, where we're cheaper/expensive, landmines (claims we can't make), discovery question to expose gap.
-
-## Staleness
-
-Pricing goes stale in **30 days**. Re-fetch live page before any external-facing deliverable.
+**Output path:** `docs/marketing/research/{competitor}-pricing-teardown-{date}.md`
 
 ## Anti-patterns
 
-- Don't report tier prices from a blog roundup without verifying the live page
-- Don't treat "starts at" language as exact without checking checkout
-- Don't Confirmed-label enterprise ACV from a single Reddit thread
-- Don't conflate "they're expensive" (opinion) with tier comparison (observation)
+- **List-price worship.** Treating list prices as deal prices. Without sales data, every list price is an upper bound for the segment that doesn't negotiate.
+- **Tier-count theater.** Counting tiers is not analysis. What's in them and what's gated is.
+- **Free-tier dismissal.** "They have a free tier" is not a finding. _Why_ and _how generous_ is the finding.
+- **The SSO tax confusion.** Don't moralize about SSO being gated to enterprise — note it as a signal (it usually means enterprise-positioning) and move on.
+- **Currency / region confusion.** Pricing pages default to one region. Don't assume the price you see is the price everyone sees.
+- **Confusing pricing page with pricing strategy.** The page is an artifact; the strategy is the intent behind it. Don't conflate them.
+
+## When this skill yields the most value
+
+- Before a price/packaging change of your own
+- Before entering a new segment where the competitor already plays
+- When sales is losing deals on price and you need to know if it's real
+- During a pricing audit or M&A diligence
+- When a competitor visibly changes their pricing and you need to read the signal
 
 ## Handoff
 
-Feed tier map and inferences into `competitor-profiling` (section 3) or `strategic-synthesis` (battle card / landscape).
+Feed tier map, packaging matrix, and strategy interpretation into `competitor-profiling` (§3) or `strategic-synthesis` (battle card pricing block, move alerts).
