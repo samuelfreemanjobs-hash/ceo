@@ -1,20 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "copy-schema.json",
-  "title": "OfferBuilderCopy",
-  "description": "Legacy alias for narrative-schema.json. Prefer narrative-schema.json for new integrations.",
+  "$id": "https://internal.example.com/schemas/narrative-schema.json",
+  "title": "Narrative",
+  "description": "Copywriter Agent output block. Director maps into offer.narrative.",
   "type": "object",
-  "required": [
-    "executive_summary",
-    "value_proposition",
-    "why_us",
-    "next_steps",
-    "style_applied"
-  ],
+  "required": ["executive_summary", "value_proposition", "why_us", "next_steps", "style_applied"],
   "properties": {
-    "executive_summary": { "$ref": "#/$defs/narrative_section" },
-    "value_proposition": { "$ref": "#/$defs/narrative_section" },
-    "why_us": { "$ref": "#/$defs/narrative_section" },
+    "executive_summary": { "$ref": "#/$defs/narrativeBlock" },
+    "value_proposition": { "$ref": "#/$defs/narrativeBlock" },
+    "why_us": { "$ref": "#/$defs/narrativeBlock" },
     "objection_handling": {
       "type": "array",
       "items": {
@@ -33,6 +27,7 @@
       "properties": {
         "actions": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
             "required": ["action", "owner", "by_date"],
@@ -47,9 +42,10 @@
     },
     "style_applied": {
       "type": "object",
+      "required": ["segment", "style"],
       "properties": {
-        "segment": { "type": "string" },
-        "style": { "type": "string" }
+        "segment": { "enum": ["enterprise", "mid-market", "SMB"] },
+        "style": { "enum": ["formal", "consultative", "technical", "founder-direct"] }
       }
     },
     "flags_back_to_solution_architect": {
@@ -58,22 +54,21 @@
     }
   },
   "$defs": {
-    "claim_source": {
+    "narrativeBlock": {
       "type": "object",
-      "required": ["sentence_index", "source"],
-      "properties": {
-        "sentence_index": { "type": "integer", "minimum": 0 },
-        "source": { "type": "string", "pattern": "^dossier\\." }
-      }
-    },
-    "narrative_section": {
-      "type": "object",
-      "required": ["text", "claim_sources"],
+      "required": ["text"],
       "properties": {
         "text": { "type": "string" },
         "claim_sources": {
           "type": "array",
-          "items": { "$ref": "#/$defs/claim_source" }
+          "items": {
+            "type": "object",
+            "required": ["sentence_index", "source"],
+            "properties": {
+              "sentence_index": { "type": "integer", "minimum": 0 },
+              "source": { "type": "string" }
+            }
+          }
         }
       }
     }

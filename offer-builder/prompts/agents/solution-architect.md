@@ -86,7 +86,8 @@ HARD RULES
 - Success criteria must be measurable. Reject your own aspirational
   language before output.
 
-OUTPUT (JSON, conforming to the `scope` block of offer-schema.json)
+OUTPUT (JSON, conforming to scope-agent-schema.json — Director normalizes
+into offer.scope, dropping quantity_basis, addresses, term_basis, etc.)
 {
   "line_items": [
     {

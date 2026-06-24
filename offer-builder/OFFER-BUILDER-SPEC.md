@@ -64,9 +64,9 @@ See mermaid in [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder
 | Discovery | `offer-discovery` | dossier | sonnet |
 | Solution Architect | `solution-architect` | scope | opus |
 | Pricing | `offer-pricing` | pricing | opus |
-| Risk & Compliance | `offer-risk-compliance` | risk_assessment | opus |
-| Copywriter | `offer-copywriter` | copy | sonnet |
-| Evaluator | `offer-evaluator` | evaluation | sonnet |
+| Risk & Compliance | `offer-risk-compliance` | `risk` | opus |
+| Copywriter | `offer-copywriter` | `narrative` | sonnet |
+| Evaluator | `offer-evaluator` | `evaluator_result` | sonnet |
 
 **No generative authority:** Pricing (numbers), Solution Architect (SKUs), Discovery (facts), Risk (clauses).
 

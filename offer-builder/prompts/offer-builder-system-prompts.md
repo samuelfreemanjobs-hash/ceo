@@ -17,7 +17,7 @@ flowchart TB
     Dossier --> SA[Solution Architect]
     Dossier --> Risk[Risk & Compliance]
     SA --> Scope[scope]
-    Risk --> RiskOut[risk_assessment]
+    Risk --> RiskOut[risk]
     Scope --> Pricing[Pricing]
     RiskOut --> Pricing
     Pricing --> Copy[Copywriter]
@@ -32,10 +32,10 @@ flowchart TB
 | 0 | **Offer Director** | offer + audit_log | `offer-director` | **Installed** |
 | 1 | **Discovery** | `dossier` | `offer-discovery` | **Installed** |
 | 2 | **Solution Architect** | `scope` | `solution-architect` | **Installed** |
-| 2 | **Risk & Compliance** | `risk_assessment` | `offer-risk-compliance` | **Installed** |
+| 2 | **Risk & Compliance** | `risk` | `offer-risk-compliance` | **Installed** |
 | 3 | **Pricing** | `pricing` | `offer-pricing` | **Installed** |
-| 4 | **Copywriter** | `copy` | `offer-copywriter` | **Installed** |
-| 5 | **Evaluator** | `evaluation` | `offer-evaluator` | **Installed** |
+| 4 | **Copywriter** | `narrative` | `offer-copywriter` | **Installed** |
+| 5 | **Evaluator** | `evaluator_result` | `offer-evaluator` | **Installed** |
 
 ---
 
@@ -45,11 +45,11 @@ flowchart TB
 |-------|------|--------|
 | **Director** | [`prompts/agents/director.md`](agents/director.md) | `offer-schema.json` + `audit-log-schema.json` |
 | **Discovery** | [`prompts/agents/discovery.md`](agents/discovery.md) | `dossier-schema.json` |
-| **Solution Architect** | [`prompts/agents/solution-architect.md`](agents/solution-architect.md) | `offer-schema.json#scope` |
-| **Risk & Compliance** | [`prompts/agents/risk-compliance.md`](agents/risk-compliance.md) | `risk-schema.json` |
-| **Pricing** | [`prompts/agents/pricing.md`](agents/pricing.md) | `pricing-schema.json` |
-| **Copywriter** | [`prompts/agents/copywriter.md`](agents/copywriter.md) | `copy-schema.json` |
-| **Evaluator** | [`prompts/agents/evaluator.md`](agents/evaluator.md) | `evaluation-schema.json` |
+| **Solution Architect** | [`prompts/agents/solution-architect.md`](agents/solution-architect.md) | `scope-agent-schema.json` → `offer.scope` |
+| **Risk & Compliance** | [`prompts/agents/risk-compliance.md`](agents/risk-compliance.md) | `risk-schema.json` → `offer.risk` |
+| **Pricing** | [`prompts/agents/pricing.md`](agents/pricing.md) | `pricing-schema.json` → `offer.pricing` |
+| **Copywriter** | [`prompts/agents/copywriter.md`](agents/copywriter.md) | `narrative-schema.json` → `offer.narrative` |
+| **Evaluator** | [`prompts/agents/evaluator.md`](agents/evaluator.md) | `evaluator-result-schema.json` → `offer.evaluator_result` |
 
 ---
 

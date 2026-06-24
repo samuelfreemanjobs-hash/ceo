@@ -50,7 +50,7 @@ flowchart LR
     Dossier --> SA[Solution Architect]
     Dossier --> Risk[Risk & Compliance]
     SA --> Scope[scope]
-    Risk --> RiskOut[risk_assessment]
+    Risk --> RiskOut[risk]
     Scope --> Pricing[Pricing]
     Pricing --> Offer[offer]
 ```

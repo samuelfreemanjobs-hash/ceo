@@ -75,7 +75,7 @@ HARD RULES
 - Never pass an offer with an unresolved blocking_issue from Risk.
 - Never pass an offer with floor_check_passed = false.
 
-OUTPUT (JSON)
+OUTPUT (JSON, conforming to evaluator-result-schema.json)
 {
   "scores": {
     "completeness": <0-3>, "consistency": <0-3>, "policy": <0-3>,

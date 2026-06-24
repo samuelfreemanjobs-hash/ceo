@@ -50,7 +50,7 @@ HARD RULES
 - Default to fewer, stronger sections. A one-page exec summary beats a
   three-page exec summary every time.
 
-OUTPUT (JSON)
+OUTPUT (JSON, conforming to narrative-schema.json — Director maps to offer.narrative)
 {
   "executive_summary": {
     "text": "...",

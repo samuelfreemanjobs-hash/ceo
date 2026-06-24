@@ -1,68 +1,77 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "audit-log-schema.json",
-  "title": "OfferBuilderAuditLog",
-  "description": "Offer Director audit log — appended to every enterprise offer",
+  "$id": "https://internal.example.com/schemas/audit-log-schema.json",
+  "title": "AuditLog",
+  "description": "Embedded in offer.audit_log. Director assembles from pipeline execution.",
   "type": "object",
-  "required": ["offer_id", "agents_called", "evaluation_iterations", "flagged_issues"],
+  "required": ["agent_calls", "tool_calls", "skill_versions"],
   "properties": {
-    "offer_id": { "type": "string" },
-    "opportunity_id": { "type": "string" },
-    "started_at": { "type": "string", "format": "date-time" },
-    "completed_at": { "type": "string", "format": "date-time" },
-    "agents_called": {
+    "agent_calls": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["agent", "contribution_summary"],
+        "required": ["agent", "started_at", "completed_at", "prompt_version", "model"],
         "properties": {
-          "agent": { "type": "string" },
-          "skill_versions": {
-            "type": "object",
-            "additionalProperties": { "type": "string" }
+          "agent": {
+            "enum": [
+              "director",
+              "discovery",
+              "solution_architect",
+              "pricing",
+              "risk",
+              "copywriter",
+              "evaluator"
+            ]
           },
-          "contribution_summary": { "type": "string" },
-          "latency_ms": { "type": "integer" },
-          "tokens_in": { "type": "integer" },
-          "tokens_out": { "type": "integer" }
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" },
+          "prompt_version": { "type": "string" },
+          "model": { "type": "string" },
+          "input_tokens": { "type": "integer", "minimum": 0 },
+          "output_tokens": { "type": "integer", "minimum": 0 }
         }
       }
     },
-    "evaluation_iterations": {
+    "tool_calls": {
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["tool", "called_by", "called_at", "success"],
         "properties": {
-          "iteration": { "type": "integer", "minimum": 1, "maximum": 3 },
-          "final_status": { "type": "string" },
-          "revisions_routed": { "type": "array", "items": { "type": "string" } }
+          "tool": { "type": "string" },
+          "called_by": { "type": "string" },
+          "called_at": { "type": "string", "format": "date-time" },
+          "args_hash": { "type": "string" },
+          "success": { "type": "boolean" },
+          "error": { "type": ["string", "null"] },
+          "latency_ms": { "type": "integer", "minimum": 0 }
         }
       }
     },
-    "decision_events": {
+    "skill_versions": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "escalations": {
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["type", "to", "reason", "at"],
         "properties": {
-          "type": { "type": "string" },
-          "rule": { "type": "string" },
-          "detail": { "type": "string" }
+          "type": {
+            "enum": [
+              "legal",
+              "manager_approval",
+              "human_rep",
+              "solutions_engineer",
+              "cro"
+            ]
+          },
+          "to": { "type": "string" },
+          "reason": { "type": "string" },
+          "at": { "type": "string", "format": "date-time" }
         }
       }
-    },
-    "flagged_issues": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["issue", "owner"],
-        "properties": {
-          "issue": { "type": "string" },
-          "owner": { "type": "string" },
-          "severity": { "type": "string", "enum": ["info", "warning", "blocking"] }
-        }
-      }
-    },
-    "human_review_required": { "type": "boolean" },
-    "escalation_reason": { "type": "string" }
+    }
   }
 }

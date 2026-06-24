@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "evaluation-schema.json",
-  "title": "OfferBuilderEvaluation",
-  "description": "Legacy alias for evaluator-result-schema.json. Prefer evaluator-result-schema.json for new integrations.",
+  "$id": "https://internal.example.com/schemas/evaluator-result-schema.json",
+  "title": "EvaluatorResult",
+  "description": "Evaluator Agent output block. Director maps into offer.evaluator_result.",
   "type": "object",
   "required": ["scores", "final_status", "iteration_count"],
   "properties": {
@@ -26,10 +26,13 @@
       }
     },
     "final_status": {
-      "type": "string",
       "enum": ["pass", "revise", "escalate_human"]
     },
-    "iteration_count": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "iteration_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
     "revisions_requested": {
       "type": "array",
       "items": {
@@ -42,7 +45,16 @@
           "recommended_owner_agent"
         ],
         "properties": {
-          "dimension": { "type": "string" },
+          "dimension": {
+            "enum": [
+              "completeness",
+              "consistency",
+              "policy",
+              "grounding",
+              "tone",
+              "differentiation"
+            ]
+          },
           "current_score": { "type": "integer", "minimum": 0, "maximum": 3 },
           "target_score": { "type": "integer", "const": 2 },
           "specific_issues": {
@@ -50,19 +62,29 @@
             "items": { "type": "string" }
           },
           "recommended_owner_agent": {
-            "type": "string",
             "enum": [
               "discovery",
               "solution_architect",
               "pricing",
               "risk",
-              "copywriter",
-              "director"
+              "copywriter"
             ]
           }
         }
       }
     },
-    "diff_summary": { "type": "string" }
-  }
+    "diff_summary": {
+      "type": ["string", "null"]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "final_status": { "const": "escalate_human" } } },
+      "then": { "required": ["diff_summary"] }
+    },
+    {
+      "if": { "properties": { "final_status": { "const": "revise" } } },
+      "then": { "required": ["revisions_requested"] }
+    }
+  ]
 }

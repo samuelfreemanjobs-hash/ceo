@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal.example.com/schemas/scope-agent-schema.json",
+  "title": "ScopeAgentOutput",
+  "description": "Solution Architect extended output. Director normalizes into offer.scope (drops quantity_basis, addresses, etc.).",
+  "type": "object",
+  "required": ["line_items", "term_months", "milestones", "success_criteria"],
+  "properties": {
+    "line_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["sku", "name", "quantity", "configuration"],
+        "properties": {
+          "sku": { "type": "string" },
+          "name": { "type": "string" },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "quantity_basis": { "type": "string" },
+          "configuration": { "type": "object" },
+          "dependencies_checked": { "type": "boolean" },
+          "addresses": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "term_months": { "type": "integer", "minimum": 1 },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "target_date"],
+        "properties": {
+          "name": { "type": "string" },
+          "target_date": { "type": "string", "format": "date" },
+          "owner": { "type": "string" }
+        }
+      }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "non_standard": { "type": "boolean" }
+  }
+}
