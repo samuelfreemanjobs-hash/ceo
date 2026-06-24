@@ -30,16 +30,27 @@ Don't pre-build for these. Instrument and measure first.
 
 ```
 competition-analyzer/
-├── README.md                                       (this file)
-├── system-prompt.md                                Agent definition — paste into API system parameter
-├── CLAUDE.md                                       Persistent operating principles
-├── worked-example.md                               End-to-end trace on a real competitor (Linear)
+├── README.md
+├── CURSOR.md                                       Cursor workflow (prep → run → after)
+├── AGENTS.md                                       Agent card for @ mention in Cursor
+├── USER_PROFILE.md                                 Your offer/ICP comparison frame (optional)
+├── system-prompt.md                                → points to prompts/system.md
+├── prompts/system.md                               API system parameter (canonical)
+├── CLAUDE.md                                       Claude Code auto-load
+├── worked-example.md                               Methodology trace (Linear)
+├── templates/
+│   ├── BRIEF.md                                    Fill before each run
+│   └── OUTPUT.md                                   Required output structure
+├── briefs/
+│   └── ACTIVE.md                                   Active brief slot
+├── learnings/
+│   └── OUTCOMES-LOG.md                             Post-run learnings
 └── skills/
-    ├── gtm-competitor-analysis/SKILL.md         Public GTM, funnels, ad evidence, monitoring
-    ├── competitor-profiling/SKILL.md               Systematic profile-building methodology
-    ├── pricing-teardown/SKILL.md                   Specialized pricing analysis methodology
-    ├── source-evaluation/SKILL.md                  Reliability, recency, bias framework
-    └── strategic-synthesis/SKILL.md                Findings → insight → recommendation
+    ├── gtm-competitor-analysis/SKILL.md
+    ├── competitor-profiling/SKILL.md
+    ├── pricing-teardown/SKILL.md
+    ├── source-evaluation/SKILL.md
+    └── strategic-synthesis/SKILL.md
 ```
 
 **Orchestration integration:** Agent persona also lives at `.github/agents/competition-analyzer.md` (mirrored to `.claude/`, `.gemini/`) for CEO / Marketing Director Task-tool routing.
@@ -91,6 +102,13 @@ competition-analyzer/
 1. Invoke via Task tool: `subagent_type: competition-analyzer`
 2. Or route through Morgan (`marketing-director`) for campaign-context competitive work
 3. Artifacts land in `docs/marketing/research/`
+
+**Option E — Cursor (interactive):**
+
+1. Read [CURSOR.md](CURSOR.md) — prep → run → after workflow
+2. Fill [templates/BRIEF.md](templates/BRIEF.md) → save to [briefs/ACTIVE.md](briefs/ACTIVE.md)
+3. Chat: `@competition-analyzer/AGENTS.md` + brief; output per [templates/OUTPUT.md](templates/OUTPUT.md)
+4. Log learnings in [learnings/OUTCOMES-LOG.md](learnings/OUTCOMES-LOG.md)
 
 ---
 

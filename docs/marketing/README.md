@@ -76,4 +76,5 @@ Standalone deployable package: [`competition-analyzer/`](../competition-analyzer
 - `system-prompt.md` — API / Project instructions
 - `CLAUDE.md` — Claude Code auto-load
 - `worked-example.md` — methodology trace (Linear)
-- `HANDOFFS.md` — cross-agent handoffs (Offer Builder, Funnel Map)
+- `HANDOFFS.md` — cross-agent handoffs (Offer Builder, Funnel Map, LP, Ad)
+- **Cursor workflow:** `competition-analyzer/CURSOR.md` (brief → run → log)
