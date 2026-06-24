@@ -1,101 +1,67 @@
 # Offer Builder
 
-**An AI agent that designs positioning, value propositions, and offer architecture — plus an Enterprise / Catalog pipeline for deal-desk quoting.**
+**Dual-mode offer system:** Enterprise B2B commercial offers + Marketing GTM positioning.
 
-Codename: `offer-builder-v1` · **Dual mode:** Marketing (single agent + Skills) · Enterprise (multi-agent + catalog tools)
+| Mode | Entry | Package |
+|------|-------|---------|
+| **Enterprise** | `offer-director` | [`OFFER-BUILDER-SPEC.md`](OFFER-BUILDER-SPEC.md) |
+| **Marketing** | `offer-builder` | [`offer-builder-agent.md`](offer-builder-agent.md) |
 
-## What it does
+---
 
-1. **Discover** — product, audience, competitive context, constraints
-2. **Position** — category, differentiation, who it's for / not for
-3. **Propose** — value proposition, proof ladder, messaging hierarchy
-4. **Architect** — offer stack, tiers, bonuses, guarantees, risk reversal
-5. **Package** — pricing model, anchoring, packaging decisions
-6. **Validate** — ICE-scored tests, message experiments, open assumptions
+## Enterprise — full pipeline (7/7 agents installed)
 
-**Output:** Offer Spec + modular artifacts → `docs/marketing/offers/`
+```
+offer-director → offer-discovery → [solution-architect ∥ offer-risk-compliance]
+              → offer-pricing → offer-copywriter → offer-evaluator → rep review
+```
 
-## Enterprise / Catalog mode
+```
+Task → subagent_type: offer-director   # opportunity_id + rep_brief
+```
 
-Director-orchestrated pipeline for rep-driven deals:
+**Schemas:** [`schemas/`](schemas/) · **Prompts:** [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder-system-prompts.md)
 
-1. **Discovery** → `dossier`
-2. **Solution Architect** + Risk & Compliance (parallel) → `scope` + `risk_assessment`
-3. **Pricing** → `pricing` (consumes `scope`)
-4. **Copywriter** + **Evaluator** → approved offer
+---
 
-- Sub-agent prompts: [`prompts/offer-builder-system-prompts.md`](prompts/offer-builder-system-prompts.md)
-- Solution Architect: [`prompts/agents/solution-architect.md`](prompts/agents/solution-architect.md)
-- Schema: [`schemas/offer-schema.json`](schemas/offer-schema.json)
-- Invoke SA: `Task → subagent_type: solution-architect`
-- Invoke Discovery: `Task → subagent_type: offer-discovery`
-- Invoke Risk: `Task → subagent_type: offer-risk-compliance`
-- Invoke Copy: `Task → subagent_type: offer-copywriter`
-- Invoke Evaluator: `Task → subagent_type: offer-evaluator`
+## Marketing — GTM offer architecture
 
-**Pending:** Director, Pricing
+Discover → Position → Propose → Architect → Package → Validate
+
+```
+Task → subagent_type: offer-builder
+```
+
+Output: `docs/marketing/offers/`
+
+---
 
 ## Package layout
 
 ```
 offer-builder/
-├── README.md
-├── offer-builder-agent.md    Full blueprint
+├── OFFER-BUILDER-SPEC.md      Enterprise architecture (canonical)
+├── ROADMAP.md · METRICS.md
 ├── prompts/
-│   ├── system.md                 Marketing mode (canonical)
-│   ├── offer-builder-system-prompts.md   Enterprise sub-agent index
-│   └── agents/
-│       └── solution-architect.md
-├── schemas/offer-schema.json
-├── CURSOR.md                   Cursor operational workflow
-├── CLAUDE.md                   Claude Code auto-load
-├── AGENTS.md                   @ mention card
-├── USER_PROFILE.md
-├── worked-example.md
-├── test-prompts.md
-├── templates/BRIEF.md · OUTPUT.md
-├── briefs/ACTIVE.md
-├── learnings/OUTCOMES-LOG.md
-├── observability/              trace schema + README
-└── skills/
-    ├── README.md
-    ├── positioning-frameworks/
-    ├── value-proposition-design/
-    ├── offer-architecture/
-    ├── pricing-packaging/
-    ├── offer-validation/
-    ├── solution-catalog/         Enterprise — SA agent
-    └── offer-templates/        Enterprise — SA agent
+│   ├── system.md              Marketing mode
+│   ├── offer-builder-system-prompts.md
+│   └── agents/                All 7 enterprise sub-agents
+├── schemas/                   dossier, scope, pricing, risk, copy, eval, audit
+├── skills/                    Enterprise + marketing skills
+├── observability/
+└── templates/                 Marketing BRIEF/OUTPUT
 ```
 
-## Deploy
+---
 
-| Surface | How |
-|---------|-----|
-| **CEO / Morgan** | Task tool → `subagent_type: offer-builder` |
-| **Cursor** | [CURSOR.md](CURSOR.md) — `@offer-builder/AGENTS.md` + [templates/BRIEF.md](templates/BRIEF.md) |
-| **API** | `prompts/system.md` + enable web_search |
+## Implementation status
 
-## Skills (5)
+| Component | Status |
+|-----------|--------|
+| All 7 enterprise agents + prompts | Installed |
+| Enterprise skills (6) | Installed |
+| Marketing skills (5) | Installed |
+| MCP tool integrations | Pending wiring |
+| docgen.render, approval.route | Pending |
 
-| Skill | Phase |
-|-------|-------|
-| `positioning-frameworks` | Discover + position |
-| `value-proposition-design` | Propose |
-| `offer-architecture` | Architect |
-| `pricing-packaging` | Package |
-| `offer-validation` | Validate |
-
-## Handoffs
-
-- **From** `competition-analyzer` — white-space analysis, positioning gaps, GTM landscape
-- **To** `funnel-architect` — offer + positioning for funnel design
-- **To** `copy-agent` / `writer` — messaging hierarchy for asset production
-- **To** `compliance-agent` — claims requiring substantiation
-- See `docs/marketing/HANDOFFS.md`
-
-## Evolution
-
-Phase 1: single agent (here) → Phase 2: MCP pricing/CRM data → Phase 4: multi-agent only if volume > ~30 offer builds/month.
-
-Full blueprint: [`offer-builder-agent.md`](offer-builder-agent.md)
+See [`ROADMAP.md`](ROADMAP.md).

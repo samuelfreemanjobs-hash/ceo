@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "audit-log-schema.json",
+  "title": "OfferBuilderAuditLog",
+  "description": "Offer Director audit log — appended to every enterprise offer",
+  "type": "object",
+  "required": ["offer_id", "agents_called", "evaluation_iterations", "flagged_issues"],
+  "properties": {
+    "offer_id": { "type": "string" },
+    "opportunity_id": { "type": "string" },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "agents_called": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent", "contribution_summary"],
+        "properties": {
+          "agent": { "type": "string" },
+          "skill_versions": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          },
+          "contribution_summary": { "type": "string" },
+          "latency_ms": { "type": "integer" },
+          "tokens_in": { "type": "integer" },
+          "tokens_out": { "type": "integer" }
+        }
+      }
+    },
+    "evaluation_iterations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "iteration": { "type": "integer", "minimum": 1, "maximum": 3 },
+          "final_status": { "type": "string" },
+          "revisions_routed": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "decision_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "rule": { "type": "string" },
+          "detail": { "type": "string" }
+        }
+      }
+    },
+    "flagged_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue", "owner"],
+        "properties": {
+          "issue": { "type": "string" },
+          "owner": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warning", "blocking"] }
+        }
+      }
+    },
+    "human_review_required": { "type": "boolean" },
+    "escalation_reason": { "type": "string" }
+  }
+}

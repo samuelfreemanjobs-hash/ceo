@@ -46,19 +46,21 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 
 ---
 
-## Offer Builder → Enterprise pipeline
+## Enterprise Offer Builder — full pipeline
 
-| Step | Agent | Output |
-|------|-------|--------|
-| Discovery | **Offer Discovery** (`offer-discovery`) | `dossier` |
-| Scope | **Solution Architect** (`solution-architect`) | `scope` → Pricing |
-| Risk | **Offer Risk & Compliance** (`offer-risk-compliance`) | `risk_assessment` |
-| Copy | **Offer Copywriter** (`offer-copywriter`) | `copy` |
-| Gate | **Offer Evaluator** (`offer-evaluator`) | `evaluation` |
+Entry: **`offer-director`** with `opportunity_id` + `rep_brief`
 
-Schema: `offer-builder/schemas/` · Prompts: `offer-builder/prompts/offer-builder-system-prompts.md`
+| Step | Agent | `subagent_type` |
+|------|-------|-----------------|
+| Supervisor | Offer Director | `offer-director` |
+| Discovery | Offer Discovery | `offer-discovery` |
+| Scope | Solution Architect | `solution-architect` |
+| Risk | Offer Risk & Compliance | `offer-risk-compliance` |
+| Pricing | Offer Pricing | `offer-pricing` |
+| Copy | Offer Copywriter | `offer-copywriter` |
+| QA | Offer Evaluator | `offer-evaluator` |
 
-**Pending:** Director, Pricing
+Spec: `offer-builder/OFFER-BUILDER-SPEC.md` · **7/7 agents installed** · MCP tool wiring pending
 
 ---
 

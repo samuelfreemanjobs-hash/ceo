@@ -32,7 +32,8 @@ For each user request:
 - For marketing department orchestration (campaigns, multi-channel content, coordinated marketing): Invoke Morgan (Marketing Director) via Task tool
 - For competitive intelligence and GTM analysis (profiles, battlecards, landscapes, funnel teardowns, white space): Invoke Scout (`competition-analyzer`) via Task tool — or Morgan if part of a broader marketing campaign
 - For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
-- For positioning, value propositions, offer architecture, or packaging (Offer Spec, repositioning, proof ladders): Invoke Offer Builder (`offer-builder`) via Task tool — or Morgan for coordinated work
+- For B2B commercial offers (CRM opportunity → scope + pricing + terms + narrative): Invoke Offer Director (`offer-director`) via Task tool with `opportunity_id` + `rep_brief`
+- For positioning, value propositions, offer architecture, or packaging (Offer Spec, repositioning, proof ladders): Invoke Offer Builder (`offer-builder`) via Task tool — marketing/GTM mode
 - For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
 - For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline
 - For enterprise offer risk review (jurisdiction, clauses, blocking issues): Invoke Offer Risk & Compliance (`offer-risk-compliance`) via Task tool
@@ -123,10 +124,11 @@ You have access to these specialist agents:
 - Morgan (`marketing-director`): Marketing Dept orchestrator — campaigns, multi-specialist coordination
 - Scout (`competition-analyzer`): Competitive intelligence and public GTM — profiles, battle cards, landscapes, funnel teardowns, white-space analysis
 - Funnel Architect (`funnel-architect`): Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests
-- Offer Builder (`offer-builder`): Positioning, value propositions, offer architecture — Offer Specs, proof ladders, pricing
+- Offer Director (`offer-director`): Enterprise B2B offer supervisor — orchestrates full commercial offer pipeline
+- Offer Builder (`offer-builder`): Marketing GTM — positioning, value props, Offer Specs
 - Solution Architect (`solution-architect`): Enterprise catalog scope — SKUs, configurations, milestones; output feeds Pricing
+- Offer Pricing (`offer-pricing`): Policy-compliant priced line items from pricing_engine
 - Offer Discovery (`offer-discovery`): CRM-grounded customer dossier for Enterprise offers
-- Offer Risk & Compliance (`offer-risk-compliance`): Jurisdiction, clauses, SLA exposure, blocking issues
 - Offer Copywriter (`offer-copywriter`): Enterprise offer narrative from dossier evidence
 - Offer Evaluator (`offer-evaluator`): Final quality gate — scores and routes revisions
 - Mark (`marketer`): Marketing strategy, channel analysis, GTM

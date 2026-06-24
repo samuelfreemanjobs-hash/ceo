@@ -110,8 +110,8 @@
       "description": "From offer-risk-compliance agent"
     },
     "pricing": {
-      "type": "object",
-      "description": "From Pricing agent — consumes scope"
+      "$ref": "pricing-schema.json",
+      "description": "From offer-pricing agent"
     },
     "copy": {
       "$ref": "copy-schema.json",
@@ -120,6 +120,10 @@
     "evaluation": {
       "$ref": "evaluation-schema.json",
       "description": "From offer-evaluator agent"
+    },
+    "audit_log": {
+      "$ref": "audit-log-schema.json",
+      "description": "From Offer Director"
     }
   }
 }

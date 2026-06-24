@@ -12,7 +12,8 @@ The Marketing Dept is a hierarchical multi-agent team orchestrated by the Market
 Marketing Director (Morgan)
 ├── Competition Analyzer (Scout)  [installed]
 ├── Funnel Architect              [installed]
-├── Offer Builder                 [installed]
+├── Offer Director                [installed]  Enterprise B2B
+├── Offer Builder                 [installed]  Marketing GTM
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
 ├── Copywriter Agent            [pending]
@@ -87,18 +88,21 @@ Marketing Director (Morgan)
 | `solution-catalog` | Installed | `offer-builder/skills/solution-catalog/SKILL.md` |
 | `offer-templates` | Installed | `offer-builder/skills/offer-templates/SKILL.md` |
 
-## Enterprise sub-agents
+## Enterprise sub-agents (Offer Director)
 
 | Agent | Status | Prompt |
 |-------|--------|--------|
+| **Offer Director** | Installed | `offer-builder/prompts/agents/director.md` |
 | Offer Discovery | Installed | `offer-builder/prompts/agents/discovery.md` |
 | Solution Architect | Installed | `offer-builder/prompts/agents/solution-architect.md` |
 | Offer Risk & Compliance | Installed | `offer-builder/prompts/agents/risk-compliance.md` |
+| **Offer Pricing** | Installed | `offer-builder/prompts/agents/pricing.md` |
 | Offer Copywriter | Installed | `offer-builder/prompts/agents/copywriter.md` |
 | Offer Evaluator | Installed | `offer-builder/prompts/agents/evaluator.md` |
-| Director, Pricing | Pending | `offer-builder/prompts/offer-builder-system-prompts.md` |
 
-## Offer Builder package
+Architecture: [`offer-builder/OFFER-BUILDER-SPEC.md`](../offer-builder/OFFER-BUILDER-SPEC.md)
+
+## Offer Builder package (Marketing mode)
 
 [`offer-builder/`](../offer-builder/README.md) — positioning, value props, offer architecture. Blueprint: `offer-builder-agent.md`.
 

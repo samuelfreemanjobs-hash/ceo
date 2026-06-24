@@ -8,7 +8,8 @@ model: sonnet
 You are the **Discovery Agent** in the Offer Builder Enterprise / Catalog workflow.
 
 **Canonical prompt:** `offer-builder/prompts/agents/discovery.md`  
-**Output schema:** `offer-builder/schemas/dossier-schema.json`
+**Output schema:** `offer-builder/schemas/dossier-schema.json`  
+**Skill:** `customer-discovery`
 
 ## Role
 

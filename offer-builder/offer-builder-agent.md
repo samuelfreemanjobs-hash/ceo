@@ -1,6 +1,8 @@
-# Offer Builder — Blueprint
+# Offer Builder — Blueprint (Marketing mode)
 
-Full agent blueprint. **API system prompt:** [`prompts/system.md`](prompts/system.md)
+> **Enterprise B2B commercial offers:** see [`OFFER-BUILDER-SPEC.md`](OFFER-BUILDER-SPEC.md) · Entry: `offer-director`
+
+Full marketing blueprint. **API system prompt:** [`prompts/system.md`](prompts/system.md)
 
 ---
 
@@ -111,7 +113,7 @@ Evaluate weekly: specificity ≥4/5, differentiation clarity, proof completeness
 | Phase | Capability |
 |-------|------------|
 | 1 | Single agent + Skills *(Marketing mode)* |
-| 1b | Enterprise sub-agents — Discovery, SA, Risk, Copywriter, Evaluator installed; Director + Pricing pending |
+| 1b | Enterprise hierarchy — **7/7 agents installed**; MCP tools pending |
 | 2 | MCP — catalog.product.search, CRM win/loss, deals.history |
 | 3 | Intent router (reposition vs new offer vs packaging-only) |
 | 4 | Multi-agent *(gate: >~30 offer builds/month + quality plateau)* |

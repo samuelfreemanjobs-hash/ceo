@@ -28,7 +28,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 |------------|---------------------|--------|--------|
 | Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intel + public GTM — profiles, battle cards, landscapes, funnel teardowns, monitoring |
 | Funnel Architect | `funnel-architect` | **Installed** | Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests |
-| Offer Builder | `offer-builder` | **Installed** | Positioning, value props, offer architecture — Offer Specs, proof ladders, pricing |
+| **Offer Director** | `offer-director` | **Installed** | Enterprise B2B offer supervisor — full pipeline |
+| Offer Builder | `offer-builder` | **Installed** | Marketing GTM — Offer Specs, positioning |
 | Solution Architect | `solution-architect` | **Installed** | Enterprise catalog scope — SKUs, quantities, milestones (sub-agent) |
 | Offer Discovery | `offer-discovery` | **Installed** | CRM dossier — pains, decision-makers (sub-agent) |
 | Offer Risk & Compliance | `offer-risk-compliance` | **Installed** | Jurisdiction, clauses, blocking issues (sub-agent) |
@@ -46,7 +47,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - Competitive intelligence (profiles, battle cards, SWOT, pricing intel) → `competition-analyzer` (Scout)
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
-- Positioning, value proposition, offer stack, packaging, repositioning → `offer-builder`
+- B2B commercial offer / quote / proposal from CRM opportunity → `offer-director` (full enterprise pipeline)
+- Positioning, value proposition, marketing offer stack → `offer-builder`
 - Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after `offer-discovery` dossier)
 - Enterprise dossier / CRM discovery → `offer-discovery`
 - Enterprise risk / clauses → `offer-risk-compliance` (parallel with solution-architect)

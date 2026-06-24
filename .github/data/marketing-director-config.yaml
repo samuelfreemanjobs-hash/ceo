@@ -77,7 +77,8 @@ marketing_director:
       task_subagent_type: offer-builder
       model: opus
       status: installed
-      domain: Positioning, value propositions, offer architecture — Offer Specs, proof ladders, pricing, ICE validation
+      mode: marketing
+      domain: GTM positioning, value propositions, offer architecture — Offer Specs, proof ladders, ICE validation
       loop_budget: 10
       agent_path: agents/offer-builder.md
       package_path: offer-builder/
@@ -87,17 +88,36 @@ marketing_director:
         - offer-architecture
         - pricing-packaging
         - offer-validation
-        - solution-catalog
+
+    offer-director:
+      task_subagent_type: offer-director
+      model: opus
+      status: installed
+      mode: enterprise
+      domain: B2B commercial offer supervisor — scope, pricing, terms, narrative, audit trail
+      loop_budget: 15
+      agent_path: agents/offer-director.md
+      package_path: offer-builder/
+      spec_path: offer-builder/OFFER-BUILDER-SPEC.md
+      skills:
         - offer-templates
+        - pricing-policy
+        - customer-discovery
+      tools:
+        - docgen.render
+        - approval.route
+        - deals.history.search
       sub_agents:
         offer-discovery:
           task_subagent_type: offer-discovery
           model: sonnet
           status: installed
-          domain: CRM-grounded customer dossier — pains, decision-makers, confidence
+          domain: CRM-grounded customer dossier
           agent_path: agents/offer-discovery.md
           prompt_path: offer-builder/prompts/agents/discovery.md
           output_schema: offer-builder/schemas/dossier-schema.json
+          skills:
+            - customer-discovery
           tools:
             - crm.opportunity.get
             - crm.account.get
@@ -109,7 +129,7 @@ marketing_director:
           task_subagent_type: solution-architect
           model: opus
           status: installed
-          domain: Catalog-grounded scope — SKUs, quantities, milestones, success criteria
+          domain: Catalog-grounded scope
           agent_path: agents/solution-architect.md
           prompt_path: offer-builder/prompts/agents/solution-architect.md
           output_schema: offer-builder/schemas/offer-schema.json#scope
@@ -125,19 +145,36 @@ marketing_director:
           task_subagent_type: offer-risk-compliance
           model: opus
           status: installed
-          domain: Jurisdiction, clauses, SLA exposure, blocking issues
+          domain: Jurisdiction, clauses, SLA exposure
           agent_path: agents/offer-risk-compliance.md
           prompt_path: offer-builder/prompts/agents/risk-compliance.md
           output_schema: offer-builder/schemas/risk-schema.json
+          skills:
+            - legal-terms
           tools:
             - compliance.jurisdiction.check
             - clm.clauses.search
             - clm.precedent.search
+        offer-pricing:
+          task_subagent_type: offer-pricing
+          model: opus
+          status: installed
+          domain: Policy-compliant priced line items from pricing_engine
+          agent_path: agents/offer-pricing.md
+          prompt_path: offer-builder/prompts/agents/pricing.md
+          output_schema: offer-builder/schemas/pricing-schema.json
+          skills:
+            - pricing-policy
+          tools:
+            - pricing_engine.get_rates
+            - pricing_engine.segment_discount
+            - pricing_engine.apply_discount
+            - deals.history.search
         offer-copywriter:
           task_subagent_type: offer-copywriter
           model: sonnet
           status: installed
-          domain: Enterprise offer narrative — exec summary, value prop, next steps
+          domain: Enterprise offer narrative
           agent_path: agents/offer-copywriter.md
           prompt_path: offer-builder/prompts/agents/copywriter.md
           output_schema: offer-builder/schemas/copy-schema.json
@@ -148,7 +185,7 @@ marketing_director:
           task_subagent_type: offer-evaluator
           model: sonnet
           status: installed
-          domain: Six-dimension quality gate — score and route, max 3 iterations
+          domain: Six-dimension quality gate
           agent_path: agents/offer-evaluator.md
           prompt_path: offer-builder/prompts/agents/evaluator.md
           output_schema: offer-builder/schemas/evaluation-schema.json
@@ -425,7 +462,7 @@ marketing_director:
       package_path: offer-builder/skills/solution-catalog/SKILL.md
       used_by:
         - solution-architect
-        - offer-builder
+        - offer-director
     offer-templates:
       status: installed
       version: "1.0"
@@ -434,7 +471,7 @@ marketing_director:
       package_path: offer-builder/skills/offer-templates/SKILL.md
       used_by:
         - solution-architect
-        - offer-builder
+        - offer-director
         - offer-copywriter
     competitive-positioning:
       status: installed
@@ -444,7 +481,33 @@ marketing_director:
       package_path: offer-builder/skills/competitive-positioning/SKILL.md
       used_by:
         - offer-copywriter
-        - offer-builder
+        - offer-pricing
+    pricing-policy:
+      status: installed
+      version: "1.0"
+      owner: finance / sales ops
+      path: skills/pricing-policy/SKILL.md
+      package_path: offer-builder/skills/pricing-policy/SKILL.md
+      used_by:
+        - offer-pricing
+        - offer-director
+    legal-terms:
+      status: installed
+      version: "1.0"
+      owner: legal
+      path: skills/legal-terms/SKILL.md
+      package_path: offer-builder/skills/legal-terms/SKILL.md
+      used_by:
+        - offer-risk-compliance
+    customer-discovery:
+      status: installed
+      version: "1.0"
+      owner: sales ops
+      path: skills/customer-discovery/SKILL.md
+      package_path: offer-builder/skills/customer-discovery/SKILL.md
+      used_by:
+        - offer-discovery
+        - offer-director
 
   rollout_phases:
     phase_1:
@@ -453,7 +516,7 @@ marketing_director:
       request_types: [content_request]
     phase_2:
       name: Insights layer
-      specialists: [competition-analyzer, funnel-architect, offer-builder, research-agent, analytics]
+      specialists: [competition-analyzer, funnel-architect, offer-builder, offer-director, research-agent, analytics]
       request_types: [content_request, analysis_request, ideation, ops]
     phase_3:
       name: Full campaigns

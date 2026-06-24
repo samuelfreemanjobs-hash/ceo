@@ -1,41 +1,24 @@
 # Offer Builder — Skills Bundle
 
-Five SKILL.md files power the Offer Builder agent. Each follows the Anthropic Skill spec: YAML frontmatter (`name` + `description` as trigger) plus operational markdown body.
+## Marketing mode (5 skills)
 
-## Coordination
+`positioning-frameworks` → `value-proposition-design` → `offer-architecture` → `pricing-packaging` → `offer-validation`
 
-```
-Discovery   → positioning-frameworks (forces competitive frame)
-Position    → positioning-frameworks (category + differentiation)
-Propose     → value-proposition-design (claims + proof ladder)
-Architect   → offer-architecture (stack, tiers, guarantees)
-Package     → pricing-packaging (model, anchor, packaging)
-Validate    → offer-validation (ICE tests, assumptions)
-```
+Entry: `offer-builder`
 
-### Enterprise / Catalog (Solution Architect)
+## Enterprise mode (6 skills)
 
-```
-Discovery dossier → solution-catalog (need→family) → catalog.product.search
-                 → catalog.dependencies.check → offer-templates (milestones)
-                 → scope JSON → Pricing
-```
+| Skill | Agents |
+|-------|--------|
+| `customer-discovery` | offer-discovery, offer-director |
+| `solution-catalog` | solution-architect |
+| `pricing-policy` | offer-pricing, offer-director |
+| `legal-terms` | offer-risk-compliance |
+| `offer-templates` | offer-director, solution-architect, offer-copywriter |
+| `competitive-positioning` | offer-copywriter, offer-pricing |
 
-Skills: `solution-catalog`, `offer-templates` — see `prompts/agents/solution-architect.md`
-
-### Enterprise / Catalog (full pipeline)
-
-```
-offer-discovery → dossier
-              → [solution-architect ∥ offer-risk-compliance]
-              → scope + risk_assessment → pricing (pending)
-              → offer-copywriter → offer-evaluator
-```
-
-Skills: `solution-catalog`, `offer-templates`, `competitive-positioning`
+Entry: `offer-director` · Spec: [`OFFER-BUILDER-SPEC.md`](../OFFER-BUILDER-SPEC.md)
 
 ## Deployment
 
-Mirror to `.github/skills/`, `.claude/skills/`, `.gemini/skills/`, `.ai/skills/` for platform discovery.
-
-CEO: `Task → subagent_type: offer-builder`
+Mirror to `.github/skills/`, `.claude/skills/`, `.gemini/skills/`, `.ai/skills/`

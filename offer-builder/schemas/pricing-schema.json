@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pricing-schema.json",
+  "title": "OfferBuilderPricing",
+  "description": "Pricing agent output — no generative authority over numbers; all from pricing_engine",
+  "type": "object",
+  "required": [
+    "line_items",
+    "subtotal",
+    "discounts",
+    "total_contract_value",
+    "annual_contract_value",
+    "payment_schedule",
+    "currency",
+    "requires_approval",
+    "floor_check_passed",
+    "confidence"
+  ],
+  "properties": {
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "name", "quantity", "list_price", "net_price"],
+        "properties": {
+          "sku": { "type": "string" },
+          "name": { "type": "string" },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "list_price": { "type": "number", "minimum": 0 },
+          "discount_amount": { "type": "number", "minimum": 0 },
+          "net_price": { "type": "number", "minimum": 0 },
+          "source": { "type": "string", "pattern": "^pricing_engine\\." }
+        }
+      }
+    },
+    "subtotal": { "type": "number", "minimum": 0 },
+    "discounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "type", "amount", "rule", "justification"],
+        "properties": {
+          "sku": { "type": "string" },
+          "type": { "type": "string" },
+          "amount": { "type": "number" },
+          "rule": { "type": "string" },
+          "justification": { "type": "string" }
+        }
+      }
+    },
+    "total_contract_value": { "type": "number", "minimum": 0 },
+    "annual_contract_value": { "type": "number", "minimum": 0 },
+    "payment_schedule": { "type": "string" },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "requires_approval": { "type": "boolean" },
+    "approver_role": {
+      "oneOf": [
+        { "type": "string", "enum": ["VP-Sales", "CRO", "Finance"] },
+        { "type": "null" }
+      ]
+    },
+    "floor_check_passed": { "type": "boolean" },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "open_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "flags_to_director": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

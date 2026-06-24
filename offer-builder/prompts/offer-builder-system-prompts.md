@@ -2,18 +2,16 @@
 
 Multi-agent **Enterprise / Catalog** workflow for deal-desk quoting. Each sub-agent follows: **ROLE → INPUTS → PROCESS → HARD RULES → OUTPUT → PRINCIPLES**.
 
-**Schemas:** [`schemas/offer-schema.json`](../schemas/offer-schema.json) · [`dossier-schema.json`](../schemas/dossier-schema.json) · [`risk-schema.json`](../schemas/risk-schema.json) · [`copy-schema.json`](../schemas/copy-schema.json) · [`evaluation-schema.json`](../schemas/evaluation-schema.json)
-
-**Director orchestration:** `prompts/agents/director.md` *(pending — main spec)*  
-**Pricing:** `prompts/agents/pricing.md` *(pending — main spec)*
+**Architecture:** [`OFFER-BUILDER-SPEC.md`](../OFFER-BUILDER-SPEC.md)  
+**Schemas:** [`schemas/README.md`](../schemas/README.md)
 
 ---
 
 ## Workflow
 
 ```mermaid
-flowchart LR
-    Rep[Rep brief] --> Director[Director]
+flowchart TB
+    Rep[opportunity_id + rep_brief] --> Director[Offer Director]
     Director --> Discovery[Discovery]
     Discovery --> Dossier[dossier]
     Dossier --> SA[Solution Architect]
@@ -22,22 +20,22 @@ flowchart LR
     Risk --> RiskOut[risk_assessment]
     Scope --> Pricing[Pricing]
     RiskOut --> Pricing
-    Pricing --> Offer[offer]
-    Offer --> Copy[Copywriter]
-    Offer --> Eval[Evaluator]
-    Copy --> Eval
-    Eval --> Final[Approved offer]
+    Pricing --> Copy[Copywriter]
+    Copy --> Eval[Evaluator]
+    Eval -->|revise| Director
+    Eval -->|pass| Human[Rep review]
+    Human --> Doc[PDF + DOCX + CRM]
 ```
 
-| Step | Agent | Output block | `subagent_type` | Status |
-|------|-------|--------------|-----------------|--------|
-| 1 | **Director** | orchestration | `offer-builder` (director mode) | Pending |
-| 2 | **Discovery** | `dossier` | `offer-discovery` | **Installed** |
-| 3 | **Solution Architect** | `scope` | `solution-architect` | **Installed** |
-| 3 | **Risk & Compliance** | `risk_assessment` | `offer-risk-compliance` | **Installed** |
-| 4 | **Pricing** | `pricing` | `offer-pricing` *(TBD)* | Pending |
-| 5 | **Copywriter** | `copy` | `offer-copywriter` | **Installed** |
-| 6 | **Evaluator** | `evaluation` | `offer-evaluator` | **Installed** |
+| Step | Agent | Output | `subagent_type` | Status |
+|------|-------|--------|-----------------|--------|
+| 0 | **Offer Director** | offer + audit_log | `offer-director` | **Installed** |
+| 1 | **Discovery** | `dossier` | `offer-discovery` | **Installed** |
+| 2 | **Solution Architect** | `scope` | `solution-architect` | **Installed** |
+| 2 | **Risk & Compliance** | `risk_assessment` | `offer-risk-compliance` | **Installed** |
+| 3 | **Pricing** | `pricing` | `offer-pricing` | **Installed** |
+| 4 | **Copywriter** | `copy` | `offer-copywriter` | **Installed** |
+| 5 | **Evaluator** | `evaluation` | `offer-evaluator` | **Installed** |
 
 ---
 
@@ -45,36 +43,51 @@ flowchart LR
 
 | Agent | File | Schema |
 |-------|------|--------|
-| Director | `prompts/agents/director.md` | — |
+| **Director** | [`prompts/agents/director.md`](agents/director.md) | `offer-schema.json` + `audit-log-schema.json` |
 | **Discovery** | [`prompts/agents/discovery.md`](agents/discovery.md) | `dossier-schema.json` |
 | **Solution Architect** | [`prompts/agents/solution-architect.md`](agents/solution-architect.md) | `offer-schema.json#scope` |
 | **Risk & Compliance** | [`prompts/agents/risk-compliance.md`](agents/risk-compliance.md) | `risk-schema.json` |
-| Pricing | `prompts/agents/pricing.md` | `offer-schema.json#pricing` |
+| **Pricing** | [`prompts/agents/pricing.md`](agents/pricing.md) | `pricing-schema.json` |
 | **Copywriter** | [`prompts/agents/copywriter.md`](agents/copywriter.md) | `copy-schema.json` |
 | **Evaluator** | [`prompts/agents/evaluator.md`](agents/evaluator.md) | `evaluation-schema.json` |
 
 ---
 
-## Required tools (Enterprise mode)
+## Enterprise skills
+
+| Skill | Agents |
+|-------|--------|
+| `customer-discovery` | Discovery, Director |
+| `solution-catalog` | Solution Architect |
+| `pricing-policy` | Pricing, Director |
+| `legal-terms` | Risk & Compliance |
+| `offer-templates` | Director, SA, Copywriter |
+| `competitive-positioning` | Copywriter, Pricing |
+
+---
+
+## Tools
 
 | Tool | Used by |
 |------|---------|
-| `crm.opportunity.get`, `crm.account.get`, `crm.activity.search` | Discovery |
+| CRM (`opportunity`, `account`, `activity`) | Discovery, Director |
 | `gong.transcript.search`, `email.thread.read` | Discovery |
-| `catalog.product.search`, `catalog.dependencies.check`, `catalog.integrations` | Solution Architect, Pricing |
-| `deals.history.search` | Solution Architect, Pricing |
-| `compliance.jurisdiction.check` | Risk & Compliance |
-| `clm.clauses.search`, `clm.precedent.search` | Risk & Compliance |
-
-**Skills:** `solution-catalog`, `offer-templates`, `competitive-positioning`
+| `catalog.product.search`, `catalog.dependencies.check` | Solution Architect |
+| `pricing_engine.*` | Pricing |
+| `clm.clauses.search`, `clm.precedent.search` | Risk |
+| `compliance.jurisdiction.check` | Risk |
+| `deals.history.search` | Pricing, SA, Director |
+| `docgen.render`, `approval.route` | Director |
 
 ---
 
 ## Invoke
 
 ```
-Task → subagent_type: offer-discovery      # opportunity_id + rep_brief
-Task → subagent_type: solution-architect   # dossier + rep_brief
+Task → subagent_type: offer-director       # opportunity_id + rep_brief (full pipeline)
+Task → subagent_type: offer-discovery      # dossier only
+Task → subagent_type: solution-architect
+Task → subagent_type: offer-pricing
 Task → subagent_type: offer-risk-compliance
 Task → subagent_type: offer-copywriter
 Task → subagent_type: offer-evaluator
@@ -82,22 +95,20 @@ Task → subagent_type: offer-evaluator
 
 ---
 
-## Evaluator revision routing
+## Evaluator rubric (§7)
 
-| Failed dimension | Owner agent |
-|------------------|-------------|
+Six dimensions 0–3, min pass = 2. Max **3 iterations** → `escalate_human`.
+
+| Dimension | Owner on fail |
+|-----------|---------------|
 | completeness | director |
 | consistency | solution_architect / pricing |
 | policy | pricing / risk |
 | grounding | copywriter / discovery |
 | tone / differentiation | copywriter |
 
-Max **3 iterations** → `escalate_human`
-
 ---
 
 ## Marketing mode (separate)
 
-GTM positioning without catalog → [`prompts/system.md`](system.md) + marketing skills.
-
-See [`offer-builder-agent.md`](../offer-builder-agent.md).
+GTM positioning → [`prompts/system.md`](system.md) · `subagent_type: offer-builder`
