@@ -188,7 +188,12 @@ class HumanReviewQueue:
     """Abstract HITL queue (Slack, email, web UI)."""
 
     def request_confirmation(
-        self, action: str, details: dict[str, Any], risk: ActionRisk
+        self,
+        action: str,
+        details: dict[str, Any],
+        risk: ActionRisk,
+        *,
+        summary: str = "",
     ) -> bool:
         """Return True if approved, False if denied or timed out."""
         raise NotImplementedError
@@ -256,7 +261,7 @@ class InMemoryPreferencesStore(PreferencesStore):
 class AutoApproveReviewQueue(HumanReviewQueue):
     """Dev-only: auto-approves everything. DO NOT use in production."""
 
-    def request_confirmation(self, action, details, risk):
+    def request_confirmation(self, action, details, risk, *, summary=""):
         logger.warning(
             "AUTO-APPROVING %s action=%s (replace AutoApproveReviewQueue in prod)",
             risk.value, action,
@@ -646,7 +651,9 @@ class SchedulerToolExecutor:
     def request_confirmation(
         self, action: str, risk: str, summary: str, details: dict[str, Any]
     ) -> dict[str, Any]:
-        approved = self.hitl.request_confirmation(action, details, ActionRisk(risk))
+        approved = self.hitl.request_confirmation(
+            action, details, ActionRisk(risk), summary=summary
+        )
         if approved:
             self._approved_actions.add(self._action_key(action, details))
         logger.info(

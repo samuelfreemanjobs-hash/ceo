@@ -55,9 +55,11 @@ pytest tests/ -q            # unit tests (no API key)
 
 ## Integration (before production)
 
-1. Implement `CalendarBackend` → Google Calendar / MS Graph
-2. Implement `PreferencesStore` → user prefs DB
-3. Replace `AutoApproveReviewQueue` → Slack / email / web UI
+1. `CalendarBackend` → Google Calendar / MS Graph
+2. `PreferencesStore` → user prefs DB
+3. `SlackHumanReviewQueue` + `slack_webhook_server.py` → HITL for update/cancel (replace `AutoApproveReviewQueue`)
+
+See `slack_hitl_queue.py` and `README.md` for Redis split-deploy pattern.
 
 ## Invoke (orchestrators)
 

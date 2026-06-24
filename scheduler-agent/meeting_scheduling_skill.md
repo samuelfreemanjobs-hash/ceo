@@ -176,4 +176,4 @@ Before production calendar writes, wire:
 
 - `CalendarBackend` → Google Calendar API / Microsoft Graph
 - `PreferencesStore` → user preferences DB
-- `HumanReviewQueue` → Slack / email / web UI (replace `AutoApproveReviewQueue`)
+- `SlackHumanReviewQueue` + `slack_webhook_server.py` → approve/deny buttons via Redis `ConfirmationStore`

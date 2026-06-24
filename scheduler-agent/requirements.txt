@@ -1,2 +1,7 @@
 anthropic>=0.40.0
 pytest>=8.0.0
+flask>=3.0.0
+slack-sdk>=3.27.0
+
+# Optional: Redis-backed ConfirmationStore for split agent/webhook deploy
+# redis>=5.0.0
