@@ -73,7 +73,7 @@ flowchart TB
 | CRM (`opportunity`, `account`, `activity`) | Discovery, Director |
 | `gong.transcript.search`, `email.thread.read` | Discovery |
 | `catalog.product.search`, `catalog.dependencies.check` | Solution Architect |
-| `pricing_engine.*` | Pricing |
+| `pricing_engine.*` (get_rates, segment_discount, volume_discount, renewal_uplift, apply_discount, check_floor) | Pricing |
 | `clm.clauses.search`, `clm.precedent.search` | Risk |
 | `compliance.jurisdiction.check` | Risk |
 | `deals.history.search` | Pricing, SA, Director |

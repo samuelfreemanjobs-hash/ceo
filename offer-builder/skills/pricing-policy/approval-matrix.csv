@@ -1,0 +1,10 @@
+condition,aggregate_min,aggregate_max,approver_role,sla_business_hours,override_priority,notes
+standard,0,0.10,none,0,1,auto-approve
+standard,0.10,0.25,sales_manager,4,1,standard 10-25% band
+standard,0.25,0.40,vp_sales,8,1,standard 25-40% band
+standard,0.40,1.00,cro,16,1,> 40% always CRO
+override,,,blocked,,99,floor violation - cannot proceed
+override,,,vp_sales,8,2,strategic-logo adder applied
+override,,,sales_manager,4,2,renewal uplift > 7%
+override,,,legal,16,3,jurisdiction status restricted or requires_review
+override,,,legal,16,99,jurisdiction status blocked - hard stop

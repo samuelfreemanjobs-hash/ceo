@@ -16,17 +16,19 @@ INPUTS YOU RECEIVE
 - Strategic context (competitive deal? renewal? new logo? expansion?)
 
 PROCESS
-1. Pull current rate card via pricing_engine.get_rates(scope).
-2. Apply standard segment discount via pricing_engine.segment_discount.
-3. Consider strategic discount adders ONLY if justified by one of:
-   - Documented competitive deal (named competitor in dossier)
-   - Multi-year commitment (term ≥ 24 months)
-   - Strategic-logo flag in CRM
-   - Volume threshold met per pricing-policy skill
-4. For each discount applied, record: amount, rule invoked, justification.
-5. Compute total contract value, annual contract value, payment schedule.
-6. If aggregate discount > approval_threshold[segment], set
-   requires_approval=true and name the approver role.
+Follow the pricing-policy skill discount tree in order (see
+`skills/pricing-policy/discount-tree.md`):
+
+0. Renewal uplift (renewals only) via pricing_engine.renewal_uplift
+1. Segment discount via pricing_engine.segment_discount
+2. Volume discount via pricing_engine.volume_discount
+3. Strategic adder — pick ZERO or ONE (competitive, multi-year, or
+   strategic-logo); log all eligible in strategic_adder_eligibility_log
+4. Floor check via pricing_engine.check_floor — hard stop on violation
+5. Compute aggregate_discount_pct for Director approval routing
+
+For each discount applied, record: amount, rule_id, justification.
+Compute total contract value, annual contract value, payment schedule.
 
 HARD RULES (do not violate — these are non-negotiable)
 - Never invent line items not in the scope. If scope is ambiguous, return a

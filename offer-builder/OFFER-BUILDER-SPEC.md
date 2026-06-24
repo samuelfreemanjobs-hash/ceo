@@ -94,7 +94,7 @@ Marketing skills (`positioning-frameworks`, etc.) remain on `offer-builder` only
 | `crm.opportunity.get`, `crm.account.get`, `crm.activity.search` | Discovery, Director |
 | `gong.transcript.search`, `email.thread.read` | Discovery |
 | `catalog.product.search`, `catalog.dependencies.check` | Solution Architect |
-| `pricing_engine.get_rates`, `.segment_discount`, `.apply_discount` | Pricing |
+| `pricing_engine.get_rates`, `.segment_discount`, `.volume_discount`, `.renewal_uplift`, `.apply_discount`, `.check_floor` | Pricing |
 | `clm.clauses.search`, `clm.precedent.search` | Risk |
 | `compliance.jurisdiction.check` | Risk |
 | `deals.history.search` | Pricing, SA, Director |

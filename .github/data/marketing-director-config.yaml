@@ -168,7 +168,10 @@ marketing_director:
           tools:
             - pricing_engine.get_rates
             - pricing_engine.segment_discount
+            - pricing_engine.volume_discount
+            - pricing_engine.renewal_uplift
             - pricing_engine.apply_discount
+            - pricing_engine.check_floor
             - deals.history.search
         offer-copywriter:
           task_subagent_type: offer-copywriter
@@ -484,10 +487,14 @@ marketing_director:
         - offer-pricing
     pricing-policy:
       status: installed
-      version: "1.0"
+      version: "2.0"
       owner: finance / sales ops
       path: skills/pricing-policy/SKILL.md
       package_path: offer-builder/skills/pricing-policy/SKILL.md
+      bundle:
+        - discount-tree.md
+        - approval-matrix.csv
+        - examples/
       used_by:
         - offer-pricing
         - offer-director
