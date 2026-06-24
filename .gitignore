@@ -4,3 +4,4 @@ worktrees/
 .claude/.backup/
 .gemini/.backup/
 .github/.backup/
+tests/__pycache__/
