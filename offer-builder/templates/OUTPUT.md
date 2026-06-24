@@ -1,123 +1,133 @@
-# Offer Spec — output template
+# Offer one-pager — output template
 
-Agent fills this structure. Save to: `docs/marketing/offers/{slug}-offer-spec-{YYYY-MM-DD}.md`
+Agent fills this structure. Save to: `docs/marketing/offers/{slug}-offer-{YYYY-MM-DD}.md`
+
+Playbook v1.2 · Self-audit before delivery (see AGENTS.md).
 
 ---
 
 ## 1. Brief recap
 
-≤4 lines: product, ICP, primary outcome, constraints.
+≤4 lines: ICP, offer type, mode, key constraint.
 
 ---
 
-## 2. Positioning
+## 2. Value map
 
-### Positioning statement
-
-(One sentence: For [ICP] who [job/trigger], [product] is the [category] that [key differentiation] unlike [alternatives].)
-
-### For / against frame
-
-| For (ideal customer) | Not for |
-|----------------------|---------|
-| | |
-
-### Category choice
-
-- **Category label:** 
-- **Rationale:** (why this category vs. alternatives)
-- **Crowded vs. white-space:** 
+| Element | Content |
+|---------|---------|
+| **Outcome** | (what changes for the client) |
+| **Mechanism** | (how you deliver it — honest, not mystified) |
+| **Metrics / wins** | (plausible numbers or qualitative wins) |
+| **Proof status** | Verified / Likely / Unverified per claim |
 
 ---
 
-## 3. Value proposition
+## 3. Offer skeleton
 
-### Primary value prop
+### Name & one-line promise
 
-(Outcome-led, one paragraph max)
+- **Offer name:** 
+- **Promise:** (one sentence — no weasel unless qualified)
 
-### Supporting claims (max 3)
+### Scope
+
+**In scope:**
+- 
+- 
+
+**Out of scope:**
+- 
+- 
+
+### Timeline & deliverables
+
+| Phase | Deliverable | Timing |
+|-------|-------------|--------|
+| | | |
+
+### Client responsibilities
+
+(Inputs, access, decisions required — the boring ops detail)
+
+### Bonuses / risk reversal (if any)
+
+| Component | Purpose | Defensible? |
+|-----------|---------|-------------|
+| | | |
+
+### Terms
+
+- **Payment:** 
+- **Comms / cadence:** 
+- **Boundaries:** (revisions, scope creep, pauses)
+
+---
+
+## 4. Tiering (if mode = stack or tiers requested)
+
+| Tier | Includes | Price | Best for | **Primary?** |
+|------|----------|-------|----------|--------------|
+| | | | | |
+
+**Primary recommendation:** (tier + why)
+
+---
+
+## 5. Price logic
+
+- **Anchor / frame:** 
+- **Price:** 
+- **Why this number:** (value anchor, cost-plus, or strategic tradeoff stated explicitly)
+
+---
+
+## 6. Messaging
+
+### Headline direction
+
+### 3 proof bullets
 
 1. 
 2. 
 3. 
 
-### Messaging hierarchy
+### Who should NOT buy
 
-| Level | Copy direction |
-|-------|----------------|
-| Headline | |
-| Subhead | |
-| Proof bullets | |
-| CTA direction | |
+- 
 
 ---
 
-## 4. Proof ladder
+## 7. Objection pre-empts
 
-| Claim | Proof type | Status | Notes |
-|-------|------------|--------|-------|
-| | Data / demo / social / guarantee | Verified / Likely / Unverified | |
-
-**Compliance flags:** (claims requiring substantiation before external use)
-
----
-
-## 5. Offer architecture
-
-### Offer stack
-
-| Layer | Component | Purpose |
-|-------|-----------|---------|
-| Core | | |
-| Bonus 1 | | |
-| Bonus 2 | | |
-| Risk reversal | | |
-
-### Tiers (if applicable)
-
-| Tier | Includes | Price | Best for |
-|------|----------|-------|----------|
-| | | | |
-
-### Naming
-
-- **Offer name:** 
-- **Tier names:** 
+| Objection | Response |
+|-----------|----------|
+| Price | |
+| Time | |
+| "Will it work for me?" | |
+| Trust | |
 
 ---
 
-## 6. Pricing & packaging
+## 8. Compliance & flags
 
-### Pricing model
-
-(e.g., per-seat, flat, usage, tiered, freemium)
-
-### Anchoring rationale
-
-- **Anchor:** 
-- **Sell price:** 
-- **Why this frame works:** 
-
-### Packaging decisions
-
-- Minimum commitment / seats:
-- Annual vs monthly:
-- What's excluded (and why):
+- **YMYL / regulated notes:** 
+- **Must not say:** 
+- **Claims requiring substantiation:** 
 
 ---
 
-## 7. Top 3 validation tests (ICE)
+## 9. Self-audit (agent completes)
 
-| # | Test | Impact | Confidence | Ease | ICE | Run order |
-|---|------|--------|------------|------|-----|-----------|
-| 1 | | | | | | |
-| 2 | | | | | | |
-| 3 | | | | | | |
+- [ ] In / out of scope bulletproof
+- [ ] Delivery matches stated capacity
+- [ ] Promise is one sentence, qualified where needed
+- [ ] Guarantee (if any) flagged for legal review
+- [ ] No "unlimited" without boundaries
 
 ---
 
-## 8. Handoffs
+## 10. Handoffs & next passes
 
 | To | Payload |
 |----|---------|
@@ -125,15 +135,10 @@ Agent fills this structure. Save to: `docs/marketing/offers/{slug}-offer-spec-{Y
 | copy-agent / writer | |
 | compliance-agent | |
 
----
-
-## 9. Open questions
-
-- What would change this recommendation?
-- Assumptions to validate first
+**Optional second pass:** sales one-pager · landing outline · email pitch
 
 ---
 
-## Trace (optional)
+## 11. Open questions
 
-`trace_id:` · `skills_invoked:` · `tools_called:` — see `observability/trace-schema.json`
+- 

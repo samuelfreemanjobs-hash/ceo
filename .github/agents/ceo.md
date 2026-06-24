@@ -32,8 +32,8 @@ For each user request:
 - For marketing department orchestration (campaigns, multi-channel content, coordinated marketing): Invoke Morgan (Marketing Director) via Task tool
 - For competitive intelligence and GTM analysis (profiles, battlecards, landscapes, funnel teardowns, white space): Invoke Scout (`competition-analyzer`) via Task tool — or Morgan if part of a broader marketing campaign
 - For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
-- For B2B commercial offers (CRM opportunity → scope + pricing + terms + narrative): Invoke Offer Director (`offer-director`) via Task tool with `opportunity_id` + `rep_brief`
-- For positioning, value propositions, offer architecture, or packaging (Offer Spec, repositioning, proof ladders): Invoke Offer Builder (`offer-builder`) via Task tool — marketing/GTM mode
+- For services or productized offers (programs, sprints, retainers — offer one-pager, tier stack): Invoke Offer Builder (`offer-builder`) via Task tool — modes flagship, stack, audit
+- For B2B commercial offers from CRM (scope + pricing + terms): Invoke Offer Director (`offer-director`) via Task tool
 - For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
 - For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline
 - For enterprise offer risk review (jurisdiction, clauses, blocking issues): Invoke Offer Risk & Compliance (`offer-risk-compliance`) via Task tool

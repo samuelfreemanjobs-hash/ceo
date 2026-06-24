@@ -24,15 +24,16 @@ Task → subagent_type: offer-director   # opportunity_id + rep_brief
 
 ---
 
-## Marketing — GTM offer architecture
+## Marketing — Playbook v1.2
 
-Discover → Position → Propose → Architect → Package → Validate
+Package services into **specific, executable offers** (programs, sprints, retainers).
 
 ```
 Task → subagent_type: offer-builder
+Modes: flagship | stack | audit
 ```
 
-Output: `docs/marketing/offers/`
+Output: `docs/marketing/offers/` · Card: [`AGENTS.md`](AGENTS.md) · Standards: [`STANDARDS.md`](../STANDARDS.md)
 
 ---
 

@@ -3,70 +3,58 @@
 Copy to `briefs/ACTIVE.md` when ready to run.  
 Cursor: `@offer-builder/AGENTS.md` + filled brief · Output: `templates/OUTPUT.md`
 
-Optional: fill [`USER_PROFILE.md`](../USER_PROFILE.md) for standing context.
+Optional: [`USER_PROFILE.md`](../USER_PROFILE.md) · JSON: [`schemas/brief.v1.json`](../schemas/brief.v1.json)
 
 ---
 
-## Mode
+## Mode (pick one)
 
-- [ ] `full` — discovery through validate (default)
-- [ ] `reposition` — positioning + value prop only
-- [ ] `packaging` — offer stack + pricing (needs existing positioning)
-- [ ] `validate` — assumption log + ICE tests only
+- [ ] `flagship` — one offer, deep
+- [ ] `stack` — ladder of offers + add-ons
+- [ ] `audit` — improve existing offer (attach current offer below)
 
-## Product snapshot
+## ICP & fit
 
-- **Product / service:** 
-- **Business model + stage:** 
-- **Primary outcome for customer:** 
-- **ACV / AOV target:** 
+- **Ideal client (specific):** 
+- **Undesired clients (who should NOT buy):** 
+- **What they want (outcome):** 
+- **What they have today (status quo):** 
 
-## Audience
+## Delivery reality
 
-- **ICP (specific):** 
-- **Who it's NOT for:** 
-- **Switching trigger:** (why they buy now)
-- **Status quo / alternatives:** (named competitors or DIY)
+- **Service / productized offer:** 
+- **Current package(s):** 
+- **Team capacity (honest):** 
+- **Time to first value:** 
+- **Client must provide (inputs, access):** 
 
-## Competitive context
+## Proof available
 
-- **Scout handoff (if any):** `docs/marketing/research/...`
-- **White-space hypothesis:** 
-- **Crowded plays to avoid:** 
-
-## Current state
-
-- **Existing positioning (if any):** 
-- **Current pricing / packaging:** 
-- **Known objections:** 
-- **Win reasons (if known):** 
-- **Loss reasons (if known):** 
-
-## Proof assets
-
-| Asset | Available? | Notes |
-|-------|------------|-------|
-| Case studies / logos | | |
+| Asset | Yes? | Notes |
+|-------|------|-------|
+| Case studies / results | | |
+| Logos / names | | |
 | Quantified outcomes | | |
-| Demo / trial | | |
-| Guarantee willingness | | |
-| Reviews / third-party | | |
+| Testimonials (consented) | | |
+| Willing to offer guarantee | | |
+
+## Pricing (if known)
+
+- **Target price or range:** 
+- **Price logic preference:** value anchor / cost-plus / hybrid / strategic (explain)
+- **Existing pricing to audit:** (URL or paste)
 
 ## Constraints
 
-- **Budget / timeline:** 
-- **Price floor / ceiling:** 
 - **Claims we cannot make:** 
+- **YMYL / regulated?** (health, finance, legal, etc.)
 - **Voice / tone:** 
 
-## Attachments (optional)
+## Scout / research (optional)
 
-- Pricing page URL
-- Landing page URL
-- Scout landscape or battle card path
-- Win/loss notes (paste or summarize)
+- `docs/marketing/research/...`
 
 ## Confirm
 
-- [ ] I understand the agent will ask discovery questions if anything above is blank
-- [ ] Unverified claims should be flagged, not stated as fact
+- [ ] Max 3 clarifying questions OK if gaps remain
+- [ ] Output must match real delivery capacity

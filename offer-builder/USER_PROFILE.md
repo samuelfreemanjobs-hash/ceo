@@ -1,43 +1,34 @@
 # User profile (optional)
 
-Standing context for Offer Builder sessions. Fill once; reference from briefs.
-
-## Product / service
-
-- **Name:** 
-- **What it does (one sentence):** 
-- **Business model:** (SaaS / DTC / services / info / marketplace / other)
-- **Stage:** (idea / pre-launch / growth / mature)
+Standing context for Offer Builder sessions (Playbook v1.2). Fill once; reference from briefs.
 
 ## ICP
 
 - **Primary segment:** 
-- **Firmographics / demographics:** 
-- **Job to be done:** 
-- **Switching trigger:** (what makes them look for a solution now)
+- **Undesired clients:** 
+- **Typical outcome they want:** 
 
-## Competitive frame
+## Offer defaults
 
-- **Direct alternatives:** (named competitors or "spreadsheet + email")
-- **Status quo:** (what they do without you)
-- **Our wedge (if known):** 
+- **Flagship service / productized offer:** 
+- **Delivery model:** (sprint / retainer / program / project)
+- **Team capacity (realistic):** 
 
-## Proof assets available
+## Proof allowed
 
-- [ ] Customer logos / case studies
-- [ ] Quantified outcomes (with permission)
-- [ ] Demo / trial
-- [ ] Guarantee appetite
-- [ ] Third-party validation (reviews, certifications)
+- [ ] Case studies (paths or summaries)
+- [ ] Logos / names
+- [ ] Quantified outcomes
+- [ ] Testimonials (consent confirmed)
+- [ ] Guarantee appetite (yes/no + conditions)
 
-## Constraints
+## Voice & constraints
 
-- **Price range / ACV target:** 
-- **Cannot claim:** (regulated, unsubstantiated, competitive)
-- **Voice / tone:** 
+- **Tone:** 
+- **Must not say:** 
+- **Regulated / YMYL:** 
 
 ## Links
 
-- Pricing page: 
-- Landing page: 
+- Current offer page: 
 - Scout research: `docs/marketing/research/...`

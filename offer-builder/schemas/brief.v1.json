@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brief.v1.json",
+  "title": "OfferBuilderBrief",
+  "description": "Structured brief for Offer Builder Playbook v1.2",
+  "type": "object",
+  "required": ["mode"],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["flagship", "stack", "audit"]
+    },
+    "icp": { "type": "string" },
+    "undesired_clients": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "current_packages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "team_capacity": { "type": "string" },
+    "proof_available": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["case_studies", "logos", "quantified_outcomes", "testimonials", "demo", "guarantee_ok"]
+      }
+    },
+    "existing_offer_url": { "type": "string", "format": "uri" },
+    "price_range": { "type": "string" },
+    "claims_cannot_make": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ymyl_regulated": { "type": "boolean", "default": false },
+    "scout_handoff_path": { "type": "string" },
+    "voice_notes": { "type": "string" }
+  }
+}

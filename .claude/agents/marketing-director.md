@@ -47,8 +47,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - Competitive intelligence (profiles, battle cards, SWOT, pricing intel) → `competition-analyzer` (Scout)
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
-- B2B commercial offer / quote / proposal from CRM opportunity → `offer-director` (full enterprise pipeline)
-- Positioning, value proposition, marketing offer stack → `offer-builder`
+- B2B commercial offer / quote from CRM → `offer-director`
+- Services offer / productized package / tier stack → `offer-builder` (flagship, stack, audit)
 - Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after `offer-discovery` dossier)
 - Enterprise dossier / CRM discovery → `offer-discovery`
 - Enterprise risk / clauses → `offer-risk-compliance` (parallel with solution-architect)

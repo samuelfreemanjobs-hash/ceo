@@ -30,7 +30,7 @@ Marketing Director (Morgan)
 | Content / copy | Marketing Director → Copy | Specialist + compliance |
 | Competitive intelligence | Competition Analyzer (Scout) or Marketing Director | Profiles, battle cards, SWOT, landscape |
 | Funnel design / audit / optimize | Funnel Architect or Marketing Director | Funnel Spec, stage copy, metrics |
-| Positioning / offer / packaging | Offer Builder or Marketing Director | Offer Spec, proof ladder, pricing |
+| Positioning / services offer / productized package | Offer Builder or Marketing Director | Offer one-pager, tier stack, messaging |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |

@@ -78,7 +78,7 @@ marketing_director:
       model: opus
       status: installed
       mode: marketing
-      domain: GTM positioning, value propositions, offer architecture — Offer Specs, proof ladders, ICE validation
+      domain: Services/productized offers — offer one-pager, tier stack, messaging (Playbook v1.2). Programs, sprints, retainers.
       loop_budget: 10
       agent_path: agents/offer-builder.md
       package_path: offer-builder/

@@ -1,78 +1,55 @@
 # Offer Builder — instructions (Cursor)
 
-**Agent:** Offer Builder (`offer-builder-v1`) · **Package:** `offer-builder/`
+**Agent:** Offer Builder · **Playbook:** v1.2 · **Package:** `offer-builder/`
 
-Design positioning, value propositions, and offer architecture. Output an **Offer Spec** with proof ladder, offer stack, and ICE-scored validation tests.
+Package services/products into **specific offers** — outcome, scope, terms, proof. For **CRM catalog quotes** use `offer-director` instead.
+
+**Standards:** [STANDARDS.md](../STANDARDS.md)
 
 ---
 
 ## 1. Prep
 
-1. **Optional:** [USER_PROFILE.md](USER_PROFILE.md) — standing context (product, ICP, voice, constraints).
-2. **Fill** [templates/BRIEF.md](templates/BRIEF.md) — product, audience, outcome, alternatives, constraints.
-3. Save active brief to [briefs/ACTIVE.md](briefs/ACTIVE.md) for repeat sessions.
-
-**From Scout:** If you have a competitive landscape or white-space analysis, attach or link `docs/marketing/research/` output — see [HANDOFFS.md](../docs/marketing/HANDOFFS.md).
+1. Optional: [USER_PROFILE.md](USER_PROFILE.md)
+2. Fill [templates/BRIEF.md](templates/BRIEF.md) — mode: `flagship` | `stack` | `audit`
+3. Save to [briefs/ACTIVE.md](briefs/ACTIVE.md)
 
 ---
 
 ## 2. Run
 
-In Cursor chat:
-
 ```
 @offer-builder/AGENTS.md + my brief in briefs/ACTIVE.md.
-Mode: full build (or: reposition only | packaging only | validate only).
-Output using templates/OUTPUT.md (Offer Spec).
-Confirm each phase before proceeding.
+Mode: flagship (or: stack | audit).
+Output using templates/OUTPUT.md.
+Max 3 questions if needed.
 ```
 
-**CEO orchestration:** Task tool → `subagent_type: offer-builder` with brief in prompt.
-
-**Modes**
-
-| Mode | Phases run |
-|------|------------|
-| `full` | 1–6 (default) |
-| `reposition` | 1–3 (discovery + position + value prop) |
-| `packaging` | 1, 4–5 (needs existing positioning) |
-| `validate` | 1, 6 (assumption log + ICE tests) |
+**CEO:** `Task → subagent_type: offer-builder`
 
 ---
 
 ## 3. After
 
-- Save Offer Spec → `docs/marketing/offers/{slug}-offer-spec-{date}.md`
-- Funnel design → `funnel-architect` with Offer Spec attached
-- Copy production → Morgan → `copy-agent` / `writer`
-- Claims review → `compliance-agent` before external publish
-- Log outcomes: [learnings/OUTCOMES-LOG.md](learnings/OUTCOMES-LOG.md)
+- Save → `docs/marketing/offers/{slug}-offer-{date}.md`
+- Log: [learnings/OUTCOMES-LOG.md](learnings/OUTCOMES-LOG.md)
+- Handoffs: [HANDOFFS.md](../docs/marketing/HANDOFFS.md)
+
+**Second pass (optional):** sales one-pager · landing outline · email pitch
 
 ---
 
-## 4. API
-
-- **System:** [prompts/system.md](prompts/system.md)
-- **User message:** filled brief + Scout artifacts or pricing page URLs
-- **Skills:** `offer-builder/skills/*/SKILL.md`
-
----
-
-## 5. Trouble
+## 4. Trouble
 
 | Problem | Fix |
 |---------|-----|
-| Generic "we help businesses" output | Re-run Phase 1 — add ICP, alternatives, switching trigger |
-| No differentiation | Attach Scout landscape or list 3 named competitors |
-| Pricing feels arbitrary | Require anchoring rationale and competitor price frame |
-| Too many segments | Pick one primary ICP; note secondary as future spec |
-| Claims without proof | Require proof ladder with Verified / Unverified tags |
+| Vague "we help everyone" | Add undesired clients + narrow ICP |
+| Unrealistic timeline | Add client inputs + team capacity to brief |
+| Price feels arbitrary | Require price logic section in output |
+| Guarantee overreach | Self-audit + compliance flag |
 
 ---
 
 ## See also
 
-- [AGENTS.md](AGENTS.md) — agent card for `@` mention
-- [worked-example.md](worked-example.md) — B2B SaaS reposition trace
-- [test-prompts.md](test-prompts.md) — eval suite
-- [templates/BRIEF.md](templates/BRIEF.md) · [templates/OUTPUT.md](templates/OUTPUT.md)
+[AGENTS-INDEX.md](../docs/marketing/AGENTS-INDEX.md) · [AGENTS.md](AGENTS.md)
