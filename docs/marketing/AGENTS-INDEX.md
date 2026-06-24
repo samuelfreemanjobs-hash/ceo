@@ -82,10 +82,10 @@ Scout → Offer Builder → Proposal → LP → Compliance → Publish
 | LP | **Installed** | — |
 | Copywriter | **Installed** | Card + `marketing-dept --phase1` |
 | Compliance | **Installed** | Card + `marketing-dept --phase1` |
-| Media Planner | Pending | `marketer` (Mark) |
-| Research | Pending | Scout for competitive |
-| Creative | Pending | — |
-| Ad | Pending | — |
+| Ad | **Installed** | `ad-agent` |
+| Media Planner | **Installed** | `marketer` for quick advice |
+| Research | **Installed** | Scout for competitive |
+| Creative | **Installed** | — |
 
 ---
 

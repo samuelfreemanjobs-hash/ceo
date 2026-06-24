@@ -113,6 +113,17 @@ marketing_director:
         - lp-structure
         - lp-validation
 
+    ad-agent:
+      task_subagent_type: ad-agent
+      model: sonnet
+      status: installed
+      domain: Paid ad copy and creative briefs from approved offer/LP messaging
+      loop_budget: 6
+      agent_path: agents/ad-agent.md
+      skills:
+        - brand-voice
+        - prohibited-claims-and-disclaimers
+
     offer-director:
       task_subagent_type: offer-director
       model: opus
@@ -220,7 +231,8 @@ marketing_director:
     research-agent:
       tool_name: research_agent
       model: sonnet
-      status: pending_install
+      status: installed
+      agent_path: agents/research-agent.md
       domain: General market research, audience insights (non-competitive)
       loop_budget: 8
       skills:
@@ -231,7 +243,8 @@ marketing_director:
     creative-agent:
       tool_name: creative_agent
       model: opus
-      status: pending_install
+      status: installed
+      agent_path: agents/creative-agent.md
       domain: Visual concepts, brand expression, creative direction
       loop_budget: 6
       skills:
@@ -256,7 +269,8 @@ marketing_director:
     media-agent:
       tool_name: media_agent
       model: sonnet
-      status: pending_install
+      status: installed
+      agent_path: agents/media-agent.md
       domain: Channel selection, budget allocation, media planning
       loop_budget: 6
       interim_agent: marketer
@@ -335,7 +349,7 @@ marketing_director:
         - marketing-director
       note: Legal team must fill in and sign off before production use
     marketing-plan-current-quarter:
-      status: template
+      status: installed
       version: "1.0"
       owner: cmo office
       path: skills/marketing-plan-current-quarter/SKILL.md
@@ -577,6 +591,30 @@ marketing_director:
       package_path: lp-agent/skills/lp-validation/SKILL.md
       used_by:
         - lp-agent
+    campaign-brief-template:
+      status: installed
+      version: "1.0"
+      owner: marketing director
+      path: skills/campaign-brief-template/SKILL.md
+      used_by:
+        - marketing-director
+    customer-personas:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/customer-personas/SKILL.md
+      used_by:
+        - marketing-director
+        - copy-agent
+        - media-agent
+    media-mix-defaults:
+      status: installed
+      version: "1.0"
+      owner: media
+      path: skills/media-mix-defaults/SKILL.md
+      used_by:
+        - media-agent
+        - marketing-director
 
   rollout_phases:
     phase_1:

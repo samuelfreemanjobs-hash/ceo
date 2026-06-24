@@ -2,6 +2,12 @@
 # DO NOT EDIT MANUALLY - Run .claude/utils/generate-indexes.sh to regenerate
 version: 1
 agents:
+  - id: ad-agent
+    name: "ad-agent"
+    title: "Ad Agent"
+    description: "Paid ad copy and creative briefs from approved positioning and LP hero. Use for search, social, and display ad variants — after offer/LP messaging is locked. Preserves claim fidelity."
+    model: gpt-5-codex
+    path: "agents/ad-agent.md"
   - id: analytics
     name: "analytics"
     title: "analytics"
@@ -32,6 +38,12 @@ agents:
     description: "Messaging strategy, ad copy, email, and long-form content. Use for channel-specific copy when brand voice is defined. Interim prompt agent — Python CopyAgent also available in marketing-dept Phase 1."
     model: gpt-5-codex
     path: "agents/copy-agent.md"
+  - id: creative-agent
+    name: "creative-agent"
+    title: "Creative Agent"
+    description: "Visual concepts, brand expression, and creative direction. Use for campaign concepts, visual briefs, and mood boards — not final LP copy (lp-agent) or long-form (copy-agent)."
+    model: gpt-5-codex
+    path: "agents/creative-agent.md"
   - id: developer
     name: "developer"
     title: "developer"
@@ -62,6 +74,12 @@ agents:
     description: "Hierarchical marketing orchestrator for the Marketing Dept. Plans, delegates to specialist agents, synthesizes deliverables, and owns brand-safe campaign output. Use for full campaigns, multi-channel content, coordinated marketing work, and any request requiring multiple marketing specialists."
     model: gpt-5-codex
     path: "agents/marketing-director.md"
+  - id: media-agent
+    name: "media-agent"
+    title: "Media Planner Agent"
+    description: "Channel selection, budget allocation, and media planning. Use when choosing channels and spend — not for writing copy (copy-agent) or funnel design (funnel-architect)."
+    model: gpt-5-codex
+    path: "agents/media-agent.md"
   - id: offer-builder
     name: "offer-builder"
     title: "Offer Builder"
@@ -128,6 +146,12 @@ agents:
     description: "Use this agent for comprehensive test architecture reviews, quality gate assessments, and NFR validations. Quinn is a test architect who provides analytical, risk-based quality guidance with traceability focus."
     model: gpt-5-codex
     path: "agents/qa.md"
+  - id: research-agent
+    name: "research-agent"
+    title: "Research Agent"
+    description: "General market research and audience insights (non-competitive). Use for category trends, audience attitudes, and sizing — NOT for competitor intel (use competition-analyzer). Python ResearchAgent available in marketing-dept full director."
+    model: gpt-5-codex
+    path: "agents/research-agent.md"
   - id: scheduler-agent
     name: "scheduler-agent"
     title: "Scheduler Agent"

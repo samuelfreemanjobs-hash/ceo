@@ -59,12 +59,18 @@ Mirror into `offer-builder/USER_PROFILE.md` for offer sessions.
 2. Run: `@proposal-agent/AGENTS.md` + brief
 3. Save → `docs/marketing/proposals/{slug}-proposal-{date}.md`
 
+**Example:** [proposals/example-discovery-sprint-proposal-2026-06-24.md](proposals/example-discovery-sprint-proposal-2026-06-24.md)
+
 ### 3. LP Agent
 
 1. Fill `lp-agent/briefs/ACTIVE.md` — offer + proposal paths + CTA URL
 2. Run: `@lp-agent/AGENTS.md` + brief
 3. Save → `docs/marketing/landing-pages/{slug}-lp-{date}.md`
 4. Route to compliance before publish
+
+**Example:** [landing-pages/example-discovery-sprint-lp-2026-06-24.md](landing-pages/example-discovery-sprint-lp-2026-06-24.md)
+
+Pre-filled briefs for the example chain: `offer-builder/briefs/ACTIVE.md` → `proposal-agent/` → `lp-agent/`
 
 ### CEO / Morgan routing
 
@@ -91,6 +97,13 @@ cd scheduler-agent
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...
 python scheduler_agent.py
+```
+
+**HTTP API (optional):**
+
+```bash
+python api_server.py
+# POST http://localhost:8080/schedule  {"user_id":"u1","message":"..."}
 ```
 
 Uses in-memory calendar + auto-approve HITL.

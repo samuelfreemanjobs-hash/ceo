@@ -1,34 +1,35 @@
-# User profile (optional)
+# User profile — Offer Builder
 
-Standing context for Offer Builder sessions (Playbook v1.2). Fill once; reference from briefs.
+Synced from `docs/marketing/BRAND-PROFILE.md`. Edit either file; keep both aligned.
 
 ## ICP
 
-- **Primary segment:** 
-- **Undesired clients:** 
-- **Typical outcome they want:** 
+- **Primary segment:** B2B founders/operators at 10–100 person companies with product traction but unclear GTM
+- **Undesired clients:** Pre-revenue startups; enterprises with 6+ month procurement
+- **Typical outcome they want:** Clear positioning, sellable one-page offer, 90-day execution plan
 
 ## Offer defaults
 
-- **Flagship service / productized offer:** 
-- **Delivery model:** (sprint / retainer / program / project)
-- **Team capacity (realistic):** 
+- **Flagship service:** Discovery Sprint ($4,500, 2 weeks)
+- **Delivery model:** sprint
+- **Team capacity:** 2 concurrent sprints max
 
 ## Proof allowed
 
-- [ ] Case studies (paths or summaries)
-- [ ] Logos / names
+- [x] Directional client feedback (not quantified)
+- [ ] Case studies with named logos (gap — collecting)
 - [ ] Quantified outcomes
-- [ ] Testimonials (consent confirmed)
-- [ ] Guarantee appetite (yes/no + conditions)
+- [ ] Testimonials (consent pending)
+- [x] Guarantee: readout delay extension only (see offer §7)
 
 ## Voice & constraints
 
-- **Tone:** 
-- **Must not say:** 
-- **Regulated / YMYL:** 
+- **Tone:** Direct, concrete, calm — see BRAND-PROFILE
+- **Must not say:** guaranteed revenue, risk-free, #1 without citation
+- **Regulated / YMYL:** No (general B2B services)
 
 ## Links
 
-- Current offer page: 
-- Scout research: `docs/marketing/research/...`
+- Brand profile: `docs/marketing/BRAND-PROFILE.md`
+- Example offer: `docs/marketing/offers/example-discovery-sprint-offer-2026-06-24.md`
+- Scout research: `docs/marketing/research/`

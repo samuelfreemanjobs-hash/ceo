@@ -13,7 +13,7 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 | White space identified in GTM landscape | **Offer Builder** (`offer-builder`) | Landscape excerpt, white-space hypothesis, confidence tags, open questions |
 | Funnel pattern worth mapping or countering | **Funnel Architect** (`funnel-architect`) | GTM teardown funnel section, competitor URLs, stage rates, P0 verification gaps |
 | Positioning / offer angle from landscape | **Offer Builder** (`offer-builder`) | White-space section, implications for us |
-| LP or ad creative direction | **LP** (`lp-agent`) / **Ad** agents *(pending)* | Teardown positioning, competitor LP URLs, user contrast pages |
+| LP or ad creative direction | **LP** (`lp-agent`) / **Ad** (`ad-agent`) | Teardown positioning, competitor LP URLs, user contrast pages |
 | Battle card ready for external use | **Compliance** (`compliance-agent`) / Morgan | Artifact path, claims requiring substantiation, landmines list |
 | Deep profile needed after GTM pass | Scout (same agent, different skill) | Load `competitor-profiling` + `pricing-teardown` |
 
@@ -143,7 +143,7 @@ Already defined above (`from: competition-analyzer`, `to: offer-builder`).
 | LP | **Installed** |
 | Copywriter | **Installed** (card + Python Phase 1) |
 | Compliance | **Installed** (card + Python Phase 1) |
-| Ad | *(pending)* |
+| Ad | **Installed** | `ad-agent` |
 
 ---
 

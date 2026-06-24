@@ -91,6 +91,16 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
         payload["skill_status"] = director_cfg.get("skills", {}).get(
             "prohibited-claims-and-disclaimers", {}
         )
+    elif topic in {"brand_profile", "brand-profile", "BRAND-PROFILE"}:
+        profile_path = root / "docs/marketing/BRAND-PROFILE.md" if root else None
+        if profile_path and profile_path.exists():
+            payload["content"] = {
+                "status": "loaded",
+                "path": str(profile_path.relative_to(root)),
+                "content": profile_path.read_text(encoding="utf-8"),
+            }
+        else:
+            payload["content"] = {"status": "not_found", "path": "docs/marketing/BRAND-PROFILE.md"}
     elif topic in {
         "competitive_intel",
         "competitor-profiling",

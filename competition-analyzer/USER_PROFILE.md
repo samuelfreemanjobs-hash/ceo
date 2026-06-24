@@ -1,39 +1,21 @@
-# User profile — comparison frame
+# User profile — Competition Analyzer (Scout)
 
-Fill this in so Scout evaluates competitors **relative to your offer**. Optional but improves landscape and white-space output.
+## Our positioning
 
-## Your offer (one paragraph)
+- **Category:** B2B GTM strategy sprints / productized consulting
+- **Primary offer:** Discovery Sprint — positioning + offer + 90-day plan
+- **Differentiation hypothesis:** Fixed scope, 2-week delivery, honest proof policy
 
-[What you sell, to whom, and the core outcome you promise]
+## Competitors to watch
 
-## ICP
+- *(Add 3–5 competitors with URLs when you run Scout)*
 
-| Field | Your answer |
-|-------|-------------|
-| Primary persona | |
-| Company size / segment | |
-| Geography | |
-| Budget band (if relevant) | |
+## Proof constraints
 
-## Positioning (how you want to be compared)
+- Do not claim superiority without sourced evidence
+- See `docs/marketing/BRAND-PROFILE.md` compliance section
 
-- **Category we claim:** 
-- **Primary differentiation vs. field:** 
-- **We do NOT compete on:** 
+## Output paths
 
-## Comparison dimensions (rank what matters)
-
-1. 
-2. 
-3. 
-
-## Internal assets Scout may reference (optional)
-
-- Our pricing page: 
-- Our primary LP: 
-- Win/loss notes location: 
-- Prior battle cards: `docs/marketing/research/battle-cards/`
-
----
-
-*Refresh when offer or ICP shifts. Do not put credentials or secrets here.*
+- Research: `docs/marketing/research/`
+- Battle cards: `docs/marketing/research/battle-cards/`

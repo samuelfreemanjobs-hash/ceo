@@ -18,10 +18,11 @@ Marketing Director (Morgan)
 ├── Offer Builder                 [installed]  Playbook v1.2 — services offers
 ├── Proposal Agent                [installed]  Client proposals from offers
 ├── LP Agent                      [installed]  Landing pages from offer + proposal
-├── Research Agent              [pending]
-├── Brand & Creative Agent      [pending]
+├── Research Agent              [installed]
+├── Brand & Creative Agent      [installed]
 ├── Copywriter Agent            [installed]  Card + marketing-dept Phase 1
-├── Media Planner Agent         [pending]
+├── Media Planner Agent         [installed]
+├── Ad Agent                    [installed]
 ├── Analytics (Ana)             [installed]
 └── Compliance Agent            [installed]  Card + marketing-dept Phase 1
 ```

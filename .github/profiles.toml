@@ -12,6 +12,12 @@
 # Copy-paste this entire block into your ~/.claude/config.toml file
 # ============================================================================
 
+[profiles.ad-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: ad-agent - Ad Agent
+
 [profiles.analytics]
 model = "gpt-5-codex"
 approval_policy = "on-request"
@@ -42,6 +48,12 @@ approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: copy-agent - Copywriter Agent
 
+[profiles.creative-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: creative-agent - Creative Agent
+
 [profiles.developer]
 model = "gpt-5-codex"
 approval_policy = "on-request"
@@ -71,6 +83,12 @@ model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 # Agent: marketing-director - Marketing Director
+
+[profiles.media-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: media-agent - Media Planner Agent
 
 [profiles.offer-builder]
 model = "gpt-5-codex"
@@ -137,6 +155,12 @@ model = "gpt-5-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 # Agent: qa - qa
+
+[profiles.research-agent]
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Agent: research-agent - Research Agent
 
 [profiles.scheduler-agent]
 model = "gpt-5-codex"

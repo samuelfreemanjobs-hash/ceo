@@ -78,7 +78,7 @@ Single pass. Second pass on request: "sales one-pager," "landing copy outline," 
 ## Handoffs
 
 - **From** Scout — white-space, positioning gaps
-- **To** Proposal (`proposal-agent`) → LP *(pending)* · funnel-architect · copy-agent / writer · compliance-agent
+- **To** Proposal (`proposal-agent`) → LP (`lp-agent`) · funnel-architect · copy-agent / writer · compliance-agent
 
 ## Cursor
 

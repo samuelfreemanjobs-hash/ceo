@@ -258,6 +258,41 @@ SPECIALIST_TOOL_SCHEMAS: list[dict[str, Any]] = [
         },
     },
     {
+        "name": "gtm_artifact_list",
+        "description": (
+            "List marketing GTM artifacts (offers, proposals, landing pages, "
+            "research, funnels, campaigns) saved under docs/marketing/. "
+            "Use before referencing or summarizing the services GTM chain."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "artifact_type": {
+                    "type": "string",
+                    "enum": ["all", "offers", "proposals", "landing_pages", "research", "funnels", "campaigns"],
+                    "description": "Filter by artifact type. Default: all.",
+                },
+            },
+        },
+    },
+    {
+        "name": "gtm_artifact_read",
+        "description": (
+            "Read a marketing artifact by repo-relative path "
+            "(e.g. docs/marketing/offers/example-discovery-sprint-offer-2026-06-24.md)."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Repo-relative path to the markdown artifact.",
+                },
+            },
+            "required": ["path"],
+        },
+    },
+    {
         "name": "brand_memory_read",
         "description": (
             "Retrieve brand guidelines, voice rules, prohibited claims, prior "
@@ -865,6 +900,15 @@ class MarketingDirector:
 
         if tool_name == "brand_memory_read":
             return self.brand_memory_loader(tool_input.get("topic", ""))
+
+        if tool_name == "gtm_artifact_list":
+            from .gtm_chain import list_gtm_artifacts
+            atype = tool_input.get("artifact_type", "all")
+            return list_gtm_artifacts(artifact_type=atype)
+
+        if tool_name == "gtm_artifact_read":
+            from .gtm_chain import read_gtm_artifact
+            return read_gtm_artifact(tool_input.get("path", ""))
 
         if tool_name == "request_human_review":
             return self.human_review_handler(tool_input)

@@ -1,50 +1,22 @@
-# Funnel Architect — user profile (optional)
+# User profile — Funnel Architect
 
-Standing context reused across funnel sessions. Copy relevant sections into `templates/BRIEF.md` or `briefs/ACTIVE.md`.
+## Business context
 
----
+- **Primary conversion goal:** Booked discovery calls for Discovery Sprint
+- **Primary offer:** `docs/marketing/offers/example-discovery-sprint-offer-2026-06-24.md`
+- **ICP:** B2B 10–100 employees, product traction, unclear GTM
 
-## Business
+## Channels in play
 
-- **Company / product:** 
-- **Offer (one line):** 
-- **Business model:** B2B SaaS | DTC | Services | Marketplace | Info product | Other
-- **Motion:** PLG | Sales-led | Hybrid
-- **ACV / AOV:** 
-- **Geography:** 
+- Organic / content (primary)
+- LinkedIn (testing)
+- Paid search (deprioritized until LP live)
 
-## Audience (ICP)
+## Metrics baseline
 
-- **Who buys:** 
-- **Who uses:** 
-- **Firmographics / demographics:** 
-- **Top trigger event:** 
-- **Top objection:** 
-- **Main alternative:** 
+- *(Fill when you have data)* Site visits, LP conversion %, call show rate
 
-## Voice & brand
+## Links
 
-- **Tone:** (e.g., direct, technical, friendly, authoritative)
-- **Examples:** (paste URLs or 2–3 sample paragraphs)
-- **Avoid:** (jargon, hype, competitor bashing)
-
-## Current funnel (if auditing)
-
-| Stage | Volume | Rate to next |
-|-------|--------|--------------|
-| | | |
-
-- **Primary leak (hypothesis):** 
-- **Analytics tools:** GA4 | Mixpanel | HubSpot | Salesforce | Other
-- **Known cohort insights:** 
-
-## Constraints
-
-- **Budget / timeline:** 
-- **Team capacity:** 
-- **Compliance notes:** 
-
-## Success metric for this engagement
-
-- **Primary KPI:** 
-- **Target:** 
+- LP example: `docs/marketing/landing-pages/example-discovery-sprint-lp-2026-06-24.md`
+- Brand: `docs/marketing/BRAND-PROFILE.md`

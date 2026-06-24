@@ -31,17 +31,19 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 | **Offer Director** | `offer-director` | **Installed** | Enterprise B2B offer supervisor — full pipeline |
 | Offer Builder | `offer-builder` | **Installed** | Marketing GTM — Offer Specs, positioning |
 | Proposal Agent | `proposal-agent` | **Installed** | Client proposals from offer artifacts |
+| LP Agent | `lp-agent` | **Installed** | Landing pages from offer + proposal |
 | Solution Architect | `solution-architect` | **Installed** | Enterprise catalog scope — SKUs, quantities, milestones (sub-agent) |
 | Offer Discovery | `offer-discovery` | **Installed** | CRM dossier — pains, decision-makers (sub-agent) |
 | Offer Risk & Compliance | `offer-risk-compliance` | **Installed** | Jurisdiction, clauses, blocking issues (sub-agent) |
 | Offer Copywriter | `offer-copywriter` | **Installed** | Enterprise offer narrative (sub-agent) |
 | Offer Evaluator | `offer-evaluator` | **Installed** | Quality gate — score and route (sub-agent) |
-| Research | `research-agent` | Pending install | General market research, audience insights |
-| Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
-| Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
-| Media Planner | `media-agent` | Pending install | Channel selection, budget allocation, media planning |
+| Research | `research-agent` | **Installed** | General market research, audience insights |
+| Brand & Creative | `creative-agent` | **Installed** | Visual concepts, brand expression, creative direction |
+| Copywriter | `copy-agent` | **Installed** | Messaging strategy, ad copy, long-form content |
+| Media Planner | `media-agent` | **Installed** | Channel selection, budget allocation, media planning |
+| Ad | `ad-agent` | **Installed** | Paid ad copy from approved LP/offer messaging |
 | Analytics | `analytics` | Available | Performance analysis, A/B test design, attribution |
-| Compliance | `compliance-agent` | Pending install | Brand-safety review, legal/regulatory review, claim verification |
+| Compliance | `compliance-agent` | **Installed** | Brand-safety review, legal/regulatory review, claim verification |
 
 **Routing rules:**
 
@@ -51,6 +53,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - B2B commercial offer / quote from CRM → `offer-director`
 - Services offer / productized package / tier stack → `offer-builder` (flagship, stack, audit)
 - Client proposal from completed offer → `proposal-agent` (standard, short, executive)
+- Landing page from offer + proposal → `lp-agent` (full, minimal, tiered)
+- Paid ad variants from approved LP → `ad-agent`
 - Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after `offer-discovery` dossier)
 - Enterprise dossier / CRM discovery → `offer-discovery`
 - Enterprise risk / clauses → `offer-risk-compliance` (parallel with solution-architect)
@@ -63,15 +67,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - Media / channels / GTM → `media-agent` (interim: `marketer`)
 - Performance data → `analytics`
 
-**Interim routing** (until specialists are installed):
-
-| Need | Interim agent | Notes |
-|------|---------------|-------|
-| Copy / content | `writer` | Casey handles copy until `copy-agent` is installed |
-| Media / channels / GTM | `marketer` | Mark handles media planning until `media-agent` is installed |
-| Performance data | `analytics` | Ana is production-ready |
-
-When a specialist is marked "Pending install," note the gap in your deliverable and use interim agents only when the request cannot wait.
+**Python runtime:** `marketing-dept` Phase 1 = copy + compliance; full director includes `gtm_artifact_list` / `gtm_artifact_read` for services chain artifacts.
 
 ## Request Handling Workflow
 
