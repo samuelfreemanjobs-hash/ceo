@@ -34,6 +34,7 @@ For each user request:
 - For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
 - For services or productized offers (programs, sprints, retainers — offer one-pager, tier stack): Invoke Offer Builder (`offer-builder`) via Task tool — modes flagship, stack, audit
 - For client-facing proposal from a completed offer: Invoke Proposal Agent (`proposal-agent`) via Task tool — formats standard, short, executive
+- For calendar scheduling (find time, book, reschedule, cancel): Invoke Scheduler Agent (`scheduler-agent`) via Task tool — Python runtime in `scheduler-agent/`
 - For B2B commercial offers from CRM (scope + pricing + terms): Invoke Offer Director (`offer-director`) via Task tool
 - For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
 - For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline
@@ -127,6 +128,8 @@ You have access to these specialist agents:
 - Funnel Architect (`funnel-architect`): Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests
 - Offer Director (`offer-director`): Enterprise B2B offer supervisor — orchestrates full commercial offer pipeline
 - Offer Builder (`offer-builder`): Services/productized offers — one-pager, tier stack, messaging (Playbook v1.2)
+- Proposal Agent (`proposal-agent`): Client proposals from offer artifacts — scope/price fidelity
+- Scheduler Agent (`scheduler-agent`): Calendar scheduling — availability, booking, HITL on destructive ops
 - Solution Architect (`solution-architect`): Enterprise catalog scope — SKUs, configurations, milestones; output feeds Pricing
 - Offer Pricing (`offer-pricing`): Policy-compliant priced line items from pricing_engine
 - Offer Discovery (`offer-discovery`): CRM-grounded customer dossier for Enterprise offers
