@@ -14,6 +14,7 @@ Marketing Director (Morgan)
 ├── Funnel Architect              [installed]
 ├── Offer Director                [installed]  Enterprise B2B
 ├── Offer Builder                 [installed]  Playbook v1.2 — services offers
+├── Proposal Agent                [installed]  Client proposals from offers
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
 ├── Copywriter Agent            [pending]
@@ -31,6 +32,7 @@ Marketing Director (Morgan)
 | Competitive intelligence | Competition Analyzer (Scout) or Marketing Director | Profiles, battle cards, SWOT, landscape |
 | Funnel design / audit / optimize | Funnel Architect or Marketing Director | Funnel Spec, stage copy, metrics |
 | Positioning / services offer / productized package | Offer Builder or Marketing Director | Offer one-pager, tier stack, messaging |
+| Client proposal from offer | Proposal Agent or Marketing Director | Sendable proposal doc |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |
@@ -46,10 +48,11 @@ Marketing Director (Morgan)
 - `docs/marketing/research/alerts/` — Competitive move alerts
 - `docs/marketing/funnels/` — Funnel Specs and funnel artifacts
 - `docs/marketing/offers/` — Offer Specs and positioning artifacts
+- `docs/marketing/proposals/` — Client-facing proposals from Proposal Agent
 
 ## Configuration
 
-- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`, `.github/agents/funnel-architect.md`, `.github/agents/offer-builder.md`
+- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`, `.github/agents/funnel-architect.md`, `.github/agents/offer-builder.md`, `.github/agents/proposal-agent.md`
 - Orchestration config: `.github/data/marketing-director-config.yaml`
 - Campaign brief template: `.github/templates/campaign-brief-tmpl.yaml`
 - Battle card template: `.github/templates/battle-card-tmpl.yaml`

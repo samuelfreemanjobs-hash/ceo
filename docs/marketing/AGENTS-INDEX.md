@@ -14,8 +14,18 @@
 | Competitive intel / GTM / battlecards | Scout | `competition-analyzer` |
 | Funnel design / audit / optimize | Funnel Architect | `funnel-architect` |
 | **Services offer / productized package** | **Offer Builder** | `offer-builder` |
+| **Client proposal from offer** | **Proposal Agent** | `proposal-agent` |
 | B2B commercial quote (CRM) | Offer Director | `offer-director` |
 | Performance analysis | Analytics (Ana) | `analytics` |
+
+---
+
+## Proposal Agent (marketing) — Playbook v1.0
+
+**Package:** [`proposal-agent/`](../proposal-agent/)  
+**When:** Offer one-pager ready → **client-facing proposal**  
+**Formats:** `standard` · `short` · `executive`  
+**Upstream:** `offer-builder` · **Downstream:** `lp-agent` *(pending)*
 
 ---
 
@@ -40,6 +50,8 @@
 
 | Agent | Status | Interim |
 |-------|--------|---------|
+| Proposal | **Installed** | — |
+| LP | Pending | — |
 | Copywriter | Pending | `writer` (Casey) |
 | Compliance | Pending | self-review vs `prohibited-claims-and-disclaimers` |
 | Media Planner | Pending | `marketer` (Mark) |
@@ -51,6 +63,7 @@
 
 | Package | Agent card | Guide | Output path |
 |---------|------------|-------|-------------|
+| proposal-agent | `proposal-agent/AGENTS.md` | `proposal-agent/GUIDE.md` | `docs/marketing/proposals/` |
 | competition-analyzer | `competition-analyzer/AGENTS.md` | — | `docs/marketing/research/` |
 | funnel-architect | `funnel-architect/AGENTS.md` | — | `docs/marketing/funnels/` |
 | offer-builder | `offer-builder/AGENTS.md` | `offer-builder/GUIDE.md` | `docs/marketing/offers/` |

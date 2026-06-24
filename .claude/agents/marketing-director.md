@@ -30,6 +30,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 | Funnel Architect | `funnel-architect` | **Installed** | Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests |
 | **Offer Director** | `offer-director` | **Installed** | Enterprise B2B offer supervisor — full pipeline |
 | Offer Builder | `offer-builder` | **Installed** | Marketing GTM — Offer Specs, positioning |
+| Proposal Agent | `proposal-agent` | **Installed** | Client proposals from offer artifacts |
 | Solution Architect | `solution-architect` | **Installed** | Enterprise catalog scope — SKUs, quantities, milestones (sub-agent) |
 | Offer Discovery | `offer-discovery` | **Installed** | CRM dossier — pains, decision-makers (sub-agent) |
 | Offer Risk & Compliance | `offer-risk-compliance` | **Installed** | Jurisdiction, clauses, blocking issues (sub-agent) |
@@ -49,6 +50,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
 - B2B commercial offer / quote from CRM → `offer-director`
 - Services offer / productized package / tier stack → `offer-builder` (flagship, stack, audit)
+- Client proposal from completed offer → `proposal-agent` (standard, short, executive)
 - Enterprise deal scope (catalog SKUs, milestones) → `solution-architect` (after `offer-discovery` dossier)
 - Enterprise dossier / CRM discovery → `offer-discovery`
 - Enterprise risk / clauses → `offer-risk-compliance` (parallel with solution-architect)

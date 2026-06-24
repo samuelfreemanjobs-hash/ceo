@@ -33,6 +33,7 @@ For each user request:
 - For competitive intelligence and GTM analysis (profiles, battlecards, landscapes, funnel teardowns, white space): Invoke Scout (`competition-analyzer`) via Task tool — or Morgan if part of a broader marketing campaign
 - For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
 - For services or productized offers (programs, sprints, retainers — offer one-pager, tier stack): Invoke Offer Builder (`offer-builder`) via Task tool — modes flagship, stack, audit
+- For client-facing proposal from a completed offer: Invoke Proposal Agent (`proposal-agent`) via Task tool — formats standard, short, executive
 - For B2B commercial offers from CRM (scope + pricing + terms): Invoke Offer Director (`offer-director`) via Task tool
 - For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
 - For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline

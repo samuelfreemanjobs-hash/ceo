@@ -118,7 +118,7 @@ Playbook v1.2 · Self-audit before delivery (see [AGENTS.md](../AGENTS.md)).
 | To | Payload |
 |----|---------|
 | proposal-agent | Sections 1–8 |
-| lp-agent / copy-agent | Promise, proof, objections |
+| lp-agent / copy-agent | Proposal §1, §5, §6, §9 |
 | compliance-agent | Section 7 flags |
 
 ---

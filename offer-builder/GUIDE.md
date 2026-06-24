@@ -28,7 +28,7 @@ Offer Builder → Proposal → LP
 | Step | Agent | When |
 |------|-------|------|
 | **Offer** (you are here) | `offer-builder` | Scope, promise, tiers, objections, price logic |
-| **Proposal** *(pending)* | `proposal-agent` | Client-facing proposal doc from offer one-pager |
+| **Proposal** | `proposal-agent` | Client-facing proposal from offer one-pager |
 | **LP** *(pending)* | `lp-agent` | Landing page from offer + proposal messaging |
 
 Alternate paths: **Funnel Architect** (funnel fit) · **Copywriter** / `writer` (assets) · **Compliance** (claims).
