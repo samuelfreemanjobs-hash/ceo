@@ -77,6 +77,48 @@ core_team:
       - campaign_metrics
       - optimization_recommendations
 
+  - id: marketing_director
+    title: Marketing Director
+    purpose: Orchestrate the Marketing Dept — plan, delegate to specialists, synthesize brand-safe deliverables.
+    primary_functions:
+      - classify_and_route_marketing_requests
+      - orchestrate_specialist_agents
+      - enforce_compliance_gates
+      - synthesize_campaign_deliverables
+      - escalate_high_risk_decisions
+    outputs:
+      - campaign_decks
+      - coordinated_content_packs
+      - decision_logs
+      - escalation_notices
+    reports_to: orchestrator
+    manages:
+      - competition-analyzer
+      - funnel-architect
+      - research-agent
+      - creative-agent
+      - copy-agent
+      - media-agent
+      - analytics
+      - compliance-agent
+
+  - id: competition_analyzer
+    title: Competition Analyzer
+    purpose: Produce decision-grade competitive intelligence for product, marketing, sales, and executive decisions.
+    primary_functions:
+      - build_competitor_profiles
+      - generate_battle_cards
+      - conduct_landscape_analysis
+      - flag_competitive_moves
+      - synthesize_swot_and_strategic_briefs
+    outputs:
+      - competitor_profiles
+      - battle_cards
+      - move_alerts
+      - landscape_reports
+      - strategic_briefs
+    reports_to: marketing_director
+
   - id: ux_expert
     title: User Advocate
     purpose: Ensure product usability and design consistency.

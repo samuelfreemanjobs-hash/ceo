@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brief.v1.json",
+  "title": "ProposalAgentBrief",
+  "description": "Structured brief for Proposal Agent — maps to templates/BRIEF.md",
+  "type": "object",
+  "required": ["offer_artifact_path", "format"],
+  "properties": {
+    "offer_artifact_path": {
+      "type": "string",
+      "description": "Path to Offer Builder output, e.g. docs/marketing/offers/..."
+    },
+    "offer_version_note": { "type": "string" },
+    "client_name": { "type": "string" },
+    "client_company": { "type": "string" },
+    "recipient_name": { "type": "string" },
+    "recipient_role": { "type": "string" },
+    "personalization_notes": { "type": "string" },
+    "format": {
+      "type": "string",
+      "enum": ["standard", "short", "executive"]
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["formal", "consultative", "technical", "warm"]
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date"
+    },
+    "include_signature_block": { "type": "boolean", "default": true },
+    "cover_email_needed": { "type": "boolean", "default": false },
+    "must_include": { "type": "string" },
+    "must_avoid": { "type": "string" }
+  }
+}

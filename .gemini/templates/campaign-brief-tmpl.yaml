@@ -1,0 +1,88 @@
+template:
+  id: campaign-brief
+  name: Campaign Brief
+  owner: marketing-director
+  version: "1.0"
+  description: Standardized input for full campaign orchestration
+
+sections:
+  - id: overview
+    title: Campaign Overview
+    fields:
+      - name: campaign_name
+        type: text
+        required: true
+      - name: objective
+        type: select
+        options: [awareness, acquisition, retention, revenue, launch]
+        required: true
+      - name: product_or_service
+        type: text
+        required: true
+      - name: target_audience
+        type: text
+        required: true
+      - name: timeline
+        type: text
+        required: true
+      - name: budget_usd
+        type: number
+        required: true
+
+  - id: channels
+    title: Channels & Deliverables
+    fields:
+      - name: channels
+        type: multiselect
+        options: [email, organic_social, paid_social, search, display, pr, events, other]
+        required: true
+      - name: deliverables
+        type: list
+        required: true
+        description: Specific assets needed per channel
+
+  - id: constraints
+    title: Constraints & Guardrails
+    fields:
+      - name: brand_rules
+        type: text
+        required: false
+      - name: must_include
+        type: list
+        required: false
+      - name: must_avoid
+        type: list
+        required: false
+      - name: regulated_category
+        type: boolean
+        required: true
+        default: false
+
+  - id: success_metrics
+    title: Success Metrics
+    fields:
+      - name: primary_kpi
+        type: text
+        required: true
+      - name: secondary_kpis
+        type: list
+        required: false
+      - name: baseline_metrics
+        type: text
+        required: false
+
+  - id: context
+    title: Background & References
+    fields:
+      - name: prior_campaigns
+        type: text
+        required: false
+      - name: competitive_context
+        type: text
+        required: false
+      - name: additional_notes
+        type: text
+        required: false
+
+output_format: markdown
+output_path: docs/marketing/campaigns/

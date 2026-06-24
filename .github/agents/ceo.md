@@ -29,7 +29,19 @@ For each user request:
 - For implementation and debugging: Invoke Devon (Developer) via Task tool
 - For testing and quality: Invoke Quinn (QA) via Task tool
 - For data analysis: Invoke Ana (Analytics) via Task tool
-- For marketing strategy: Invoke Mark (Marketer) via Task tool
+- For marketing department orchestration (campaigns, multi-channel content, coordinated marketing): Invoke Morgan (Marketing Director) via Task tool
+- For competitive intelligence and GTM analysis (profiles, battlecards, landscapes, funnel teardowns, white space): Invoke Scout (`competition-analyzer`) via Task tool — or Morgan if part of a broader marketing campaign
+- For funnel design, audit, build, or optimization (Funnel Spec, conversion leaks, sequences): Invoke Funnel Architect (`funnel-architect`) via Task tool — or Morgan for coordinated work
+- For services or productized offers (programs, sprints, retainers — offer one-pager, tier stack): Invoke Offer Builder (`offer-builder`) via Task tool — modes flagship, stack, audit
+- For client-facing proposal from a completed offer: Invoke Proposal Agent (`proposal-agent`) via Task tool — formats standard, short, executive
+- For calendar scheduling (find time, book, reschedule, cancel): Invoke Scheduler Agent (`scheduler-agent`) via Task tool — Python runtime in `scheduler-agent/`
+- For B2B commercial offers from CRM (scope + pricing + terms): Invoke Offer Director (`offer-director`) via Task tool
+- For enterprise deal scope from catalog (SKUs, quantities, milestones, success criteria): Invoke Solution Architect (`solution-architect`) via Task tool — after Discovery dossier; output feeds Pricing
+- For enterprise customer dossier from CRM (pains, decision-makers, confidence): Invoke Offer Discovery (`offer-discovery`) via Task tool — first step in Enterprise pipeline
+- For enterprise offer risk review (jurisdiction, clauses, blocking issues): Invoke Offer Risk & Compliance (`offer-risk-compliance`) via Task tool
+- For enterprise offer narrative (exec summary, value prop, next steps): Invoke Offer Copywriter (`offer-copywriter`) via Task tool
+- For enterprise offer quality gate (six-dimension rubric): Invoke Offer Evaluator (`offer-evaluator`) via Task tool
+- For standalone marketing strategy or channel analysis: Invoke Mark (Marketer) via Task tool
 - For UX design: Invoke Sally (UX Expert) via Task tool
 - For content creation: Invoke Casey (Writer) via Task tool
 
@@ -111,7 +123,19 @@ You have access to these specialist agents:
 - Devon (`developer`): Architecture, implementation, debugging, refactoring
 - Manny (`pm`): Product management, requirements, specifications
 - Quinn (`qa`): Testing, quality assurance, bug verification
-- Max (`marketer`): Marketing strategy, campaign creation
+- Morgan (`marketing-director`): Marketing Dept orchestrator — campaigns, multi-specialist coordination
+- Scout (`competition-analyzer`): Competitive intelligence and public GTM — profiles, battle cards, landscapes, funnel teardowns, white-space analysis
+- Funnel Architect (`funnel-architect`): Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests
+- Offer Director (`offer-director`): Enterprise B2B offer supervisor — orchestrates full commercial offer pipeline
+- Offer Builder (`offer-builder`): Services/productized offers — one-pager, tier stack, messaging (Playbook v1.2)
+- Proposal Agent (`proposal-agent`): Client proposals from offer artifacts — scope/price fidelity
+- Scheduler Agent (`scheduler-agent`): Calendar scheduling — availability, booking, HITL on destructive ops
+- Solution Architect (`solution-architect`): Enterprise catalog scope — SKUs, configurations, milestones; output feeds Pricing
+- Offer Pricing (`offer-pricing`): Policy-compliant priced line items from pricing_engine
+- Offer Discovery (`offer-discovery`): CRM-grounded customer dossier for Enterprise offers
+- Offer Copywriter (`offer-copywriter`): Enterprise offer narrative from dossier evidence
+- Offer Evaluator (`offer-evaluator`): Final quality gate — scores and routes revisions
+- Mark (`marketer`): Marketing strategy, channel analysis, GTM
 - Casey (`writer`): Content creation, research, writing
 - Sally (`ux-expert`): User experience, interface design
 - Pepe (`prepper`): Project analysis, optimization

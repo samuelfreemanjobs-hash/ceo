@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://internal.example.com/schemas/evaluator-result-schema.json",
+  "title": "EvaluatorResult",
+  "description": "Evaluator Agent output block. Director maps into offer.evaluator_result.",
+  "type": "object",
+  "required": ["scores", "final_status", "iteration_count"],
+  "properties": {
+    "scores": {
+      "type": "object",
+      "required": [
+        "completeness",
+        "consistency",
+        "policy",
+        "grounding",
+        "tone",
+        "differentiation"
+      ],
+      "properties": {
+        "completeness": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "consistency": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "policy": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "grounding": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "tone": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "differentiation": { "type": "integer", "minimum": 0, "maximum": 3 }
+      }
+    },
+    "final_status": {
+      "enum": ["pass", "revise", "escalate_human"]
+    },
+    "iteration_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "revisions_requested": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dimension",
+          "current_score",
+          "target_score",
+          "specific_issues",
+          "recommended_owner_agent"
+        ],
+        "properties": {
+          "dimension": {
+            "enum": [
+              "completeness",
+              "consistency",
+              "policy",
+              "grounding",
+              "tone",
+              "differentiation"
+            ]
+          },
+          "current_score": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "target_score": { "type": "integer", "const": 2 },
+          "specific_issues": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "recommended_owner_agent": {
+            "enum": [
+              "discovery",
+              "solution_architect",
+              "pricing",
+              "risk",
+              "copywriter"
+            ]
+          }
+        }
+      }
+    },
+    "diff_summary": {
+      "type": ["string", "null"]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "final_status": { "const": "escalate_human" } } },
+      "then": { "required": ["diff_summary"] }
+    },
+    {
+      "if": { "properties": { "final_status": { "const": "revise" } } },
+      "then": { "required": ["revisions_requested"] }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brief.v1.json",
+  "title": "OfferBuilderBrief",
+  "description": "Structured brief for Offer Builder Playbook v1.2 — maps to templates/BRIEF.md",
+  "type": "object",
+  "required": ["mode"],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["flagship", "stack", "audit"]
+    },
+    "icp": {
+      "type": "string",
+      "description": "Who the offer is for"
+    },
+    "what_you_sell_today": {
+      "type": "string",
+      "description": "Broad description of current services/products"
+    },
+    "capacity_delivery_style": {
+      "type": "string",
+      "description": "Hours/team capacity and DFY, DWY, or coaching style"
+    },
+    "primary_result": {
+      "type": "string",
+      "description": "Primary outcome for the client"
+    },
+    "time_to_first_value": {
+      "type": "string"
+    },
+    "client_inputs": {
+      "type": "string",
+      "description": "What the client must provide — inputs, access, participation"
+    },
+    "proof": {
+      "type": "string",
+      "description": "Testimonials, metrics, logos available — or none"
+    },
+    "proof_available": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "case_studies",
+          "logos",
+          "quantified_outcomes",
+          "testimonials",
+          "demo",
+          "guarantee_ok",
+          "none"
+        ]
+      }
+    },
+    "target_price_band": {
+      "type": "string"
+    },
+    "payment_preference": {
+      "type": "string",
+      "description": "e.g. upfront, milestone, retainer, net-30"
+    },
+    "geography_compliance": {
+      "type": "string",
+      "description": "Geography, YMYL, B2B regulatory constraints"
+    },
+    "audit_current_offer": {
+      "type": "string",
+      "description": "Required when mode=audit — paste or URL of existing offer"
+    },
+    "exclusions": {
+      "type": "string",
+      "description": "What will not be promised or delivered"
+    },
+    "team_capacity": {
+      "type": "string",
+      "description": "Legacy alias — prefer capacity_delivery_style"
+    },
+    "current_packages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Legacy — prefer what_you_sell_today"
+    },
+    "price_range": {
+      "type": "string",
+      "description": "Legacy alias — prefer target_price_band"
+    },
+    "claims_cannot_make": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Legacy — prefer exclusions"
+    },
+    "existing_offer_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Legacy — prefer audit_current_offer for audit mode"
+    },
+    "ymyl_regulated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Legacy flag — prefer geography_compliance text"
+    },
+    "undesired_clients": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "scout_handoff_path": { "type": "string" },
+    "voice_notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "mode": { "const": "audit" } } },
+      "then": {
+        "anyOf": [
+          { "required": ["audit_current_offer"] },
+          { "required": ["existing_offer_url"] }
+        ]
+      }
+    }
+  ]
+}

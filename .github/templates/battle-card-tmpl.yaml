@@ -1,0 +1,66 @@
+template:
+  id: battle-card
+  name: Battle Card
+  owner: competition-analyzer
+  version: "1.0"
+  description: Sales-ready competitive battle card (≤1 page)
+
+sections:
+  - id: header
+    title: Competitor Overview
+    fields:
+      - name: competitor_name
+        type: text
+        required: true
+      - name: our_product
+        type: text
+        required: true
+      - name: last_updated
+        type: date
+        required: true
+      - name: lens
+        type: select
+        options: [threat, partner, adjacent, acquisition]
+        required: true
+
+  - id: their_pitch
+    title: Their Pitch
+    fields:
+      - name: positioning_statement
+        type: text
+      - name: target_icp
+        type: text
+      - name: key_claims
+        type: list
+
+  - id: differentiation
+    title: Where We Win / They Win
+    fields:
+      - name: we_win
+        type: list
+        description: Evidence-tagged bullets
+      - name: they_win
+        type: list
+      - name: landmines
+        type: list
+        description: Claims we must not make without substantiation
+
+  - id: objection_handling
+    title: Objection Handlers
+    fields:
+      - name: objections
+        type: list
+        description: Objection → response pairs
+
+  - id: metadata
+    title: Sources & Confidence
+    fields:
+      - name: sources
+        type: list
+      - name: confidence_summary
+        type: text
+      - name: open_questions
+        type: list
+
+output_format: markdown
+output_path: docs/marketing/research/battle-cards/

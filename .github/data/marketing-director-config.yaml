@@ -1,0 +1,586 @@
+marketing_director:
+  version: "1.0"
+  architecture: hierarchical_supervisory
+  status: production
+
+  persona:
+    id: marketing-director
+    name: Morgan
+    title: Marketing Director
+    model: opus
+
+  thresholds:
+    budget_escalation_usd: 25000
+    token_cost_confirm_usd: 40
+    max_specialist_iterations: 3
+
+  request_types:
+    campaign:
+      id: campaign
+      description: Full multi-channel campaign requiring coordinated specialists
+      workflow: research → (creative || copy) → media → compliance → synthesize
+      human_review: required_above_budget_threshold
+    content_request:
+      id: content_request
+      description: Single-channel or focused copy/content work
+      workflow: copy → compliance
+      human_review: optional
+    analysis_request:
+      id: analysis_request
+      description: Performance analysis, attribution, experiment design
+      workflow: analytics → synthesize
+      human_review: false
+    ideation:
+      id: ideation
+      description: Brainstorming and concept exploration
+      workflow: collaborative (creative + copy + research) → synthesize
+      human_review: optional
+    ops:
+      id: ops
+      description: Operational lookups — spend pacing, status checks
+      workflow: analytics direct
+      human_review: false
+
+  specialists:
+    competition-analyzer:
+      tool_name: research_agent
+      task_subagent_type: competition-analyzer
+      model: sonnet
+      status: installed
+      domain: Decision-grade competitive intelligence and public GTM analysis — profiles, battle cards, GTM landscapes, funnel teardowns, monitoring checklists, white-space
+      loop_budget: 10
+      agent_path: agents/competition-analyzer.md
+      skills:
+        - competitor-profiling
+        - gtm-competitor-analysis
+        - pricing-teardown
+        - source-evaluation
+        - strategic-synthesis
+
+    funnel-architect:
+      task_subagent_type: funnel-architect
+      model: opus
+      status: installed
+      domain: Funnel audit, design, build, optimize — Funnel Specs, stage copy, metrics, ICE tests
+      loop_budget: 12
+      agent_path: agents/funnel-architect.md
+      package_path: funnel-architect/
+      skills:
+        - funnel-frameworks
+        - audience-mapping
+        - channel-playbooks
+        - conversion-copywriting
+        - funnel-metrics
+        - funnel-visualization
+
+    offer-builder:
+      task_subagent_type: offer-builder
+      model: opus
+      status: installed
+      mode: marketing
+      domain: Services/productized offers — offer one-pager, tier stack, messaging (Playbook v1.2). Programs, sprints, retainers.
+      loop_budget: 10
+      agent_path: agents/offer-builder.md
+      package_path: offer-builder/
+      skills:
+        - positioning-frameworks
+        - value-proposition-design
+        - offer-architecture
+        - pricing-packaging
+        - offer-validation
+
+    proposal-agent:
+      task_subagent_type: proposal-agent
+      model: sonnet
+      status: installed
+      domain: Client-facing proposals from Offer Builder artifacts — scope/price fidelity, standard/short/executive formats
+      loop_budget: 8
+      agent_path: agents/proposal-agent.md
+      package_path: proposal-agent/
+      skills:
+        - proposal-structure
+        - proposal-validation
+
+    offer-director:
+      task_subagent_type: offer-director
+      model: opus
+      status: installed
+      mode: enterprise
+      domain: B2B commercial offer supervisor — scope, pricing, terms, narrative, audit trail
+      loop_budget: 15
+      agent_path: agents/offer-director.md
+      package_path: offer-builder/
+      spec_path: offer-builder/OFFER-BUILDER-SPEC.md
+      skills:
+        - offer-templates
+        - pricing-policy
+        - customer-discovery
+      tools:
+        - docgen.render
+        - approval.route
+        - deals.history.search
+      sub_agents:
+        offer-discovery:
+          task_subagent_type: offer-discovery
+          model: sonnet
+          status: installed
+          domain: CRM-grounded customer dossier
+          agent_path: agents/offer-discovery.md
+          prompt_path: offer-builder/prompts/agents/discovery.md
+          output_schema: offer-builder/schemas/dossier-schema.json
+          skills:
+            - customer-discovery
+          tools:
+            - crm.opportunity.get
+            - crm.account.get
+            - crm.activity.search
+            - gong.transcript.search
+            - email.thread.read
+            - web.fetch
+        solution-architect:
+          task_subagent_type: solution-architect
+          model: opus
+          status: installed
+          domain: Catalog-grounded scope
+          agent_path: agents/solution-architect.md
+          prompt_path: offer-builder/prompts/agents/solution-architect.md
+          output_schema: offer-builder/schemas/offer-schema.json#scope
+          skills:
+            - solution-catalog
+            - offer-templates
+          tools:
+            - catalog.product.search
+            - catalog.dependencies.check
+            - catalog.integrations
+            - deals.history.search
+        offer-risk-compliance:
+          task_subagent_type: offer-risk-compliance
+          model: opus
+          status: installed
+          domain: Jurisdiction, clauses, SLA exposure
+          agent_path: agents/offer-risk-compliance.md
+          prompt_path: offer-builder/prompts/agents/risk-compliance.md
+          output_schema: offer-builder/schemas/risk-schema.json
+          skills:
+            - legal-terms
+          tools:
+            - compliance.jurisdiction.check
+            - clm.clauses.search
+            - clm.precedent.search
+        offer-pricing:
+          task_subagent_type: offer-pricing
+          model: opus
+          status: installed
+          domain: Policy-compliant priced line items from pricing_engine
+          agent_path: agents/offer-pricing.md
+          prompt_path: offer-builder/prompts/agents/pricing.md
+          output_schema: offer-builder/schemas/pricing-schema.json
+          skills:
+            - pricing-policy
+          tools:
+            - pricing_engine.get_rates
+            - pricing_engine.segment_discount
+            - pricing_engine.volume_discount
+            - pricing_engine.renewal_uplift
+            - pricing_engine.apply_discount
+            - pricing_engine.check_floor
+            - deals.history.search
+        offer-copywriter:
+          task_subagent_type: offer-copywriter
+          model: sonnet
+          status: installed
+          domain: Enterprise offer narrative
+          agent_path: agents/offer-copywriter.md
+          prompt_path: offer-builder/prompts/agents/copywriter.md
+          output_schema: offer-builder/schemas/copy-schema.json
+          skills:
+            - offer-templates
+            - competitive-positioning
+        offer-evaluator:
+          task_subagent_type: offer-evaluator
+          model: sonnet
+          status: installed
+          domain: Six-dimension quality gate
+          agent_path: agents/offer-evaluator.md
+          prompt_path: offer-builder/prompts/agents/evaluator.md
+          output_schema: offer-builder/schemas/evaluation-schema.json
+
+    research-agent:
+      tool_name: research_agent
+      model: sonnet
+      status: pending_install
+      domain: General market research, audience insights (non-competitive)
+      loop_budget: 8
+      skills:
+        - market-research-methodology
+        - customer-insight-synthesis
+      note: Competitive intelligence routes to competition-analyzer
+
+    creative-agent:
+      tool_name: creative_agent
+      model: opus
+      status: pending_install
+      domain: Visual concepts, brand expression, creative direction
+      loop_budget: 6
+      skills:
+        - brand-voice
+        - creative-direction
+        - visual-storytelling
+
+    copy-agent:
+      tool_name: copy_agent
+      model: sonnet
+      status: pending_install
+      domain: Messaging strategy, ad copy, long-form content
+      loop_budget: 5
+      interim_agent: writer
+      skills:
+        - brand-voice
+        - channel-specific-copy
+        - localization-readiness
+
+    media-agent:
+      tool_name: media_agent
+      model: sonnet
+      status: pending_install
+      domain: Channel selection, budget allocation, media planning
+      loop_budget: 6
+      interim_agent: marketer
+      skills:
+        - media-mix-modeling
+        - channel-economics
+        - budget-allocation-frameworks
+
+    analytics:
+      tool_name: analytics_agent
+      model: sonnet
+      status: installed
+      task_subagent_type: analytics
+      domain: Performance analysis, A/B test design, attribution
+      loop_budget: 8
+      skills:
+        - experimentation-design
+        - attribution-analysis
+        - cohort-analysis
+
+    compliance-agent:
+      tool_name: compliance_agent
+      model: haiku
+      status: pending_install
+      domain: Brand-safety review, legal/regulatory review, claim verification
+      loop_budget: 4
+      skills:
+        - claim-verification
+        - regulatory-frameworks
+        - brand-safety-rules
+      severity_levels:
+        - NONE
+        - LOW
+        - MEDIUM
+        - HIGH
+        - CRITICAL
+      hard_block_severities:
+        - HIGH
+        - CRITICAL
+
+  skills_priority:
+    p0:
+      - brand-voice
+      - marketing-plan-current-quarter
+      - prohibited-claims-and-disclaimers
+    p1:
+      - campaign-brief-template
+      - media-mix-defaults
+      - customer-personas
+    p2:
+      - crisis-comms-playbook
+      - experimentation-standards
+
+  skills:
+    brand-voice:
+      status: template
+      version: "1.0"
+      owner: brand team
+      path: skills/brand-voice/SKILL.md
+      used_by:
+        - copy-agent
+        - creative-agent
+        - marketing-director
+      note: Fill in [YOUR_BRAND] placeholders before production use
+    prohibited-claims-and-disclaimers:
+      status: template
+      version: "1.0"
+      owner: legal + brand
+      path: skills/prohibited-claims-and-disclaimers/SKILL.md
+      used_by:
+        - compliance-agent
+        - marketing-director
+      note: Legal team must fill in and sign off before production use
+    marketing-plan-current-quarter:
+      status: template
+      version: "1.0"
+      owner: cmo office
+      path: skills/marketing-plan-current-quarter/SKILL.md
+      used_by:
+        - marketing-director
+        - research-agent
+        - competition-analyzer
+        - copy-agent
+        - media-agent
+        - creative-agent
+      note: Refresh in the first week of each quarter
+      refresh_cadence: quarterly
+    gtm-competitor-analysis:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/gtm-competitor-analysis/SKILL.md
+      package_path: competition-analyzer/skills/gtm-competitor-analysis/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
+    competitor-profiling:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/competitor-profiling/SKILL.md
+      package_path: competition-analyzer/skills/competitor-profiling/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
+    pricing-teardown:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/pricing-teardown/SKILL.md
+      package_path: competition-analyzer/skills/pricing-teardown/SKILL.md
+      used_by:
+        - competition-analyzer
+    source-evaluation:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/source-evaluation/SKILL.md
+      package_path: competition-analyzer/skills/source-evaluation/SKILL.md
+      used_by:
+        - competition-analyzer
+    strategic-synthesis:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/strategic-synthesis/SKILL.md
+      package_path: competition-analyzer/skills/strategic-synthesis/SKILL.md
+      used_by:
+        - competition-analyzer
+        - marketing-director
+    funnel-frameworks:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-frameworks/SKILL.md
+      package_path: funnel-architect/skills/funnel-frameworks/SKILL.md
+      used_by:
+        - funnel-architect
+    audience-mapping:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/audience-mapping/SKILL.md
+      package_path: funnel-architect/skills/audience-mapping/SKILL.md
+      used_by:
+        - funnel-architect
+        - marketing-director
+    channel-playbooks:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/channel-playbooks/SKILL.md
+      package_path: funnel-architect/skills/channel-playbooks/SKILL.md
+      used_by:
+        - funnel-architect
+        - media-agent
+    conversion-copywriting:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/conversion-copywriting/SKILL.md
+      package_path: funnel-architect/skills/conversion-copywriting/SKILL.md
+      used_by:
+        - funnel-architect
+        - copy-agent
+    funnel-metrics:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-metrics/SKILL.md
+      package_path: funnel-architect/skills/funnel-metrics/SKILL.md
+      used_by:
+        - funnel-architect
+        - analytics
+    funnel-visualization:
+      status: installed
+      version: "1.0"
+      owner: growth / marketing ops
+      path: skills/funnel-visualization/SKILL.md
+      package_path: funnel-architect/skills/funnel-visualization/SKILL.md
+      used_by:
+        - funnel-architect
+    positioning-frameworks:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/positioning-frameworks/SKILL.md
+      package_path: offer-builder/skills/positioning-frameworks/SKILL.md
+      used_by:
+        - offer-builder
+        - marketing-director
+    value-proposition-design:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/value-proposition-design/SKILL.md
+      package_path: offer-builder/skills/value-proposition-design/SKILL.md
+      used_by:
+        - offer-builder
+        - copy-agent
+    offer-architecture:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/offer-architecture/SKILL.md
+      package_path: offer-builder/skills/offer-architecture/SKILL.md
+      used_by:
+        - offer-builder
+    pricing-packaging:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/pricing-packaging/SKILL.md
+      package_path: offer-builder/skills/pricing-packaging/SKILL.md
+      used_by:
+        - offer-builder
+        - competition-analyzer
+    offer-validation:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/offer-validation/SKILL.md
+      package_path: offer-builder/skills/offer-validation/SKILL.md
+      used_by:
+        - offer-builder
+        - analytics
+    solution-catalog:
+      status: installed
+      version: "1.0"
+      owner: solutions / product ops
+      path: skills/solution-catalog/SKILL.md
+      package_path: offer-builder/skills/solution-catalog/SKILL.md
+      used_by:
+        - solution-architect
+        - offer-director
+    offer-templates:
+      status: installed
+      version: "1.0"
+      owner: solutions / sales ops
+      path: skills/offer-templates/SKILL.md
+      package_path: offer-builder/skills/offer-templates/SKILL.md
+      used_by:
+        - solution-architect
+        - offer-director
+        - offer-copywriter
+    competitive-positioning:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/competitive-positioning/SKILL.md
+      package_path: offer-builder/skills/competitive-positioning/SKILL.md
+      used_by:
+        - offer-copywriter
+        - offer-pricing
+    pricing-policy:
+      status: installed
+      version: "2.0"
+      owner: finance / sales ops
+      path: skills/pricing-policy/SKILL.md
+      package_path: offer-builder/skills/pricing-policy/SKILL.md
+      bundle:
+        - discount-tree.md
+        - approval-matrix.csv
+        - examples/
+      used_by:
+        - offer-pricing
+        - offer-director
+    legal-terms:
+      status: installed
+      version: "1.0"
+      owner: legal
+      path: skills/legal-terms/SKILL.md
+      package_path: offer-builder/skills/legal-terms/SKILL.md
+      used_by:
+        - offer-risk-compliance
+    customer-discovery:
+      status: installed
+      version: "1.0"
+      owner: sales ops
+      path: skills/customer-discovery/SKILL.md
+      package_path: offer-builder/skills/customer-discovery/SKILL.md
+      used_by:
+        - offer-discovery
+        - offer-director
+    proposal-structure:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/proposal-structure/SKILL.md
+      package_path: proposal-agent/skills/proposal-structure/SKILL.md
+      used_by:
+        - proposal-agent
+    proposal-validation:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/proposal-validation/SKILL.md
+      package_path: proposal-agent/skills/proposal-validation/SKILL.md
+      used_by:
+        - proposal-agent
+
+  rollout_phases:
+    phase_1:
+      name: Content foundation
+      specialists: [copy-agent, compliance-agent]
+      request_types: [content_request]
+    phase_2:
+      name: Insights layer
+      specialists: [competition-analyzer, funnel-architect, offer-builder, offer-director, research-agent, analytics]
+      request_types: [content_request, analysis_request, ideation, ops]
+    phase_3:
+      name: Full campaigns
+      specialists: [creative-agent, media-agent]
+      request_types: [campaign]
+    phase_4:
+      name: Optimization
+      focus: Model tuning, evaluator agents, failure-mode refinement
+
+  governance:
+    human_approval_before_external_publish: true
+    human_approval_before_spend_commit: true
+    no_autonomous_customer_facing_chat: true
+    no_self_modifying_behavior: true
+    no_pii_in_director_context: true
+    audit_log_retention: configurable
+    kill_switch: configurable
+
+  output_paths:
+    campaigns: docs/marketing/campaigns/
+    content: docs/marketing/content/
+    strategy: docs/marketing/
+    reports: docs/marketing/reports/
+    decisions: docs/marketing/decisions/
+    research:
+      profiles: docs/marketing/research/profiles/
+      battle_cards: docs/marketing/research/battle-cards/
+      alerts: docs/marketing/research/alerts/
+      general: docs/marketing/research/
+    funnels: docs/marketing/funnels/
+    offers: docs/marketing/offers/
+    proposals: docs/marketing/proposals/
