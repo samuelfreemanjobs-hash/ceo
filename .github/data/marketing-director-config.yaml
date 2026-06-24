@@ -73,6 +73,21 @@ marketing_director:
         - funnel-metrics
         - funnel-visualization
 
+    offer-builder:
+      task_subagent_type: offer-builder
+      model: opus
+      status: installed
+      domain: Positioning, value propositions, offer architecture — Offer Specs, proof ladders, pricing, ICE validation
+      loop_budget: 10
+      agent_path: agents/offer-builder.md
+      package_path: offer-builder/
+      skills:
+        - positioning-frameworks
+        - value-proposition-design
+        - offer-architecture
+        - pricing-packaging
+        - offer-validation
+
     research-agent:
       tool_name: research_agent
       model: sonnet
@@ -293,6 +308,50 @@ marketing_director:
       package_path: funnel-architect/skills/funnel-visualization/SKILL.md
       used_by:
         - funnel-architect
+    positioning-frameworks:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/positioning-frameworks/SKILL.md
+      package_path: offer-builder/skills/positioning-frameworks/SKILL.md
+      used_by:
+        - offer-builder
+        - marketing-director
+    value-proposition-design:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/value-proposition-design/SKILL.md
+      package_path: offer-builder/skills/value-proposition-design/SKILL.md
+      used_by:
+        - offer-builder
+        - copy-agent
+    offer-architecture:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/offer-architecture/SKILL.md
+      package_path: offer-builder/skills/offer-architecture/SKILL.md
+      used_by:
+        - offer-builder
+    pricing-packaging:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/pricing-packaging/SKILL.md
+      package_path: offer-builder/skills/pricing-packaging/SKILL.md
+      used_by:
+        - offer-builder
+        - competition-analyzer
+    offer-validation:
+      status: installed
+      version: "1.0"
+      owner: product marketing
+      path: skills/offer-validation/SKILL.md
+      package_path: offer-builder/skills/offer-validation/SKILL.md
+      used_by:
+        - offer-builder
+        - analytics
 
   rollout_phases:
     phase_1:
@@ -301,7 +360,7 @@ marketing_director:
       request_types: [content_request]
     phase_2:
       name: Insights layer
-      specialists: [competition-analyzer, funnel-architect, research-agent, analytics]
+      specialists: [competition-analyzer, funnel-architect, offer-builder, research-agent, analytics]
       request_types: [content_request, analysis_request, ideation, ops]
     phase_3:
       name: Full campaigns
@@ -332,3 +391,4 @@ marketing_director:
       alerts: docs/marketing/research/alerts/
       general: docs/marketing/research/
     funnels: docs/marketing/funnels/
+    offers: docs/marketing/offers/

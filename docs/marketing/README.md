@@ -12,6 +12,7 @@ The Marketing Dept is a hierarchical multi-agent team orchestrated by the Market
 Marketing Director (Morgan)
 ├── Competition Analyzer (Scout)  [installed]
 ├── Funnel Architect              [installed]
+├── Offer Builder                 [installed]
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
 ├── Copywriter Agent            [pending]
@@ -28,6 +29,7 @@ Marketing Director (Morgan)
 | Content / copy | Marketing Director → Copy | Specialist + compliance |
 | Competitive intelligence | Competition Analyzer (Scout) or Marketing Director | Profiles, battle cards, SWOT, landscape |
 | Funnel design / audit / optimize | Funnel Architect or Marketing Director | Funnel Spec, stage copy, metrics |
+| Positioning / offer / packaging | Offer Builder or Marketing Director | Offer Spec, proof ladder, pricing |
 | Performance analysis | Marketing Director → Analytics | Direct |
 | Ideation | Marketing Director | Collaborative → synthesize |
 | Ops / status | Marketing Director → Analytics | Direct lookup |
@@ -42,10 +44,11 @@ Marketing Director (Morgan)
 - `docs/marketing/research/battle-cards/` — Sales battle cards
 - `docs/marketing/research/alerts/` — Competitive move alerts
 - `docs/marketing/funnels/` — Funnel Specs and funnel artifacts
+- `docs/marketing/offers/` — Offer Specs and positioning artifacts
 
 ## Configuration
 
-- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`, `.github/agents/funnel-architect.md`
+- Agent definitions: `.github/agents/marketing-director.md`, `.github/agents/competition-analyzer.md`, `.github/agents/funnel-architect.md`, `.github/agents/offer-builder.md`
 - Orchestration config: `.github/data/marketing-director-config.yaml`
 - Campaign brief template: `.github/templates/campaign-brief-tmpl.yaml`
 - Battle card template: `.github/templates/battle-card-tmpl.yaml`
@@ -76,6 +79,15 @@ Marketing Director (Morgan)
 | `conversion-copywriting` | Installed | `funnel-architect/skills/conversion-copywriting/SKILL.md` |
 | `funnel-metrics` | Installed | `funnel-architect/skills/funnel-metrics/SKILL.md` |
 | `funnel-visualization` | Installed | `funnel-architect/skills/funnel-visualization/SKILL.md` |
+| `positioning-frameworks` | Installed | `offer-builder/skills/positioning-frameworks/SKILL.md` |
+| `value-proposition-design` | Installed | `offer-builder/skills/value-proposition-design/SKILL.md` |
+| `offer-architecture` | Installed | `offer-builder/skills/offer-architecture/SKILL.md` |
+| `pricing-packaging` | Installed | `offer-builder/skills/pricing-packaging/SKILL.md` |
+| `offer-validation` | Installed | `offer-builder/skills/offer-validation/SKILL.md` |
+
+## Offer Builder package
+
+[`offer-builder/`](../offer-builder/README.md) — positioning, value props, offer architecture. Blueprint: `offer-builder-agent.md`.
 
 ## Funnel Architect package
 

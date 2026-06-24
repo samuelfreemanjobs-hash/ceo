@@ -142,7 +142,7 @@ Full sales battle cards: use `strategic-synthesis` + `docs/marketing/research/ba
 
 ### Suggested handoffs
 
-- [ ] Offer Builder — 
+- [ ] Offer Builder — `offer-builder` (white-space, positioning gaps)
 - [ ] Funnel Map — 
 - [ ] LP / Ad agents — 
 - [ ] Compliance (if external battlecard) — 

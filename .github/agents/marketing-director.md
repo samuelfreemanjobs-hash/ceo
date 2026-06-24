@@ -28,6 +28,7 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 |------------|---------------------|--------|--------|
 | Competition Analyzer | `competition-analyzer` | **Installed** | Competitive intel + public GTM — profiles, battle cards, landscapes, funnel teardowns, monitoring |
 | Funnel Architect | `funnel-architect` | **Installed** | Funnel audit, design, build, optimize — Funnel Specs, metrics, ICE tests |
+| Offer Builder | `offer-builder` | **Installed** | Positioning, value props, offer architecture — Offer Specs, proof ladders, pricing |
 | Research | `research-agent` | Pending install | General market research, audience insights |
 | Brand & Creative | `creative-agent` | Pending install | Visual concepts, brand expression, creative direction |
 | Copywriter | `copy-agent` | Pending install | Messaging strategy, ad copy, long-form content |
@@ -40,6 +41,8 @@ Invoke specialists using the Task tool. Pass full context — specialists do not
 - Competitive intelligence (profiles, battle cards, SWOT, pricing intel) → `competition-analyzer` (Scout)
 - GTM landscape, funnel teardown, white space, monitoring checklist → `competition-analyzer` (`gtm-competitor-analysis` skill)
 - Funnel design, audit, build, optimize, conversion leaks, Funnel Spec → `funnel-architect`
+- Positioning, value proposition, offer stack, packaging, repositioning → `offer-builder`
+- Scout white-space / positioning handoff → `offer-builder` (include landscape artifact path)
 - Scout GTM teardown handoff → `funnel-architect` (include competitor funnel context in brief)
 - General audience/market research (non-competitive) → `research-agent` when installed
 - Copy / content → `copy-agent` (interim: `writer`)
@@ -212,6 +215,8 @@ After campaign delivery, write a final summary (decisions made, what worked, wha
 | Strategy docs | `docs/marketing/` |
 | Analysis reports | `docs/marketing/reports/` |
 | Decision logs | `docs/marketing/decisions/` |
+| Offer Specs | `docs/marketing/offers/` |
+| Funnel Specs | `docs/marketing/funnels/` |
 
 File naming: descriptive kebab-case with date when relevant — `mothers-day-skincare-campaign-2025.md`
 
