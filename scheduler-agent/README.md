@@ -31,21 +31,22 @@ pytest tests/ -q
 |------|---------|
 | `scheduler_agent.py` | Agent, executor, backends, tools |
 | `meeting_scheduling_skill.md` | Domain skill (loaded into system prompt) |
+| `slack_hitl_queue.py` | Slack HITL + ConfirmationStore |
+| `slack_webhook_server.py` | Flask interactivity webhook |
+| `webhook_main.py` | Process B gunicorn entry point |
+| `google_calendar_backend.py` | Google Calendar `CalendarBackend` sketch |
+| `production_wiring_example.py` | End-to-end production composition pattern |
 | `AGENTS.md` | Agent card |
-| `tests/test_executor.py` | Safety policy unit tests |
-
-## Environment
-
-| Variable | Default |
-|----------|---------|
-| `SCHEDULER_MODEL` | `claude-sonnet-4-6` |
-| `SCHEDULER_MAX_TURNS` | `20` |
-| `SCHEDULER_MAX_TOKENS` | `4096` |
-| `SCHEDULER_SKILL_PATH` | `meeting_scheduling_skill.md` (package dir) |
+| `tests/` | Safety + HITL unit tests |
 
 ## Production wiring
 
-See [AGENTS.md](AGENTS.md) integration section.
+See [`production_wiring_example.py`](production_wiring_example.py) for the full two-process topology:
+
+- **Process A:** `build_agent_for_user()` → Google Calendar + Postgres prefs + Slack HITL + Redis store
+- **Process B:** `webhook_main.py` → same Redis, Slack signature verification
+
+Optional deps: `pip install -r requirements-production.txt`
 
 ### Calendar backends
 

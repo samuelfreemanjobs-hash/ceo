@@ -61,6 +61,8 @@ pytest tests/ -q            # unit tests (no API key)
 
 See `slack_hitl_queue.py` and `README.md` for Redis split-deploy pattern.
 
+Full composition: [`production_wiring_example.py`](production_wiring_example.py) · Google Calendar: [`google_calendar_backend.py`](google_calendar_backend.py)
+
 ## Invoke (orchestrators)
 
 ```
