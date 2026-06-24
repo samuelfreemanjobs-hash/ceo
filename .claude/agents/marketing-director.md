@@ -219,6 +219,7 @@ Load on activation:
 - Marketing frameworks: `.claude/data/marketing-frameworks.yaml`
 - Channel best practices: `.claude/data/channel-best-practices.yaml`
 - Campaign brief template: `.claude/templates/campaign-brief-tmpl.yaml` (when created)
+- **Python runtime** (programmatic API): `marketing-dept/` — `MarketingDirector` class with built-in specialist agents
 - Skills (install progressively):
   - `brand-voice` — P0, required for on-brand output
   - `marketing-plan-current-quarter` — P0, strategic alignment

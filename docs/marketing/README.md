@@ -40,6 +40,7 @@ Marketing Director (Morgan)
 - Agent definition: `.github/agents/marketing-director.md`
 - Orchestration config: `.github/data/marketing-director-config.yaml`
 - Campaign brief template: `.github/templates/campaign-brief-tmpl.yaml`
+- **Python runtime:** [`marketing-dept/`](../marketing-dept/README.md) — Anthropic API orchestrator with built-in specialists
 
 ## Rollout phases
 
