@@ -5,25 +5,38 @@
 
 ---
 
+## Our side (the user / client)
+
+- **Offer in one line:** 
+- **ICP:** 
+- **Geography:** 
+- **Price/pricing model (if public):** 
+
+## Competitor set
+
+| Name | URL | Notes (direct / indirect) |
+|------|-----|---------------------------|
+|      |     |                           |
+
+## Focus
+
+- [ ] Funnel & pages  [ ] Ads  [ ] Pricing  [ ] Messaging/positioning  [ ] Proof/social  [ ] Product scope
+
 ## Mode
 
-**Selected mode:** 
+- [ ] `teardown`  [ ] `landscape`  [ ] `monitoring`
 
-## Lens
+## Constraints
 
-**Lens:** 
+- **Do not** claim access to: 
+- **Must compare against our:** 
 
-## Competitors
+## Artifacts (optional)
 
-| # | Competitor | URL | Notes |
-|---|------------|-----|-------|
-| 1 | | | |
+```
 
-## Evidence supplied
+```
 
-*(ad artifacts, LP URLs, contrast pages)*
+## Output
 
-## Output instructions
-
-- [ ] Use `templates/OUTPUT.md`
-- [ ] P0/P1 tagged; unknowns explicit
+- [ ] `templates/OUTPUT.md` · P0/P1 · unknowns explicit
