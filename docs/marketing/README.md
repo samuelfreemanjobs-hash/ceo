@@ -13,7 +13,7 @@ Marketing Director (Morgan)
 ├── Competition Analyzer (Scout)  [installed]
 ├── Funnel Architect              [installed]
 ├── Offer Director                [installed]  Enterprise B2B
-├── Offer Builder                 [installed]  Marketing GTM
+├── Offer Builder                 [installed]  Playbook v1.2 — services offers
 ├── Research Agent              [pending]
 ├── Brand & Creative Agent      [pending]
 ├── Copywriter Agent            [pending]

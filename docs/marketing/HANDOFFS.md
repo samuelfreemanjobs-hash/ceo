@@ -40,6 +40,7 @@ Cross-agent handoff contracts for the Marketing Dept and adjacent GTM workflows.
 | GTM landscape, funnel teardown, white space, monitoring | `competition-analyzer` (GTM mode) |
 | Funnel design, audit, build, optimize | `funnel-architect` |
 | Positioning, value prop, offer stack, packaging | `offer-builder` |
+| Services offer → proposal → landing page | `offer-builder` → Proposal *(pending)* → LP *(pending)* |
 | Full profile, M&A, pricing deep dive, move alert | `competition-analyzer` (Scout — full skills) |
 | Copy / content | `copy-agent` (interim: `writer`) |
 | External publish | `compliance-agent` |
@@ -66,11 +67,15 @@ Spec: `offer-builder/OFFER-BUILDER-SPEC.md` · **7/7 agents installed** · MCP t
 
 ## Offer Builder → downstream (Marketing)
 
+Typical chain: **Offer Builder → Proposal → LP** (Proposal and LP pending install).
+
 | Trigger | Hand off to | Payload |
 |---------|-------------|---------|
-| Offer Spec complete, need funnel | **Funnel Architect** | Offer Spec path, ICP, primary conversion goal |
-| Messaging hierarchy ready for assets | **Copywriter** (`copy-agent` / `writer`) | Messaging hierarchy, voice constraints, proof ladder |
-| Claims need legal review | **Compliance** | Proof ladder rows marked Unverified; guarantee terms |
+| Offer one-pager complete, need client proposal | **Proposal** *(pending)* | `docs/marketing/offers/...`, scope, tiers, price logic, objection pre-empts |
+| Offer + proposal ready for web | **LP** *(pending)* | Offer artifact, headline/proof bullets, primary tier, CTA direction |
+| Need funnel / channel fit | **Funnel Architect** | Offer path, ICP, primary conversion goal |
+| Messaging ready for assets | **Copywriter** (`copy-agent` / `writer`) | Headline direction, proof bullets, voice constraints |
+| Claims need legal review | **Compliance** | Unverified claims, guarantee terms, YMYL flags |
 | Pricing intel gaps | **Scout** (`competition-analyzer`) | Competitor list, pricing-teardown request |
 
 ### Handoff JSON (from Scout → Offer Builder)
@@ -100,7 +105,8 @@ Already defined above (`from: competition-analyzer`, `to: offer-builder`).
 |-------|-------------------------------------|
 | **Funnel Architect** | GTM teardown, funnel patterns *(installed)* |
 | **Offer Builder** | White-space analysis, positioning gaps *(installed)* |
-| **LP** | Competitor LP URLs, positioning contrast, Offer Spec |
+| **Proposal** | Offer one-pager, tiers, price logic *(pending)* |
+| **LP** | Offer artifact, positioning contrast, primary tier CTA *(pending)* |
 | **Ad** | User-supplied ad artifacts + pattern analysis |
 
 ---

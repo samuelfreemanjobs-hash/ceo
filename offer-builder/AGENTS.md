@@ -2,17 +2,23 @@
 
 **Purpose:** Package services or products into **irresistible, specific offers** (outcome, scope, terms, risk reversal, proof) that sales and marketing can execute without hand-waving.
 
+**Tips:** The **out-of-scope** list sells trust. One **recommended** tier with why.
+
+**Guide:** [GUIDE.md](GUIDE.md) · **Downstream:** Offer → Proposal → LP ([HANDOFFS.md](../docs/marketing/HANDOFFS.md))
+
+**Use when** creating new programs, sprints, or fixing a fuzzy "we do everything."
+
+**Not for:** legal contract drafting; unbounded "results guaranteed."
+
+> **Playbook v1.2** · Inherits [STANDARDS.md](../STANDARDS.md).
+
 **Use:** New programs, sprints, retainers, and "productized" services.
-
-> **Playbook v1.2** · Inherits [STANDARDS.md](../STANDARDS.md). Typical next steps: [HANDOFFS.md](../docs/marketing/HANDOFFS.md).
-
-**ID:** `offer-builder` · **Model:** opus · **Enterprise B2B quotes:** use `offer-director` instead ([OFFER-BUILDER-SPEC.md](OFFER-BUILDER-SPEC.md))
 
 ---
 
-## Repo context (read on every run)
+**ID:** `offer-builder` · **Model:** opus · **Enterprise B2B quotes:** use `offer-director` ([OFFER-BUILDER-SPEC.md](OFFER-BUILDER-SPEC.md))
 
-- **[STANDARDS.md](../STANDARDS.md)** — proof, PII, YMYL, consent, forecasts (universal).
+## Repo context (read on every run)
 - **[USER_PROFILE.md](USER_PROFILE.md)** — default ICP, offer, voice, and allowed proof (optional).
 - **[AGENTS-INDEX.md](../docs/marketing/AGENTS-INDEX.md)** — full map and *which agent when*.
 - **[learnings/OUTCOMES-LOG.md](learnings/OUTCOMES-LOG.md)** — append one line after a real ship or A/B.
@@ -55,7 +61,7 @@
 
 ## File map
 
-`AGENTS.md` · `templates/BRIEF.md` · `templates/OUTPUT.md` · `prompts/system.md` · [CURSOR.md](CURSOR.md)
+[GUIDE.md](GUIDE.md) · `AGENTS.md` · `templates/BRIEF.md` · `templates/OUTPUT.md` · `prompts/system.md` · [CURSOR.md](CURSOR.md)
 
 ## Level-up (v1.2): self-audit, traps, anti-patterns
 

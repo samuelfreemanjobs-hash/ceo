@@ -52,4 +52,4 @@ Max 3 questions if needed.
 
 ## See also
 
-[AGENTS-INDEX.md](../docs/marketing/AGENTS-INDEX.md) · [AGENTS.md](AGENTS.md)
+[GUIDE.md](GUIDE.md) · [AGENTS-INDEX.md](../docs/marketing/AGENTS-INDEX.md) · [AGENTS.md](AGENTS.md)
