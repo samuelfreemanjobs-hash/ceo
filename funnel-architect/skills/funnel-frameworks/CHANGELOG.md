@@ -1,10 +1,14 @@
 # Changelog — funnel-frameworks
 
+## v1.1.1 (2026-06-24)
+
+- Replaced `references/marketplaces.md` with full authoritative reference: cold-start, liquidity metrics, single-player mode, parallel funnels, channel strategy per side, KPIs, failure modes
+
 ## v1.1 (2026-06-24)
 
-- Replaced with authoritative skill body: 3-question decision logic (model, motion, shape), framework reference (AIDA, TOFU/MOFU/BOFU, AARRR, Bow Tie, See-Think-Do-Care, Forrester), 6 anti-patterns, output checklist, hybrid funnel guidance
+- Replaced SKILL.md with authoritative body: 3-question decision logic (model, motion, shape), framework catalog, anti-patterns, hybrid/bow-tie guidance, output checklist
 
 ## v1.0 (2026-06-24)
 
 - Initial production SKILL.md: decision tree, frameworks, shapes, anti-patterns, coordination
-- References: saas-plg, saas-sales-led, dtc-ecommerce, services, marketplaces
+- References: saas-plg, saas-sales-led, dtc-ecommerce, services, marketplaces (stub)
