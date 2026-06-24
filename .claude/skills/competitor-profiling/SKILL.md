@@ -31,6 +31,8 @@ Tag each row: observation vs. inference.
 
 ### 3. Pricing & packaging
 
+Use **pricing-teardown** skill when pricing is strategic or opaque. Otherwise capture:
+
 - Published tiers (quote exact numbers from source)
 - Enterprise / custom pricing visibility
 - Free trial / freemium mechanics

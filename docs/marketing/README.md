@@ -63,6 +63,15 @@ Marketing Director (Morgan)
 | `brand-voice` | Template (fill in placeholders) | `.github/skills/brand-voice/SKILL.md` |
 | `prohibited-claims-and-disclaimers` | Template (legal sign-off required) | `.github/skills/prohibited-claims-and-disclaimers/SKILL.md` |
 | `marketing-plan-current-quarter` | Template (refresh each quarter) | `.github/skills/marketing-plan-current-quarter/SKILL.md` |
-| `competitor-profiling` | Installed | `.github/skills/competitor-profiling/SKILL.md` |
-| `source-evaluation` | Installed | `.github/skills/source-evaluation/SKILL.md` |
-| `strategic-synthesis` | Installed | `.github/skills/strategic-synthesis/SKILL.md` |
+| `competitor-profiling` | Installed | `competition-analyzer/skills/competitor-profiling/SKILL.md` |
+| `pricing-teardown` | Installed | `competition-analyzer/skills/pricing-teardown/SKILL.md` |
+| `source-evaluation` | Installed | `competition-analyzer/skills/source-evaluation/SKILL.md` |
+| `strategic-synthesis` | Installed | `competition-analyzer/skills/strategic-synthesis/SKILL.md` |
+
+## Competition Analyzer package
+
+Standalone deployable package: [`competition-analyzer/`](../competition-analyzer/README.md)
+
+- `system-prompt.md` — API / Project instructions
+- `CLAUDE.md` — Claude Code auto-load
+- `worked-example.md` — methodology trace (Linear)

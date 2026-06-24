@@ -100,12 +100,18 @@ def repo_brand_memory_loader(topic: str, repo_root: Path | None = None) -> dict[
     }:
         payload["content"] = {
             "competitor_profiling": load_skill("competitor-profiling", root),
+            "pricing_teardown": load_skill("pricing-teardown", root),
             "source_evaluation": load_skill("source-evaluation", root),
             "strategic_synthesis": load_skill("strategic-synthesis", root),
         }
         payload["skill_status"] = {
-            k: director_cfg.get("skills", {}).get(k.replace("_", "-"), {})
-            for k in ("competitor-profiling", "source-evaluation", "strategic-synthesis")
+            k: director_cfg.get("skills", {}).get(k, {})
+            for k in (
+                "competitor-profiling",
+                "pricing-teardown",
+                "source-evaluation",
+                "strategic-synthesis",
+            )
         }
     elif topic in {"active_campaigns"}:
         data_paths = []

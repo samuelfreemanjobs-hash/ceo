@@ -52,6 +52,7 @@ marketing_director:
       agent_path: agents/competition-analyzer.md
       skills:
         - competitor-profiling
+        - pricing-teardown
         - source-evaluation
         - strategic-synthesis
 
@@ -185,14 +186,24 @@ marketing_director:
       version: "1.0"
       owner: marketing research
       path: skills/competitor-profiling/SKILL.md
+      package_path: competition-analyzer/skills/competitor-profiling/SKILL.md
       used_by:
         - competition-analyzer
         - marketing-director
+    pricing-teardown:
+      status: installed
+      version: "1.0"
+      owner: marketing research
+      path: skills/pricing-teardown/SKILL.md
+      package_path: competition-analyzer/skills/pricing-teardown/SKILL.md
+      used_by:
+        - competition-analyzer
     source-evaluation:
       status: installed
       version: "1.0"
       owner: marketing research
       path: skills/source-evaluation/SKILL.md
+      package_path: competition-analyzer/skills/source-evaluation/SKILL.md
       used_by:
         - competition-analyzer
     strategic-synthesis:
@@ -200,6 +211,7 @@ marketing_director:
       version: "1.0"
       owner: marketing research
       path: skills/strategic-synthesis/SKILL.md
+      package_path: competition-analyzer/skills/strategic-synthesis/SKILL.md
       used_by:
         - competition-analyzer
         - marketing-director

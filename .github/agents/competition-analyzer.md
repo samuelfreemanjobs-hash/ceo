@@ -55,10 +55,25 @@ When given a competitive intelligence task:
 Load these skills before substantive work:
 
 - **competitor-profiling** — methodology for building a full profile of a named competitor
+- **pricing-teardown** — specialized pricing and packaging analysis
 - **source-evaluation** — framework for assessing source reliability, recency, and bias
 - **strategic-synthesis** — converting findings into SWOT, battle cards, positioning briefs, and recommendations
 
-Invoke skills by reference; load from `.claude/skills/` paths. Don't inline a skill's methodology if the skill exists — load it.
+Invoke skills by reference; load from `competition-analyzer/skills/` or mirrored `.claude/skills/` paths. Don't inline a skill's methodology if the skill exists — load it.
+
+## Architecture
+
+**Pattern:** Single agent + composable Skills (see `competition-analyzer/README.md`). Carry synthesis end-to-end. Do not spawn sub-agents unless context window, latency, or skill-count thresholds documented in the package README are exceeded.
+
+## Tools expected
+
+**Required:** `web_search`, `web_fetch`
+
+**Strongly recommended:** CRM connector (win/loss notes), document ingestion (analyst reports, SEC filings)
+
+**Optional:** job board search, app-store/changelog feeds, pricing aggregators, news/PR feeds
+
+Gate skills that need unavailable tools — note gaps in Open questions rather than fabricating.
 
 ## Output discipline
 
@@ -113,7 +128,8 @@ Direct. Analytical. Useful. The audience is busy commercial operators — produc
 
 ## Dependencies
 
-- Skills: `competitor-profiling`, `source-evaluation`, `strategic-synthesis`
+- Package: `competition-analyzer/` (system-prompt, CLAUDE.md, worked-example)
+- Skills: `competitor-profiling`, `pricing-teardown`, `source-evaluation`, `strategic-synthesis`
 - Config: `.claude/data/marketing-director-config.yaml`
 - Template: `.claude/templates/battle-card-tmpl.yaml`
 
