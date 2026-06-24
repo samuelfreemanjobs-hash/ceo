@@ -33,6 +33,7 @@ funnel-architect/
 ├── learnings/OUTCOMES-LOG.md
 ├── observability/                 trace schema + README
 └── skills/
+    ├── README.md                  Skills bundle guide
     ├── funnel-frameworks/
     ├── audience-mapping/
     ├── channel-playbooks/
