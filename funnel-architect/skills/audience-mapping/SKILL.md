@@ -245,6 +245,44 @@ Output: a swipe file of 20–30 direct quotes organized by funnel stage. This be
 
 See `references/voc-mining.md` for the full mining process.
 
+## Pivots and repositioning
+
+Use when the user is changing target audience (e.g., law firms → real estate agents) — not a fresh build from zero.
+
+### Before any new funnel work
+
+1. **Extract value from the old funnel** — what channels, messages, and objections worked even at low volume?
+2. **Validate the new audience** — evidence strength (conversations, inbound, hypothesis only)?
+3. **Clarify scope** — abandoning old audience or running both in parallel?
+
+**Rule:** Run **5–10 customer-discovery conversations** with the new audience before touching funnel assets.
+
+### Transfers vs. doesn't transfer (inventory template)
+
+| Category | Examples | Action |
+|----------|----------|--------|
+| **Transfers** | Product, activation flow, billing, support playbooks | Reuse |
+| **Doesn't transfer** | Messaging, ICP, channels, case studies, social proof, pricing (maybe) | Rebuild |
+| **Mixed** | Brand name (signals old vertical?) | Decide: keep, sub-brand, or rebrand after validation |
+
+### Parallel funnel during transition
+
+- Keep old audience on **existing funnel** (preserve revenue)
+- Build **new audience funnel from scratch** — do not redirect old traffic
+- Merge when one motion clearly wins
+
+### Wedge for the new audience
+
+Don't go national/generic. Pick geography, specialty, or segment — same as marketplace wedge logic.
+
+### Channel re-validation
+
+Channel-fit from the old audience is mostly **noise**. Re-run `channel-playbooks` for the new ICP.
+
+### Premature rebrand warning
+
+Do **not** rebrand before validating the new audience. Test under existing brand or sub-brand first.
+
 ## Output checklist
 
 Before handing off to other skills, this skill must produce:

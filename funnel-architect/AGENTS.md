@@ -47,4 +47,4 @@ Offer, audience, goal metric, current conversion data (even rough), constraints 
 1. Fill [templates/BRIEF.md](templates/BRIEF.md) → save to `briefs/ACTIVE.md`
 2. `@funnel-architect/AGENTS.md` + brief; output per [templates/OUTPUT.md](templates/OUTPUT.md)
 
-Full workflow: [CURSOR.md](CURSOR.md) · Blueprint: [funnel-architect-agent.md](funnel-architect-agent.md) · Example: [worked-example.md](worked-example.md)
+- Full workflow: [CURSOR.md](CURSOR.md) · Blueprint: [funnel-architect-agent.md](funnel-architect-agent.md) · Tests: [test-report-v2.md](test-report-v2.md)
